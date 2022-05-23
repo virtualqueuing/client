@@ -1,10 +1,12 @@
-import { ChakraProvider } from "@chakra-ui/react";
+// import { ChakraProvider } from "@chakra-ui/react";
+// import { Provider } from "react-redux";
+// import { PersistGate } from "redux-persist/integration/react";
+// import store, { persistor } from "./store";
+
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import store, { persistor } from "./store";
 import App from "./App";
+import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 
 const rootElement = document.getElementById("root");
@@ -12,12 +14,12 @@ const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <ChakraProvider resetCSS theme={theme}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+    <ThemeProvider theme={theme}>
+      {/* <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}> */}
           <App />
-        </PersistGate>
-      </Provider>
-    </ChakraProvider>
+        {/* </PersistGate>
+      </Provider> */}
+    </ThemeProvider>
   </React.StrictMode>
 );
