@@ -17,8 +17,8 @@ root.render(
     <ThemeProvider theme={theme}>
       {/* <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}> */}
-          <App />
-        {/* </PersistGate>
+      <App />
+      {/* </PersistGate>
       </Provider> */}
     </ThemeProvider>
   </React.StrictMode>
