@@ -1,5 +1,5 @@
-import { Box, Container, useColorMode } from "@chakra-ui/react";
-import { AddTodo, Content, Header, ListTodo } from "../components";
+// import { Box, Container, useColorMode } from "@chakra-ui/react";
+import { AddTodo, Content, Header, ListTodo, Box, Container, useColorMode } from "../components";
 
 const Homepage = () => {
   const { colorMode } = useColorMode();
