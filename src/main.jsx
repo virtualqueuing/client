@@ -6,20 +6,16 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import { ThemeProvider } from "styled-components";
-import theme from "./theme";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
       {/* <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}> */}
       <App />
       {/* </PersistGate>
       </Provider> */}
-    </ThemeProvider>
   </React.StrictMode>
 );

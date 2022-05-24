@@ -11,7 +11,7 @@ const colors = {
     buttonGradient: 'linear-gradient(180deg, #F1E0E0 23.33%, rgba(253, 247, 247, 0) 194.67%)',
 }
 
-const fontSize = {
+const fontSizes = {
     xxs: '12px',
     sm: '14px',
     md: '16px',
@@ -25,5 +25,5 @@ const fontSize = {
 
 export default {
     colors,
-    fontSize,
+    fontSizes,
 }
