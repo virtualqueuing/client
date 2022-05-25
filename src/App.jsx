@@ -9,9 +9,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <>
         <Container>
-          <SideMenu>
-            
-          </SideMenu>
+          <SideMenu></SideMenu>
         </Container>
       </>
     </ThemeProvider>
