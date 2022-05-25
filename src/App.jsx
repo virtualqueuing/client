@@ -8,7 +8,7 @@ import theme from "./theme";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <>
         <Suspense fallback={<LoadingPage />}>
           <BrowserRouter>
             <Routes>
@@ -21,7 +21,7 @@ const App = () => {
             </Routes>
           </BrowserRouter>
         </Suspense>
-      </div>
+      </>
     </ThemeProvider>
   );
 };

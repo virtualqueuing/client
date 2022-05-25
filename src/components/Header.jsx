@@ -1,30 +1,20 @@
-import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { Box, Flex, IconButton, Text, useColorMode } from "@chakra-ui/react";
+import styled from "styled-components";
+
+const StyledHeader = styled.header`
+  background-color: ${({ theme }) => theme.colors.main};
+  padding: 40px 0;
+  display: flex;
+
+  & > h1 {
+    color: ${({ theme }) => theme.colors.fontColor};
+  }
+`;
 
 const Header = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Flex
-      bgColor={colorMode === "light" ? "purple.500" : "purple.200"}
-      color={colorMode === "light" ? "#fff" : "black"}
-      alignItems="center"
-      boxShadow="2xl"
-      mb={6}
-    >
-      <Box flex="1">
-        <IconButton aria-label="Menu" borderRadius="0" icon={<HamburgerIcon />} variant="solid" />
-      </Box>
-      <Box flex="2" textAlign="center">
-        <Text fontWeight="bold">TODO LIST</Text>
-      </Box>
-      <Flex flex="1" justify="flex-end">
-        <IconButton
-          borderRadius="0"
-          icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-          onClick={toggleColorMode}
-        />
-      </Flex>
-    </Flex>
+    <StyledHeader>
+      <h1>Testing</h1>
+    </StyledHeader>
   );
 };
 
