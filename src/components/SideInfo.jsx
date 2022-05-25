@@ -84,7 +84,8 @@ const SeperateLine = styled.div`
   border-radius: 20%;
   margin: 0 2.5%;
 `;
-/* change for test*/
+
+// test Roy
 /* change for test*/
 
 export default function SideInfo() {
