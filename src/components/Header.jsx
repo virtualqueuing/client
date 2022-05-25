@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
-  background-color: ${({ theme }) => theme.colors.main};
-  padding: 40px 0;
   display: flex;
-
+  height: 27%;
+  flex-direction: column;
   & > h1 {
     color: ${({ theme }) => theme.colors.fontColor};
   }

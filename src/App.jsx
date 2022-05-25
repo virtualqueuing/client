@@ -1,16 +1,15 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import Container from "./components/Container";
+import Homepage from "./pages/Homepage";
 import theme from "./theme";
-import SideMenu from "./components/SideInfo";
+import GlobalStyles from "./components/styles/GlobalStyles";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <Container>
-          <SideMenu></SideMenu>
-        </Container>
+        <GlobalStyles />
+        <Homepage />
       </>
     </ThemeProvider>
   );

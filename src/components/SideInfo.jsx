@@ -7,7 +7,6 @@ const SideMenu = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: "Roboto", sans-serif;
   li {
     list-style: none;
     padding: 10px 30px;
