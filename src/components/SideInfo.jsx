@@ -85,6 +85,7 @@ const SeperateLine = styled.div`
   margin: 0 2.5%;
 `;
 /* change for test*/
+/* change for test*/
 
 export default function SideInfo() {
   return (
