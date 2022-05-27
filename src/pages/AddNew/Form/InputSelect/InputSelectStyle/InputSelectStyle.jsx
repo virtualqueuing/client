@@ -29,11 +29,7 @@ const SelectStyle = styled.select`
   border-radius: 10px;
   color: #000;
   margin: 0 !important;
-  background: linear-gradient(
-    180deg,
-    #f1e0e0 23.33%,
-    rgba(253, 247, 247, 0) 194.67%
-  );
+  background: linear-gradient(180deg, #f1e0e0 23.33%, rgba(253, 247, 247, 0) 194.67%);
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -45,21 +41,19 @@ const SelectStyle = styled.select`
 const InputSelectStyle = () => {
   return (
     <>
-    <Arrow>
-      <SelectStyle name="people" required>
-          <option value="" disabled selected hidden>People</option>
+      <Arrow>
+        <SelectStyle name="people" required>
+          <option value="" disabled selected hidden>
+            People
+          </option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
-          <option value="4">4</option>    
-      </SelectStyle>
-    </Arrow>
-    <Arrow>
-        <SelectStyle
-          name="tableType"
-          placeholder="Table Type"
-          bg="buttonGradient"
-          required>
+          <option value="4">4</option>
+        </SelectStyle>
+      </Arrow>
+      <Arrow>
+        <SelectStyle name="tableType" placeholder="Table Type" bg="buttonGradient" required>
           <option value="title" disabled selected hidden>
             Table Type
           </option>
@@ -67,7 +61,7 @@ const InputSelectStyle = () => {
           <option value="medium">medium</option>
           <option value="large">large</option>
         </SelectStyle>
-    </Arrow>
+      </Arrow>
     </>
   );
 };

@@ -5,26 +5,28 @@ import InputTextarea from "./InputTextarea";
 import Button from "./Button";
 
 const Wrapper = styled.form`
-  display: flex;  
+  display: flex;
   flex-wrap: wrap;
   margin: 0 80px;
-  line-height:2rem;
-  
-  input[type=text], select, textarea {
+  line-height: 2rem;
+
+  input[type="text"],
+  select,
+  textarea {
     width: 100%;
-    padding: 12px;    
+    padding: 12px;
     box-sizing: border-box;
     margin-top: 4px;
     margin-bottom: 16px;
     resize: vertical;
     outline: none;
-}
-`
+  }
+`;
 
 const Form = () => {
   return (
     <Wrapper method="post" action="">
-      <InputText />      
+      <InputText />
       <InputSelect />
       <InputTextarea />
       <Button />

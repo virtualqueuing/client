@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { fontSize, color } from "styled-system";
 
 const Logotext = styled.h1`
-  text-align:center;
+  text-align: center;
   margin-bottom: 20px;
 
   ${fontSize};

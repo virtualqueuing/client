@@ -8,12 +8,12 @@ const Wrapper = styled.div`
   margin-top: 12px;
   margin-bottom: 20px;
   position: relative;
-`
+`;
 
 const InputSelect = () => {
   return (
     <Wrapper>
-      <InputSelectStyle/>
+      <InputSelectStyle />
     </Wrapper>
   );
 };

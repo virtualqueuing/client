@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   mix-blend-mode: overlay;
   z-index: 999;
 
-  ${color};  
+  ${color};
 `;
 
 const AddNew = () => (
