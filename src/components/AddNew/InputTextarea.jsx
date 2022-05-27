@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { color, fontSize } from "styled-system";
+
 
 const LabelStyle = styled.label`
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
-
-  ${color}
-  ${fontSize}
+  color: ${({theme}) => theme.colors.fontColor}; 
+  font-size: ${({theme}) => theme.colors.md};
 `;
 
 const TextareaStyle = styled.textarea`
@@ -19,7 +18,7 @@ const TextareaStyle = styled.textarea`
 const InputTextarea = () => {
   return (
     <>
-      <LabelStyle htmlFor="other" color="fontColor" fontSize="1x">
+      <LabelStyle htmlFor="other">
         Others:
       </LabelStyle>
       <TextareaStyle id="other" name="other" rows="8" />

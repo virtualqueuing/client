@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { color, fontSize } from "styled-system";
 
 const InputStyle = styled.input`
   background-color: transparent;
@@ -10,29 +9,22 @@ const InputStyle = styled.input`
 
   ::-webkit-input-placeholder {
     /* WebKit browsers */
-    ${color}
-    ${fontSize}
+    color: ${({ theme }) => theme.colors.InputText};
+    font-size: ${({ theme }) => theme.fontSizes.md};
   }
 
   ::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    ${color}
-    ${fontSize}
+    color: ${({ theme }) => theme.colors.InputText};
+    font-size: ${({ theme }) => theme.fontSizes.md};
   }
 `;
 
 const InputText = () => {
   return (
     <>
-      <InputStyle
-        type="text"
-        name="name"
-        placeholder="Name:"
-        color="InputText"
-        fontSize="1x"
-        required
-      />
-      <InputStyle type="text" name="phone" placeholder="Phone:" fontSize="1x" required />
+      <InputStyle type="text" name="name" placeholder="Name:" required />
+      <InputStyle type="text" name="phone" placeholder="Phone:" required />
     </>
   );
 };

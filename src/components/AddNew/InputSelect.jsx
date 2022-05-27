@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  position: relative;
+`;
+
 const Arrow = styled.div`
   position: relative;
   display: flex;
@@ -12,7 +21,7 @@ const Arrow = styled.div`
     content: "";
     width: 30px;
     height: 30px;
-    background-image: url("src/assets/img/arrowdown.svg");
+    background-image: url("src/assets/arrowdown.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -38,10 +47,11 @@ const SelectStyle = styled.select`
     cursor: pointer;
   }
 `;
-const InputSelectStyle = () => {
+
+const InputSelect = () => {
   return (
-    <>
-      <Arrow>
+    <Wrapper>
+            <Arrow>
         <SelectStyle name="people" required>
           <option value="" disabled selected hidden>
             People
@@ -62,8 +72,8 @@ const InputSelectStyle = () => {
           <option value="large">large</option>
         </SelectStyle>
       </Arrow>
-    </>
+    </Wrapper>
   );
 };
 
-export default InputSelectStyle;
+export default InputSelect;

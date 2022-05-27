@@ -8,7 +8,8 @@ const colors = {
   statusW: "#FFD25D",
   statusA: "#DD0000",
   statusC: "#13E800",
-  buttonGradient: "linear-gradient(180deg, #F1E0E0 23.33%, rgba(253, 247, 247, 0) 194.67%)",
+  inputText:'#7B5D5D',
+  addNewbg: '#EF5965',
 };
 
 const fontSizes = {
