@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
-import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
-import router from "./router";
-import LoadingPage from "./pages/LoadingPage";
+// import React, { Suspense } from "react";
+// import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
+// import router from "./router";
+// import LoadingPage from "./pages/LoadingPage";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 
