@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../Header";
-import SingleQueue from "../Queue";
+import Header from "./Header";
+import Footer from "./Footer";
+import MainQueues from "./MainQueues";
 
 const MainContainer = styled.div`
   width: 73vw;
@@ -14,7 +15,8 @@ const MainBar = () => {
   return (
     <MainContainer>
       <Header />
-      <SingleQueue />
+      <MainQueues />
+      <Footer />
     </MainContainer>
   );
 };

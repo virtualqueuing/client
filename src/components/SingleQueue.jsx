@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "../theme";
 
 const QueueItem = styled.div`
   display: flex;
@@ -7,6 +6,7 @@ const QueueItem = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  margin-top: 6px;
 `;
 
 const QueueData = styled.div`
@@ -29,34 +29,20 @@ const SeperateLine = styled.div`
   margin: 0 1%;
 `;
 
-const SingleQueue = () => {
+const SingleQueue = ({ name, phoneNumber, location, queueNumber, guest, table, type, state }) => {
   return (
     <>
       <QueueItem>
-        <QueueData color="#000">
-          <p>Jason</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>0481005235</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>Sunnybank</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>144</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>6</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>Large</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>Lunch</p>
-        </QueueData>
-        <QueueData color={theme.colors.statusW}>
-          <p>Waiting...</p>
-        </QueueData>
+        <>
+          <QueueData color="#000">{name}</QueueData>
+          <QueueData color="#000">{phoneNumber}</QueueData>
+          <QueueData color="#000">{location}</QueueData>
+          <QueueData color="#000">{queueNumber}</QueueData>
+          <QueueData color="#000">{guest}</QueueData>
+          <QueueData color="#000">{table}</QueueData>
+          <QueueData color="#000">{type}</QueueData>
+          <QueueData color="#000">{state}</QueueData>
+        </>
       </QueueItem>
       <SeperateLine></SeperateLine>
     </>
