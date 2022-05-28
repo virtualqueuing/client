@@ -18,7 +18,7 @@ const ButtonStyle = styled.input`
   background: linear-gradient(180deg, #c81927 -21.43%, rgba(230, 0, 18, 0) 132.47%);
   padding-bottom: 35px;
   opacity: 1;
-  font-size: ${({theme}) => theme.fontSizes["2x"]};
+  font-size: ${({ theme }) => theme.fontSizes["2x"]};
   position: absolute;
   /* Top: 0; */
 

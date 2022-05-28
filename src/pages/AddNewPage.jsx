@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-import Logo from '../components/AddNew/Logo';
+import styled from "styled-components";
+import Logo from "../components/AddNew/Logo";
 import Form from "../components/AddNew/Form";
-
 
 const AddNew = styled.div`
   max-width: 860px;
@@ -19,7 +18,7 @@ const AddNew = styled.div`
   background-size: cover;
   mix-blend-mode: overlay;
   z-index: 999;
-  background-color:${({ theme }) => theme.colors.addNewbg}  
+  background-color: ${({ theme }) => theme.colors.addNewbg};
 `;
 
 const AddNewPage = () => (

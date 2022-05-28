@@ -2,7 +2,7 @@ import styled from "styled-components";
 import InputText from "./InputText";
 import InputSelect from "./InputSelect";
 import InputTextarea from "./InputTextarea";
-import Button from "./Button";
+import Button from "../AddNewButton";
 
 const Wrapper = styled.form`
   display: flex;

@@ -8,8 +8,8 @@ const colors = {
   statusW: "#FFD25D",
   statusA: "#DD0000",
   statusC: "#13E800",
-  inputText:'#7B5D5D',
-  addNewbg: '#EF5965',
+  inputText: "#7B5D5D",
+  addNewbg: "#EF5965",
 };
 
 const fontSizes = {

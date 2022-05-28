@@ -2,7 +2,7 @@ import React from "react";
 
 const HomePage = React.lazy(() => import("./pages/Homepage"));
 const ErrorPage = React.lazy(() => import("./pages/Errorpage"));
-const AddNewPage = React.lazy(() => import("./pages/AddNewPage"))
+const AddNewPage = React.lazy(() => import("./pages/AddNewPage"));
 
 const routes = [
   {
@@ -16,8 +16,8 @@ const routes = [
   },
   {
     path: "/Addnew",
-    element:<AddNewPage />
-  }
+    element: <AddNewPage />,
+  },
 ];
 
 export default routes;

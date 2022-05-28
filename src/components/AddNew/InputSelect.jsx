@@ -48,28 +48,47 @@ const SelectStyle = styled.select`
   }
 `;
 
+const people = [];
+for (let i = 1; i <= 12; i++) {
+  people.push({ value: i }, { children: i });
+}
+
+const tableType = [
+  {
+    value: "small",
+    children: "Small",
+  },
+  {
+    value: "medium",
+    children: "Medium",
+  },
+  {
+    value: "large",
+    children: "Large",
+  },
+];
+
 const InputSelect = () => {
   return (
     <Wrapper>
-            <Arrow>
+      <Arrow>
         <SelectStyle name="people" required>
           <option value="" disabled selected hidden>
             People
           </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          {people.map(({ value, children }) => (
+            <option key={value}>{children} </option>
+          ))}
         </SelectStyle>
       </Arrow>
       <Arrow>
-        <SelectStyle name="tableType" placeholder="Table Type" bg="buttonGradient" required>
+        <SelectStyle name="tableType" required>
           <option value="title" disabled selected hidden>
             Table Type
           </option>
-          <option value="small">small</option>
-          <option value="medium">medium</option>
-          <option value="large">large</option>
+          {tableType.map(({ value, children }) => (
+            <option key={value}>{children} </option>
+          ))}
         </SelectStyle>
       </Arrow>
     </Wrapper>

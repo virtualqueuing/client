@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
 import router from "./router";
-import LoadingPage from "./pages/LoadingPage"
+import LoadingPage from "./pages/LoadingPage";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import GlobalStyles from "./components/styles/GlobalStyles";
@@ -10,8 +10,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
-      <GlobalStyles />
-      <Suspense fallback={<LoadingPage />}>
+        <GlobalStyles />
+        <Suspense fallback={<LoadingPage />}>
           <BrowserRouter>
             <Routes>
               {router.map((routeConfig) => {
@@ -23,7 +23,6 @@ const App = () => {
             </Routes>
           </BrowserRouter>
         </Suspense>
-
       </>
     </ThemeProvider>
   );
