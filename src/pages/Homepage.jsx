@@ -1,14 +1,14 @@
 import Container from "../components/Container";
-import SideInfo from "../components/SideInfo";
-import MainBar from "../components/MainBar/MainBar";
+import LeftMenu from "../components/LeftMenu/LeftMenu";
+import RightMenu from "../components/RightMenu/RightMenu";
 
 const Homepage = () => {
   // const { colorMode } = useColorMode();
 
   return (
     <Container>
-      <SideInfo />
-      <MainBar />
+      <LeftMenu />
+      <RightMenu />
     </Container>
   );
 };

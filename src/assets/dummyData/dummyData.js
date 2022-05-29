@@ -1,13 +1,4 @@
-import styled from "styled-components";
-import SingleQueue from "../SingleQueue";
-
-const QueueSection = styled.div`
-  height: 60vh;
-  width: 100%;
-  overflow: auto;
-`;
-
-const queues = [
+export const queues = [
   {
     _id: 1,
     name: "Jason",
@@ -119,15 +110,3 @@ const queues = [
     state: "Waiting",
   },
 ];
-
-const MainQueues = () => {
-  return (
-    <QueueSection>
-      {queues.map((queue) => (
-        <SingleQueue key={queue._id} {...queue} />
-      ))}
-    </QueueSection>
-  );
-};
-
-export default MainQueues;
