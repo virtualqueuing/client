@@ -1,6 +1,14 @@
 import React from "react";
 import ConfirmButton from "../ConfirmButton";
-import { LeftMenuContainer, CustomerInfo, CustomerNotes, CustomerStatus, CustomerActionBar, CustomerWaitingTime, SeperateLine } from "../styles/LeftMenu.styles"
+import {
+  LeftMenuContainer,
+  CustomerInfo,
+  CustomerNotes,
+  CustomerStatus,
+  CustomerActionBar,
+  CustomerWaitingTime,
+  SeperateLine,
+} from "../styles/LeftMenu.styles";
 
 const LeftMenu = () => {
   return (
@@ -36,6 +44,6 @@ const LeftMenu = () => {
       </CustomerActionBar>
     </LeftMenuContainer>
   );
-}
+};
 
-export default LeftMenu
+export default LeftMenu;

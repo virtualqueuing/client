@@ -1,4 +1,10 @@
-import { StyledHeader, Branding, PathIdentifier, SeperateLine, QueueTitle } from "../styles/Header.styles"
+import {
+  StyledHeader,
+  Branding,
+  PathIdentifier,
+  SeperateLine,
+  QueueTitle,
+} from "../styles/Header.styles";
 
 const Header = () => {
   return (

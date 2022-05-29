@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const RightMenuContainer = styled.div`
   width: 73vw;

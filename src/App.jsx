@@ -11,7 +11,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
-        <Suspense>
+        <Suspense fallback={<LoadingPage />}>
           <BrowserRouter>
             <Routes>
               {router.map((routeConfig) => {

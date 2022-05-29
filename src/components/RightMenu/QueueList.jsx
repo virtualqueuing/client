@@ -1,6 +1,6 @@
 import SingleQueue from "../SingleQueue";
-import { QueueSection } from "../styles/QueueList.styles"
-import { queues } from "../../assets/dummyData/dummyData"
+import { QueueSection } from "../styles/QueueList.styles";
+import { queues } from "../../assets/dummyData/dummyData";
 
 const MainQueues = () => {
   return (
