@@ -1,12 +1,5 @@
-import styled from "styled-components";
 import ConfirmButton from "../ConfirmButton";
-
-const StyledFooter = styled.footer`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import { StyledFooter } from "../styles/Footer.styles";
 
 const Footer = () => {
   return (
