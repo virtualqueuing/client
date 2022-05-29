@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 
 export const QueueItem = styled.div`

@@ -16,7 +16,7 @@ const App = () => {
             <Routes>
               {router.map((routeConfig) => {
                 const { path } = routeConfig.path;
-                return <Route {...routeConfig} key={path} />
+                return <Route {...routeConfig} key={path} />;
               })}
               <Route path="/loading" element={<LoadingPage />} />
               <Route path="*" element={<Navigate to="/error" replace />} />

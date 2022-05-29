@@ -5,14 +5,14 @@ const SingleQueue = ({ name, phoneNumber, location, queueNumber, guest, table, t
   return (
     <>
       <QueueItem>
-          <QueueData color="#000">{name}</QueueData>
-          <QueueData color="#000">{phoneNumber}</QueueData>
-          <QueueData color="#000">{location}</QueueData>
-          <QueueData color="#000">{queueNumber}</QueueData>
-          <QueueData color="#000">{guest}</QueueData>
-          <QueueData color="#000">{table}</QueueData>
-          <QueueData color="#000">{type}</QueueData>
-          <QueueData color="#000">{state}</QueueData>
+        <QueueData color="#000">{name}</QueueData>
+        <QueueData color="#000">{phoneNumber}</QueueData>
+        <QueueData color="#000">{location}</QueueData>
+        <QueueData color="#000">{queueNumber}</QueueData>
+        <QueueData color="#000">{guest}</QueueData>
+        <QueueData color="#000">{table}</QueueData>
+        <QueueData color="#000">{type}</QueueData>
+        <QueueData color="#000">{state}</QueueData>
       </QueueItem>
       <SeparateLine color="#c4c4c4" width="98%"></SeparateLine>
     </>
