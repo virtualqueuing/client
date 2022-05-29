@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme";
+import loginBackground from "../assets/LoginPageImage/LoginBackground.png"
 
 const LoginContainer = styled.div`
     width: 702px;
@@ -12,6 +13,7 @@ const LoginContainer = styled.div`
     justify-content:space-around;
     align-items:center;
     margin-top: 10%;
+    background:url(${loginBackground}); ;
 `
 
 const LoginLogo = styled.div`
