@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
-import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
-import router from "./router";
-import LoadingPage from "./pages/LoadingPage";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import GlobalStyles from "./components/styles/GlobalStyles";
+import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
+import router from "./router";
+import LoadingPage from "./pages/LoadingPage";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               {router.map((routeConfig) => {
-                const { path } = routeConfig;
+                const { path } = routeConfig.path;
                 return <Route {...routeConfig} key={path} />;
               })}
               <Route path="/loading" element={<LoadingPage />} />
