@@ -5,7 +5,7 @@ export const QueueItem = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: auto;
   margin-top: 6px;
 `;
 
@@ -14,6 +14,7 @@ export const QueueData = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 3vh;
   & > p {
     color: ${({ color }) => color};
     font-size: ${({ theme }) => theme.fontSizes["2x"]};
