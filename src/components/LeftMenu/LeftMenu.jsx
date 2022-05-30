@@ -7,7 +7,6 @@ import {
   CustomerStatus,
   CustomerActionBar,
   CustomerWaitingTime,
-  SeperateLine,
 } from "../styles/LeftMenu.styles";
 
 const LeftMenu = () => {
@@ -18,7 +17,6 @@ const LeftMenu = () => {
         <li>First Nmae& Last Name</li>
         <li>0481005235</li>
       </CustomerInfo>
-      <SeperateLine></SeperateLine>
       <CustomerInfo>
         <h5>Notes</h5>
         <CustomerNotes>
@@ -26,14 +24,12 @@ const LeftMenu = () => {
           <li>Wheelchair * 1</li>
         </CustomerNotes>
       </CustomerInfo>
-      <SeperateLine></SeperateLine>
       <CustomerStatus>
         <h5>Status</h5>
         <h2>Waiting...</h2>
         <h5>Waiting time</h5>
         <CustomerWaitingTime>08:18:00</CustomerWaitingTime>
       </CustomerStatus>
-      <SeperateLine></SeperateLine>
       <CustomerActionBar>
         <ConfirmButton bg="#5D5670" color="#fff">
           Complete
