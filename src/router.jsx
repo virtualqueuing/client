@@ -15,7 +15,7 @@ const routes = [
     element: <ErrorPage />,
   },
   {
-    path: "/Addnew",
+    path: "/addnew",
     element: <AddNewPage />,
   },
 ];
