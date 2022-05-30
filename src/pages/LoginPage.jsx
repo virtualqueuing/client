@@ -1,19 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme";
-import loginBackground from "../assets/LoginPageImage/LoginBackground.png"
+import loginBackground from "../assets/world-map.png"
 
 const LoginContainer = styled.div`
     width: 702px;
     height: 695px;
     margin: 0 auto;
-    background-color: rgba(230, 0, 18, 0.65);
     display: flex;
     flex-direction: column;
     justify-content:space-around;
     align-items:center;
     margin-top: 10%;
-    background:url(${loginBackground}); ;
+    background:url(${loginBackground});
+    background-color: rgba(230, 0, 18, 0.65);
+    background-size:100% 100%;
 `
 
 const LoginLogo = styled.div`
@@ -38,8 +39,7 @@ const SignButtonWrapper = styled.div`
 `
 
 const SignButton = styled.button`
-    border: 0px;
-    font-family: 'Sansita';
+    border-color: transparent;
     background-color: #fff;
     width: 188px;
     height: 75px;
@@ -56,7 +56,7 @@ const VerifyUserWrapper = styled.form`
     & [type="text"] {
         background-color: #fff;
         height: 77px;
-        border: 0px;
+        border-color: transparent;
     }
     & [type="text"]:focus::placeholder {
         color: transparent;
@@ -87,16 +87,13 @@ const FormBottomWrapper = styled.div`
     & a {
         text-decoration: none;
         & span {
-            font-family: 'Sansita';
-            font-style: normal;
-            font-weight: 400;
             color: rgba(255, 255, 255, 0.85);
         }
     }
 `
 
 const RememberMe = styled.form`
-    width: 158px;
+    width: 180px;
     height: 32px;
     display: flex;
     flex-direction: row;
@@ -110,8 +107,6 @@ const RememberMe = styled.form`
     }
     & label {
         font-size: 20px;
-        font-family: 'Sansita';
-        font-style: normal;
         color: rgba(255, 255, 255, 0.85);
     }
 `
@@ -122,7 +117,6 @@ const LoginButton = styled.button`
     background: rgba(231, 159, 164, 0.4);
     border: 0px;
     & a {
-        font-family: 'Sansita';
         font-style: normal;
         font-weight: 700;
         font-size: 24px;
