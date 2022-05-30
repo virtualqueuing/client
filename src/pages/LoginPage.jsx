@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme";
-import loginBackground from "../assets/world-map.png"
+import loginBackground from "../assets/world-map.png";
+import logo from "../assets/Logo.svg";
 
 const LoginContainer = styled.div`
     width: 702px;
@@ -18,8 +19,12 @@ const LoginContainer = styled.div`
 `
 
 const LoginLogo = styled.div`
-    width: 164px;
+    width: 170px;
     height: 62px;
+    & img {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 const LoginForm = styled.div`
@@ -129,7 +134,9 @@ const LoginPage = () => {
     return (
         <>
             <LoginContainer>
-                <LoginLogo></LoginLogo>
+                <LoginLogo>
+                    <img src={logo} alt="The logo of login page" />
+                </LoginLogo>
                 <LoginForm>
                     <SignButtonWrapper>
                         <SignButton>
