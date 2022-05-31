@@ -53,29 +53,29 @@ export const StyledInputSelectFlex = styled.div`
   margin-top: 12px;
   margin-bottom: 20px;
   position: relative;
-`
+`;
 
 export const CustomStyledInputSelectImage = styled.div`
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: auto;
-    width: 30%;
-    margin: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: auto;
+  width: 30%;
+  margin: 0;
 
-    ::after {
-      content: "";
-      width: 30px;
-      height: 30px;
-      background-image: url("src/assets/arrowdown.svg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      position: absolute;
-      right: 0;
-      padding-right: 10px;
-      pointer-events: none;
-    }
+  ::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-image: url("src/assets/arrowdown.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    right: 0;
+    padding-right: 10px;
+    pointer-events: none;
+  }
 `;
 
 export const CustomStyledInputSelectBg = styled.select`
@@ -100,9 +100,9 @@ export const StyledTextarea = styled.label`
   color: ${({ theme }) => theme.colors.fontColor};
   font-size: ${({ theme }) => theme.colors.md};
   & + textarea {
-  border: none;
-  border-radius: 10px;
-  min-height: 185px;
-  background: linear-gradient(180deg, #f1e0e0 23.33%, rgba(253, 247, 247, 0) 194.67%);
+    border: none;
+    border-radius: 10px;
+    min-height: 185px;
+    background: linear-gradient(180deg, #f1e0e0 23.33%, rgba(253, 247, 247, 0) 194.67%);
   }
 `;

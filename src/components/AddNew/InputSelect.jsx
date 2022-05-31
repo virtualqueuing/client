@@ -3,7 +3,6 @@ import {
   CustomStyledInputSelectImage,
   CustomStyledInputSelectBg,
 } from "../styles/AddNew.styles";
-import { useState } from "react";
 
 const number = [];
 for (let i = 1; i <= 12; i++) {
@@ -26,37 +25,25 @@ const tableType = [
 ];
 
 const InputSelect = () => {
-  const [select, setSelect] = useState("")
-  console.log(select)
-
   return (
     <StyledInputSelectFlex>
       <CustomStyledInputSelectImage>
-        <CustomStyledInputSelectBg name="people" >
+        <CustomStyledInputSelectBg name="people">
           <option value="" disabled selected hidden>
             People
           </option>
           {number.map(({ value, children }) => (
-            <option setSelect={setSelect}
-              onChange={e=>setSelect(e.target.value)}
-              key={value}>
-              {children} 
-            </option>
+            <option key={value}> {children} </option>
           ))}
         </CustomStyledInputSelectBg>
       </CustomStyledInputSelectImage>
       <CustomStyledInputSelectImage>
-        <CustomStyledInputSelectBg name="tableType" >
+        <CustomStyledInputSelectBg name="tableType">
           <option value="title" disabled selected hidden>
             Table Type
           </option>
           {tableType.map(({ value, children }) => (
-            <option 
-              setSelect={setSelect}
-              onChange={e=>setSelect(e.target.value)}
-              key={value}>
-              {children} 
-            </option>
+            <option key={value}> {children} </option>
           ))}
         </CustomStyledInputSelectBg>
       </CustomStyledInputSelectImage>

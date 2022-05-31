@@ -5,10 +5,11 @@ import Button from "../AddNewButton";
 import { StyledForm } from "../styles/AddNew.styles";
 
 const Form = () => {
-  const handleSumbit = (e)=> {
-    e.preventDefault();
-    console.log('You clicked sumbit');
-  }
+  const handleSumbit = (e) => {
+    // e.preventDefault();
+    const data = new FormData(e.target)
+    console.log(Object.fromEntries(data.entries()));
+  };
 
   return (
     <StyledForm onSubmit={handleSumbit}>

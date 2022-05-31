@@ -22,12 +22,14 @@ const AddNew = styled.div`
 `;
 
 const AddNewPage = (props) => {
-  return(props.trigger) ? (
-  <AddNew>
-    <Logo />
-    <Form />
-  </AddNew>
-  ) : "";
+  return props.trigger ? (
+    <AddNew>
+      <Logo />
+      <Form />
+    </AddNew>
+  ) : (
+    ""
+  );
 };
 
 export default AddNewPage;

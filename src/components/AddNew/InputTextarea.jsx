@@ -1,18 +1,13 @@
-import { StyledTextarea } from '../styles/AddNew.styles'
-import { useState } from 'react';
+import { StyledTextarea } from "../styles/AddNew.styles";
 
-
-const InputTextarea =() => {
-  const [textArea, setTextarea] = useState("")
-  console.log(textArea)
-
-    return <> 
-        <StyledTextarea htmlFor="other">Others:</StyledTextarea>
-        <textarea name="other" rows="8" 
-          setTextarea={setTextarea}
-          onChange={e=>setTextarea(e.target.value)} />
+const InputTextarea = () => {
+  return (
+    <>
+      <StyledTextarea htmlFor="other">Others:</StyledTextarea>
+      <textarea name="other" rows="8"
+      />
     </>
-  ;
+  );
 };
 
 export default InputTextarea;

@@ -1,7 +1,7 @@
 import { QueueItem, QueueData } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 
-const SingleQueue = ({name, phoneNumber, location, queueNumber, guest, table, type, state}) => {
+const SingleQueue = ({ name, phoneNumber, location, queueNumber, guest, table, type, state }) => {
   return (
     <>
       <QueueItem>
