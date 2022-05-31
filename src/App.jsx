@@ -5,13 +5,14 @@ import GlobalStyles from "./components/styles/GlobalStyles";
 import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
 import router from "./router";
 import LoadingPage from "./pages/LoadingPage";
+import LoginPage from "../src/pages/LoginPage";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
-        <Suspense fallback={<LoadingPage />}>
+        {/* <Suspense fallback={<LoadingPage />}>
           <BrowserRouter>
             <Routes>
               {router.map((routeConfig) => {
@@ -22,7 +23,8 @@ const App = () => {
               <Route path="*" element={<Navigate to="/error" replace />} />
             </Routes>
           </BrowserRouter>
-        </Suspense>
+        </Suspense> */}
+        <LoginPage />
       </>
     </ThemeProvider>
   );

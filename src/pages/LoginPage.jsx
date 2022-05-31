@@ -44,6 +44,7 @@ const SignButtonWrapper = styled.div`
 `
 
 const SignButton = styled.button`
+    cursor: pointer;
     border-color: transparent;
     background-color: #fff;
     width: 188px;
@@ -89,11 +90,10 @@ const FormBottomWrapper = styled.div`
     flex-direction: row;
     justify-content:space-between;
     align-items: center;
-    & a {
+    & span {
+        color: rgba(255, 255, 255, 0.85);
+        cursor: pointer;
         text-decoration: none;
-        & span {
-            color: rgba(255, 255, 255, 0.85);
-        }
     }
 `
 
@@ -121,13 +121,11 @@ const LoginButton = styled.button`
     height: 78px;
     background: rgba(231, 159, 164, 0.4);
     border: 0px;
-    & a {
-        font-style: normal;
-        font-weight: 700;
-        font-size: 24px;
-        color: #fff;
-        text-decoration: none;
-    }
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
 `
 
 const LoginPage = () => {
@@ -155,10 +153,10 @@ const LoginPage = () => {
                             <input type="checkbox" id="rememberMe"/>
                             <label htmlFor="rememberMe"> Remember Me</label>
                         </RememberMe>
-                        <a href="#"><span>Forget Password?</span></a>
+                        <span>Forget Password?</span>
                     </FormBottomWrapper>
                 </LoginForm>
-                <LoginButton><a href="#">Login</a></LoginButton>
+                <LoginButton>Login</LoginButton>
             </LoginContainer>
         </>
     )
