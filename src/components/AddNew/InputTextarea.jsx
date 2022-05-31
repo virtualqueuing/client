@@ -1,26 +1,18 @@
-import styled from "styled-components";
+import { StyledTextarea } from '../styles/AddNew.styles'
+import { useState } from 'react';
 
-const LabelStyle = styled.label`
-  font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
-  color: ${({ theme }) => theme.colors.fontColor};
-  font-size: ${({ theme }) => theme.colors.md};
-`;
 
-const TextareaStyle = styled.textarea`
-  border: none;
-  border-radius: 10px;
-  min-height: 185px;
-  background: linear-gradient(180deg, #f1e0e0 23.33%, rgba(253, 247, 247, 0) 194.67%);
-`;
+const InputTextarea =() => {
+  const [textArea, setTextarea] = useState("")
+  console.log(textArea)
 
-const InputTextarea = () => {
-  return (
-    <>
-      <LabelStyle htmlFor="other">Others:</LabelStyle>
-      <TextareaStyle id="other" name="other" rows="8" />
+    return <> 
+        <StyledTextarea htmlFor="other">Others:</StyledTextarea>
+        <textarea name="other" rows="8" 
+          setTextarea={setTextarea}
+          onChange={e=>setTextarea(e.target.value)} />
     </>
-  );
+  ;
 };
 
 export default InputTextarea;

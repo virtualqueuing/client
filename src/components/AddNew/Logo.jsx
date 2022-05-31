@@ -1,12 +1,5 @@
-import styled from "styled-components";
+import {StyledLogo} from "../styles/AddNew.styles";
 
-const Wrapper = styled.h1`
-  text-align: center;
-  margin-bottom: 20px;
-  color: white;
-  font-size: ${({ theme }) => theme.fontSizes["4x"]};
-`;
-
-const Logo = () => <Wrapper>Haidilao</Wrapper>;
+const Logo = () => <StyledLogo>Haidilao</StyledLogo>;
 
 export default Logo;

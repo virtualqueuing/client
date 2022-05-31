@@ -27,10 +27,11 @@ const ButtonStyle = styled.input`
   }
 `;
 
+
 const Button = () => {
   return (
     <Wrapper>
-      <ButtonStyle type="submit" name="submitInfo" value="Submit" />
+      <ButtonStyle type="submit" name="submitInfo" value="Submit"/>
     </Wrapper>
   );
 };
