@@ -74,7 +74,6 @@ const VerifyUserWrapper = styled.form`
         padding-left: 3%;
     }
     & [placeholder="Password:"]::placeholder {
-        font-family: 'Sansita';
         color: rgba(0, 0, 0, 0.75);
         font-size: ${({ theme }) => theme.fontSizes["1x"]};
         font-weight: 700;
