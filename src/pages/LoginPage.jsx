@@ -32,7 +32,7 @@ const LoginForm = styled.div`
     height: 385px;
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
+    justify-content: space-between;
 `
 
 const SignButtonWrapper = styled.div`
@@ -68,7 +68,6 @@ const VerifyUserWrapper = styled.form`
         color: transparent;
     }
     & [placeholder="UserID:"]::placeholder {
-        font-family: 'Sansita';
         color: rgba(0, 0, 0, 0.75);
         font-size: ${({ theme }) => theme.fontSizes["1x"]};
         font-weight: 700;
@@ -120,7 +119,7 @@ const LoginButton = styled.button`
     width: 295px;
     height: 78px;
     background: rgba(231, 159, 164, 0.4);
-    border: 0px;
+    border-color: transparent;
     cursor: pointer;
     font-weight: 700;
     font-size: 24px;
