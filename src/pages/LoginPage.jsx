@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../theme";
 import loginBackground from "../assets/world-map.png";
-import logo from "../assets/Logo.svg";
+import logo from "../assets/LoginPageImage/Logo.svg";
 
 const LoginContainer = styled.div`
     width: 702px;
