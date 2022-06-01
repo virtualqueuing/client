@@ -23,7 +23,7 @@ export const queues = [
   },
   {
     _id: 3,
-    name: "Mark",
+    name: "James",
     phoneNumber: "0415826553",
     location: "Sunnybank",
     queueNumber: 144,
