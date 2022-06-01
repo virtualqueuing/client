@@ -1,10 +1,42 @@
 import styled from "styled-components";
 
-export const StyledLogo = styled.h1`
-  text-align: center;
-  margin-bottom: 20px;
-  color: white;
-  font-size: ${({ theme }) => theme.fontSizes["4x"]};
+export const AddNewWrapper = styled.div`
+  max-width: 860px;
+  max-height: 612px;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-image: url("src/assets/world-map.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 999;
+  background-color: ${({ theme }) => theme.colors.addNewbg};
+`;
+
+export const Branding = styled.div`
+  margin: 20px;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 130px;
+`;
+
+export const AddNewStyledLogo = styled.img`
+  max-width: 120px;
+  height: auto;
+
+  & + h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size: ${({ theme }) => theme.fontSizes["3x"]};
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -60,7 +92,7 @@ export const CustomStyledInputSelectImage = styled.div`
   display: flex;
   align-items: center;
   height: auto;
-  width: 30%;
+  width: 40%;
   margin: 0;
 
   ::after {

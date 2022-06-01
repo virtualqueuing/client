@@ -1,4 +1,4 @@
-import logo from '../../assets/Logo.svg'
+import logo from "../../assets/Logo.svg";
 import {
   StyledHeader,
   Branding,
@@ -7,7 +7,7 @@ import {
   QueueTitle,
   OpenDate,
 } from "../styles/Header.styles";
-import { Logo } from '../styles/Logo';
+import { Logo } from "../styles/Logo";
 
 const Header = () => {
   const current = new Date();
@@ -17,7 +17,7 @@ const Header = () => {
       <StyledHeader>
         <Branding>
           <h1>Location</h1>
-          <Logo src={logo} alt='logo'/>
+          <Logo src={logo} alt="logo" />
           <h1>Username</h1>
         </Branding>
         <PathIdentifier>
@@ -34,7 +34,9 @@ const Header = () => {
           <li>Type</li>
           <li>State</li>
         </QueueTitle>
-        <OpenDate><p>{date}</p></OpenDate>
+        <OpenDate>
+          <p>{date}</p>
+        </OpenDate>
         <SeperateLine></SeperateLine>
       </StyledHeader>
     </>
