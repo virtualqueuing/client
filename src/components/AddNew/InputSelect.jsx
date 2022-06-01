@@ -32,8 +32,8 @@ const InputSelect = () => {
           <option value="" disabled selected hidden>
             People
           </option>
-          {number.map(({ value, children }) => (
-            <option key={value}> {children} </option>
+          {number.map(({children}) => (
+            <option key={ children }> {children} </option>
           ))}
         </CustomStyledInputSelectBg>
       </CustomStyledInputSelectImage>
@@ -42,8 +42,8 @@ const InputSelect = () => {
           <option value="title" disabled selected hidden>
             Table Type
           </option>
-          {tableType.map(({ value, children }) => (
-            <option key={value}> {children} </option>
+          {tableType.map(({ children }) => (
+            <option key={children}> {children} </option>
           ))}
         </CustomStyledInputSelectBg>
       </CustomStyledInputSelectImage>

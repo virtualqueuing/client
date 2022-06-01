@@ -16,7 +16,6 @@ const AddNew = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* mix-blend-mode: overlay; */
   z-index: 999;
   background-color: ${({ theme }) => theme.colors.addNewbg};
 `;

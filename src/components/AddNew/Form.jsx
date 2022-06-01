@@ -3,12 +3,14 @@ import InputSelect from "./InputSelect";
 import InputTextarea from "./InputTextarea";
 import Button from "../AddNewButton";
 import { StyledForm } from "../styles/AddNew.styles";
+import { queues } from '../../assets/dummyData/dummyData'
 
 const Form = () => {
-  const handleSumbit = (e) => {
-    // e.preventDefault();
-    const data = new FormData(e.target)
-    console.log(Object.fromEntries(data.entries()));
+
+  const handleSumbit = (event) => {
+    const data = new FormData(event.target)
+    queues.push(Object.fromEntries(data.entries()))
+    event.preventDefault()
   };
 
   return (
