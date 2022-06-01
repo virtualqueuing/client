@@ -32,8 +32,8 @@ const InputSelect = () => {
           <option value="" disabled selected hidden>
             People
           </option>
-          {number.map(({children}) => (
-            <option key={ children }> {children} </option>
+          {number.map(({ children }) => (
+            <option key={children}> {children} </option>
           ))}
         </CustomStyledInputSelectBg>
       </CustomStyledInputSelectImage>

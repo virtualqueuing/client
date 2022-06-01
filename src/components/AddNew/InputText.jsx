@@ -8,10 +8,10 @@ const InputText = () => {
   return (
     <>
       <StyledInputText type="text" name="name" placeholder="Name:" />
-        {/* setTextarea={setText}
+      {/* setTextarea={setText}
         onChange={e=>setText(e.target.value)} /> */}
       <StyledInputText type="text" name="phone" placeholder="Phone:" />
-        {/* setTextarea={setText}
+      {/* setTextarea={setText}
         onChange={e=>setText(e.target.value)} /> */}
     </>
   );
