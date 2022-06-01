@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
+position: relative;
   display: flex;
   height: 27vh;
   flex-direction: column;
@@ -20,8 +21,8 @@ export const PathIdentifier = styled.div`
 
   & > p {
     position: absolute;
-    left: 120px;
-    top: 50%;
+    padding-left: 5%;
+    bottom: 0;
     font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.fontColor};
   }
@@ -35,9 +36,31 @@ export const SeperateLine = styled.div`
 `;
 
 export const QueueTitle = styled.div`
+  justify-content: space-between;
   /* position: relative; */
   height: 40%;
   display: flex;
   align-content: center;
   justify-content: center;
+  & li{
+    color: ${({ theme }) => theme.colors.main};
+  font-size: ${({ theme }) => theme.fontSizes.lg};
+    padding-top: 0.5vh;
+    width: calc(100% / 8);
+    display: flex;
+
+  justify-content: center;
+  }
 `;
+
+export const OpenDate = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: ${({ theme }) => theme.fontSizes.md};
+  color: ${({ theme }) => theme.colors.fontColor};
+  & p{
+    margin-bottom: 5px;
+  }
+`

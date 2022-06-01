@@ -24,8 +24,10 @@ export const LeftMenuContainer = styled.div`
 `;
 
 export const CustomerInfo = styled.div`
-  width: 100%;
+  width: calc(100%-20px);
+  margin: 0 10px;
   height: 27%;
+  border-bottom: 1px solid #c4c4c4;
 `;
 
 export const CustomerNotes = styled.div`
@@ -37,13 +39,15 @@ export const CustomerNotes = styled.div`
 `;
 
 export const CustomerStatus = styled.div`
-  width: 100%;
+  width: calc(100%-20px);
+  margin: 0 10px;
   height: 30%;
   & > h2 {
     margin: 0;
     padding: 0 30px;
     color: ${({ theme }) => theme.colors.statusW};
   }
+  border-bottom: 1px solid #c4c4c4;
 `;
 
 export const CustomerWaitingTime = styled.span`
