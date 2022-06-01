@@ -1,36 +1,24 @@
-import styled from "styled-components";
 import InputText from "./InputText";
 import InputSelect from "./InputSelect";
 import InputTextarea from "./InputTextarea";
 import Button from "../AddNewButton";
-
-const Wrapper = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 80px;
-  line-height: 2rem;
-
-  input[type="text"],
-  select,
-  textarea {
-    width: 100%;
-    padding: 12px;
-    box-sizing: border-box;
-    margin-top: 4px;
-    margin-bottom: 16px;
-    resize: vertical;
-    outline: none;
-  }
-`;
+import { StyledForm } from "../styles/AddNew.styles";
+import { queues } from "../../assets/dummyData/dummyData";
 
 const Form = () => {
+  const handleSumbit = (event) => {
+    const data = new FormData(event.target);
+    queues.push(Object.fromEntries(data.entries()));
+    event.preventDefault();
+  };
+
   return (
-    <Wrapper method="post" action="">
+    <StyledForm onSubmit={handleSumbit}>
       <InputText />
       <InputSelect />
       <InputTextarea />
       <Button />
-    </Wrapper>
+    </StyledForm>
   );
 };
 
