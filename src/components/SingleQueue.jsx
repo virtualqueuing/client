@@ -7,7 +7,7 @@ import { Context } from "../pages/Context";
 const SingleQueue = ({ _id, name, phoneNumber, location, queueNumber, guest, table, type, state }) => {
 
   const [, setContext] = useContext(Context);
-
+  // highlight the current queue
 
   return (
     <>
