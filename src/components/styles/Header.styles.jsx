@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-position: relative;
+  position: relative;
   display: flex;
   height: 27vh;
   flex-direction: column;
@@ -42,14 +42,14 @@ export const QueueTitle = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
-  & li{
+  & li {
     color: ${({ theme }) => theme.colors.main};
-  font-size: ${({ theme }) => theme.fontSizes.lg};
+    font-size: ${({ theme }) => theme.fontSizes.lg};
     padding-top: 0.5vh;
     width: calc(100% / 8);
     display: flex;
 
-  justify-content: center;
+    justify-content: center;
   }
 `;
 
@@ -60,7 +60,7 @@ export const OpenDate = styled.div`
   transform: translateX(-50%);
   font-size: ${({ theme }) => theme.fontSizes.md};
   color: ${({ theme }) => theme.colors.fontColor};
-  & p{
+  & p {
     margin-bottom: 5px;
   }
-`
+`;

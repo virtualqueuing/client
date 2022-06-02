@@ -1,31 +1,19 @@
-import styled from "styled-components";
-import Logo from "../components/AddNew/Logo";
 import Form from "../components/AddNew/Form";
+import logo from "../assets/Logo.svg";
+import { AddNewWrapper, Branding, AddNewStyledLogo } from "../components/styles/AddNew.styles";
 
-const AddNew = styled.div`
-  max-width: 860px;
-  max-height: 612px;
-  margin: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  background-image: url("src/assets/world-map.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  mix-blend-mode: overlay;
-  z-index: 999;
-  background-color: ${({ theme }) => theme.colors.addNewbg};
-`;
-
-const AddNewPage = () => (
-  <AddNew>
-    <Logo />
-    <Form />
-  </AddNew>
-);
+const AddNewPage = (props) => {
+  return props.trigger ? (
+    <AddNewWrapper>
+      <Branding>
+        <AddNewStyledLogo src={logo} alt="logo" />
+        <h1>Virtual Queuing</h1>
+      </Branding>
+      <Form />
+    </AddNewWrapper>
+  ) : (
+    ""
+  );
+};
 
 export default AddNewPage;
