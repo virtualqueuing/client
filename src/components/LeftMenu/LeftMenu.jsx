@@ -13,7 +13,7 @@ import {
 } from "../styles/LeftMenu.styles";
 
 const LeftMenu = () => {
-  const [context, setContext] = useContext(Context);
+  const [context, ] = useContext(Context);
   // let forceUpdate = useForceUpdate();
   const customerNote = queues[context].notes.split(",");
 

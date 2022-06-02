@@ -4,13 +4,12 @@ import Footer from "./Footer";
 import MainQueues from "./QueueList";
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 
+
 const MainBar = () => {
-  function printId() {
-    console.log("printId");
-  }
+
   return (
     <RightMenuContainer>
-      <Header onClick={printId}/>
+      <Header />
       <MainQueues />
       <Footer />
     </RightMenuContainer>

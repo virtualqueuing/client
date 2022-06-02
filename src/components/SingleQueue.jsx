@@ -6,7 +6,7 @@ import { Context } from "../pages/Context";
 
 const SingleQueue = ({ _id, name, phoneNumber, location, queueNumber, guest, table, type, state }) => {
 
-  const [context, setContext] = useContext(Context);
+  const [, setContext] = useContext(Context);
 
 
   return (
