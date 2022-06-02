@@ -5,9 +5,12 @@ import MainQueues from "./QueueList";
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 
 const MainBar = () => {
+  function printId() {
+    console.log("printId");
+  }
   return (
     <RightMenuContainer>
-      <Header />
+      <Header onClick={printId}/>
       <MainQueues />
       <Footer />
     </RightMenuContainer>
