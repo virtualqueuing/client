@@ -1,16 +1,23 @@
 import Container from "../components/Container";
 import LeftMenu from "../components/LeftMenu/LeftMenu";
 import RightMenu from "../components/RightMenu/RightMenu";
+import { useState } from "react";
+import { Context } from "./Context";
+
 
 const Homepage = () => {
   // const { colorMode } = useColorMode();
+  const [context, setContext] = useState(0);
 
   return (
-    <Container>
+    <Container >
+      <Context.Provider value={[context, setContext]}>
       <LeftMenu />
-      <RightMenu />
+      <RightMenu/>
+      </Context.Provider>
     </Container>
   );
 };
+
 
 export default Homepage;
