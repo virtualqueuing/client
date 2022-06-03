@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const StyledHeader = styled.header`
   position: relative;
@@ -15,17 +15,29 @@ export const Branding = styled.div`
   padding: 0 130px;
 `;
 
-export const PathIdentifier = styled.div`
+export const PathIdentifier = styled.ul`
+  display: flex;
   position: relative;
   height: 30%;
+  align-items:flex-end;
+  margin-left: 2.6%;
+`;
 
-  & > p {
-    position: absolute;
-    padding-left: 5%;
-    bottom: 0;
-    font-size: ${({ theme }) => theme.fontSizes.md};
+export const Identifier = styled.li`
+  list-style: none;
+  &:not(:last-child):after {
+    content: " /";
     color: ${({ theme }) => theme.colors.fontColor};
   }
+`;
+
+export const IdentifierLink = styled.a`
+  text-decoration: none;
+  font-size: ${({ theme }) => theme.fontSizes.md};
+  color: ${({ theme }) => theme.colors.fontColor};
+  ${(props) => props.type ? css `
+  color: red
+  ` : "none"};
 `;
 
 export const SeperateLine = styled.div`
