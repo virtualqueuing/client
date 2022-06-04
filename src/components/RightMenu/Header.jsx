@@ -1,4 +1,4 @@
-import logo from "../../assets/Logo.svg";
+import logo from "../../assets/Logo-v5.svg";
 import {
   StyledHeader,
   Branding,

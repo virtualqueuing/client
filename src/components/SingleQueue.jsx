@@ -2,16 +2,17 @@ import { QueueItem, QueueData } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useContext } from "react";
 import { Context } from "../pages/Context";
+
 // import { CheckQueueNum } from "../pages/Homepage";
 
-const SingleQueue = ({ _id, name, phoneNumber, location, queueNumber, guest, table, type, state }) => {
+const SingleQueue = ({ _id, name, phoneNumber, location, queueNumber, guest, table, type, state, highlightActive, setHighlightActive }) => {
 
   const [, setContext] = useContext(Context);
   // highlight the current queue
 
   return (
     <>
-      <QueueItem onClick={() => setContext(_id-1)}>
+      <QueueItem active={_id===highlightActive} onClick={() => {setContext(_id-1); setHighlightActive(_id)}}>
         <QueueData color="#000">{name}</QueueData>
         <QueueData color="#000">{phoneNumber}</QueueData>
         <QueueData color="#000">{location}</QueueData>

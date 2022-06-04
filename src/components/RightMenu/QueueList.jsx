@@ -1,5 +1,7 @@
 import SingleQueue from "../SingleQueue";
 import { QueueSection } from "../styles/QueueList.styles";
+import React, {useState} from 'react';
+
 
 const MainQueues = ({queues, type}) => {
   let showList = [];
@@ -12,10 +14,11 @@ const MainQueues = ({queues, type}) => {
   } else if (type === "Absent") {
     showList = queues.filter((queue) => queue.state === "Absent")
   }
+  const [highlightActive, setHighlightActive] = useState(1);
   return (
     <QueueSection>
       {showList.map((queue) => (
-        <SingleQueue key={queue._id} {...queue} />
+        <SingleQueue key={queue._id} {...queue} highlightActive={highlightActive} setHighlightActive={setHighlightActive}/>
       ))}
     </QueueSection>
   );
