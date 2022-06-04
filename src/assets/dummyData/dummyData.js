@@ -10,7 +10,7 @@ export const queues = [
     type: "lunch",
     state: "Completed",
     notes: "Birthday,Wheelchair * 1",
-    createTime: "19:00:00",
+    createTime: 1654346903000,
   },
 
   {
@@ -24,7 +24,7 @@ export const queues = [
     type: "lunch",
     state: "Waiting",
     notes: "Birthday,Wheelchair * 2",
-    createTime: "19:10:00",
+    createTime: 1654346803000,
   },
   {
     _id: 3,
@@ -37,7 +37,7 @@ export const queues = [
     type: "lunch",
     state: "Absent",
     notes: "Birthday",
-    createTime: "19:10:00",
+    createTime: 1654346703000,
   },
   {
     _id: 4,
@@ -50,7 +50,7 @@ export const queues = [
     type: "lunch",
     state: "Waiting",
     notes: "Aniversary",
-    createTime: "19:10:00",
+    createTime: 1654346503000,
   },
   {
     _id: 5,
@@ -63,7 +63,7 @@ export const queues = [
     type: "lunch",
     state: "Absent",
     notes: "Close to window",
-    createTime: "19:10:00",
+    createTime: 1654346603000,
   },
   {
     _id: 6,
@@ -76,7 +76,7 @@ export const queues = [
     type: "lunch",
     state: "Completed",
     notes: "Don't disturb",
-    createTime: "19:10:00",
+    createTime: 1654346303000,
   },
   {
     _id: 7,
@@ -89,7 +89,7 @@ export const queues = [
     type: "lunch",
     state: "Completed",
     notes: "No smoking",
-    createTime: "19:10:00",
+    createTime: 1654346203000,
   },
   {
     _id: 8,
@@ -102,7 +102,7 @@ export const queues = [
     type: "lunch",
     state: "Absent",
     notes: "Babyseat",
-    createTime: "19:10:00",
+    createTime: 16543469153000,
   },
   {
     _id: 9,
@@ -115,7 +115,7 @@ export const queues = [
     type: "lunch",
     state: "Absent",
     notes: "Wheelchair",
-    createTime: "19:10:00",
+    createTime: 1654346903000,
   },
   {
     _id: 10,
@@ -128,7 +128,7 @@ export const queues = [
     type: "lunch",
     state: "Completed",
     notes: "Don't disturb",
-    createTime: "19:10:00",
+    createTime: 1654346903000,
   },
   {
     _id: 11,
@@ -141,6 +141,6 @@ export const queues = [
     type: "lunch",
     state: "Absent",
     notes: "Don't disturb",
-    createTime: "19:10:00",
+    createTime: 1654346903000,
   },
 ];

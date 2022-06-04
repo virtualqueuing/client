@@ -19,7 +19,8 @@ const SingleQueue = ({ _id, name, phoneNumber, location, queueNumber, guest, tab
         <QueueData color="#000">{guest}</QueueData>
         <QueueData color="#000">{table}</QueueData>
         <QueueData color="#000">{type}</QueueData>
-        <QueueData color="#000">{state}</QueueData>
+        <QueueData style={{color: state === "Waiting" ? "#FFD25D"
+            : state === "Absent" ? "#DD0000" : "#13E800"}}>{state}</QueueData>
       </QueueItem>
       <SeparateLine color="#c4c4c4" width="98%"></SeparateLine>
     </>
