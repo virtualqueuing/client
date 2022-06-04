@@ -1,4 +1,4 @@
-import React, { useContext }from "react";
+import React, { useContext } from "react";
 import ConfirmButton from "../ConfirmButton";
 import { queues } from "../../assets/dummyData/dummyData";
 import { Context } from "../../pages/Context";
@@ -12,11 +12,11 @@ import {
 } from "../styles/LeftMenu.styles";
 
 const LeftMenu = () => {
-  const [context, ] = useContext(Context);
+  const [context,] = useContext(Context);
   // let forceUpdate = useForceUpdate();
   const customerNote = queues[context].notes.split(",");
-  
-  
+
+
   return (
     <LeftMenuContainer>
       <CustomerInfo>
@@ -34,7 +34,10 @@ const LeftMenu = () => {
       </CustomerInfo>
       <CustomerStatus>
         <h5>Status</h5>
-        <h2>Waiting...</h2>
+        <h2 style={{
+          color: queues[context].state === "Waiting" ? "#FFD25D"
+            : queues[context].state === "Absent" ? "#DD0000" : "#13E800"
+        }}>{queues[context].state}...</h2>
         <h5>Waiting time</h5>
         <CustomerWaitingTime>
           16:00:00
