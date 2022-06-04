@@ -16,6 +16,7 @@ const LeftMenu = () => {
   // let forceUpdate = useForceUpdate();
   const customerNote = queues[context].notes.split(",");
   
+  
   return (
     <LeftMenuContainer>
       <CustomerInfo>
