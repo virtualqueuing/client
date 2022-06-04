@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ConfirmButton from "../ConfirmButton";
 import { queues } from "../../assets/dummyData/dummyData";
 import { Context } from "../../pages/Context";
@@ -15,6 +15,25 @@ const LeftMenu = () => {
   const [context,] = useContext(Context);
   // let forceUpdate = useForceUpdate();
   const customerNote = queues[context].notes.split(",");
+
+  // calculate waiting time by subtracting createTime from current time
+  const waitingTime = () => {
+    const waitingTime = new Date().getTime() - queues[context].createTime;
+    const minutes = Math.floor(waitingTime / 60000);
+    const seconds = Math.floor((waitingTime % 60000) / 1000);
+    return `${minutes} mins ${seconds} s`;
+  }
+
+  const [time, setTime] = useState();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(waitingTime());
+    }, 10);
+    return function cleanup() {
+      clearInterval(interval);
+    };
+  });
 
 
   return (
@@ -40,7 +59,7 @@ const LeftMenu = () => {
         }}>{queues[context].state}...</h2>
         <h5>Waiting time</h5>
         <CustomerWaitingTime>
-          16:00:00
+          {time}
         </CustomerWaitingTime>
       </CustomerStatus>
       <CustomerActionBar>
