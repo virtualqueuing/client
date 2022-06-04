@@ -1,7 +1,6 @@
 import React, { useContext }from "react";
 import ConfirmButton from "../ConfirmButton";
 import { queues } from "../../assets/dummyData/dummyData";
-import Homepage from "../../pages/Homepage";
 import { Context } from "../../pages/Context";
 import {
   LeftMenuContainer,
@@ -16,7 +15,7 @@ const LeftMenu = () => {
   const [context, ] = useContext(Context);
   // let forceUpdate = useForceUpdate();
   const customerNote = queues[context].notes.split(",");
-
+  
   return (
     <LeftMenuContainer>
       <CustomerInfo>
@@ -24,7 +23,7 @@ const LeftMenu = () => {
         <li>{queues[context].name}</li>
         <li>{queues[context].phoneNumber}</li>
       </CustomerInfo>
-      <CustomerInfo onClick={Homepage}>
+      <CustomerInfo >
         <h5>Notes</h5>
         <CustomerNotes>
           {customerNote.map((note) => (
