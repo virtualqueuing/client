@@ -4,9 +4,7 @@ import Footer from "./Footer";
 import MainQueues from "./QueueList";
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 
-
 const MainBar = () => {
-
   return (
     <RightMenuContainer>
       <Header />
