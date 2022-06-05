@@ -1,4 +1,4 @@
-import logo from "../../assets/Logo.svg";
+import logo from "../../assets/Logo-v5.svg";
 import {
   StyledHeader,
   Branding,
@@ -6,10 +6,13 @@ import {
   SeperateLine,
   QueueTitle,
   OpenDate,
+  Identifier,
+  IdentifierLink
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
 
-const Header = () => {
+const Header = ({typed, changeType}) => {
+  const types = ["All", "Queuing", "Completed", "Absent"];
   const current = new Date();
   const date = `${current.toDateString()}`;
   return (
@@ -21,7 +24,13 @@ const Header = () => {
           <h1>Username</h1>
         </Branding>
         <PathIdentifier>
-          <p>All Queue / Queueing / Completed Queue / Absent Queue</p>
+          {types.map((type) => {
+            return (
+              <Identifier key={type}>
+                <IdentifierLink href={`/#${type}`} type={typed===type} onClick={() => changeType(type)}>{`${type} Queues`}</IdentifierLink>
+              </Identifier>
+            )
+          })}
         </PathIdentifier>
         <SeperateLine></SeperateLine>
         <QueueTitle>

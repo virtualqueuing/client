@@ -1,7 +1,6 @@
-import React, { useContext }from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ConfirmButton from "../ConfirmButton";
 import { queues } from "../../assets/dummyData/dummyData";
-import Homepage from "../../pages/Homepage";
 import { Context } from "../../pages/Context";
 import {
   LeftMenuContainer,
@@ -13,9 +12,29 @@ import {
 } from "../styles/LeftMenu.styles";
 
 const LeftMenu = () => {
-  const [context, ] = useContext(Context);
+  const [context,] = useContext(Context);
   // let forceUpdate = useForceUpdate();
   const customerNote = queues[context].notes.split(",");
+
+  // calculate waiting time by subtracting createTime from current time
+  const waitingTime = () => {
+    const waitingTime = new Date().getTime() - queues[context].createTime;
+    const minutes = Math.floor(waitingTime / 60000);
+    const seconds = Math.floor((waitingTime % 60000) / 1000);
+    return `${minutes} mins ${seconds} s`;
+  }
+
+  const [time, setTime] = useState();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(waitingTime());
+    }, 10);
+    return function cleanup() {
+      clearInterval(interval);
+    };
+  });
+
 
   return (
     <LeftMenuContainer>
@@ -24,7 +43,7 @@ const LeftMenu = () => {
         <li>{queues[context].name}</li>
         <li>{queues[context].phoneNumber}</li>
       </CustomerInfo>
-      <CustomerInfo onClick={Homepage}>
+      <CustomerInfo >
         <h5>Notes</h5>
         <CustomerNotes>
           {customerNote.map((note) => (
@@ -34,10 +53,13 @@ const LeftMenu = () => {
       </CustomerInfo>
       <CustomerStatus>
         <h5>Status</h5>
-        <h2>Waiting...</h2>
+        <h2 style={{
+          color: queues[context].state === "Waiting" ? "#FFD25D"
+            : queues[context].state === "Absent" ? "#DD0000" : "#13E800"
+        }}>{queues[context].state}...</h2>
         <h5>Waiting time</h5>
         <CustomerWaitingTime>
-          16:00:00
+          {time}
         </CustomerWaitingTime>
       </CustomerStatus>
       <CustomerActionBar>
