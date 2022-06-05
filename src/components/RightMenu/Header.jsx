@@ -7,11 +7,11 @@ import {
   QueueTitle,
   OpenDate,
   Identifier,
-  IdentifierLink
+  IdentifierLink,
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
 
-const Header = ({typed, changeType}) => {
+const Header = ({ typed, changeType }) => {
   const types = ["All", "Queuing", "Completed", "Absent"];
   const current = new Date();
   const date = `${current.toDateString()}`;
@@ -27,9 +27,13 @@ const Header = ({typed, changeType}) => {
           {types.map((type) => {
             return (
               <Identifier key={type}>
-                <IdentifierLink href={`/#${type}`} type={typed===type} onClick={() => changeType(type)}>{`${type} Queues`}</IdentifierLink>
+                <IdentifierLink
+                  href={`/#${type}`}
+                  type={typed === type}
+                  onClick={() => changeType(type)}
+                >{`${type} Queues`}</IdentifierLink>
               </Identifier>
-            )
+            );
           })}
         </PathIdentifier>
         <SeperateLine></SeperateLine>

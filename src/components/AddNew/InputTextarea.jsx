@@ -1,7 +1,6 @@
 import { StyledTextarea } from "../styles/AddNew.styles";
 
 const InputTextarea = () => {
-
   return (
     <>
       <StyledTextarea htmlFor="other">Others:</StyledTextarea>

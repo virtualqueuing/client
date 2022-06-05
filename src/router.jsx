@@ -17,7 +17,7 @@ const routes = [
   {
     path: "/addnew",
     element: <AddNewPage />,
-  }
+  },
 ];
 
 export default routes;

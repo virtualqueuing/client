@@ -12,7 +12,7 @@ import {
 } from "../styles/LeftMenu.styles";
 
 const LeftMenu = () => {
-  const [context,] = useContext(Context);
+  const [context] = useContext(Context);
   // let forceUpdate = useForceUpdate();
   const customerNote = queues[context].notes.split(",");
 
@@ -22,7 +22,7 @@ const LeftMenu = () => {
     const minutes = Math.floor(waitingTime / 60000);
     const seconds = Math.floor((waitingTime % 60000) / 1000);
     return `${minutes} mins ${seconds} s`;
-  }
+  };
 
   const [time, setTime] = useState();
 
@@ -35,7 +35,6 @@ const LeftMenu = () => {
     };
   });
 
-
   return (
     <LeftMenuContainer>
       <CustomerInfo>
@@ -43,7 +42,7 @@ const LeftMenu = () => {
         <li>{queues[context].name}</li>
         <li>{queues[context].phoneNumber}</li>
       </CustomerInfo>
-      <CustomerInfo >
+      <CustomerInfo>
         <h5>Notes</h5>
         <CustomerNotes>
           {customerNote.map((note) => (
@@ -53,14 +52,20 @@ const LeftMenu = () => {
       </CustomerInfo>
       <CustomerStatus>
         <h5>Status</h5>
-        <h2 style={{
-          color: queues[context].state === "Waiting" ? "#FFD25D"
-            : queues[context].state === "Absent" ? "#DD0000" : "#13E800"
-        }}>{queues[context].state}...</h2>
+        <h2
+          style={{
+            color:
+              queues[context].state === "Waiting"
+                ? "#FFD25D"
+                : queues[context].state === "Absent"
+                ? "#DD0000"
+                : "#13E800",
+          }}
+        >
+          {queues[context].state}...
+        </h2>
         <h5>Waiting time</h5>
-        <CustomerWaitingTime>
-          {time}
-        </CustomerWaitingTime>
+        <CustomerWaitingTime>{time}</CustomerWaitingTime>
       </CustomerStatus>
       <CustomerActionBar>
         <ConfirmButton bg="#5D5670" color="#fff">
@@ -74,6 +79,5 @@ const LeftMenu = () => {
   );
 };
 // setInterval(testInfo, 1000);
-
 
 export default LeftMenu;

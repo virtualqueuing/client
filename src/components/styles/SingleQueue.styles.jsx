@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const QueueItem = styled.div`
   display: flex;
@@ -7,9 +7,12 @@ export const QueueItem = styled.div`
   justify-content: space-between;
   height: auto;
   margin-top: 6px;
-  ${(props) => props.active ? css `
-    background-color: yellow
-  ` : "none"}
+  ${(props) =>
+    props.active
+      ? css`
+          background-color: yellow;
+        `
+      : "none"}
 `;
 
 export const QueueData = styled.div`

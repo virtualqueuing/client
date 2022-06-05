@@ -4,10 +4,7 @@ import {
   CustomStyledInputSelectBg,
 } from "../styles/AddNew.styles";
 
-const number = [];
-for (let i = 1; i <= 12; i++) {
-  number.push({ children: i });
-}
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const tableType = [
   {
@@ -32,8 +29,8 @@ const InputSelect = () => {
           <option value="" disabled selected hidden>
             People
           </option>
-          {number.map(({ children }) => (
-            <option key={children}> {children} </option>
+          {numbers.map((number) => (
+            <option key={number}> {number} </option>
           ))}
         </CustomStyledInputSelectBg>
       </CustomStyledInputSelectImage>
@@ -42,8 +39,8 @@ const InputSelect = () => {
           <option value="title" disabled selected hidden>
             Table Type
           </option>
-          {tableType.map(({ children }) => (
-            <option key={children}> {children} </option>
+          {tableType.map(({ value, children }) => (
+            <option key={value}> {children} </option>
           ))}
         </CustomStyledInputSelectBg>
       </CustomStyledInputSelectImage>

@@ -16,6 +16,9 @@ export const AddNewWrapper = styled.div`
   background-size: cover;
   z-index: 999;
   background-color: ${({ theme }) => theme.colors.addNewbg};
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 8px 27px 19px rgba(0, 0, 0, 0.27);
+  box-shadow: 0px 8px 27px 19px rgba(0, 0, 0, 0.27);
 `;
 
 export const Branding = styled.div`
@@ -30,12 +33,25 @@ export const Branding = styled.div`
 export const AddNewStyledLogo = styled.img`
   max-width: 120px;
   height: auto;
+  position: relative;
 
   & + h1 {
     text-align: center;
     margin-bottom: 20px;
     color: white;
     font-size: ${({ theme }) => theme.fontSizes["3x"]};
+
+    & + span {
+      display: inline-block;
+      font-size: 2rem;
+      position: absolute;
+      right: 4%;
+      top: 20px;
+
+      :hover {
+        cursor: pointer;
+      }
+    }
   }
 `;
 
