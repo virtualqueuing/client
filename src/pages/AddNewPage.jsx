@@ -1,6 +1,6 @@
 import Form from "../components/AddNew/Form";
+import logo from "../assets/Logo-v5.svg";
 import { AddNewWrapper, Branding, AddNewStyledLogo } from "../components/styles/AddNew.styles";
-import logo from "../assets/LoginPageImage/Logo.svg";
 
 const AddNewPage = ({ setShowAddNewForm }) => (
   <AddNewWrapper>
