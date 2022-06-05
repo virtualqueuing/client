@@ -9,8 +9,6 @@ const Form = () => {
   const handleSumbit = (event) => {
     const data = new FormData(event.target);
     queues.push(Object.fromEntries(data.entries()));
-    event.preventDefault();
-    console.log(Object.fromEntries(data.entries()));
   };
 
   return (
