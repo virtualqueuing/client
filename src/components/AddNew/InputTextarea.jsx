@@ -3,8 +3,8 @@ import { StyledTextarea } from "../styles/AddNew.styles";
 const InputTextarea = () => {
   return (
     <>
-      <StyledTextarea htmlFor="other">Others:</StyledTextarea>
-      <textarea name="other" rows="8" />
+      <StyledTextarea htmlFor="notes">Notes:</StyledTextarea>
+      <textarea name="notes" rows="8" />
     </>
   );
 };

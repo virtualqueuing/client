@@ -25,7 +25,7 @@ const InputSelect = () => {
   return (
     <StyledInputSelectFlex>
       <CustomStyledInputSelectImage>
-        <CustomStyledInputSelectBg name="people">
+        <CustomStyledInputSelectBg name="guestsNumber">
           <option value="" disabled selected hidden>
             People
           </option>
@@ -35,7 +35,7 @@ const InputSelect = () => {
         </CustomStyledInputSelectBg>
       </CustomStyledInputSelectImage>
       <CustomStyledInputSelectImage>
-        <CustomStyledInputSelectBg name="tableType">
+        <CustomStyledInputSelectBg name="tableSize">
           <option value="title" disabled selected hidden>
             Table Type
           </option>

@@ -4,7 +4,7 @@ const InputText = () => {
   return (
     <>
       <StyledInputText type="text" name="name" placeholder="Name:" />
-      <StyledInputText type="text" name="phone" placeholder="Phone:" />
+      <StyledInputText type="text" name="phoneNumber" placeholder="Phone:" />
     </>
   );
 };
