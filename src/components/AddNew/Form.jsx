@@ -12,8 +12,6 @@ const Form = () => {
     axios.post(`http://localhost:3000/v1/queues`, Object.fromEntries(data.entries())).then();
   };
 
-
-
   return (
     <StyledForm onSubmit={handleSumbit}>
       <InputText />

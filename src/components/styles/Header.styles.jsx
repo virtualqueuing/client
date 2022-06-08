@@ -36,7 +36,7 @@ export const IdentifierLink = styled.a`
   font-size: ${({ theme }) => theme.fontSizes.md};
   color: ${({ theme }) => theme.colors.fontColor};
   ${(props) =>
-    props.type
+    props.filter
       ? css`
           color: red;
         `
@@ -59,12 +59,12 @@ export const QueueTitle = styled.div`
   justify-content: center;
   & li {
     color: ${({ theme }) => theme.colors.main};
-    font-size: ${({ theme }) => theme.fontSizes.lg};
+    font-size: ${({ theme }) => theme.fontSizes["1x"]};
     padding-top: 0.5vh;
-    width: calc(100% / 8);
+    width: calc(100% / 6);
     display: flex;
-
     justify-content: center;
+    align-items: center;
   }
 `;
 

@@ -2,26 +2,26 @@ import SingleQueue from "../SingleQueue";
 import { QueueSection } from "../styles/QueueList.styles";
 import React, { useState } from "react";
 
-const MainQueues = ({ queues, type }) => {
+const MainQueues = ({ queues, queueStatus }) => {
   let showList = [];
-  if (type === "All") {
+  if (queueStatus === "All") {
     showList = queues;
-  } else if (type === "Queuing") {
-    showList = queues.filter((queue) => queue.state === "Waiting");
-  } else if (type === "Completed") {
-    showList = queues.filter((queue) => queue.state === "Completed");
-  } else if (type === "Absent") {
-    showList = queues.filter((queue) => queue.state === "Absent");
+  } else if (queueStatus === "Queuing") {
+    showList = queues.filter((queue) => queue.status === "Waiting");
+  } else if (queueStatus === "Completed") {
+    showList = queues.filter((queue) => queue.status === "Completed");
+  } else if (queueStatus === "Absent") {
+    showList = queues.filter((queue) => queue.status === "Absent");
   }
-  const [highlightActive, setHighlightActive] = useState(1);
+  const [activeQueueId, setActiveQueueId] = useState("");
   return (
     <QueueSection>
       {showList.map((queue) => (
         <SingleQueue
           key={queue._id}
           {...queue}
-          highlightActive={highlightActive}
-          setHighlightActive={setHighlightActive}
+          activeQueueId={activeQueueId}
+          setActiveQueueId={setActiveQueueId}
         />
       ))}
     </QueueSection>

@@ -5,16 +5,16 @@ import {
   PathIdentifier,
   SeperateLine,
   QueueTitle,
-  OpenDate,
+  // OpenDate,
   Identifier,
   IdentifierLink,
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
 
-const Header = ({ typed, changeType }) => {
-  const types = ["All", "Queuing", "Completed", "Absent"];
-  const current = new Date();
-  const date = `${current.toDateString()}`;
+const Header = ({ queueStatus, setQueueStatus }) => {
+  const queueFilter = ["All", "Queuing", "Completed", "Absent"];
+  // const current = new Date();
+  // const date = `${current.toDateString()}`;
   return (
     <>
       <StyledHeader>
@@ -24,14 +24,14 @@ const Header = ({ typed, changeType }) => {
           <h1>Username</h1>
         </Branding>
         <PathIdentifier>
-          {types.map((type) => {
+          {queueFilter.map((filter) => {
             return (
-              <Identifier key={type}>
+              <Identifier key={filter}>
                 <IdentifierLink
-                  href={`/#${type}`}
-                  type={typed === type}
-                  onClick={() => changeType(type)}
-                >{`${type} Queues`}</IdentifierLink>
+                  href={`/#${filter}`}
+                  filter={queueStatus === filter}
+                  onClick={() => setQueueStatus(filter)}
+                >{`${filter} Queues`}</IdentifierLink>
               </Identifier>
             );
           })}
@@ -40,16 +40,14 @@ const Header = ({ typed, changeType }) => {
         <QueueTitle>
           <li>Name</li>
           <li>Phone No.</li>
-          <li>Location</li>
           <li>Queue No.</li>
-          <li>Guest</li>
-          <li>Table</li>
-          <li>Type</li>
-          <li>State</li>
+          <li>Guests</li>
+          <li>Table Size</li>
+          <li>Status</li>
         </QueueTitle>
-        <OpenDate>
+        {/* <OpenDate>
           <p>{date}</p>
-        </OpenDate>
+        </OpenDate> */}
         <SeperateLine></SeperateLine>
       </StyledHeader>
     </>

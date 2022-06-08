@@ -9,40 +9,45 @@ const SingleQueue = ({
   _id,
   name,
   phoneNumber,
-  location,
   queueNumber,
-  guest,
-  table,
-  type,
-  state,
-  highlightActive,
-  setHighlightActive,
+  guestsNumber,
+  tableSize,
+  status,
+  notes,
+  createdAt,
+  activeQueueId,
+  setActiveQueueId,
 }) => {
-  const [, setContext] = useContext(Context);
-  // highlight the current queue
+  const [, setSelectedQueue] = useContext(Context);
+  const handleClick = () => {
+    setSelectedQueue({ _id, name, phoneNumber, queueNumber, status, notes, createdAt });
+    setActiveQueueId(_id);
+  };
 
   return (
     <>
-      <QueueItem
-        active={_id === highlightActive}
-        onClick={() => {
-          setContext(_id - 1);
-          setHighlightActive(_id);
-        }}
-      >
-        <QueueData color="#000">{name}</QueueData>
-        <QueueData color="#000">{phoneNumber}</QueueData>
-        <QueueData color="#000">{location}</QueueData>
-        <QueueData color="#000">{queueNumber}</QueueData>
-        <QueueData color="#000">{guest}</QueueData>
-        <QueueData color="#000">{table}</QueueData>
-        <QueueData color="#000">{type}</QueueData>
+      <QueueItem active={_id === activeQueueId} onClick={handleClick}>
+        <QueueData color="#000">
+          <p>{name}</p>
+        </QueueData>
+        <QueueData color="#000">
+          <p>{phoneNumber}</p>
+        </QueueData>
+        <QueueData color="#000">
+          <p>{queueNumber}</p>
+        </QueueData>
+        <QueueData color="#000">
+          <p>{guestsNumber}</p>
+        </QueueData>
+        <QueueData color="#000">
+          <p>{tableSize}</p>
+        </QueueData>
         <QueueData
           style={{
-            color: state === "Waiting" ? "#FFD25D" : state === "Absent" ? "#DD0000" : "#13E800",
+            color: status === "Waiting" ? "#FFD25D" : status === "Absent" ? "#DD0000" : "#13E800",
           }}
         >
-          {state}
+          {status}
         </QueueData>
       </QueueItem>
       <SeparateLine color="#c4c4c4" width="98%"></SeparateLine>

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import ConfirmButton from "../ConfirmButton";
-import { queues } from "../../assets/dummyData/dummyData";
+// import { queues } from "../../assets/dummyData/dummyData";
 import { Context } from "../../pages/Context";
 import {
   LeftMenuContainer,
@@ -12,13 +12,14 @@ import {
 } from "../styles/LeftMenu.styles";
 
 const LeftMenu = () => {
-  const [context] = useContext(Context);
+  const [selectedQueue] = useContext(Context);
   // let forceUpdate = useForceUpdate();
-  const customerNote = queues[context].notes.split(",");
+  const customerNote = selectedQueue.notes;
 
   // calculate waiting time by subtracting createTime from current time
   const waitingTime = () => {
-    const waitingTime = new Date().getTime() - queues[context].createTime;
+    const createdTime = Date.parse(selectedQueue.createdAt);
+    const waitingTime = new Date().getTime() - createdTime;
     const minutes = Math.floor(waitingTime / 60000);
     const seconds = Math.floor((waitingTime % 60000) / 1000);
     return `${minutes} mins ${seconds} s`;
@@ -38,16 +39,17 @@ const LeftMenu = () => {
   return (
     <LeftMenuContainer>
       <CustomerInfo>
-        <h1>No.{queues[context].queueNumber}</h1>
-        <li>{queues[context].name}</li>
-        <li>{queues[context].phoneNumber}</li>
+        <h1>No.{selectedQueue.queueNumber}</h1>
+        <li>{selectedQueue.name}</li>
+        <li>{selectedQueue.phoneNumber}</li>
       </CustomerInfo>
       <CustomerInfo>
         <h5>Notes</h5>
         <CustomerNotes>
-          {customerNote.map((note) => (
+          {/* {customerNote.map((note) => (
             <li key={note}>{note}</li>
-          ))}
+          ))} */}
+          {customerNote}
         </CustomerNotes>
       </CustomerInfo>
       <CustomerStatus>
@@ -55,14 +57,14 @@ const LeftMenu = () => {
         <h2
           style={{
             color:
-              queues[context].state === "Waiting"
+              selectedQueue.status === "Waiting"
                 ? "#FFD25D"
-                : queues[context].state === "Absent"
+                : selectedQueue.status === "Absent"
                 ? "#DD0000"
                 : "#13E800",
           }}
         >
-          {queues[context].state}...
+          {selectedQueue.status}...
         </h2>
         <h5>Waiting time</h5>
         <CustomerWaitingTime>{time}</CustomerWaitingTime>
