@@ -12,7 +12,7 @@ const MainBar = () => {
   useEffect(() => {
     const fetchQueue = async () => {
       const response = await axios.get("http://localhost:3000/v1/queues");
-      setQueues(response.data[1].queues);
+      setQueues(response.data);
     };
     fetchQueue();
     console.log(queues);
