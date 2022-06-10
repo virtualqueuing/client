@@ -14,7 +14,15 @@ import {
 const LeftMenu = () => {
   const [selectedQueue] = useContext(Context);
   // let forceUpdate = useForceUpdate();
-  const customerNote = selectedQueue.notes;
+  
+
+  let customerNote = selectedQueue.notes;
+  if (typeof customerNote === 'undefined') {
+    customerNote = [" "];
+    // do stuff with arr
+  } else {
+    customerNote = customerNote.split(',');
+  }
 
   // calculate waiting time by subtracting createTime from current time
   const waitingTime = () => {
@@ -46,10 +54,9 @@ const LeftMenu = () => {
       <CustomerInfo>
         <h5>Notes</h5>
         <CustomerNotes>
-          {/* {customerNote.map((note) => (
-            <li key={note}>{note}</li>
-          ))} */}
-          {customerNote}
+          {customerNote.map((note, index) => (
+              <li key={index}>{note}</li>
+          ))}
         </CustomerNotes>
       </CustomerInfo>
       <CustomerStatus>
