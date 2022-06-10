@@ -22,6 +22,14 @@ const LeftMenu = () => {
     axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}/Absent`).then();
   };
 
+  let customerNote = selectedQueue.notes;
+  if (typeof customerNote === "undefined") {
+    customerNote = [" "];
+    // do stuff with arr
+  } else {
+    customerNote = customerNote.split(",");
+  }
+
   // calculate waiting time by subtracting createTime from current time
   const waitingTime = () => {
     const createdTime = Date.parse(selectedQueue.createdAt);
@@ -52,10 +60,9 @@ const LeftMenu = () => {
       <CustomerInfo>
         <h5>Notes</h5>
         <CustomerNotes>
-          {/* {customerNote.map((note) => (
-            <li key={note}>{note}</li>
-          ))} */}
-          {selectedQueue.notes}
+          {customerNote.map((note, index) => (
+            <li key={index}>{note}</li>
+          ))}
         </CustomerNotes>
       </CustomerInfo>
       <CustomerStatus>

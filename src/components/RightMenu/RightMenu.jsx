@@ -8,6 +8,7 @@ import axios from "axios";
 const MainBar = () => {
   const [queueStatus, setQueueStatus] = useState("All");
   const [queues, setQueues] = useState([]);
+  const [tableType, setTableType] = useState("Table Type");
 
   useEffect(() => {
     const fetchQueue = async () => {
@@ -19,8 +20,8 @@ const MainBar = () => {
 
   return (
     <RightMenuContainer>
-      <Header queueStatus={queueStatus} setQueueStatus={setQueueStatus} />
-      <MainQueues queueStatus={queueStatus} queues={queues} />
+      <Header queueStatus={queueStatus} setQueueStatus={setQueueStatus} setTableType={setTableType}/>
+      <MainQueues queueStatus={queueStatus} tableType={tableType} queues={queues} />
       <Footer />
     </RightMenuContainer>
   );
