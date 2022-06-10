@@ -28,13 +28,13 @@ const SingleQueue = ({
     <>
       <QueueItem active={_id === activeQueueId} onClick={handleClick}>
         <QueueData color="#000">
+          <p>{queueNumber}</p>
+        </QueueData>
+        <QueueData color="#000">
           <p>{name}</p>
         </QueueData>
         <QueueData color="#000">
           <p>{phoneNumber}</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>{queueNumber}</p>
         </QueueData>
         <QueueData color="#000">
           <p>{guestsNumber}</p>

@@ -38,9 +38,9 @@ const Header = ({ queueStatus, setQueueStatus }) => {
         </PathIdentifier>
         <SeperateLine></SeperateLine>
         <QueueTitle>
+          <li>Queue No.</li>
           <li>Name</li>
           <li>Phone No.</li>
-          <li>Queue No.</li>
           <li>Guests</li>
           <li>Table Size</li>
           <li>Status</li>

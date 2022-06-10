@@ -15,7 +15,6 @@ const MainBar = () => {
       setQueues(response.data);
     };
     fetchQueue();
-    console.log(queues);
   }, []);
 
   return (
