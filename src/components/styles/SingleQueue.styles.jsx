@@ -27,4 +27,8 @@ export const QueueData = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.lg};
     font-weight: 500;
   }
+  & button {
+    cursor: pointer;
+    background-image: ${({ image }) => image};
+  }
 `;

@@ -49,9 +49,9 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType }) => {
         </PathIdentifier>
         <SeperateLine></SeperateLine>
         <QueueTitle>
+          <li>Queue No.</li>
           <li>Name</li>
           <li>Phone No.</li>
-          <li>Queue No.</li>
           <li>Guests</li>
           <li>
             <TableFilter onChange={changeTable}>
