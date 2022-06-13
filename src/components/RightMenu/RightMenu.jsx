@@ -20,7 +20,11 @@ const MainBar = () => {
 
   return (
     <RightMenuContainer>
-      <Header queueStatus={queueStatus} setQueueStatus={setQueueStatus} setTableType={setTableType}/>
+      <Header
+        queueStatus={queueStatus}
+        setQueueStatus={setQueueStatus}
+        setTableType={setTableType}
+      />
       <MainQueues queueStatus={queueStatus} tableType={tableType} queues={queues} />
       <Footer />
     </RightMenuContainer>

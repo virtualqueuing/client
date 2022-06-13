@@ -1,32 +1,31 @@
-import React, { useState } from "react";
-import { TooltipWrapper, TooltipTip } from "./styles/Tooltip.styles";
+import React from 'react'
+import { useState } from 'react'
+import { 
+    CenterContainer, 
+    TooltipBox, 
+    TooltipTarget, 
+    TooltipWrapper } from './styles/Tooltip.styles'
 
-const Tooltip = (props) => {
-  let timeout;
-  const [active, setActive] = useState(false);
+const Tooltip = ({text, children}) => {
 
-  const showTip = () => {
-    timeout = setTimeout(() => {
-      setActive(true);
-    }, props.delay || 400);
-  };
+    const [isHovered, setIsHovered] = useState(false)
+    const showTooltip = isHovered
 
-  const hideTip = () => {
-    clearInterval(timeout);
-    setActive(false);
-  };
+    return ( 
 
-  return (
-    <TooltipWrapper
-      // When to show the tooltip
-      onMouseEnter={showTip}
-      onMouseLeave={hideTip}
-    >
-      {/* Wrapping */}
-      {props.children}
-      {active && <TooltipTip>{props.content}</TooltipTip>}
+    <TooltipWrapper>
+        <TooltipTarget
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        
+        >{children}</TooltipTarget>
+        {showTooltip && (
+            <CenterContainer>
+                <TooltipBox>{text}</TooltipBox>
+            </CenterContainer>
+        )}
     </TooltipWrapper>
-  );
-};
-
+    );
+}
+ 
 export default Tooltip;

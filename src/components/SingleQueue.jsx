@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import { Context } from "../pages/Context";
 import messageIcon from "../assets/message-2-fill.svg";
 import editIcon from "../assets/pencil-fill.svg";
-import { Tooltip } from "./Tooltip";
+import Tooltip from "./Tooltip";
 
 // import { CheckQueueNum } from "../pages/Homepage";
 
@@ -53,10 +53,12 @@ const SingleQueue = ({
           {status}
         </QueueData>
         <QueueData>
-          <Tooltip content="Send message">
+          <Tooltip text="Notify">
             <img src={messageIcon} alt="sending message icon" />
           </Tooltip>
-          <img src={editIcon} alt="sending message icon" />
+          <Tooltip text="Update">
+            <img src={editIcon} alt="sending message icon" />
+          </Tooltip>
         </QueueData>
       </QueueItem>
       <SeparateLine color="#c4c4c4" width="98%"></SeparateLine>
