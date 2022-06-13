@@ -8,13 +8,24 @@ import {
   // OpenDate,
   Identifier,
   IdentifierLink,
+  TableFilter,
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
 
-const Header = ({ queueStatus, setQueueStatus }) => {
+const Header = ({ queueStatus, setQueueStatus, setTableType, tableType }) => {
   const queueFilter = ["All", "Queuing", "Completed", "Absent"];
   // const current = new Date();
   // const date = `${current.toDateString()}`;
+  
+  const TableSize = ["Small", "Medium", "Large"];
+  const changeTable=(size)=>{
+    const type = size.target.value === "Small" ? "Small" 
+    : size.target.value === "Medium" ? "Medium"
+    : size.target.value === "Large" ? "Large"
+    : "Table Type"
+    setTableType(type);
+  }
+
   return (
     <>
       <StyledHeader>
@@ -42,7 +53,16 @@ const Header = ({ queueStatus, setQueueStatus }) => {
           <li>Name</li>
           <li>Phone No.</li>
           <li>Guests</li>
-          <li>Table Size</li>
+          <li>
+            <TableFilter onChange={changeTable}>
+              <option value="Table">Table Type</option>
+              {TableSize.map((size) => (
+                <option key={size}>
+                {size}
+                </option>
+              ))}
+            </TableFilter>
+          </li>
           <li>Status</li>
           <li />
         </QueueTitle>

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import ConfirmButton from "../ConfirmButton";
-// import { queues } from "../../assets/dummyData/dummyData";
+import axios from "axios";
 import { Context } from "../../pages/Context";
 import {
   LeftMenuContainer,
@@ -14,7 +14,21 @@ import {
 const LeftMenu = () => {
   const [selectedQueue] = useContext(Context);
   // let forceUpdate = useForceUpdate();
-  const customerNote = selectedQueue.notes;
+  const queueComplete = () => {
+    axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}/Completed`).then();
+  };
+
+  const queueAbsent = () => {
+    axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}/Absent`).then();
+  };
+
+  let customerNote = selectedQueue.notes;
+  if (typeof customerNote === "undefined") {
+    customerNote = [" "];
+    // do stuff with arr
+  } else {
+    customerNote = customerNote.split(",");
+  }
 
   // calculate waiting time by subtracting createTime from current time
   const waitingTime = () => {
@@ -46,10 +60,9 @@ const LeftMenu = () => {
       <CustomerInfo>
         <h5>Notes</h5>
         <CustomerNotes>
-          {/* {customerNote.map((note) => (
-            <li key={note}>{note}</li>
-          ))} */}
-          {customerNote}
+          {customerNote.map((note, index) => (
+            <li key={index}>{note}</li>
+          ))}
         </CustomerNotes>
       </CustomerInfo>
       <CustomerStatus>
@@ -70,10 +83,10 @@ const LeftMenu = () => {
         <CustomerWaitingTime>{time}</CustomerWaitingTime>
       </CustomerStatus>
       <CustomerActionBar>
-        <ConfirmButton bg="#5D5670" color="#fff">
+        <ConfirmButton bg="#5D5670" color="#fff" onClick={queueComplete}>
           Complete
         </ConfirmButton>
-        <ConfirmButton bg="#DD0000" color="#fff">
+        <ConfirmButton bg="#DD0000" color="#fff" onClick={queueAbsent}>
           Absent
         </ConfirmButton>
       </CustomerActionBar>
