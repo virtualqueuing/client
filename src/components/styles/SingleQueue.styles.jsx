@@ -27,4 +27,16 @@ export const QueueData = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.lg};
     font-weight: 500;
   }
+
+  & > img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2s ease-in-out;
+    padding-right: 10px;
+
+    :hover {
+      cursor: pointer;
+      transform: scale(1.25);
+    }
+  }
 `;

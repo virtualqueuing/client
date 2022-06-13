@@ -20,9 +20,9 @@ const LeftMenu = () => {
   const waitingTime = () => {
     const createdTime = Date.parse(selectedQueue.createdAt);
     const waitingTime = new Date().getTime() - createdTime;
-    const minutes = Math.floor(waitingTime / 60000);
-    const seconds = Math.floor((waitingTime % 60000) / 1000);
-    return `${minutes} mins ${seconds} s`;
+    const hours = Math.floor(waitingTime / 3600000);
+    const minutes = Math.floor(waitingTime / 60000 - hours * 60);
+    return `${hours} hrs ${minutes} mins`;
   };
 
   const [time, setTime] = useState();
