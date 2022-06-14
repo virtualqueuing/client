@@ -10,7 +10,7 @@ const Footer = () => {
 
   useEffect(() => {
     const handler = (event) => {
-      if (!addNewRef.current.contains(event.target)) {
+      if (!addNewRef?.current?.contains(event.target)) {
         setShowAddNewForm(false);
       }
     };

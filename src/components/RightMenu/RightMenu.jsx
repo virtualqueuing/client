@@ -12,8 +12,11 @@ const MainBar = () => {
 
   useEffect(() => {
     const fetchQueue = async () => {
-      const response = await axios.get("http://localhost:3000/v1/queues");
-      setQueues(response.data);
+      // eslint-disable-next-line no-undef
+      if (process.env.NODE_ENV !== "production") {
+        const response = await axios.get("http://localhost:3000/v1/queues");
+        setQueues(response.data);
+      }
     };
     fetchQueue();
   }, []);
