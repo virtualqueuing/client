@@ -12,14 +12,25 @@ import {
 } from "../styles/LeftMenu.styles";
 
 const LeftMenu = () => {
-  const [selectedQueue] = useContext(Context);
-  // let forceUpdate = useForceUpdate();
-  const queueComplete = () => {
-    axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}/Completed`).then();
-  };
+  const [selectedQueue, setSelectedQueue] = useContext(Context);
+  const [isSending, setIsSending] = useState(false)
 
-  const queueAbsent = () => {
-    axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}/Absent`).then();
+  const queueComplete = async () => {
+    if (isSending) return
+    setIsSending(true)
+    await axios.put(`http://localhost:3000/v1/queues/${selectedQueue._id}/Completed`, {});
+    const { data } = await axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}`)
+    setSelectedQueue(data)
+    setIsSending(false)
+  }
+
+  const queueAbsent = async () => {
+    if (isSending) return
+    setIsSending(true)
+    await axios.put(`http://localhost:3000/v1/queues/${selectedQueue._id}/Absent`, {});
+    const { data } = await axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}`)
+    setSelectedQueue(data)
+    setIsSending(false)
   };
 
   let customerNote = selectedQueue.notes;
@@ -73,8 +84,8 @@ const LeftMenu = () => {
               selectedQueue.status === "Waiting"
                 ? "#FFD25D"
                 : selectedQueue.status === "Absent"
-                ? "#DD0000"
-                : "#13E800",
+                  ? "#DD0000"
+                  : "#13E800",
           }}
         >
           {selectedQueue.status}...
@@ -83,10 +94,10 @@ const LeftMenu = () => {
         <CustomerWaitingTime>{time}</CustomerWaitingTime>
       </CustomerStatus>
       <CustomerActionBar>
-        <ConfirmButton bg="#5D5670" color="#fff" onClick={queueComplete}>
+        <ConfirmButton bg="#5D5670" color="#fff" onClick={queueComplete} disabled={isSending}>
           Complete
         </ConfirmButton>
-        <ConfirmButton bg="#DD0000" color="#fff" onClick={queueAbsent}>
+        <ConfirmButton bg="#DD0000" color="#fff" onClick={queueAbsent} disabled={isSending}>
           Absent
         </ConfirmButton>
       </CustomerActionBar>
