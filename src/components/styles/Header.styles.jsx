@@ -83,7 +83,7 @@ export const OpenDate = styled.div`
 export const TableFilter = styled.select`
   height: 100%;
   border: none;
-  text-align: center ;
+  text-align: center;
   background: none;
   color: ${({ theme }) => theme.colors.main};
   font-size: ${({ theme }) => theme.fontSizes["1x"]};

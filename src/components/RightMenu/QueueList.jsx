@@ -2,8 +2,7 @@ import SingleQueue from "../SingleQueue";
 import { QueueSection } from "../styles/QueueList.styles";
 import React, { useState } from "react";
 
-
-const MainQueues = ({ queues, queueStatus,tableType }) => {
+const MainQueues = ({ queues, queueStatus, tableType }) => {
   let showList = [];
   if (queueStatus === "All") {
     showList = queues;
@@ -13,12 +12,15 @@ const MainQueues = ({ queues, queueStatus,tableType }) => {
     showList = queues.filter((queue) => queue.status === "Completed");
   } else if (queueStatus === "Absent") {
     showList = queues.filter((queue) => queue.status === "Absent");
-  } 
-  
-  if(showList){
-    showList = tableType === "Table Type" ? queues
-    : tableType === "Small" ? queues.filter((queue) => queue.tableSize === "small") 
-    : queues.filter((queue) => queue.tableSize === tableType)
+  }
+
+  if (showList) {
+    showList =
+      tableType === "Table Type"
+        ? queues
+        : tableType === "Small"
+        ? queues.filter((queue) => queue.tableSize === "small")
+        : queues.filter((queue) => queue.tableSize === tableType);
   }
 
   const [activeQueueId, setActiveQueueId] = useState("");

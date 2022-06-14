@@ -16,15 +16,19 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType }) => {
   const queueFilter = ["All", "Queuing", "Completed", "Absent"];
   // const current = new Date();
   // const date = `${current.toDateString()}`;
-  
+
   const TableSize = ["Small", "Medium", "Large"];
-  const changeTable=(size)=>{
-    const type = size.target.value === "Small" ? "Small" 
-    : size.target.value === "Medium" ? "Medium"
-    : size.target.value === "Large" ? "Large"
-    : "Table Type"
+  const changeTable = (size) => {
+    const type =
+      size.target.value === "Small"
+        ? "Small"
+        : size.target.value === "Medium"
+        ? "Medium"
+        : size.target.value === "Large"
+        ? "Large"
+        : "Table Type";
     setTableType(type);
-  }
+  };
 
   return (
     <>
@@ -57,13 +61,12 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType }) => {
             <TableFilter onChange={changeTable}>
               <option value="Table">Table Type</option>
               {TableSize.map((size) => (
-                <option key={size}>
-                {size}
-                </option>
+                <option key={size}>{size}</option>
               ))}
             </TableFilter>
           </li>
           <li>Status</li>
+          <li />
         </QueueTitle>
         {/* <OpenDate>
           <p>{date}</p>
