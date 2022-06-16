@@ -30,6 +30,10 @@ const colors = {
       tagColorList: [
         "#86E3CE", "#D0E6A5", "#FFDD94", "#FA897B", "#CCABDB", "#B5EAD7", "#E2F0CB"
       ]
+    },
+    loginButton: {
+      background: "#77A48E",
+      hover: "#5F8C6A",
     }
   },
   page: {
@@ -46,6 +50,7 @@ const colors = {
 };
 
 const fontSizes = {
+  xxxxs: "10px",
   xxs: "12px",
   sm: "14px",
   md: "16px",

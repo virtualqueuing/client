@@ -1,158 +1,159 @@
-import React from "react";
 import styled from "styled-components";
-import loginBackground from "../assets/world-map.png";
+import { useState } from "react";
 import logo from "../assets/Logo-v5.svg";
+import passwordHide from "../assets/Icons/Button_Password-hide.svg";
+import passwordHideActive from "../assets/Icons/Button_ShowPassword.svg";
+import passwordShow from "../assets/Icons/Button_Password-show.svg";
+import passwordShowActive from "../assets/Icons/Button_Password-showActive.svg";
 
-const LoginContainer = styled.div`
-  width: 702px;
-  height: 695px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 10%;
-  background: url(${loginBackground});
-  background-color: rgba(230, 0, 18, 0.65);
-  background-size: 100% 100%;
-`;
-
-const LoginLogo = styled.div`
-  width: 170px;
-  height: 62px;
-  & img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-const LoginForm = styled.div`
-  width: 430px;
-  height: 385px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const SignButtonWrapper = styled.div`
-  width: 419px;
-  height: 75px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const SignButton = styled.button`
-  cursor: pointer;
-  border-color: transparent;
+export const LoginContainer = styled.div`
+  width:370px;
+  height:400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   background-color: #fff;
-  width: 188px;
-  height: 75px;
-  font-weight: 700;
-  font-size: ${({ theme }) => theme.fontSizes["1x"]};
-`;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  font-family: Arial, Helvetica, sans-serif;
+`
 
-const VerifyUserWrapper = styled.form`
-  width: 419px;
-  height: 195px;
+export const LoginInfo = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  & [type="text"] {
-    background-color: #fff;
-    height: 77px;
-    border-color: transparent;
-  }
-  & [type="text"]:focus::placeholder {
-    color: transparent;
-  }
-  & [placeholder="UserID:"]::placeholder {
-    color: rgba(0, 0, 0, 0.75);
-    font-size: ${({ theme }) => theme.fontSizes["1x"]};
-    font-weight: 700;
-    padding-left: 3%;
-  }
-  & [placeholder="Password:"]::placeholder {
-    color: rgba(0, 0, 0, 0.75);
-    font-size: ${({ theme }) => theme.fontSizes["1x"]};
-    font-weight: 700;
-    padding-left: 3%;
-  }
-`;
-
-const FormBottomWrapper = styled.div`
-  width: 419px;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  & span {
-    color: rgba(255, 255, 255, 0.85);
-    cursor: pointer;
-    text-decoration: none;
-  }
-`;
-
-const RememberMe = styled.form`
-  width: 180px;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  & [type="checkbox"] {
-    background: rgba(255, 255, 255, 0.9);
-    width: 27px;
-    height: 26px;
-    border-radius: 6px;
-  }
-  & label {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  & h2 {
     font-size: 20px;
-    color: rgba(255, 255, 255, 0.85);
+    margin: 35px 0 0 0;
   }
-`;
+  & p{
+    font-size: 15px;
+    color: ${({ theme }) => theme.colors.fonts["secondary"]};
+    margin: 15px 0;
+  }
+`
 
-const LoginButton = styled.button`
-  width: 295px;
-  height: 78px;
-  background: rgba(231, 159, 164, 0.4);
-  border-color: transparent;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 24px;
+export const LoginInput = styled.input`
+  width: 80%;
+  margin: 5% 10% 0 10%;
+  height: 35px;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: ${({ theme }) => theme.colors.fonts["inactiveRoute"]} solid 1px;
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.fonts["inactiveRoute"]};
+    font-size: ${({ theme }) => theme.fontSizes["xxs"]};
+  }
+`
+
+export const InputPassword = styled.div`
+  display: flex;
+  position: relative;
+`
+
+export const ShowPassword = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  background-image: url(${passwordHide});
+  background-size: 100% 100%;
+  right: 15%;
+  top: 50%;
+  :hover {
+    background-image: url(${passwordHideActive});
+    cursor: pointer;
+  }
+`
+
+export const HidePassword = styled(ShowPassword)`
+  background-image: url(${passwordShow});
+  :hover {
+    background-image: url(${passwordShowActive});
+  }
+`
+
+export const SetAccount = styled.div`
+  width: 80%;
+  margin: 5px 10% 0 10%;
+  display: flex;
+  justify-content: space-between;
+  & h6{
+    font-size: ${({ theme }) => theme.fontSizes["xxxs"]};
+    margin: 3% 2% 3% 0;
+  }
+  & h6:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`
+
+export const LoginButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 5% 10% 0 10%;
+  height: 35px;
+  border-radius: 5px;
+  background-color: ${({ theme }) => theme.colors.page["main"]};
   color: #fff;
-  text-decoration: none;
-`;
+  & p{
+    font-size: ${({ theme }) => theme.fontSizes["lg"]};
+    font-weight: 500;
+  }
+  :hover{
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.components.loginButton["hover"]};
+    
+  }
+`
+
+export const Logo = styled.div`
+  width: 120px;
+  height: 60px;
+  margin: 4% 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url(${logo});
+  background-size: 100% 100%;
+`
 
 const LoginPage = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  }
+
   return (
     <>
       <LoginContainer>
-        <LoginLogo>
-          <img src={logo} alt="The logo of login page" />
-        </LoginLogo>
-        <LoginForm>
-          <SignButtonWrapper>
-            <SignButton>Sign In</SignButton>
-            <SignButton>Sign Up</SignButton>
-          </SignButtonWrapper>
-          <VerifyUserWrapper>
-            <input type="text" placeholder="UserID:" />
-            <input type="text" placeholder="Password:" />
-          </VerifyUserWrapper>
-          <FormBottomWrapper>
-            <RememberMe>
-              <input type="checkbox" id="rememberMe" />
-              <label htmlFor="rememberMe"> Remember Me</label>
-            </RememberMe>
-            <span>Forget Password?</span>
-          </FormBottomWrapper>
-        </LoginForm>
-        <LoginButton>Login</LoginButton>
+        <LoginInfo>
+          <h2>Agent Login</h2>
+          <p>Hey, Enter your details to get <br /> sign in to your account</p>
+        </LoginInfo>
+        <LoginInput type="text" placeholder="Enter Email / Phone No" />
+        <InputPassword>
+          <LoginInput type={passwordShown ? "text" : "password"} placeholder="Enter Password" />
+          {passwordShown ? <HidePassword onClick={togglePassword} /> : <ShowPassword onClick={togglePassword} />}
+        </InputPassword>
+        <SetAccount>
+          <h6>Having trouble in sign in?</h6>
+          <h6><a href="/signup">Sign up</a></h6>
+        </SetAccount>
+        <LoginButton>
+          <p>Sign in</p>
+        </LoginButton>
+        <Logo />
       </LoginContainer>
     </>
-  );
-};
+  )
+}
 
 export default LoginPage;
