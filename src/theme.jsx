@@ -10,6 +10,15 @@ const colors = {
   statusC: "#13E800",
   inputText: "#7B5D5D",
   addNewbg: "#EF5965",
+  tagOrange: "#FFE4CB",
+  tagBlue: "rgba(175, 226, 255, 0.5)",
+  tagGreen:"#77A48E",
+  tagGreenLight:"rgba(225, 255, 175, 0.5)",
+  tagYellow:"rgba(255, 242, 175, 0.5)",
+  tagBrightYellow:"#FFFDCD",
+  tagFontOrange:"#FFAB5D",
+  tagFontGrey:"#666666",
+  FontGrey:"#C4C4C4",
 };
 
 const fontSizes = {
