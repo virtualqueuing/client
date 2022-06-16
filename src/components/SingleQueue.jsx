@@ -1,4 +1,4 @@
-import { QueueItem, QueueData } from "./styles/SingleQueue.styles";
+import { QueueItem, QueueData, QueueDataContainer, TooltipContainer, StatusButtonContainer } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useContext } from "react";
 import { Context } from "../pages/Context";
@@ -30,7 +30,34 @@ const SingleQueue = ({
   return (
     <>
       <QueueItem active={_id === activeQueueId} onClick={handleClick}>
-        <QueueData color="#000">
+        <QueueDataContainer>
+          <QueueData color="#000">
+            <p>{queueNumber}</p>
+          </QueueData>
+          <QueueData color="#000">
+            <p>{name}</p>
+          </QueueData>
+          <QueueData color="#000">
+            <p>{phoneNumber}</p>
+          </QueueData>
+          <QueueData color="#000">
+            <p>{guestsNumber}</p>
+          </QueueData>
+          <QueueData color="#000">
+            <p>{tableSize}</p>
+          </QueueData>
+          <QueueData
+            style={{
+              borderRadius: "5px", boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.25)", 
+              color: status === "Waiting" ? "#FFAB5D" : status === "Absent" ? "#E64848" : "#2EAD7C",
+              backgroundColor: status === "Waiting" ? "rgba(255, 253, 205, 0.5)" : status === "Absent" ? "rgba(254, 63, 127, 0.1)" : "rgba(46, 173, 124, 0.1)",
+              fontWeight: "bold"
+            }}
+          >
+            {status}
+          </QueueData>
+        </QueueDataContainer>
+        {/* <QueueData color="#000">
           <p>{queueNumber}</p>
         </QueueData>
         <QueueData color="#000">
@@ -54,15 +81,19 @@ const SingleQueue = ({
           }}
         >
           {status}
-        </QueueData>
-        {/* <QueueData>
+        </QueueData> */}
+        <StatusButtonContainer>
+          <button>Arrival</button>
+          <button>Absent</button>
+        </StatusButtonContainer>
+        <TooltipContainer>
           <Tooltip text="Notify">
             <img src={messageIcon} alt="sending message icon" />
           </Tooltip>
           <Tooltip text="Update">
             <img src={editIcon} alt="sending message icon" />
           </Tooltip>
-        </QueueData> */}
+        </TooltipContainer>
       </QueueItem>
       <SeparateLine color="#c4c4c4" width="100%"></SeparateLine>
     </>
