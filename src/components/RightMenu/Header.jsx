@@ -3,19 +3,21 @@ import {
   StyledHeader,
   Branding,
   PathIdentifier,
-  SeperateLine,
-  QueueTitle,
-  // OpenDate,
+  SeparateLine,
+  QueueLeftTitle,
+  QueueRightTitle,
   Identifier,
   IdentifierLink,
   TableFilter,
+  PathContainer,
+  PathSeparateLine,
+  SearchBar,
+  QueueTitleContainer
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
 
 const Header = ({ queueStatus, setQueueStatus, setTableType, tableType }) => {
-  const queueFilter = ["All", "Queuing", "Completed", "Absent"];
-  // const current = new Date();
-  // const date = `${current.toDateString()}`;
+  const queueFilter = ["All", "Queuing", "Absent"];
 
   const TableSize = ["Small", "Medium", "Large"];
   const changeTable = (size) => {
@@ -34,44 +36,50 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType }) => {
     <>
       <StyledHeader>
         <Branding>
-          <h1>Location</h1>
           <Logo src={logo} alt="logo" />
-          <h1>Username</h1>
         </Branding>
-        <PathIdentifier>
-          {queueFilter.map((filter) => {
-            return (
-              <Identifier key={filter}>
-                <IdentifierLink
-                  href={`/#${filter}`}
-                  filter={queueStatus === filter}
-                  onClick={() => setQueueStatus(filter)}
-                >{`${filter} Queues`}</IdentifierLink>
-              </Identifier>
-            );
-          })}
-        </PathIdentifier>
-        <SeperateLine></SeperateLine>
-        <QueueTitle>
-          <li>Queue No.</li>
-          <li>Name</li>
-          <li>Phone No.</li>
-          <li>Guests</li>
-          <li>
-            <TableFilter onChange={changeTable}>
-              <option value="Table">Table Type</option>
-              {TableSize.map((size) => (
-                <option key={size}>{size}</option>
-              ))}
-            </TableFilter>
-          </li>
-          <li>Status</li>
-          <li />
-        </QueueTitle>
-        {/* <OpenDate>
-          <p>{date}</p>
-        </OpenDate> */}
-        <SeperateLine></SeperateLine>
+        <SeparateLine />
+        <PathContainer>
+          <PathIdentifier>
+            {queueFilter.map((filter) => {
+              return (
+                <Identifier key={filter}>
+                  <IdentifierLink
+                    href={`/#${filter}`}
+                    filter={queueStatus === filter}
+                    onClick={() => setQueueStatus(filter)}
+                  >{`${filter}`}</IdentifierLink>
+                </Identifier>
+              );
+            })}
+          </PathIdentifier>
+          <form>
+            <SearchBar type="search" placeholder="Search" required/>
+          </form>
+        </PathContainer>
+        <PathSeparateLine />
+        <QueueTitleContainer>
+          <QueueLeftTitle>
+            <li>Queue No.</li>
+            <li>Name</li>
+            <li>Phone No.</li>
+            <li>Guests</li>
+            <li>
+              {/* <TableFilter onChange={changeTable}>
+                <option value="Table">Table Type</option>
+                {TableSize.map((size) => (
+                  <option key={size}>{size}</option>
+                ))}
+              </TableFilter> */}
+              Table Size
+            </li>
+            <li>Status</li>
+          </QueueLeftTitle>
+          <QueueRightTitle>
+            <li>Notify</li>
+            <li>Edit</li>
+          </QueueRightTitle>
+        </QueueTitleContainer>
       </StyledHeader>
     </>
   );

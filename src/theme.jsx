@@ -17,7 +17,10 @@ const colors = {
     },
     arrivalButton: {
       fontColor: "#5F5186",
-      borderColor: "#5D5670",
+      borderColor: {
+        normal: "#5D5670",
+        opacityColor: "rgba(93, 86, 112, 0.7)",
+      }
     },
     absentButton: {
       fontColor: "#E74C3C",
@@ -33,6 +36,9 @@ const colors = {
       background: "#77A48E",
       hover: "#5F8C6A",
     },
+    queueContainer: {
+      background: "#F7F7F7"
+    }
   },
   page: {
     main: "#77A48E",
@@ -45,6 +51,9 @@ const colors = {
     inactiveRoute: "#C4C4C4",
     inactiveMenu: "#9A9A9A",
   },
+  separateLine: {
+    main: "#DFDFDF"
+  }
 };
 
 const fontSizes = {
