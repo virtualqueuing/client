@@ -6,7 +6,6 @@ import { StyledForm } from "../styles/AddNew.styles";
 // import { queues } from "../../assets/dummyData/dummyData";
 import axios from "axios";
 
-
 const Form = () => {
   const handleSumbit = (event) => {
     const data = new FormData(event.target);

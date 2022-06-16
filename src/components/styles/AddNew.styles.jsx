@@ -10,13 +10,13 @@ export const AddNewWrapper = styled.div`
   right: 0;
   bottom: 0;
   overflow: hidden;
-  background:white;
+  background: white;
   z-index: 999;
   border-radius: 30px;
   -webkit-box-shadow: 0px 20px 30px 15px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 20px 30px 15px rgba(0, 0, 0, 0.15);
   overflow: auto;
-`
+`;
 
 export const LayoutWrapper = styled.div`
   margin: 20px 20px 10px 20px;
@@ -24,19 +24,19 @@ export const LayoutWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
-`
+`;
 
-export const HeaderInfo = styled.div`  
-    & > h2 {
+export const HeaderInfo = styled.div`
+  & > h2 {
     font-size: ${({ theme }) => theme.fontSizes["2x"]};
     margin-bottom: 0;
-    }
+  }
 
-    & > p {
-      font-size: ${({ theme }) => theme.fontSizes.lg};
-      margin-top: 12px;
-    }
-`
+  & > p {
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    margin-top: 12px;
+  }
+`;
 
 export const HeaderAlert = styled.span`
   display: inline-block;
@@ -49,7 +49,7 @@ export const HeaderAlert = styled.span`
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: 12px;
-`
+`;
 
 export const StyledForm = styled.form`
   display: flex;
@@ -67,7 +67,8 @@ export const StyledForm = styled.form`
     margin-bottom: 16px;
     resize: vertical;
     outline: none;
-  }`
+  }
+`;
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -80,33 +81,32 @@ export const InputWrapper = styled.div`
     width: 45%;
     position: relative;
   }
-`
+`;
 
 export const Label = styled.label`
-
   font-size: ${({ theme }) => theme.fontSizes.lg};
-  color:${({ theme }) => theme.colors.fonts.inactiveRoute};
+  color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
   position: absolute;
   padding: 0 4px;
-  margin-left:10px;
-  Top: -12px;
+  margin-left: 10px;
+  top: -12px;
   display: inline-block;
   background-color: white;
-  z-index:10;
-`
+  z-index: 10;
+`;
 
 const InputLayout = css`
   height: 60px;
   border: 1px solid;
-  border-color:${({ theme }) => theme.colors.fonts.inactiveRoute};
+  border-color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
   border-radius: 10px;
-`
+`;
 
-export const StyledInputText = styled.input`  
+export const StyledInputText = styled.input`
   ${InputLayout};
   font-size: ${({ theme }) => theme.fontSizes["1x"]};
   position: relative;
-`
+`;
 
 export const StyledInputSelect = styled.select`
   ${InputLayout};
@@ -116,8 +116,8 @@ export const StyledInputSelect = styled.select`
   width: 100%;
   appearance: none;
   -moz-appearance: none;
-  -webkit-appearance: none;  
-  
+  -webkit-appearance: none;
+
   :hover {
     cursor: pointer;
   }
@@ -135,36 +135,35 @@ export const SuggestedTagsWrapper = styled.div`
     color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
     padding-right: 10px;
   }
-`
+`;
 
-export const StyledTextarea = styled.textarea`  
+export const StyledTextarea = styled.textarea`
   ${InputLayout};
   font-size: ${({ theme }) => theme.fontSizes["1x"]};
   position: relative;
   min-height: 185px;
   width: 500px;
-`
+`;
 
 export const HorizontalDivider = styled.div`
   height: 1px;
-  margin:auto;
+  margin: auto;
   margin-bottom: 30px;
   width: 90%;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
   opacity: 0.8;
-`
+`;
 
-export const CustomerInputSelectBg = styled.div`  
-    ::after {
-      content: '';
-      background-image: ${`url('src/assets/Icons/down-arrow-svgrepo-com.svg')`};
-      width: 15px;
-      height: 15px;
-      right: 15px;
-      top: 28px;
-      position: absolute;
-      pointer-events: none;
-    };    
-`
-
+export const CustomerInputSelectBg = styled.div`
+  ::after {
+    content: "";
+    background-image: ${`url('src/assets/Icons/down-arrow-svgrepo-com.svg')`};
+    width: 15px;
+    height: 15px;
+    right: 15px;
+    top: 28px;
+    position: absolute;
+    pointer-events: none;
+  }
+`;

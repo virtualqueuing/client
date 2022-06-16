@@ -1,10 +1,11 @@
 import Form from "../components/AddNew/Form";
-import { 
-  AddNewWrapper, 
+import {
+  AddNewWrapper,
   LayoutWrapper,
   HeaderInfo,
   HeaderAlert,
-  HorizontalDivider } from "../components/styles/AddNew.styles";
+  HorizontalDivider,
+} from "../components/styles/AddNew.styles";
 
 const AddNewPage = () => (
   <AddNewWrapper>
@@ -14,9 +15,7 @@ const AddNewPage = () => (
         <p>Fill in required customs info</p>
       </HeaderInfo>
       <HeaderInfo>
-        <HeaderAlert>
-          Please fill all infomation before submitting
-        </HeaderAlert>
+        <HeaderAlert>Please fill all infomation before submitting</HeaderAlert>
       </HeaderInfo>
     </LayoutWrapper>
     <HorizontalDivider />

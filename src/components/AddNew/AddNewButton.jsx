@@ -32,14 +32,14 @@ const Cancel = styled.span`
   :hover {
     cursor: pointer;
   }
-`
-  
+`;
+
 const Buttons = ({ setShowAddNewForm }) => {
   return (
-      <Wrapper>
-        <Cancel onClick={() => setShowAddNewForm(false)} >Cancel</Cancel>
-        <Submit type="submit" name="submitInfo" value="Submit" />
-      </Wrapper>
+    <Wrapper>
+      <Cancel onClick={() => setShowAddNewForm(false)}>Cancel</Cancel>
+      <Submit type="submit" name="submitInfo" value="Submit" />
+    </Wrapper>
   );
 };
 

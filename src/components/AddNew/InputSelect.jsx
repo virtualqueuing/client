@@ -41,15 +41,15 @@ const InputSelect = () => {
           {numbers.map((number) => (
             <option key={number}> {number} </option>
           ))}
-        </StyledInputSelect> 
+        </StyledInputSelect>
       </CustomerInputSelectBg>
       <div>
         <Label for="Table">Table</Label>
         <StyledInputSelect id="Table" name="tableSize">
-        <option value="title" disabled selected hidden>
-          {getTableType(guestNum)}
-        </option>
-      </StyledInputSelect>
+          <option value="title" disabled selected hidden>
+            {getTableType(guestNum)}
+          </option>
+        </StyledInputSelect>
       </div>
     </InputWrapper>
   );
