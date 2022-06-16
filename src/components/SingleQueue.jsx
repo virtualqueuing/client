@@ -1,9 +1,11 @@
-import { QueueItem, QueueData, QueueDataContainer, TooltipContainer, StatusButtonContainer } from "./styles/SingleQueue.styles";
+import { QueueItem, QueueData, QueueDataContainer, TooltipContainer, StatusButtonContainer, StatusButton } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useContext } from "react";
 import { Context } from "../pages/Context";
-import messageIcon from "../assets/message-2-fill.svg";
-import editIcon from "../assets/pencil-fill.svg";
+import messageIcon from "../assets/Icons/Button_Message.svg";
+import editIcon from "../assets/Icons/Button_Edit.svg";
+import arrivalInactiveIcon from "../assets/Icons/Button_Arrival-inactive.svg"
+import absentInactiveIcon from "../assets/Icons/Button_Absent-inactive.svg"
 import Tooltip from "./Tooltip";
 
 // import { CheckQueueNum } from "../pages/Homepage";
@@ -83,8 +85,14 @@ const SingleQueue = ({
           {status}
         </QueueData> */}
         <StatusButtonContainer>
-          <button>Arrival</button>
-          <button>Absent</button>
+          <StatusButton>
+            <img src={arrivalInactiveIcon} alt="arrivalIcon" />
+            Arrival
+          </StatusButton>
+          <StatusButton>
+            <img src={absentInactiveIcon} alt="arrivalIcon" />
+            Absent
+          </StatusButton>
         </StatusButtonContainer>
         <TooltipContainer>
           <Tooltip text="Notify">

@@ -103,7 +103,7 @@ export const QueueLeftTitle = styled.ul`
   /* position: relative; */
   /* height: 30%; */
   margin: 0;
-  width: 55%;
+  width: 61%;
   height: 100%;
   display: flex;
   justify-content: space-between;

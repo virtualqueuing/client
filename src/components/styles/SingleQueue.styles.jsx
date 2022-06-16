@@ -4,7 +4,7 @@ export const QueueDataContainer = styled.div`
   /* margin: 6px 0 0 0; */
   /* margin-right: 2%; */
   padding: 0;
-  width: 54%;
+  width: 60%;
   margin-left: 1.2%;
   /* margin-right: 2vw; */
 
@@ -14,7 +14,7 @@ export const QueueDataContainer = styled.div`
   justify-content: space-between;
   align-items: center; 
   height: auto;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   /* ${(props) =>
     props.active
       ? css`
@@ -27,6 +27,9 @@ export const QueueItem = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+
   /* margin: 6px 0 0 0; */
   /* margin-right: 2%; */
   /* padding: 0;
@@ -81,4 +84,22 @@ export const StatusButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
+
+export const StatusButton= styled.button`
+  cursor: pointer;
+  width: 94px;
+  height: 33px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  color: #C4C4C4;
+  box-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  & img {
+    width: 26px;
+    height: 26px;
+  }
+`;
