@@ -47,21 +47,24 @@ const SingleQueue = ({
         </QueueData>
         <QueueData
           style={{
-            color: status === "Waiting" ? "#FFD25D" : status === "Absent" ? "#DD0000" : "#13E800",
+            borderRadius: "5px", boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.25)", 
+            color: status === "Waiting" ? "#FFAB5D" : status === "Absent" ? "#E64848" : "#2EAD7C",
+            backgroundColor: status === "Waiting" ? "rgba(255, 253, 205, 0.5)" : status === "Absent" ? "rgba(254, 63, 127, 0.1)" : "rgba(46, 173, 124, 0.1)",
+            fontWeight: "bold"
           }}
         >
           {status}
         </QueueData>
-        <QueueData>
+        {/* <QueueData>
           <Tooltip text="Notify">
             <img src={messageIcon} alt="sending message icon" />
           </Tooltip>
           <Tooltip text="Update">
             <img src={editIcon} alt="sending message icon" />
           </Tooltip>
-        </QueueData>
+        </QueueData> */}
       </QueueItem>
-      <SeparateLine color="#c4c4c4" width="98%"></SeparateLine>
+      <SeparateLine color="#c4c4c4" width="100%"></SeparateLine>
     </>
   );
 };

@@ -1,34 +1,40 @@
 import styled, { css } from "styled-components";
 
 export const QueueItem = styled.div`
+  /* margin: 6px 0 0 0; */
+  /* margin-right: 2%; */
+  padding: 0;
+  width: 54%;
+  margin-left: 0.9vw;
+  /* margin-right: 2vw; */
+
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
+  align-items: center; 
   height: auto;
-  margin-top: 6px;
+  margin-top: 25px;
   cursor: pointer;
-  ${(props) =>
+  /* ${(props) =>
     props.active
       ? css`
           background-color: yellow;
         `
-      : "none"}
+      : "none"} */
 `;
 
 export const QueueData = styled.div`
-  width: calc(100% / 6);
+  width: calc(100%/6);
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 3vh;
+  align-items: center;
+  /* text-align: center; */
+  /* padding: 3vh; */
+  padding: 1vh 1vw;
+
   & p {
-    color: ${({ color }) => color};
-    font-size: ${({ theme }) => theme.fontSizes.lg};
-    font-weight: 500;
-  }
-  & button {
-    cursor: pointer;
-    background-image: ${({ image }) => image};
+    color: #514c55;
+    font-size: 20px;
   }
 `;
