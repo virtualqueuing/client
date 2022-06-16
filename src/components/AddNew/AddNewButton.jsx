@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Context } from "../../pages/Context"
+import { useContext } from "react"
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,7 +36,9 @@ const Cancel = styled.span`
   }
 `;
 
-const Buttons = ({ setShowAddNewForm }) => {
+const Buttons = () => {
+
+  const { setShowAddNewForm } =useContext(Context)
   return (
     <Wrapper>
       <Cancel onClick={() => setShowAddNewForm(false)}>Cancel</Cancel>

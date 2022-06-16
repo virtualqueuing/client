@@ -2,6 +2,8 @@ import ConfirmButton from "../ConfirmButton";
 import { StyledFooter } from "../styles/Footer.styles";
 import AddNewPage from "../../pages/AddNewPage";
 import { useState, useEffect, useRef } from "react";
+import { Context } from "../../pages/Context"
+
 
 const Footer = () => {
   const [showAddNewForm, setShowAddNewForm] = useState(false);
@@ -22,7 +24,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <>
+    <Context.Provider value ={{setShowAddNewForm}}>
       {showAddNewForm && (
         <div ref={addNewRef}>
           <AddNewPage setShowAddNewForm={setShowAddNewForm} />
@@ -40,7 +42,7 @@ const Footer = () => {
           Add Guest
         </ConfirmButton>
       </StyledFooter>
-    </>
+    </Context.Provider>
   );
 };
 
