@@ -1,7 +1,7 @@
 import InputText from "./InputText";
 import InputSelect from "./InputSelect";
 import InputTextarea from "./InputTextarea";
-import Button from "../AddNewButton";
+import Buttons from "./AddNewButton";
 import { StyledForm } from "../styles/AddNew.styles";
 // import { queues } from "../../assets/dummyData/dummyData";
 import axios from "axios";
@@ -9,6 +9,7 @@ import axios from "axios";
 const Form = () => {
   const handleSumbit = (event) => {
     const data = new FormData(event.target);
+    console.log(Object.fromEntries(data.entries()));
     axios.post(`http://localhost:3000/v1/queues`, Object.fromEntries(data.entries())).then();
   };
 
@@ -17,7 +18,7 @@ const Form = () => {
       <InputText />
       <InputSelect />
       <InputTextarea />
-      <Button />
+      <Buttons />
     </StyledForm>
   );
 };
