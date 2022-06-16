@@ -18,42 +18,31 @@ export const Branding = styled.div`
 `;
 
 export const PathContainer = styled.div`
-  /* width: 0%; */
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   height: 30%;
-  /* margin-top: 3%; */
-  /* margin: 3% 3% 0 3%; */
   margin: 3% 3% 0;
-  /* padding-bottom: 2%; */
 `
 
 export const PathIdentifier = styled.ul`
   width: 25%;
   display: flex;
   position: relative;
-  /* height: 30%; */
   align-items: flex-end;
   justify-content: space-between;
   padding-left: 2.5%;
-  /* margin: 0; */
-  /* margin-left: 2.6%; */
 `;
 
 export const Identifier = styled.li`
   list-style: none;
-  /* &:not(:last-child):after {
-    content: " /";
-    color: ${({ theme }) => theme.colors.fontColor};
-  } */
 `;
 
 export const IdentifierLink = styled.a`
   text-decoration: none;
   font-size: 20px;
   font-weight: 700;
-  color: #9a9a9a;
+  color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
   /* ${(props) =>
     props.filter
       ? css`
@@ -63,9 +52,9 @@ export const IdentifierLink = styled.a`
 `;
 
 export const SearchBar = styled.input`
-width: 246px;
+  width: 246px;
   margin-bottom: 3%;
-  border: 1px solid #C4C4C4;
+  border: 1px solid ${({ theme }) => theme.colors.fonts.inactiveRoute};
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 8px;
@@ -75,16 +64,12 @@ width: 246px;
 `;
 
 export const PathSeparateLine = styled.div`
-  /* width: %; */
-  border: 2px solid #DFDFDF;
-  /* border-radius: 20%; */
+  border: 2px solid ${({ theme }) => theme.colors.separateLine.main};
   margin: 0 3%;
 `;
 
 export const SeparateLine = styled.div`
-  /* width: %; */
-  border: 2px solid #DFDFDF;
-  /* border-radius: 20%; */
+  border: 2px solid ${({ theme }) => theme.colors.separateLine.main};
   margin: 0 1.2%;
 `;
 
@@ -92,45 +77,31 @@ export const QueueTitleContainer = styled.div`
   height: 30%;
   margin: 1.5% 2% 0;
   border: 1px solid transparent;
-  background: #F7F7F7;
+  background: ${({ theme }) => theme.colors.components.queueContainer.background};
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
 `
 
 export const QueueLeftTitle = styled.ul`
-  /* justify-content: space-between; */
-  /* position: relative; */
-  /* height: 30%; */
   margin: 0;
-  width: 61%;
+  width: 62%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  /* align-content: center; */
-  /* justify-content: center; */
-  /* border: 1px solid black; */
   & li {
-    color: rgba(93, 86, 112, 0.7);
-    /* font-size: ${({ theme }) => theme.fontSizes["1x"]}; */
+    color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
     font-size: 15px;
     font-weight: 700;
-    /* padding-top: 0.5vh; */
     width: calc(100% / 6);
     list-style: none;
     text-align: center;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
   }
 `;
 
 export const QueueRightTitle = styled.ul`
-  /* justify-content: space-between; */
-  /* position: relative; */
-  /* height: 30%; */
   margin: 0;
   width: 15%;
   height: 100%;
@@ -138,21 +109,13 @@ export const QueueRightTitle = styled.ul`
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  /* align-content: center; */
-  /* justify-content: center; */
-  /* border: 1px solid black; */
   & li {
-    color: rgba(93, 86, 112, 0.7);
-    /* font-size: ${({ theme }) => theme.fontSizes["1x"]}; */
+    color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
     font-size: 15px;
     font-weight: 700;
-    /* padding-top: 0.5vh; */
     width: calc(100% / 2);
     list-style: none;
     text-align: center;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
   }
 `;
 

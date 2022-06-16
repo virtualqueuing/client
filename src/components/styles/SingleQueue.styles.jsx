@@ -1,26 +1,14 @@
 import styled, { css } from "styled-components";
 
 export const QueueDataContainer = styled.div`
-  /* margin: 6px 0 0 0; */
-  /* margin-right: 2%; */
   padding: 0;
   width: 60%;
-  margin-left: 1.2%;
-  /* margin-right: 2vw; */
-
+  margin-left: 1.7%;
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
   justify-content: space-between;
   align-items: center; 
   height: auto;
-  /* margin-top: 25px; */
-  /* ${(props) =>
-    props.active
-      ? css`
-          background-color: yellow;
-        `
-      : "none"} */
 `
 
 export const QueueItem = styled.div`
@@ -29,28 +17,13 @@ export const QueueItem = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 25px;
-
-  /* margin: 6px 0 0 0; */
-  /* margin-right: 2%; */
-  /* padding: 0;
-  width: 54%;
-  margin-left: 0.9vw; */
-  /* margin-right: 2vw; */
-
-  /* display: flex;
-  flex-direction: row; */
-  /* align-items: center; */
-  /* justify-content: space-between;
-  align-items: center; 
-  height: auto;
-  margin-top: 25px;
-  cursor: pointer; */
-  /* ${(props) =>
+  cursor: pointer;
+  ${(props) =>
     props.active
       ? css`
-          background-color: yellow;
+          background-color: ${({ theme }) => theme.colors.page.secondary}
         `
-      : "none"} */
+      : " "}
 `;
 
 export const QueueData = styled.div`
@@ -58,12 +31,10 @@ export const QueueData = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
-  /* padding: 3vh; */
   padding: 1vh 1vw;
 
   & p {
-    color: #514c55;
+    color: ${({ theme }) => theme.colors.fonts.main};
     font-size: 20px;
   }
 `;
@@ -73,8 +44,6 @@ export const TooltipContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* text-align: center; */
-  /* padding: 3vh; */
   padding: 1vh 0.8vw;
   margin-right: 3%;
 `;
@@ -94,8 +63,8 @@ export const StatusButton= styled.button`
   justify-content: space-around;
   align-items: center;
   background: #FFFFFF;
-  border: 1px solid #C4C4C4;
-  color: #C4C4C4;
+  border: 1px solid ${({ theme }) => theme.colors.fonts.inactiveRoute};
+  color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
   box-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   & img {

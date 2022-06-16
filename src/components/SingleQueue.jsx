@@ -6,9 +6,9 @@ import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
 import arrivalInactiveIcon from "../assets/Icons/Button_Arrival-inactive.svg"
 import absentInactiveIcon from "../assets/Icons/Button_Absent-inactive.svg"
+import guestIcon from "../assets/Icons/guest.svg"
 import Tooltip from "./Tooltip";
 
-// import { CheckQueueNum } from "../pages/Homepage";
 
 const SingleQueue = ({
   _id,
@@ -42,7 +42,8 @@ const SingleQueue = ({
           <QueueData color="#000">
             <p>{phoneNumber}</p>
           </QueueData>
-          <QueueData color="#000">
+          <QueueData color="#000" style={{gap: "15px"}}>
+            <img src={guestIcon} alt="guestIcon" />
             <p>{guestsNumber}</p>
           </QueueData>
           <QueueData color="#000">
@@ -59,31 +60,6 @@ const SingleQueue = ({
             {status}
           </QueueData>
         </QueueDataContainer>
-        {/* <QueueData color="#000">
-          <p>{queueNumber}</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>{name}</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>{phoneNumber}</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>{guestsNumber}</p>
-        </QueueData>
-        <QueueData color="#000">
-          <p>{tableSize}</p>
-        </QueueData>
-        <QueueData
-          style={{
-            borderRadius: "5px", boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.25)", 
-            color: status === "Waiting" ? "#FFAB5D" : status === "Absent" ? "#E64848" : "#2EAD7C",
-            backgroundColor: status === "Waiting" ? "rgba(255, 253, 205, 0.5)" : status === "Absent" ? "rgba(254, 63, 127, 0.1)" : "rgba(46, 173, 124, 0.1)",
-            fontWeight: "bold"
-          }}
-        >
-          {status}
-        </QueueData> */}
         <StatusButtonContainer>
           <StatusButton>
             <img src={arrivalInactiveIcon} alt="arrivalIcon" />
