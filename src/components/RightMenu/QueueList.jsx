@@ -20,8 +20,8 @@ const MainQueues = ({ queues, queueStatus, tableType }) => {
       tableType === "Table Type"
         ? queues
         : tableType === "Small"
-          ? queues.filter((queue) => queue.tableSize === "small")
-          : queues.filter((queue) => queue.tableSize === tableType);
+        ? queues.filter((queue) => queue.tableSize === "small")
+        : queues.filter((queue) => queue.tableSize === tableType);
   }
 
   const [activeQueueId, setActiveQueueId] = useState("");
