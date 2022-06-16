@@ -1,7 +1,8 @@
 import {
-  StyledInputSelectFlex,
-  CustomStyledInputSelectImage,
-  CustomStyledInputSelectBg,
+  InputWrapper,
+  CustomerInputSelectBg,
+  Label,
+  StyledInputSelect,
 } from "../styles/AddNew.styles";
 import React, { useState } from "react";
 
@@ -27,27 +28,30 @@ const InputSelect = () => {
     return tableType[guests];
   }
   return (
-    <StyledInputSelectFlex>
-      <CustomStyledInputSelectImage>
-        <CustomStyledInputSelectBg
+    <InputWrapper>
+      <CustomerInputSelectBg>
+        <Label for="people">People</Label>
+        <StyledInputSelect
+          id="people"
           name="guestsNumber"
           value={guestNum}
           onChange={(e) => setGuestNum(e.target.value)}
         >
-          <option disabled selected hidden>
-            People
-          </option>
+          <option selected hidden />
           {numbers.map((number) => (
             <option key={number}> {number} </option>
           ))}
-        </CustomStyledInputSelectBg>
-      </CustomStyledInputSelectImage>
-      <CustomStyledInputSelectBg name="tableSize">
-        <option value="title" disabled selected hidden>
-          {getTableType(guestNum)}
-        </option>
-      </CustomStyledInputSelectBg>
-    </StyledInputSelectFlex>
+        </StyledInputSelect>
+      </CustomerInputSelectBg>
+      <div>
+        <Label for="Table">Table</Label>
+        <StyledInputSelect id="Table" name="tableSize">
+          <option value="title" disabled selected hidden>
+            {getTableType(guestNum)}
+          </option>
+        </StyledInputSelect>
+      </div>
+    </InputWrapper>
   );
 };
 

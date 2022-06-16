@@ -1,14 +1,24 @@
 import Form from "../components/AddNew/Form";
-import logo from "../assets/Logo-v5.svg";
-import { AddNewWrapper, Branding, AddNewStyledLogo } from "../components/styles/AddNew.styles";
+import {
+  AddNewWrapper,
+  LayoutWrapper,
+  HeaderInfo,
+  HeaderAlert,
+  HorizontalDivider,
+} from "../components/styles/AddNew.styles";
 
-const AddNewPage = ({ setShowAddNewForm }) => (
+const AddNewPage = () => (
   <AddNewWrapper>
-    <Branding>
-      <AddNewStyledLogo src={logo} alt="logo" />
-      <h1>Virtual Queuing</h1>
-      <span onClick={() => setShowAddNewForm(false)}>&times;</span>
-    </Branding>
+    <LayoutWrapper>
+      <HeaderInfo>
+        <h2>Set Customs Info</h2>
+        <p>Fill in required customs info</p>
+      </HeaderInfo>
+      <HeaderInfo>
+        <HeaderAlert>Please fill all infomation before submitting</HeaderAlert>
+      </HeaderInfo>
+    </LayoutWrapper>
+    <HorizontalDivider />
     <Form />
   </AddNewWrapper>
 );

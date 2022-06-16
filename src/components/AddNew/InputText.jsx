@@ -1,11 +1,17 @@
-import { StyledInputText } from "../styles/AddNew.styles";
+import { InputWrapper, StyledInputText, Label } from "../styles/AddNew.styles";
 
 const InputText = () => {
   return (
-    <>
-      <StyledInputText type="text" name="name" placeholder="Name:" />
-      <StyledInputText type="text" name="phoneNumber" placeholder="Phone:" />
-    </>
+    <InputWrapper>
+      <div>
+        <Label for="name">Name</Label>
+        <StyledInputText id="Name" type="text" name="name" />
+      </div>
+      <div>
+        <Label for="phoneNumber">Phone number</Label>
+        <StyledInputText id="phoneNumber" type="text" name="phoneNumber" />
+      </div>
+    </InputWrapper>
   );
 };
 

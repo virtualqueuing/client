@@ -13,24 +13,24 @@ import {
 
 const LeftMenu = () => {
   const [selectedQueue, setSelectedQueue] = useContext(Context);
-  const [isSending, setIsSending] = useState(false)
+  const [isSending, setIsSending] = useState(false);
 
   const queueComplete = async () => {
-    if (isSending) return
-    setIsSending(true)
+    if (isSending) return;
+    setIsSending(true);
     await axios.put(`http://localhost:3000/v1/queues/${selectedQueue._id}/Completed`, {});
-    const { data } = await axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}`)
-    setSelectedQueue(data)
-    setIsSending(false)
-  }
+    const { data } = await axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}`);
+    setSelectedQueue(data);
+    setIsSending(false);
+  };
 
   const queueAbsent = async () => {
-    if (isSending) return
-    setIsSending(true)
+    if (isSending) return;
+    setIsSending(true);
     await axios.put(`http://localhost:3000/v1/queues/${selectedQueue._id}/Absent`, {});
-    const { data } = await axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}`)
-    setSelectedQueue(data)
-    setIsSending(false)
+    const { data } = await axios.get(`http://localhost:3000/v1/queues/${selectedQueue._id}`);
+    setSelectedQueue(data);
+    setIsSending(false);
   };
 
   let customerNote = selectedQueue.notes;
@@ -84,8 +84,8 @@ const LeftMenu = () => {
               selectedQueue.status === "Waiting"
                 ? "#FFD25D"
                 : selectedQueue.status === "Absent"
-                  ? "#DD0000"
-                  : "#13E800",
+                ? "#DD0000"
+                : "#13E800",
           }}
         >
           {selectedQueue.status}...
