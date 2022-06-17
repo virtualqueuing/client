@@ -10,6 +10,7 @@ const colors = {
     negativeButton: {
       background: "#FE3F7F",
       fontColor: "#E54848",
+      outline: "#417463",
     },
     neutralButton: {
       background: "#FFFDCD",
