@@ -1,4 +1,4 @@
-import {InputWrapper, Label, SuggestedTagsWrapper } from "../styles/AddNew.styles";
+import { InputWrapper, Label, SuggestedTagsWrapper } from "../styles/AddNew.styles";
 import Tag from "../Tag";
 import CreateTags from "./CreateTags";
 // import { useState } from "react";
@@ -23,7 +23,7 @@ const InputTextarea = () => {
       <InputWrapper>
         <div style={{ width: "100%", height: "150px", marginBottom: "50px" }}>
           <Label for="notes">Notes</Label>
-          <CreateTags/>
+          <CreateTags />
           {/* <StyledTextarea id="notes" name="notes" rows="8"/> */}
         </div>
       </InputWrapper>

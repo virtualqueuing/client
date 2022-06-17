@@ -14,7 +14,6 @@ export const Tag = styled.button`
   background-position: 10px;
   box-shadow: 1px 1px 2px rgb(0, 0, 0, 30%);
 
-
   :hover {
     cursor: pointer;
   }

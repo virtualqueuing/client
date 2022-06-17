@@ -23,7 +23,7 @@ export const PathContainer = styled.div`
   align-items: flex-end;
   height: 30%;
   margin: 3% 3% 0;
-`
+`;
 
 export const PathIdentifier = styled.ul`
   width: 25%;
@@ -81,7 +81,7 @@ export const QueueTitleContainer = styled.div`
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export const QueueLeftTitle = styled.ul`
   margin: 0;

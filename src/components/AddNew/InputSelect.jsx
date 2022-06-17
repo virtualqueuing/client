@@ -46,7 +46,7 @@ const InputSelect = () => {
       <div>
         <Label for="Table">Table</Label>
         <StyledInputSelect id="Table" name="tableSize">
-          <option value="title" disabled selected hidden>
+          <option value={getTableType(guestNum)} selected hidden>
             {getTableType(guestNum)}
           </option>
         </StyledInputSelect>

@@ -7,9 +7,9 @@ export const QueueDataContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   height: auto;
-`
+`;
 
 export const QueueItem = styled.div`
   width: 100%;
@@ -21,13 +21,13 @@ export const QueueItem = styled.div`
   ${(props) =>
     props.active
       ? css`
-          background-color: ${({ theme }) => theme.colors.page.secondary}
+          background-color: ${({ theme }) => theme.colors.page.secondary};
         `
       : " "}
 `;
 
 export const QueueData = styled.div`
-  width: calc(100%/6);
+  width: calc(100% / 6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,14 +55,14 @@ export const StatusButtonContainer = styled.div`
   align-items: center;
 `;
 
-export const StatusButton= styled.button`
+export const StatusButton = styled.button`
   cursor: pointer;
   width: 94px;
   height: 33px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid ${({ theme }) => theme.colors.fonts.inactiveRoute};
   color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
   box-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.25);
