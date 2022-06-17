@@ -21,7 +21,7 @@ const colors = {
       borderColor: {
         normal: "#5D5670",
         opacityColor: "rgba(93, 86, 112, 0.7)",
-      }
+      },
     },
     absentButton: {
       fontColor: "#E74C3C",
@@ -38,8 +38,8 @@ const colors = {
       hover: "#5F8C6A",
     },
     queueContainer: {
-      background: "#F7F7F7"
-    }
+      background: "#F7F7F7",
+    },
   },
   page: {
     main: "#77A48E",
@@ -53,8 +53,8 @@ const colors = {
     inactiveMenu: "#9A9A9A",
   },
   separateLine: {
-    main: "#DFDFDF"
-  }
+    main: "#DFDFDF",
+  },
 };
 
 const fontSizes = {

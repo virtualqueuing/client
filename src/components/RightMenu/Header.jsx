@@ -72,12 +72,12 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearc
             <li>Phone No.</li>
             <li>Guests</li>
             <li>
-              {/* <TableFilter onChange={changeTable}>
+              {<TableFilter onChange={changeTable}>
                 <option value="Table">Table Type</option>
                 {TableSize.map((size) => (
                   <option key={size}>{size}</option>
                 ))}
-              </TableFilter> */}
+              </TableFilter>}
               Table Size
             </li>
             <li>Status</li>
