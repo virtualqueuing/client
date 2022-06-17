@@ -23,7 +23,7 @@ export const PathContainer = styled.div`
   align-items: flex-end;
   height: 30%;
   margin: 3% 3% 0;
-`
+`;
 
 export const PathIdentifier = styled.ul`
   width: 25%;
@@ -52,7 +52,7 @@ export const IdentifierLink = styled.a`
           border-bottom-right-radius: 3px;
           padding-bottom: 16px;
         `
-      : "none"};
+      : " "};
 `;
 
 export const SearchBar = styled.input`
@@ -85,7 +85,7 @@ export const QueueTitleContainer = styled.div`
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export const QueueLeftTitle = styled.ul`
   margin: 0;

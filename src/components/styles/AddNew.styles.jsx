@@ -76,7 +76,6 @@ export const InputWrapper = styled.div`
   padding: 0;
   margin-bottom: 20px;
   width: 100%;
-
   & > div {
     width: 45%;
     position: relative;
@@ -140,6 +139,7 @@ export const SuggestedTagsWrapper = styled.div`
 export const StyledTextarea = styled.textarea`
   ${InputLayout};
   font-size: ${({ theme }) => theme.fontSizes["1x"]};
+  font-family: Arial, Helvetica, sans-serif;
   position: relative;
   min-height: 185px;
   width: 500px;

@@ -12,7 +12,7 @@ import {
   PathContainer,
   PathSeparateLine,
   SearchBar,
-  QueueTitleContainer
+  QueueTitleContainer,
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
 
@@ -54,7 +54,14 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearc
             })}
           </PathIdentifier>
           <form>
-            <SearchBar type="search" placeholder="Search" onChange={(e) => {setSearchQueue(e.target.value)}} required/>
+            <SearchBar
+              type="search"
+              placeholder="Search"
+              onChange={(e) => {
+                setSearchQueue(e.target.value);
+              }}
+              required
+            />
           </form>
         </PathContainer>
         <PathSeparateLine />
