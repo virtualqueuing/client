@@ -16,7 +16,7 @@ import {
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
 
-const Header = ({ queueStatus, setQueueStatus, setTableType, tableType }) => {
+const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearchQueue }) => {
   const queueFilter = ["All", "Queuing", "Absent"];
 
   const TableSize = ["Small", "Medium", "Large"];
@@ -54,7 +54,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType }) => {
             })}
           </PathIdentifier>
           <form>
-            <SearchBar type="search" placeholder="Search" required/>
+            <SearchBar type="search" placeholder="Search" onChange={(e) => {setSearchQueue(e.target.value)}} required/>
           </form>
         </PathContainer>
         <PathSeparateLine />

@@ -8,6 +8,7 @@ import arrivalInactiveIcon from "../assets/Icons/Button_Arrival-inactive.svg"
 import absentInactiveIcon from "../assets/Icons/Button_Absent-inactive.svg"
 import guestIcon from "../assets/Icons/guest.svg"
 import Tooltip from "./Tooltip";
+import theme from "../theme"
 
 
 const SingleQueue = ({
@@ -79,7 +80,7 @@ const SingleQueue = ({
           </Tooltip>
         </TooltipContainer>
       </QueueItem>
-      <SeparateLine color="#c4c4c4" width="100%"></SeparateLine>
+      <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
     </>
   );
 };

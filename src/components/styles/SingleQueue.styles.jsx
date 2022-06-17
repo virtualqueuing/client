@@ -12,6 +12,7 @@ export const QueueDataContainer = styled.div`
 `
 
 export const QueueItem = styled.div`
+overflow: hidden;
   width: 100%;
   display: flex;
   justify-content: space-between;

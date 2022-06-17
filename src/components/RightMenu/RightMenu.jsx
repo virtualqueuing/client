@@ -9,6 +9,7 @@ const MainBar = () => {
   const [queueStatus, setQueueStatus] = useState("All");
   const [queues, setQueues] = useState([]);
   const [tableType, setTableType] = useState("Table Type");
+  const [searchQueue, setSearchQueue] = useState("");
 
   useEffect(() => {
     const fetchQueue = async () => {
@@ -27,8 +28,9 @@ const MainBar = () => {
         queueStatus={queueStatus}
         setQueueStatus={setQueueStatus}
         setTableType={setTableType}
+        setSearchQueue={setSearchQueue}
       />
-      <MainQueues queueStatus={queueStatus} tableType={tableType} queues={queues} />
+      <MainQueues queueStatus={queueStatus} tableType={tableType} queues={queues} searchQueue={searchQueue}/>
       <Footer />
     </RightMenuContainer>
   );

@@ -43,12 +43,16 @@ export const IdentifierLink = styled.a`
   font-size: 20px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
-  /* ${(props) =>
+  ${(props) =>
     props.filter
       ? css`
-          color: red;
+          color: ${({ theme }) => theme.colors.components.negativeButton.outline};
+          border-bottom: 4px solid ${({ theme }) => theme.colors.components.negativeButton.outline};
+          border-bottom-left-radius: 3px;
+          border-bottom-right-radius: 3px;
+          padding-bottom: 16px;
         `
-      : "none"}; */
+      : "none"};
 `;
 
 export const SearchBar = styled.input`
