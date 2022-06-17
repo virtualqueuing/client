@@ -1,14 +1,20 @@
-import { QueueItem, QueueData, QueueDataContainer, TooltipContainer, StatusButtonContainer, StatusButton } from "./styles/SingleQueue.styles";
+import {
+  QueueItem,
+  QueueData,
+  QueueDataContainer,
+  TooltipContainer,
+  StatusButtonContainer,
+  StatusButton,
+} from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useContext } from "react";
 import { Context } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
-import arrivalInactiveIcon from "../assets/Icons/Button_Arrival-inactive.svg"
-import absentInactiveIcon from "../assets/Icons/Button_Absent-inactive.svg"
-import guestIcon from "../assets/Icons/guest.svg"
+import arrivalInactiveIcon from "../assets/Icons/Button_Arrival-inactive.svg";
+import absentInactiveIcon from "../assets/Icons/Button_Absent-inactive.svg";
+import guestIcon from "../assets/Icons/guest.svg";
 import Tooltip from "./Tooltip";
-
 
 const SingleQueue = ({
   _id,
@@ -42,7 +48,7 @@ const SingleQueue = ({
           <QueueData color="#000">
             <p>{phoneNumber}</p>
           </QueueData>
-          <QueueData color="#000" style={{gap: "15px"}}>
+          <QueueData color="#000" style={{ gap: "15px" }}>
             <img src={guestIcon} alt="guestIcon" />
             <p>{guestsNumber}</p>
           </QueueData>
@@ -51,10 +57,16 @@ const SingleQueue = ({
           </QueueData>
           <QueueData
             style={{
-              borderRadius: "5px", boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.25)", 
+              borderRadius: "5px",
+              boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.25)",
               color: status === "Waiting" ? "#FFAB5D" : status === "Absent" ? "#E64848" : "#2EAD7C",
-              backgroundColor: status === "Waiting" ? "rgba(255, 253, 205, 0.5)" : status === "Absent" ? "rgba(254, 63, 127, 0.1)" : "rgba(46, 173, 124, 0.1)",
-              fontWeight: "bold"
+              backgroundColor:
+                status === "Waiting"
+                  ? "rgba(255, 253, 205, 0.5)"
+                  : status === "Absent"
+                  ? "rgba(254, 63, 127, 0.1)"
+                  : "rgba(46, 173, 124, 0.1)",
+              fontWeight: "bold",
             }}
           >
             {status}
