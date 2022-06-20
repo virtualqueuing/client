@@ -8,7 +8,8 @@ import React, { useState } from "react";
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-const InputSelect = () => {
+const InputSelect = (params) => {
+  console.log(params.inputInfo);
   const [guestNum, setGuestNum] = useState();
   function getTableType(guests) {
     const tableType = {
@@ -35,6 +36,7 @@ const InputSelect = () => {
           id="people"
           name="guestsNumber"
           value={guestNum}
+          defaultValue={params?.inputInfo?.guestsNumber ? params.inputInfo.guestsNumber : ""}
           onChange={(e) => setGuestNum(e.target.value)}
         >
           <option selected hidden />
@@ -45,9 +47,12 @@ const InputSelect = () => {
       </CustomerInputSelectBg>
       <div>
         <Label for="Table">Table</Label>
-        <StyledInputSelect id="Table" name="tableSize">
-          <option value={getTableType(guestNum)} selected hidden>
-            {getTableType(guestNum)}
+        <StyledInputSelect id="Table" name="tableSize" >
+          <option
+            selected
+            hidden
+          >
+            {getTableType(guestNum) || params.inputInfo.tableSize}
           </option>
         </StyledInputSelect>
       </div>

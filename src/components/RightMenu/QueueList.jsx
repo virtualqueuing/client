@@ -26,20 +26,25 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
   const [activeQueueId, setActiveQueueId] = useState("");
   const singleQueues = useMemo(
     () =>
-    showList.filter((queueValue) => {
-        if (searchQueue === "") {
-          return queueValue;
-        } else if (queueValue.name.toLowerCase().includes(searchQueue.toLowerCase()) || queueValue.phoneNumber.includes(searchQueue)) {
-          return queueValue;
-        }
-      }).map((queue) => (
-        <SingleQueue
-          key={queue._id}
-          {...queue}
-          activeQueueId={activeQueueId}
-          setActiveQueueId={setActiveQueueId}
-        />
-      )),
+      showList
+        .filter((queueValue) => {
+          if (searchQueue === "") {
+            return queueValue;
+          } else if (
+            queueValue.name.toLowerCase().includes(searchQueue.toLowerCase()) ||
+            queueValue.phoneNumber.includes(searchQueue)
+          ) {
+            return queueValue;
+          }
+        })
+        .map((queue) => (
+          <SingleQueue
+            key={queue._id}
+            {...queue}
+            activeQueueId={activeQueueId}
+            setActiveQueueId={setActiveQueueId}
+          />
+        )),
     [showList, activeQueueId, searchQueue]
   );
 

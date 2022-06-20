@@ -11,6 +11,8 @@ const Footer = () => {
 
   useEffect(() => {
     const handler = (event) => {
+      console.log(addNewRef)
+      console.log(event.target)
       if (!addNewRef?.current?.contains(event.target)) {
         setShowAddNewForm(false);
       }

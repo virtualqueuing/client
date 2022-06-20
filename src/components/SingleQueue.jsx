@@ -7,7 +7,9 @@ import {
   StatusButton,
 } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
-import React, { useContext } from "react";
+import AddNewPage from "../pages/AddNewPage";
+
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
@@ -35,6 +37,23 @@ const SingleQueue = ({
     setSelectedQueue({ _id, name, phoneNumber, queueNumber, status, notes, createdAt });
     setActiveQueueId(_id);
   };
+
+  const [showAddNewForm, setShowAddNewForm] = useState(false);
+
+  const addNewRef = useRef(); // close add-new page ouside the popup region
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (!addNewRef?.current?.contains(event.target)) {
+        setShowAddNewForm(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, []);
 
   return (
     <>
@@ -88,11 +107,36 @@ const SingleQueue = ({
             <img src={messageIcon} alt="sending message icon" />
           </Tooltip>
           <Tooltip text="Update">
-            <img src={editIcon} alt="sending message icon" />
+            <img
+              src={editIcon}
+              alt="sending message icon"
+              onClick={(e) => {
+                setShowAddNewForm(true);
+              }}
+            />
           </Tooltip>
         </TooltipContainer>
       </QueueItem>
       <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
+      <Context.Provider value={{ setShowAddNewForm }}>
+        {showAddNewForm && (
+          <div ref={addNewRef}>
+            <AddNewPage
+              setShowAddNewForm={setShowAddNewForm}
+              queueInfo={{
+                _id,
+                name,
+                phoneNumber,
+                queueNumber,
+                guestsNumber,
+                tableSize,
+                status,
+                notes,
+              }}
+            />
+          </div>
+        )}
+      </Context.Provider>
     </>
   );
 };

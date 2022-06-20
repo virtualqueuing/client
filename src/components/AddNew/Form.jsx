@@ -6,7 +6,7 @@ import { StyledForm } from "../styles/AddNew.styles";
 // import { queues } from "../../assets/dummyData/dummyData";
 import axios from "axios";
 
-const Form = () => {
+const Form = (params) => {
   const handleSumbit = (event) => {
     const data = new FormData(event.target);
     console.log(Object.fromEntries(data.entries()));
@@ -15,9 +15,9 @@ const Form = () => {
 
   return (
     <StyledForm onSubmit={handleSumbit}>
-      <InputText />
-      <InputSelect />
-      <InputTextarea />
+      <InputText inputInfo = {params.formQueueInfo} />
+      <InputSelect inputInfo = {params.formQueueInfo} />
+      <InputTextarea inputInfo = {params.formQueueInfo}/>
       <Buttons />
     </StyledForm>
   );

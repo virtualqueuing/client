@@ -7,19 +7,19 @@ import {
   HorizontalDivider,
 } from "../components/styles/AddNew.styles";
 
-const AddNewPage = () => (
-  <AddNewWrapper>
+const AddNewPage = (params) => (
+  <AddNewWrapper wrapperQueueInfo = {params.queueInfo} >
     <LayoutWrapper>
       <HeaderInfo>
         <h2>Set Customs Info</h2>
         <p>Fill in required customs info</p>
       </HeaderInfo>
       <HeaderInfo>
-        <HeaderAlert>Please fill all infomation before submitting</HeaderAlert>
+        <HeaderAlert>Please fill all information before submitting</HeaderAlert>
       </HeaderInfo>
     </LayoutWrapper>
     <HorizontalDivider />
-    <Form />
+    <Form formQueueInfo = {params.queueInfo} />
   </AddNewWrapper>
 );
 
