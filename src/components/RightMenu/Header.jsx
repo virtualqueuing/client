@@ -19,14 +19,7 @@ import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
 
 const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearchQueue }) => {
   const changeTable = (size) => {
-    const type =
-      size.target.value === "Small"
-        ? "Small"
-        : size.target.value === "Medium"
-        ? "Medium"
-        : size.target.value === "Large"
-        ? "Large"
-        : "Table Type";
+    const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);
   };
 
@@ -70,13 +63,14 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearc
             <li>Phone No.</li>
             <li>Guests</li>
             <li>
-              {<TableFilter onChange={changeTable}>
-                <option value="Table">Table Type</option>
-                {TABLE_SIZE.map((size) => (
-                  <option key={size}>{size}</option>
-                ))}
-              </TableFilter>}
-              Table Size
+              {
+                <TableFilter onChange={changeTable}>
+                  <option value="Table">Table Type</option>
+                  {TABLE_SIZE.map((size) => (
+                    <option key={size}>{size}</option>
+                  ))}
+                </TableFilter>
+              }
             </li>
             <li>Status</li>
           </QueueLeftTitle>

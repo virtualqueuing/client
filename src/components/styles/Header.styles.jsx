@@ -140,8 +140,10 @@ export const TableFilter = styled.select`
   border: none;
   text-align: center;
   background: none;
-  color: ${({ theme }) => theme.colors.main};
-  font-size: ${({ theme }) => theme.fontSizes["1x"]};
+  color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
+  font-size: 15px;
+  font-weight: 700;
+
   &:focus {
     outline: none;
   }

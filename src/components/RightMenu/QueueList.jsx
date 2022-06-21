@@ -12,16 +12,16 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
   } else if (queueStatus === "Absent") {
     showList = queues.filter((queue) => queue.status === "Absent");
   }
-  // console.log(showList)
+  console.log(showList);
 
-  // if (!_.isEmpty(showList)) {
-  //   showList =
-  //     tableType === "Table Type"
-  //       ? queues
-  //       : tableType === "Small"
-  //       ? queues.filter((queue) => queue.tableSize === "small")
-  //       : queues.filter((queue) => queue.tableSize === tableType);
-  // }
+  if (_.isEmpty(showList)) {
+    showList =
+      tableType === "Table Type"
+        ? queues
+        : tableType === "Small"
+        ? queues.filter((queue) => queue.tableSize === "small")
+        : queues.filter((queue) => queue.tableSize === tableType);
+  }
   const [activeQueueId, setActiveQueueId] = useState("");
   const singleQueues = useMemo(
     () =>
