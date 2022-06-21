@@ -8,7 +8,7 @@ import {
 } from "../components/styles/AddNew.styles";
 
 const AddNewPage = (params) => (
-  <AddNewWrapper wrapperQueueInfo = {params.queueInfo} >
+  <AddNewWrapper wrapperQueueInfo={params.queueInfo}>
     <LayoutWrapper>
       <HeaderInfo>
         <h2>Set Customs Info</h2>
@@ -19,7 +19,7 @@ const AddNewPage = (params) => (
       </HeaderInfo>
     </LayoutWrapper>
     <HorizontalDivider />
-    <Form formQueueInfo = {params.queueInfo} />
+    <Form formQueueInfo={params.queueInfo} />
   </AddNewWrapper>
 );
 

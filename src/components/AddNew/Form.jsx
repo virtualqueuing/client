@@ -15,9 +15,9 @@ const Form = (params) => {
 
   return (
     <StyledForm onSubmit={handleSumbit}>
-      <InputText inputInfo = {params.formQueueInfo} />
-      <InputSelect inputInfo = {params.formQueueInfo} />
-      <InputTextarea inputInfo = {params.formQueueInfo}/>
+      <InputText inputInfo={params.formQueueInfo} />
+      <InputSelect inputInfo={params.formQueueInfo} />
+      <InputTextarea inputInfo={params.formQueueInfo} />
       <Buttons />
     </StyledForm>
   );

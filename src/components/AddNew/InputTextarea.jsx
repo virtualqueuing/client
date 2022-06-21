@@ -5,7 +5,7 @@ import CreateTags from "./CreateTags";
 
 const InputTextarea = (params) => {
   // click Tag to create new tag in CreateTags
-  console.log(params.inputInfo)
+  console.log(params.inputInfo);
   return (
     <>
       <SuggestedTagsWrapper>

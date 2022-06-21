@@ -47,11 +47,8 @@ const InputSelect = (params) => {
       </CustomerInputSelectBg>
       <div>
         <Label for="Table">Table</Label>
-        <StyledInputSelect id="Table" name="tableSize" >
-          <option
-            selected
-            hidden
-          >
+        <StyledInputSelect id="Table" name="tableSize">
+          <option selected hidden>
             {getTableType(guestNum) || params.inputInfo.tableSize}
           </option>
         </StyledInputSelect>

@@ -63,8 +63,8 @@ export const StatusButton = styled.button`
   justify-content: space-around;
   align-items: center;
   background: #ffffff;
-  border: 1px solid ${({ theme }) => theme.colors.fonts.inactiveRoute};
-  color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
+  border: 1px solid ${({ borderColor }) => borderColor};
+  color: ${({ fontColor }) => fontColor};
   box-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   & img {

@@ -13,11 +13,14 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
-import arrivalInactiveIcon from "../assets/Icons/Button_Arrival-inactive.svg";
-import absentInactiveIcon from "../assets/Icons/Button_Absent-inactive.svg";
+// import arrivalInactiveIcon from "../assets/Icons/Button_Arrival-inactive.svg";
+import arrivalActiveIcon from "../assets/Icons/Button_Arrival.svg";
+// import absentInactiveIcon from "../assets/Icons/Button_Absent-inactive.svg";
+import absentActiveIcon from "../assets/Icons/Button_Absent.svg";
 import guestIcon from "../assets/Icons/guest.svg";
 import Tooltip from "./Tooltip";
 import theme from "../theme";
+import axios from "axios";
 
 const SingleQueue = ({
   _id,
@@ -33,6 +36,8 @@ const SingleQueue = ({
   setActiveQueueId,
 }) => {
   const [, setSelectedQueue] = useContext(Context);
+  const [isSending, setIsSending] = useState(false);
+
   const handleClick = () => {
     setSelectedQueue({ _id, name, phoneNumber, queueNumber, status, notes, createdAt });
     setActiveQueueId(_id);
@@ -54,6 +59,16 @@ const SingleQueue = ({
       document.removeEventListener("mousedown", handler);
     };
   }, []);
+
+  const queueComplete = async () => {
+    if (isSending) return;
+    setIsSending(true);
+    await axios.put(`http://localhost:3000/v1/queues/${_id}/Completed`, {});
+    const { data } = await axios.get(`http://localhost:3000/v1/queues/${_id}`);
+    console.log(data);
+    setSelectedQueue({ data });
+    setIsSending(false);
+  };
 
   return (
     <>
@@ -93,12 +108,21 @@ const SingleQueue = ({
           </QueueData>
         </QueueDataContainer>
         <StatusButtonContainer>
-          <StatusButton>
-            <img src={arrivalInactiveIcon} alt="arrivalIcon" />
+          <StatusButton
+            onClick={queueComplete}
+            disabled={isSending}
+            fontColor={theme.colors.components.arrivalButton.fontColor}
+            borderColor={theme.colors.components.arrivalButton.borderColor}
+          >
+            <img src={arrivalActiveIcon} alt="arrivalIcon" />
             Arrival
           </StatusButton>
-          <StatusButton>
-            <img src={absentInactiveIcon} alt="arrivalIcon" />
+          <StatusButton
+            disabled={isSending}
+            fontColor={theme.colors.components.absentButton.fontColor}
+            borderColor={theme.colors.components.absentButton.fontColor}
+          >
+            <img src={absentActiveIcon} alt="arrivalIcon" />
             Absent
           </StatusButton>
         </StatusButtonContainer>
