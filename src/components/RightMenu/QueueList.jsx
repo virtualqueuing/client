@@ -4,7 +4,6 @@ import { QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
 import PropTypes from 'prop-types';
 
-
 const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
   MainQueues.propTypes = {
     queues: PropTypes.array.isRequired,
@@ -19,8 +18,6 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
     showList = queues.filter((queue) => queue.status === "Absent");
   }
   console.log(showList);
-
-
 
   if (_.isEmpty(showList)) {
     showList =
