@@ -15,11 +15,9 @@ import {
   QueueTitleContainer,
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
+import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
 
 const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearchQueue }) => {
-  const queueFilter = ["All", "Queuing", "Absent"];
-
-  const TableSize = ["Small", "Medium", "Large"];
   const changeTable = (size) => {
     const type =
       size.target.value === "Small"
@@ -41,7 +39,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearc
         <SeparateLine />
         <PathContainer>
           <PathIdentifier>
-            {queueFilter.map((filter) => {
+            {QUEUE_FILTER.map((filter) => {
               return (
                 <Identifier key={filter}>
                   <IdentifierLink
@@ -74,7 +72,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearc
             <li>
               {<TableFilter onChange={changeTable}>
                 <option value="Table">Table Type</option>
-                {TableSize.map((size) => (
+                {TABLE_SIZE.map((size) => (
                   <option key={size}>{size}</option>
                 ))}
               </TableFilter>}

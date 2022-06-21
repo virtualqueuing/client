@@ -5,8 +5,7 @@ import {
   StyledInputSelect,
 } from "../styles/AddNew.styles";
 import React, { useState } from "react";
-
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+import { OPTION_NUMBERS } from "../../constant";
 
 const InputSelect = () => {
   const [guestNum, setGuestNum] = useState();
@@ -38,7 +37,7 @@ const InputSelect = () => {
           onChange={(e) => setGuestNum(e.target.value)}
         >
           <option selected hidden />
-          {numbers.map((number) => (
+          {OPTION_NUMBERS.map((number) => (
             <option key={number}> {number} </option>
           ))}
         </StyledInputSelect>
