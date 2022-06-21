@@ -121,7 +121,8 @@ font-style: normal;
 font-weight: 400;
 font-size: 25px;
 line-height: 30px;
-`;
+}
+`
 const DashBoardAboutUs = styled.div`
   background-color: #e5e5e5;
   display: flex;

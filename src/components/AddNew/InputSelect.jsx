@@ -9,22 +9,14 @@ import { OPTION_NUMBERS } from "../../constant";
 
 const InputSelect = () => {
   const [guestNum, setGuestNum] = useState();
-  function getTableType(guests) {
-    const tableType = {
-      1: "Small",
-      2: "Small",
-      3: "Small",
-      4: "Small",
-      5: "Medium",
-      6: "Medium",
-      7: "Medium",
-      8: "Medium",
-      9: "Large",
-      10: "Large",
-      11: "Large",
-      12: "Large",
-    };
-    return tableType[guests];
+  const getTableType = (guestNum) => {
+    if (guestNum >= 1 && guestNum <= 4) {
+      return "Small";
+    } else if (guestNum >= 5 && guestNum <= 8) {
+      return "Medium";
+    } else if (guestNum >= 9 && guestNum <= 12) {
+      return "Large";
+    }
   }
   return (
     <InputWrapper>
