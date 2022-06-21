@@ -30,7 +30,12 @@ const MainBar = () => {
         setTableType={setTableType}
         setSearchQueue={setSearchQueue}
       />
-      <MainQueues queueStatus={queueStatus} tableType={tableType} queues={queues} searchQueue={searchQueue}/>
+      <MainQueues
+        queueStatus={queueStatus}
+        tableType={tableType}
+        queues={queues}
+        searchQueue={searchQueue}
+      />
       <Footer />
     </RightMenuContainer>
   );

@@ -5,8 +5,9 @@ import Buttons from "./AddNewButton";
 import { StyledForm } from "../styles/AddNew.styles";
 // import { queues } from "../../assets/dummyData/dummyData";
 import axios from "axios";
+import { useState } from "react";
 
-const Form = () => {
+const Form = (props) => {
   const handleSumbit = (event) => {
     const data = new FormData(event.target);
     console.log(Object.fromEntries(data.entries()));
