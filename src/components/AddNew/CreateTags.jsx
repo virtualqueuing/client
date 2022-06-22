@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import Tag from "../Tag";
-
-const tagColorList = ["#86E3CE", "#D0E6A5", "#FFDD94", "#FA897B", "#CCABDB", "#B5EAD7", "#E2F0CB"];
+import { TAG_COLORLIST } from "../../constant";
 
 const Container = styled.div`
   background-color: white;
@@ -83,7 +82,7 @@ const CreateTags = () => {
         <NewTag
           key={index}
           onClick={() => deleteTag(index)}
-          style={{ backgroundColor: tagColorList[index] }}
+          style={{ backgroundColor: TAG_COLORLIST[index] }}
         >
           {tag}
         </NewTag>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const ConfirmButton = styled.button`
-  border-radius: 50px;
+const FunctionButton = styled.button`
+  border-radius: ${({ borderRadius }) => borderRadius || "50px"};
   width: ${({ width }) => width || "130px"};
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -9,7 +9,7 @@ const ConfirmButton = styled.button`
   font-size: ${({ fontSize }) => fontSize || "12px"};
   font-weight: ${({ fontWeight }) => fontWeight || "300"};
   margin: 30px 0;
-  padding: 15px 15px;
+  padding: 20px 50px;
   background-color: ${({ bg }) => bg || "#fff"};
   color: ${({ color }) => color || "#333"};
 
@@ -19,4 +19,4 @@ const ConfirmButton = styled.button`
   }
 `;
 
-export default ConfirmButton;
+export default FunctionButton;

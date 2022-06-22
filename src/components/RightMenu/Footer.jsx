@@ -1,8 +1,9 @@
-import ConfirmButton from "../ConfirmButton";
+import FunctionButton from "../FunctionButton";
 import { StyledFooter } from "../styles/Footer.styles";
 import AddNewPage from "../../pages/AddNewPage";
 import { useState, useEffect, useRef } from "react";
 import { Context } from "../../pages/Context";
+import theme from "../../theme";
 
 const Footer = () => {
   const [showAddNewForm, setShowAddNewForm] = useState(false);
@@ -30,16 +31,17 @@ const Footer = () => {
         </div>
       )}
       <StyledFooter>
-        <ConfirmButton
-          bg="rgba(230, 0, 18, 0.58)"
+        <FunctionButton
+          bg={theme.colors.page.main}
           color="#fff"
-          fontSize="18px"
+          fontSize="30px"
           fontWeight="500"
-          width="190px"
+          width="250px"
+          borderRadius="20px"
           onClick={() => setShowAddNewForm(true)}
         >
           Add Guest
-        </ConfirmButton>
+        </FunctionButton>
       </StyledFooter>
     </Context.Provider>
   );
