@@ -7,7 +7,6 @@ import {
   StatusButton,
 } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
-import AddNewPage from "../pages/AddNewPage";
 
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../pages/Context";
@@ -19,6 +18,7 @@ import guestIcon from "../assets/Icons/guest.svg";
 import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
+import EditGuestPage from "../pages/EditGuestPage";
 
 const SingleQueue = ({
   _id,
@@ -143,7 +143,7 @@ const SingleQueue = ({
       <Context.Provider value={{ setShowAddNewForm }}>
         {showAddNewForm && (
           <div ref={addNewRef}>
-            <AddNewPage
+            <EditGuestPage
               setShowAddNewForm={setShowAddNewForm}
               queueInfo={{
                 _id,

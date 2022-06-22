@@ -17,7 +17,7 @@ const InputSelect = (params) => {
     } else if (guestNum >= 9 && guestNum <= 12) {
       return "Large";
     }
-  }
+  };
   return (
     <InputWrapper>
       <CustomerInputSelectBg>

@@ -1,4 +1,4 @@
-import Form from "../components/AddNew/Form";
+import EditForm from "../components/AddNew/editForm";
 import {
   AddNewWrapper,
   LayoutWrapper,
@@ -7,11 +7,11 @@ import {
   HorizontalDivider,
 } from "../components/styles/AddNew.styles";
 
-const AddNewPage = (params) => (
+const EditGuestPage = (params) => (
   <AddNewWrapper wrapperQueueInfo={params.queueInfo}>
     <LayoutWrapper>
       <HeaderInfo>
-        <h2>Set Guest Info</h2>
+        <h2>Edit Guest Info</h2>
         <p>Fill in required info</p>
       </HeaderInfo>
       <HeaderInfo>
@@ -19,8 +19,8 @@ const AddNewPage = (params) => (
       </HeaderInfo>
     </LayoutWrapper>
     <HorizontalDivider />
-    <Form formQueueInfo={params.queueInfo} />
+    <EditForm formQueueInfo={params.queueInfo} />
   </AddNewWrapper>
 );
 
-export default AddNewPage;
+export default EditGuestPage;

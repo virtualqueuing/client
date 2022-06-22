@@ -6,13 +6,12 @@ import { StyledForm } from "../styles/AddNew.styles";
 // import { queues } from "../../assets/dummyData/dummyData";
 import axios from "axios";
 
-const Form = (params) => {
+const EditForm = (params) => {
   const handleSumbit = (event) => {
-    console.log(params.formQueueInfo._id)
-    event.preventDefault()
+    const queueId = params.formQueueInfo._id
     const data = new FormData(event.target);
     console.log(Object.fromEntries(data.entries()));
-    axios.post(`http://localhost:3000/v1/queues`, Object.fromEntries(data.entries())).then();
+    axios.put(`http://localhost:3000/v1/queues/${queueId}`, Object.fromEntries(data.entries())).then();
   };
 
   return (
@@ -25,4 +24,4 @@ const Form = (params) => {
   );
 };
 
-export default Form;
+export default EditForm;
