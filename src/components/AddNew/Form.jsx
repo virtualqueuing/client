@@ -6,10 +6,9 @@ import { StyledForm } from "../styles/AddNew.styles";
 // import { queues } from "../../assets/dummyData/dummyData";
 import axios from "axios";
 
-const Form = (props) => {
+const Form = () => {
   const handleSumbit = (event) => {
     const data = new FormData(event.target);
-    console.log(Object.fromEntries(data.entries()));
     axios.post(`http://localhost:3000/v1/queues`, Object.fromEntries(data.entries())).then();
   };
 

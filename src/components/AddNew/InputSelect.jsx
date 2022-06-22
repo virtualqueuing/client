@@ -17,7 +17,7 @@ const InputSelect = () => {
     } else if (guestNum >= 9 && guestNum <= 12) {
       return "Large";
     }
-  }
+  };
   return (
     <InputWrapper>
       <CustomerInputSelectBg>
@@ -27,6 +27,7 @@ const InputSelect = () => {
           name="guestsNumber"
           value={guestNum}
           onChange={(e) => setGuestNum(e.target.value)}
+          required
         >
           <option selected hidden />
           {OPTION_NUMBERS.map((number) => (

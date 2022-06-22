@@ -5,11 +5,11 @@ const InputText = () => {
     <InputWrapper>
       <div>
         <Label for="name">Name</Label>
-        <StyledInputText id="Name" type="text" name="name" />
+        <StyledInputText id="Name" type="text" name="name" required />
       </div>
       <div>
         <Label for="phoneNumber">Phone number</Label>
-        <StyledInputText id="phoneNumber" type="text" name="phoneNumber" />
+        <StyledInputText id="phoneNumber" type="text" name="phoneNumber" required />
       </div>
     </InputWrapper>
   );

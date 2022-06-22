@@ -101,28 +101,28 @@ const CurrentCustomer = styled.div`
   color: #666666;
 `;
 const QueueLIST = styled.div`
-margin-left: -30px;
-padding-left: 20px;
-width: 250px;
-height: 53px;
-top: 129px;
-background:#FFFFFF;
-box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.25);
-border-radius: 10px;
-color: #516D98;
-display: flex;
-justify-content: center;
-align-items: center;
-.QueueList{
-margin: 10px 40px 10px 10px;
-width: 130px;
-height: 30px;
-font-style: normal;
-font-weight: 400;
-font-size: 25px;
-line-height: 30px;
-}
-`
+  margin-left: -30px;
+  padding-left: 20px;
+  width: 250px;
+  height: 53px;
+  top: 129px;
+  background: #ffffff;
+  box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: #516d98;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .QueueList {
+    margin: 10px 40px 10px 10px;
+    width: 130px;
+    height: 30px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+  }
+`;
 const DashBoardAboutUs = styled.div`
   background-color: #e5e5e5;
   display: flex;
