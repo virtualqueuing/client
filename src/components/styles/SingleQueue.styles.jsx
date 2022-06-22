@@ -18,6 +18,7 @@ export const QueueItem = styled.div`
   align-items: center;
   margin-top: 25px;
   cursor: pointer;
+  overflow: hidden;
   ${(props) =>
     props.active
       ? css`
