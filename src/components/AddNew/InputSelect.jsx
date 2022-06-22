@@ -9,7 +9,6 @@ import React, { useState } from "react";
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const InputSelect = (params) => {
-  console.log(params.inputInfo);
   const [guestNum, setGuestNum] = useState();
   function getTableType(guests) {
     const tableType = {
