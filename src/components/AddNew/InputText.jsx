@@ -10,6 +10,7 @@ const InputText = (params) => {
           type="text"
           name="name"
           defaultValue={params?.inputInfo?.name ? params.inputInfo.name : ""}
+          required
         />
       </div>
       <div>
@@ -19,6 +20,7 @@ const InputText = (params) => {
           type="text"
           name="phoneNumber"
           defaultValue={params?.inputInfo?.phoneNumber ? params.inputInfo.phoneNumber : ""}
+          required
         />
       </div>
     </InputWrapper>

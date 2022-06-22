@@ -28,6 +28,7 @@ const InputSelect = (params) => {
           value={guestNum}
           defaultValue={params?.inputInfo?.guestsNumber ? params.inputInfo.guestsNumber : ""}
           onChange={(e) => setGuestNum(e.target.value)}
+          required
         >
           <option selected hidden />
           {OPTION_NUMBERS.map((number) => (

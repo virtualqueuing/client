@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Context } from "../../pages/Context";
+import { showNewFormContext, showRequiredInfoContext } from "../../pages/Context";
 import { useContext } from "react";
 
 const Wrapper = styled.div`
@@ -37,11 +37,22 @@ const Cancel = styled.span`
 `;
 
 const Buttons = () => {
-  const { setShowAddNewForm } = useContext(Context);
+  const { setShowAddNewForm } = useContext(showNewFormContext);
+  const { setShowRequiredInfo } = useContext(showRequiredInfoContext);
+
+  const handleSubmit = () => {
+    return setShowRequiredInfo(true);
+  };
+
   return (
     <Wrapper>
       <Cancel onClick={() => setShowAddNewForm(false)}>Cancel</Cancel>
-      <Submit type="submit" name="submitInfo" value="Submit" />
+      <Submit
+        type="submit"
+        name="submitInfo"
+        value="Submit"
+        onClick={(event) => handleSubmit(event.target.value)}
+      />
     </Wrapper>
   );
 };
