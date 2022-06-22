@@ -2,7 +2,7 @@ import FunctionButton from "../FunctionButton";
 import { StyledFooter } from "../styles/Footer.styles";
 import AddNewPage from "../../pages/AddNewPage";
 import { useState, useEffect, useRef } from "react";
-import { Context } from "../../pages/Context";
+import { showNewFormContext } from "../../pages/Context";
 import theme from "../../theme";
 
 const Footer = () => {
@@ -24,7 +24,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <Context.Provider value={{ setShowAddNewForm }}>
+    <showNewFormContext.Provider value={{ setShowAddNewForm }}>
       {showAddNewForm && (
         <div ref={addNewRef}>
           <AddNewPage setShowAddNewForm={setShowAddNewForm} />
@@ -43,7 +43,7 @@ const Footer = () => {
           Add Guest
         </FunctionButton>
       </StyledFooter>
-    </Context.Provider>
+    </showNewFormContext.Provider>
   );
 };
 

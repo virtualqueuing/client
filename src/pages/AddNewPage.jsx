@@ -1,6 +1,6 @@
 import Form from "../components/AddNew/Form";
 import { useState } from "react";
-import { showContext } from "./Context";
+import { showRequiredInfoContext } from "./Context";
 import {
   AddNewWrapper,
   LayoutWrapper,
@@ -9,12 +9,12 @@ import {
   HorizontalDivider,
 } from "../components/styles/AddNew.styles";
 
-const AddNewPage = () => {
+const AddNewPage = (params) => {
   const [showRequiredInfo, setShowRequiredInfo] = useState(false);
 
   return (
-    <showContext.Provider value={{ setShowRequiredInfo }}>
-      <AddNewWrapper>
+    <showRequiredInfoContext.Provider value={{ setShowRequiredInfo }}>
+      <AddNewWrapper wrapperQueueInfo={params.queueInfo}>
         <LayoutWrapper>
           <HeaderInfo>
             <h2>Set Customs Info</h2>
@@ -27,9 +27,9 @@ const AddNewPage = () => {
           </HeaderInfo>
         </LayoutWrapper>
         <HorizontalDivider />
-        <Form />
+        <Form formQueueInfo={params.queueInfo} />
       </AddNewWrapper>
-    </showContext.Provider>
+    </showRequiredInfoContext.Provider>
   );
 };
 
