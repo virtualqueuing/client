@@ -7,18 +7,18 @@ import {
   StatusButton,
 } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
-import React, { useContext, useState } from "react";
+
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
-// import arrivalInactiveIcon from "../assets/Icons/Button_Arrival-inactive.svg";
 import arrivalActiveIcon from "../assets/Icons/Button_Arrival.svg";
-// import absentInactiveIcon from "../assets/Icons/Button_Absent-inactive.svg";
 import absentActiveIcon from "../assets/Icons/Button_Absent.svg";
 import guestIcon from "../assets/Icons/guest.svg";
 import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
+import EditGuestPage from "../pages/EditGuestPage";
 
 const SingleQueue = ({
   _id,
@@ -40,6 +40,23 @@ const SingleQueue = ({
     setSelectedQueue({ _id, name, phoneNumber, queueNumber, status, notes, createdAt });
     setActiveQueueId(_id);
   };
+
+  const [showAddNewForm, setShowAddNewForm] = useState(false);
+
+  const addNewRef = useRef(); // close add-new page ouside the popup region
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (!addNewRef?.current?.contains(event.target)) {
+        setShowAddNewForm(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, []);
 
   const queueComplete = async () => {
     if (isSending) return;
@@ -112,11 +129,36 @@ const SingleQueue = ({
             <img src={messageIcon} alt="sending message icon" />
           </Tooltip>
           <Tooltip text="Update">
-            <img src={editIcon} alt="sending message icon" />
+            <img
+              src={editIcon}
+              alt="sending message icon"
+              onClick={(e) => {
+                setShowAddNewForm(true);
+              }}
+            />
           </Tooltip>
         </TooltipContainer>
       </QueueItem>
       <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
+      <Context.Provider value={{ setShowAddNewForm }}>
+        {showAddNewForm && (
+          <div ref={addNewRef}>
+            <EditGuestPage
+              setShowAddNewForm={setShowAddNewForm}
+              queueInfo={{
+                _id,
+                name,
+                phoneNumber,
+                queueNumber,
+                guestsNumber,
+                tableSize,
+                status,
+                notes,
+              }}
+            />
+          </div>
+        )}
+      </Context.Provider>
     </>
   );
 };

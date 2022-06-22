@@ -3,9 +3,8 @@ import Tag from "../Tag";
 import CreateTags from "./CreateTags";
 // import { useState } from "react";
 
-const InputTextarea = () => {
+const InputTextarea = (params) => {
   // click Tag to create new tag in CreateTags
-
   return (
     <>
       <SuggestedTagsWrapper>

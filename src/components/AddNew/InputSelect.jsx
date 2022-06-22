@@ -7,7 +7,7 @@ import {
 import React, { useState } from "react";
 import { OPTION_NUMBERS } from "../../constant";
 
-const InputSelect = () => {
+const InputSelect = (params) => {
   const [guestNum, setGuestNum] = useState();
   const getTableType = (guestNum) => {
     if (guestNum >= 1 && guestNum <= 4) {
@@ -17,7 +17,7 @@ const InputSelect = () => {
     } else if (guestNum >= 9 && guestNum <= 12) {
       return "Large";
     }
-  }
+  };
   return (
     <InputWrapper>
       <CustomerInputSelectBg>
@@ -26,6 +26,7 @@ const InputSelect = () => {
           id="people"
           name="guestsNumber"
           value={guestNum}
+          defaultValue={params?.inputInfo?.guestsNumber ? params.inputInfo.guestsNumber : ""}
           onChange={(e) => setGuestNum(e.target.value)}
         >
           <option selected hidden />
@@ -37,8 +38,12 @@ const InputSelect = () => {
       <div>
         <Label for="Table">Table</Label>
         <StyledInputSelect id="Table" name="tableSize">
-          <option value={getTableType(guestNum)} selected hidden>
-            {getTableType(guestNum)}
+          <option selected hidden>
+            {getTableType(guestNum)
+              ? getTableType(guestNum)
+              : params?.inputInfo?.tableSize
+              ? params.inputInfo.tableSize
+              : ""}
           </option>
         </StyledInputSelect>
       </div>

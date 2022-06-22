@@ -1,14 +1,15 @@
+// eslint-disable-next-line no-unused-vars
 import _ from "lodash";
 import SingleQueue from "../SingleQueue";
 import { QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
   MainQueues.propTypes = {
     queues: PropTypes.array.isRequired,
-    tableType: PropTypes.string.isRequired
-  }
+    tableType: PropTypes.string.isRequired,
+  };
   let showList = [];
   if (queueStatus === "All") {
     showList = queues;
