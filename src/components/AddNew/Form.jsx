@@ -8,8 +8,6 @@ import axios from "axios";
 
 const Form = (params) => {
   const handleSumbit = (event) => {
-    console.log(params.formQueueInfo._id)
-    event.preventDefault()
     const data = new FormData(event.target);
     console.log(Object.fromEntries(data.entries()));
     axios.post(`http://localhost:3000/v1/queues`, Object.fromEntries(data.entries())).then();
