@@ -49,7 +49,7 @@ const InputSelect = (params) => {
         <Label for="Table">Table</Label>
         <StyledInputSelect id="Table" name="tableSize">
           <option selected hidden>
-            {getTableType(guestNum) || params.inputInfo.tableSize}
+            {getTableType(guestNum)? getTableType(guestNum):params?.inputInfo?.tableSize?params.inputInfo.tableSize : ""}
           </option>
         </StyledInputSelect>
       </div>
