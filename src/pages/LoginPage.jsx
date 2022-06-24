@@ -8,7 +8,7 @@ import passwordShowActive from "../assets/Icons/Button_Password-showActive.svg";
 
 export const LoginContainer = styled.div`
   width: 370px;
-  height: 400px;
+  height: 390px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -29,12 +29,12 @@ export const LoginInfo = styled.div`
   text-align: center;
   & h2 {
     font-size: 20px;
-    margin: 35px 0 0 0;
+    margin: 30px 0 0 0;
   }
   & p {
     font-size: 15px;
     color: ${({ theme }) => theme.colors.fonts["secondary"]};
-    margin: 15px 0;
+    margin: 10px 0;
   }
 `;
 
@@ -47,11 +47,11 @@ export const LoginInput = styled.input`
   border: ${({ theme }) => theme.colors.fonts["inactiveRoute"]} solid 1px;
   ::placeholder {
     color: ${({ theme }) => theme.colors.fonts["inactiveRoute"]};
-    font-size: ${({ theme }) => theme.fontSizes["xxs"]};
+    font-size: ${({ theme }) => theme.fontSizes["sd"]};
   }
 `;
 
-export const InputPassword = styled.div`
+export const InputWrapper = styled.div`
   display: flex;
   position: relative;
 `;
@@ -116,7 +116,7 @@ export const LoginButton = styled.div`
 export const Logo = styled.div`
   width: 120px;
   height: 60px;
-  margin: 4% 0;
+  margin: 3% 0;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -140,14 +140,14 @@ const LoginPage = () => {
           </p>
         </LoginInfo>
         <LoginInput type="text" placeholder="Enter Email / Phone No" />
-        <InputPassword>
+        <InputWrapper>
           <LoginInput type={passwordShown ? "text" : "password"} placeholder="Enter Password" />
           {passwordShown ? (
             <HidePassword onClick={togglePassword} />
           ) : (
             <ShowPassword onClick={togglePassword} />
           )}
-        </InputPassword>
+        </InputWrapper>
         <SetAccount>
           <h6>Having trouble in sign in?</h6>
           <h6>

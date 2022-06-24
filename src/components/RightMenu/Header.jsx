@@ -71,7 +71,6 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearc
                   ))}
                 </TableFilter>
               }
-              Table Size
             </li>
             <li>Status</li>
           </QueueLeftTitle>
