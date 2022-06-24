@@ -6,10 +6,16 @@ export const showRequiredInfoContext = React.createContext();
 const defaultActiveQueue = {};
 
 export const activeQueueContext = createContext(defaultActiveQueue);
-export const setActiveQueueContext = createContext(undefined)
+export const setActiveQueueContext = createContext(undefined);
 
 export const ActiveQueueProvider = (props) => {
   const [state, setState] = useState(defaultActiveQueue);
 
-  return <activeQueueContext.Provider value={state}><setActiveQueueContext.Provider value={setState}>{props.children}</setActiveQueueContext.Provider></activeQueueContext.Provider>;
+  return (
+    <activeQueueContext.Provider value={state}>
+      <setActiveQueueContext.Provider value={setState}>
+        {props.children}
+      </setActiveQueueContext.Provider>
+    </activeQueueContext.Provider>
+  );
 };

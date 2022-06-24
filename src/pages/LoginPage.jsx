@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useState } from "react";
 import logo from "../assets/Logo-v5.svg";
 import passwordHide from "../assets/Icons/Button_Password-hide.svg";
@@ -47,11 +47,11 @@ export const LoginInput = styled.input`
   border: ${({ theme }) => theme.colors.fonts["inactiveRoute"]} solid 1px;
   ::placeholder {
     color: ${({ theme }) => theme.colors.fonts["inactiveRoute"]};
-    font-size: ${({ theme }) => theme.fontSizes["xxs"]};
+    font-size: ${({ theme }) => theme.fontSizes["sd"]};
   }
 `;
 
-export const InputPassword = styled.div`
+export const InputWrapper = styled.div`
   display: flex;
   position: relative;
 `;
@@ -140,14 +140,14 @@ const LoginPage = () => {
           </p>
         </LoginInfo>
         <LoginInput type="text" placeholder="Enter Email / Phone No" />
-        <InputPassword>
+        <InputWrapper>
           <LoginInput type={passwordShown ? "text" : "password"} placeholder="Enter Password" />
           {passwordShown ? (
             <HidePassword onClick={togglePassword} />
           ) : (
             <ShowPassword onClick={togglePassword} />
           )}
-        </InputPassword>
+        </InputWrapper>
         <SetAccount>
           <h6>Having trouble in sign in?</h6>
           <h6>
