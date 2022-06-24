@@ -18,7 +18,6 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
   } else if (queueStatus === "Absent") {
     showList = queues.filter((queue) => queue.status === "Absent");
   }
-  console.log(showList);
 
   if (_.isEmpty(showList)) {
     showList =
