@@ -8,7 +8,7 @@ import passwordShowActive from "../assets/Icons/Button_Password-showActive.svg";
 
 export const LoginContainer = styled.div`
   width: 370px;
-  height: 400px;
+  height: 390px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -29,12 +29,12 @@ export const LoginInfo = styled.div`
   text-align: center;
   & h2 {
     font-size: 20px;
-    margin: 35px 0 0 0;
+    margin: 30px 0 0 0;
   }
   & p {
     font-size: 15px;
     color: ${({ theme }) => theme.colors.fonts["secondary"]};
-    margin: 15px 0;
+    margin: 10px 0;
   }
 `;
 
@@ -116,7 +116,7 @@ export const LoginButton = styled.div`
 export const Logo = styled.div`
   width: 120px;
   height: 60px;
-  margin: 4% 0;
+  margin: 3% 0;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

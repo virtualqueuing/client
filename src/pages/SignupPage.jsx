@@ -15,7 +15,7 @@ import { Branches, Roles } from "../constant";
 import ArrowDownIcon from "../assets/Icons/down-arrow-svgrepo-com.svg";
 
 const SignupContainer = styled(LoginContainer)`
-  height: 560px;
+  height: 590px;
 `;
 
 const SignupButton = styled(LoginButton)`
@@ -69,6 +69,7 @@ const SignupPage = () => {
           </p>
         </LoginInfo>
         <LoginInput type="text" placeholder="Enter Email" />
+        <LoginInput type="text" placeholder="Enter Username" />
         <InputWrapper>
           <InputOption>
             <option value="role" disabled>
@@ -100,7 +101,7 @@ const SignupPage = () => {
           )}
         </InputWrapper>
         <InputWrapper>
-          <LoginInput type={passwordShown ? "text" : "password"} placeholder="Enter Password" />
+          <LoginInput type={passwordShown ? "text" : "password"} placeholder="Comfire Password" />
           {passwordShown ? (
             <HidePassword onClick={togglePassword} />
           ) : (
