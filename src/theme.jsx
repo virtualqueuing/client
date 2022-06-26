@@ -28,7 +28,7 @@ const colors = {
       borderColor: "#E60012",
     },
     tags: {
-      birthdayTag: "#FFF2AF",
+      birthdayTag: "rgba(255, 242, 175, 0.5)",
       wheelchairTag: "#AFE2FF",
       highchairTag: "#E1FFAF",
       tagColorList: ["#86E3CE", "#D0E6A5", "#FFDD94", "#FA897B", "#CCABDB", "#B5EAD7", "#E2F0CB"],
@@ -39,6 +39,10 @@ const colors = {
     },
     queueContainer: {
       background: "#F7F7F7",
+    },
+    leftSideMenu: {
+      background: "#e5e5e5",
+      fontColor: "#606060",
     },
   },
   page: {

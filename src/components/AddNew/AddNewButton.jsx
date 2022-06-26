@@ -38,7 +38,6 @@ const Cancel = styled.span`
 
 const Buttons = () => {
   const { setShowAddNewForm } = useContext(showNewFormContext);
-
   return (
     <Wrapper>
       <Cancel onClick={() => setShowAddNewForm(false)}>Cancel</Cancel>

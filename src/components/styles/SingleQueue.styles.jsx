@@ -43,7 +43,8 @@ export const QueueData = styled.div`
 export const TooltipContainer = styled.div`
   width: 12%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 43%;
   align-items: center;
   padding: 1vh 0.8vw;
   margin-right: 3%;

@@ -19,6 +19,7 @@ import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
 import EditGuestPage from "../pages/EditGuestPage";
+import { API_URI } from "../constant.jsx";
 
 const SingleQueue = ({
   _id,
@@ -61,10 +62,8 @@ const SingleQueue = ({
   const queueComplete = async () => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(`http://localhost:3000/v1/queues/${_id}/Completed`, {});
-    const { data } = await axios.get(`http://localhost:3000/v1/queues/${_id}`);
-    console.log(data);
-    setSelectedQueue({ data });
+    const { data } = await axios.put(`${API_URI}/v1/queues/${_id}/Completed`, {});
+    setSelectedQueue(data);
     setIsSending(false);
   };
 
