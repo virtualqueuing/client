@@ -40,10 +40,6 @@ const Buttons = () => {
   const { setShowAddNewForm } = useContext(showNewFormContext);
   const { setShowRequiredInfo } = useContext(showRequiredInfoContext);
 
-  const handleSubmit = () => {
-    return setShowRequiredInfo(true);
-  };
-
   return (
     <Wrapper>
       <Cancel onClick={() => setShowAddNewForm(false)}>Cancel</Cancel>
@@ -51,7 +47,7 @@ const Buttons = () => {
         type="submit"
         name="submitInfo"
         value="Submit"
-        onClick={(event) => handleSubmit(event.target.value)}
+        onClick={() => setShowRequiredInfo(true)}
       />
     </Wrapper>
   );

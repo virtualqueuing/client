@@ -4,20 +4,54 @@ import {
   LoginContainer,
   LoginInfo,
   LoginInput,
-  InputPassword,
+  InputWrapper,
   HidePassword,
   ShowPassword,
   SetAccount,
   LoginButton,
   Logo,
 } from "./LoginPage";
+import { Branches, Roles } from "../constant";
+import ArrowDownIcon from "../assets/Icons/down-arrow-svgrepo-com.svg";
 
 const SignupContainer = styled(LoginContainer)`
-  height: 440px;
+  height: 590px;
 `;
 
 const SignupButton = styled(LoginButton)`
   margin: 3% 10% 0 10%;
+`;
+
+const InputOption = styled.select`
+  width: 80%;
+  margin: 5% 10% 0 10%;
+  height: 35px;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: ${({ theme }) => theme.colors.fonts["inactiveRoute"]} solid 1px;
+  font-size: ${({ theme }) => theme.fontSizes["sd"]};
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  :hover {
+    cursor: pointer;
+  }
+  :focus {
+    outline: none;
+  }
+`;
+
+const CustomedInputOptionBG = styled.div`
+  background-image: url(${ArrowDownIcon});
+  color: ${({ theme }) => theme.colors.fonts["inactiveRoute"]};
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: 16%;
+  top: 53%;
+  z-index: 10;
+  pointer-events: none;
 `;
 
 const SignupPage = () => {
@@ -34,23 +68,46 @@ const SignupPage = () => {
             Hey, Enter your details to <br /> sign up an new account
           </p>
         </LoginInfo>
-        <LoginInput type="text" placeholder="Enter Email / Phone No" />
-        <InputPassword>
+        <LoginInput type="text" placeholder="Enter Email" />
+        <LoginInput type="text" placeholder="Enter Username" />
+        <InputWrapper>
+          <InputOption>
+            <option value="role" disabled>
+              Select a Role
+            </option>
+            {Roles.map((role) => (
+              <option key={role}>{role}</option>
+            ))}
+          </InputOption>
+          <CustomedInputOptionBG />
+        </InputWrapper>
+        <InputWrapper>
+          <InputOption>
+            <option value="branch" disabled>
+              Select a Branch
+            </option>
+            {Branches.map((branch) => (
+              <option key={branch}>{branch}</option>
+            ))}
+          </InputOption>
+          <CustomedInputOptionBG />
+        </InputWrapper>
+        <InputWrapper>
           <LoginInput type={passwordShown ? "text" : "password"} placeholder="Enter Password" />
           {passwordShown ? (
             <HidePassword onClick={togglePassword} />
           ) : (
             <ShowPassword onClick={togglePassword} />
           )}
-        </InputPassword>
-        <InputPassword>
-          <LoginInput type={passwordShown ? "text" : "password"} placeholder="Enter Password" />
+        </InputWrapper>
+        <InputWrapper>
+          <LoginInput type={passwordShown ? "text" : "password"} placeholder="Comfire Password" />
           {passwordShown ? (
             <HidePassword onClick={togglePassword} />
           ) : (
             <ShowPassword onClick={togglePassword} />
           )}
-        </InputPassword>
+        </InputWrapper>
         <SetAccount>
           <h6>
             <a href="/login">Already have an account?</a>
