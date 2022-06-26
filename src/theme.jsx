@@ -42,7 +42,7 @@ const colors = {
     },
     leftSideMenu: {
       background: "#e5e5e5",
-      fontColor: "#606060"
+      fontColor: "#606060",
     },
   },
   page: {

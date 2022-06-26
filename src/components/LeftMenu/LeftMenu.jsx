@@ -30,7 +30,7 @@ const UserPanel = styled.div`
   width: 90%;
   height: 50px;
   gap: 8%;
-  
+
   /* align-items: center; */
   /* margin: 20px auto; */
   /* .UserName {
@@ -50,29 +50,29 @@ const UserAvatar = styled.img`
   width: 52px;
   height: 52px;
   border-radius: 20px;
-`
+`;
 
 const UserDetails = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   height: 45px;
-`
+`;
 const UserName = styled.h5`
   padding: 0;
   margin: 0;
   font-size: 15px;
   color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
-`
+`;
 
 const UserLocation = styled.span`
   color: ${({ theme }) => theme.colors.fonts.secondary};
-`
+`;
 
 const LeftSideBarOptionContainer = styled.div`
   width: 100%;
   height: 180px;
-`
+`;
 
 const LeftSideBarOption = styled.div`
   width: 303px;
@@ -81,17 +81,17 @@ const LeftSideBarOption = styled.div`
   align-items: center;
   gap: 3%;
   cursor: pointer;
-`
+`;
 
-const  LeftSideBarOptionIcon = styled.img`
+const LeftSideBarOptionIcon = styled.img`
   width: 30px;
   height: 30px;
-`
+`;
 
 const LeftSideBarOptionDescription = styled.span`
   font-size: 25px;
   color: ${({ theme }) => theme.colors.fonts.activeRoute};
-`
+`;
 
 const CurrentQueueDetailsContainer = styled.div`
   display: flex;
@@ -99,17 +99,17 @@ const CurrentQueueDetailsContainer = styled.div`
   justify-content: space-between;
   width: 90%;
   height: 150px;
-`
+`;
 const CurrentQueueDetailTitle = styled.span`
   font-size: 20px;
   color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
-`
+`;
 const CurrentQueueNumberAndName = styled.div`
   width: 100%;
   height: 120px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-`
+`;
 
 const SingleQueueNotesContainer = styled.div`
   width: 100%;
@@ -117,7 +117,7 @@ const SingleQueueNotesContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`
+`;
 
 const SingleQueueNotes = styled.div`
   width: 60%;
@@ -125,21 +125,20 @@ const SingleQueueNotes = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background:${({ theme }) => theme.colors.components.tags.birthdayTag};
+  background: ${({ theme }) => theme.colors.components.tags.birthdayTag};
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-`
+`;
 
 const SingleQueueIcon = styled.img`
   width: 30px;
   height: 30px;
-`
+`;
 
 const SingleQueueDescription = styled.span`
   font-size: 25px;
   color: ${({ theme }) => theme.colors.fonts.secondary};
-`
-
+`;
 
 // const RoutePanel = styled.div`
 //   display: flex;
@@ -289,52 +288,42 @@ const SingleQueueDescription = styled.span`
 // `;
 
 const LeftMenu = () => {
-  const menuOption = ["Queue List", "Dashboard"]
+  // const menuOption = ["Queue List", "Dashboard"];
   return (
-  <Background>
-    <UserPanel>
-      <UserAvatar src={UserLine} />
-      <UserDetails> 
-        <UserName>
-          Roy
-        </UserName>
-        <UserLocation>
-          Sunnybank
-        </UserLocation>
-      </UserDetails>
-    </UserPanel>
-    <LeftSideBarOptionContainer>
-      <LeftSideBarOption>
-        <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon"/>
-        <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
-      </LeftSideBarOption>
-      <LeftSideBarOption>
-        <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon"/>
-        <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
-      </LeftSideBarOption>
-    </LeftSideBarOptionContainer>
-    <CurrentQueueDetailsContainer>
-      <CurrentQueueDetailTitle>
-        Current Queue:
-      </CurrentQueueDetailTitle>
-      <CurrentQueueNumberAndName>
-
-      </CurrentQueueNumberAndName>
-    </CurrentQueueDetailsContainer>
-    <SingleQueueNotesContainer>
-      <CurrentQueueDetailTitle>
-        Notes:
-      </CurrentQueueDetailTitle>
-      <SingleQueueNotes>
-        <SingleQueueIcon src={BirthdayIcon} alt="Birthday Notes Icon" />
-        <SingleQueueDescription>Birthday</SingleQueueDescription>
-      </SingleQueueNotes>
-      <SingleQueueNotes>
-        <SingleQueueIcon src={WheelchairIcon} alt="Wheelchair Notes Icon" />
-        <SingleQueueDescription>Wheelchair</SingleQueueDescription>
-      </SingleQueueNotes>
-    </SingleQueueNotesContainer>
-    {/* <UserPanel>
+    <Background>
+      <UserPanel>
+        <UserAvatar src={UserLine} />
+        <UserDetails>
+          <UserName>Roy</UserName>
+          <UserLocation>Sunnybank</UserLocation>
+        </UserDetails>
+      </UserPanel>
+      <LeftSideBarOptionContainer>
+        <LeftSideBarOption>
+          <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
+          <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
+        </LeftSideBarOption>
+        <LeftSideBarOption>
+          <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
+          <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
+        </LeftSideBarOption>
+      </LeftSideBarOptionContainer>
+      <CurrentQueueDetailsContainer>
+        <CurrentQueueDetailTitle>Current Queue:</CurrentQueueDetailTitle>
+        <CurrentQueueNumberAndName></CurrentQueueNumberAndName>
+      </CurrentQueueDetailsContainer>
+      <SingleQueueNotesContainer>
+        <CurrentQueueDetailTitle>Notes:</CurrentQueueDetailTitle>
+        <SingleQueueNotes>
+          <SingleQueueIcon src={BirthdayIcon} alt="Birthday Notes Icon" />
+          <SingleQueueDescription>Birthday</SingleQueueDescription>
+        </SingleQueueNotes>
+        <SingleQueueNotes>
+          <SingleQueueIcon src={WheelchairIcon} alt="Wheelchair Notes Icon" />
+          <SingleQueueDescription>Wheelchair</SingleQueueDescription>
+        </SingleQueueNotes>
+      </SingleQueueNotesContainer>
+      {/* <UserPanel>
       <img src={UserLine} className="UserLine" alt="UserLine" />
       <User className="User">
         <UserName className="UserName">Roy</UserName>
@@ -368,8 +357,8 @@ const LeftMenu = () => {
         </CustomerName>
       </CurrentCustomer>
     </CurrentQueue> */}
-  </Background>
-  )
+    </Background>
+  );
 };
 
 export default LeftMenu;
