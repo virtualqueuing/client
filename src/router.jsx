@@ -1,4 +1,5 @@
 import React from "react";
+import MainHomepage from "./pages/MainHomePage";
 
 const HomePage = React.lazy(() => import("./pages/Homepage"));
 const ErrorPage = React.lazy(() => import("./pages/Errorpage"));
@@ -28,6 +29,10 @@ const routes = [
     path: "/signup",
     element: <SignupPage />,
   },
+  {
+    path: "/home",
+    element: <MainHomepage />,
+  }
 ];
 
 export default routes;
