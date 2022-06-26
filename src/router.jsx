@@ -32,7 +32,7 @@ const routes = [
   {
     path: "/home",
     element: <MainHomepage />,
-  }
+  },
 ];
 
 export default routes;

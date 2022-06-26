@@ -7,36 +7,35 @@ import Aboutus from "../components/MainHomepage/AboutUs";
 import Navigation from "../components/MainHomepage/Navigation";
 
 const HomePageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #F7F7F7;
-    scroll-behavior: smooth;
-`
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f7f7f7;
+  scroll-behavior: smooth;
+`;
 
 const MainHomepage = () => {
-    const ref = useRef(null);
-    // const scrollToSection = () => {
-    //     ref.current?.scrollIntoView({ behavior: 'smooth' });
-    // };
+  const ref = useRef(null);
+  // const scrollToSection = () => {
+  //     ref.current?.scrollIntoView({ behavior: 'smooth' });
+  // };
 
-    const scrollToSection = () => {
-        window.scrollTo({
-            top: ref.current.offsetTop,
-            behavior: "smooth"
-        });
-    };
+  const scrollToSection = () => {
+    window.scrollTo({
+      top: ref.current.offsetTop,
+      behavior: "smooth",
+    });
+  };
 
-    return (
-        <HomePageContainer>
-            <Navigation scrollToSection={scrollToSection} />
-            <HomeIntroduction />
-            <Advantanges />
-            <Aboutus ref={ref}/>
-            <Footer/>
-        </HomePageContainer>
-    );
+  return (
+    <HomePageContainer>
+      <Navigation scrollToSection={scrollToSection} />
+      <HomeIntroduction />
+      <Advantanges />
+      <Aboutus ref={ref} />
+      <Footer />
+    </HomePageContainer>
+  );
 };
 
 export default MainHomepage;
