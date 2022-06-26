@@ -12,7 +12,7 @@ export const QUEUE_FILTER = ["All", "Queuing", "Absent"];
 export const TABLE_SIZE = ["Small", "Medium", "Large"];
 export const Roles = ["Maneger", "Staff"];
 export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];
-// export const API_URI =
-// process.env.NODE_ENV !== "production"
-//   ? "http://localhost:3000"
-//   : "http://p3-back-lb-1729390372.ap-southeast-2.elb.amazonaws.com";
+export const API_URI =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:3000"
+    : "http://p3-back-lb-1729390372.ap-southeast-2.elb.amazonaws.com";
