@@ -13,6 +13,9 @@ import {
 } from "./LoginPage";
 import { Branches, Roles } from "../constant";
 import ArrowDownIcon from "../assets/Icons/down-arrow-svgrepo-com.svg";
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
+import { API_URI } from "../constant";
 
 const SignupContainer = styled(LoginContainer)`
   height: 590px;
@@ -55,10 +58,32 @@ const CustomedInputOptionBG = styled.div`
 `;
 
 const SignupPage = () => {
+  const [email, setEmail] = useState();
+  const [userName, setUserName] = useState();
+  const [role, setRole] = useState();
+  const [branch, setBranch] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setconfirmPassword] = useState();
+
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
+  const nav = useNavigate();
+
+  const handleSubmit = () => {
+    axios.post(`${API_URI}/v1/auth/register`, {
+        email,
+        userName,
+        role,
+        branch,
+        password,
+        confirmPassword,
+      })
+      .then(() => nav('/'))    
+  };
+
   return (
     <>
       <SignupContainer>
@@ -68,54 +93,82 @@ const SignupPage = () => {
             Hey, Enter your details to <br /> sign up an new account
           </p>
         </LoginInfo>
-        <LoginInput type="text" placeholder="Enter Email" />
-        <LoginInput type="text" placeholder="Enter Username" />
-        <InputWrapper>
-          <InputOption>
-            <option value="role" disabled>
-              Select a Role
-            </option>
-            {Roles.map((role) => (
-              <option key={role}>{role}</option>
-            ))}
-          </InputOption>
-          <CustomedInputOptionBG />
-        </InputWrapper>
-        <InputWrapper>
-          <InputOption>
-            <option value="branch" disabled>
-              Select a Branch
-            </option>
-            {Branches.map((branch) => (
-              <option key={branch}>{branch}</option>
-            ))}
-          </InputOption>
-          <CustomedInputOptionBG />
-        </InputWrapper>
-        <InputWrapper>
-          <LoginInput type={passwordShown ? "text" : "password"} placeholder="Enter Password" />
-          {passwordShown ? (
-            <HidePassword onClick={togglePassword} />
-          ) : (
-            <ShowPassword onClick={togglePassword} />
-          )}
-        </InputWrapper>
-        <InputWrapper>
-          <LoginInput type={passwordShown ? "text" : "password"} placeholder="Comfire Password" />
-          {passwordShown ? (
-            <HidePassword onClick={togglePassword} />
-          ) : (
-            <ShowPassword onClick={togglePassword} />
-          )}
-        </InputWrapper>
-        <SetAccount>
-          <h6>
-            <a href="/login">Already have an account?</a>
-          </h6>
-        </SetAccount>
-        <SignupButton>
-          <p>Sign up</p>
-        </SignupButton>
+        <form onSubmit={handleSubmit}>
+          <LoginInput
+            type="text"
+            placeholder="Enter Email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <LoginInput
+            type="text"
+            placeholder="Enter Username"
+            value={userName}
+            onChange={(event) => setUserName(event.target.value)}
+          />
+          <InputWrapper>
+            <InputOption 
+            value={role} 
+            onChange={(event) => setRole(event.target.value)}
+            >
+              <option value="role" >
+                Select a Role
+              </option>
+              {Roles.map((role) => (
+                <option key={role} value={Roles.value}>{role}</option>
+              ))}
+            </InputOption>
+            <CustomedInputOptionBG />
+          </InputWrapper>
+          <InputWrapper>
+            <InputOption 
+            value={branch} 
+            onChange={(event) => setBranch(event.target.value)}
+            >
+              <option value="branch" >
+                Select a Branch
+              </option>
+              {Branches.map((branch) => (
+                <option key={branch} value={Branches.value}>{branch}</option>
+              ))}
+            </InputOption>
+            <CustomedInputOptionBG />
+          </InputWrapper>
+          <InputWrapper>
+            <LoginInput
+              type={passwordShown ? "text" : "password"}
+              placeholder="Enter Password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            {passwordShown ? (
+              <HidePassword onClick={togglePassword} />
+            ) : (
+              <ShowPassword onClick={togglePassword} />
+            )}
+          </InputWrapper>
+          <InputWrapper>
+            <LoginInput
+              type={passwordShown ? "text" : "password"}
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(event) => setconfirmPassword(event.target.value)}
+            />
+            {passwordShown ? (
+              <HidePassword onClick={togglePassword} />
+            ) : (
+              <ShowPassword onClick={togglePassword} />
+            )}
+          </InputWrapper>
+          <SetAccount>
+            <h6>
+              <a href="/login">Already have an account?</a>
+            </h6>
+          </SetAccount>
+          <SignupButton type="submit">
+            <p>Sign up</p>
+          </SignupButton>
+        </form>
         <Logo />
       </SignupContainer>
     </>

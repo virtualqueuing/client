@@ -5,6 +5,8 @@ import passwordHide from "../assets/Icons/Button_Password-hide.svg";
 import passwordHideActive from "../assets/Icons/Button_ShowPassword.svg";
 import passwordShow from "../assets/Icons/Button_Password-show.svg";
 import passwordShowActive from "../assets/Icons/Button_Password-showActive.svg";
+import axios from "axios";
+import { API_URI } from "../constant";
 
 export const LoginContainer = styled.div`
   width: 370px;
@@ -93,7 +95,7 @@ export const SetAccount = styled.div`
   }
 `;
 
-export const LoginButton = styled.div`
+export const LoginButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,8 +132,20 @@ const LoginPage = () => {
     setPasswordShown(!passwordShown);
   };
 
+  const [ email, setEmail ] = useState()
+  const [ password, setPassword ] = useState()
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    axios.post(`${API_URI}/v1/auth/login`, {
+      email,
+      password,
+    })
+    .then()
+  }
+
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <LoginContainer>
         <LoginInfo>
           <h2>Agent Login</h2>
@@ -139,9 +153,18 @@ const LoginPage = () => {
             Hey, Enter your details to get <br /> sign in to your account
           </p>
         </LoginInfo>
-        <LoginInput type="text" placeholder="Enter Email / Phone No" />
+        <LoginInput 
+          type="text" 
+          placeholder="Enter Email" 
+          value={email}
+          onChange={ (event) => {setEmail(event.target.value)}}/>
         <InputWrapper>
-          <LoginInput type={passwordShown ? "text" : "password"} placeholder="Enter Password" />
+          <LoginInput 
+            type={passwordShown ? "text" : "password"} 
+            placeholder="Enter Password" 
+            value={password}
+            onChange={ (event) => {setPassword(event.target.value)}}
+            />
           {passwordShown ? (
             <HidePassword onClick={togglePassword} />
           ) : (
@@ -159,7 +182,7 @@ const LoginPage = () => {
         </LoginButton>
         <Logo />
       </LoginContainer>
-    </>
+    </form>
   );
 };
 
