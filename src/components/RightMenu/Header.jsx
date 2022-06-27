@@ -47,7 +47,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearc
           <form>
             <SearchBar
               type="search"
-              placeholder="Search"
+              placeholder="Please Enter Name or Phone No."
               onChange={(e) => {
                 setSearchQueue(e.target.value);
               }}
