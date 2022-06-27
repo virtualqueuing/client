@@ -13,7 +13,7 @@ import {
 } from "./LoginPage";
 import { Branches, Roles } from "../constant";
 import ArrowDownIcon from "../assets/Icons/down-arrow-svgrepo-com.svg";
-import axios from "axios"
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_URI } from "../constant";
 
@@ -73,7 +73,8 @@ const SignupPage = () => {
   const nav = useNavigate();
 
   const handleSubmit = () => {
-    axios.post(`${API_URI}/v1/auth/register`, {
+    axios
+      .post(`${API_URI}/v1/auth/register`, {
         email,
         userName,
         role,
@@ -81,7 +82,7 @@ const SignupPage = () => {
         password,
         confirmPassword,
       })
-      .then(() => nav('/'))    
+      .then(() => nav("/"));
   };
 
   return (
@@ -107,29 +108,23 @@ const SignupPage = () => {
             onChange={(event) => setUserName(event.target.value)}
           />
           <InputWrapper>
-            <InputOption 
-            value={role} 
-            onChange={(event) => setRole(event.target.value)}
-            >
-              <option value="role" >
-                Select a Role
-              </option>
+            <InputOption value={role} onChange={(event) => setRole(event.target.value)}>
+              <option value="role">Select a Role</option>
               {Roles.map((role) => (
-                <option key={role} value={Roles.value}>{role}</option>
+                <option key={role} value={Roles.value}>
+                  {role}
+                </option>
               ))}
             </InputOption>
             <CustomedInputOptionBG />
           </InputWrapper>
           <InputWrapper>
-            <InputOption 
-            value={branch} 
-            onChange={(event) => setBranch(event.target.value)}
-            >
-              <option value="branch" >
-                Select a Branch
-              </option>
+            <InputOption value={branch} onChange={(event) => setBranch(event.target.value)}>
+              <option value="branch">Select a Branch</option>
               {Branches.map((branch) => (
-                <option key={branch} value={Branches.value}>{branch}</option>
+                <option key={branch} value={Branches.value}>
+                  {branch}
+                </option>
               ))}
             </InputOption>
             <CustomedInputOptionBG />

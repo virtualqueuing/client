@@ -33,7 +33,7 @@ export const QueueAdvantage = [
   { icon: Savetime, description: "Increase customer lifetime value" },
 ];
 
-export const Roles = ['Manager', 'Staff'];
+export const Roles = ["Manager", "Staff"];
 export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];
 export const API_URI =
   process.env.NODE_ENV !== "production"

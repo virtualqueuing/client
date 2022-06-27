@@ -132,17 +132,18 @@ const LoginPage = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const [ email, setEmail ] = useState()
-  const [ password, setPassword ] = useState()
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    axios.post(`${API_URI}/v1/auth/login`, {
-      email,
-      password,
-    })
-    .then()
-  }
+    event.preventDefault();
+    axios
+      .post(`${API_URI}/v1/auth/login`, {
+        email,
+        password,
+      })
+      .then();
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -153,18 +154,23 @@ const LoginPage = () => {
             Hey, Enter your details to get <br /> sign in to your account
           </p>
         </LoginInfo>
-        <LoginInput 
-          type="text" 
-          placeholder="Enter Email" 
+        <LoginInput
+          type="text"
+          placeholder="Enter Email"
           value={email}
-          onChange={ (event) => {setEmail(event.target.value)}}/>
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
         <InputWrapper>
-          <LoginInput 
-            type={passwordShown ? "text" : "password"} 
-            placeholder="Enter Password" 
+          <LoginInput
+            type={passwordShown ? "text" : "password"}
+            placeholder="Enter Password"
             value={password}
-            onChange={ (event) => {setPassword(event.target.value)}}
-            />
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
           {passwordShown ? (
             <HidePassword onClick={togglePassword} />
           ) : (
