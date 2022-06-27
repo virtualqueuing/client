@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const QueueDataContainer = styled.div`
   padding: 0;
   width: 60%;
-  margin-left: 1.7%;
+  margin-left: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -44,7 +44,7 @@ export const TooltipContainer = styled.div`
   width: 12%;
   display: flex;
   justify-content: space-around;
-  gap: 43%;
+  gap: 38%;
   align-items: center;
   padding: 1vh 0.8vw;
   margin-right: 3%;
