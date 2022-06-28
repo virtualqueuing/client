@@ -38,9 +38,9 @@ const NewTag = styled(Tag)`
 
 // random index from 0 to tagColorList.length
 
-const CreateTags = () => {
+const CreateTags = (props) => {
   const [input, setInput] = useState("");
-  const [tags, setTags] = useState([]);
+  // const [tags, setTags] = useState([]);
   const [isKeyReleased, setIsKeyReleased] = useState(false);
   const onChange = (e) => {
     const { value } = e.target;
@@ -51,17 +51,18 @@ const CreateTags = () => {
     const { key } = e;
     const trimmedInput = input.trim();
 
-    if (key === "Enter" && trimmedInput.length > 0 && !tags.includes(trimmedInput)) {
+    if (key === "Enter" && trimmedInput.length > 0 && !props.tags.includes(trimmedInput)) {
       e.preventDefault();
-      setTags((prevState) => [...prevState, trimmedInput]);
+      props.setTags((prevState) => [...prevState, trimmedInput]);
       setInput("");
+      // console.log(props.tags)
     }
 
-    if (key === "Backspace" && !input.length && tags.length && isKeyReleased) {
-      const tagsCopy = [...tags];
+    if (key === "Backspace" && !input.length && props.tags.length && isKeyReleased) {
+      const tagsCopy = [...props.tags];
       const poppedTag = tagsCopy.pop();
       e.preventDefault();
-      setTags(tagsCopy);
+      props.setTags(tagsCopy);
       setInput(poppedTag);
     }
 
@@ -73,12 +74,12 @@ const CreateTags = () => {
   };
 
   const deleteTag = (index) => {
-    setTags((prevState) => prevState.filter((tag, i) => i !== index));
+    props.setTags((prevState) => prevState.filter((tag, i) => i !== index));
   };
 
   return (
     <Container>
-      {tags.map((tag, index) => (
+      {props.tags.map((tag, index) => (
         <NewTag
           key={index}
           onClick={() => deleteTag(index)}
