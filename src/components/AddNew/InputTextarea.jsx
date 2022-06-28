@@ -42,7 +42,6 @@ const InputTextarea = (params) => {
             tags={tags} 
             setTags={setTags} 
             />
-
         </div>
       </InputWrapper>
     </>

@@ -23,7 +23,7 @@ const Form = (params) => {
     <StyledForm onSubmit={handleSumbit} onInvalid={() => setShowRequiredInfo(true)}>
       <InputText inputInfo={params.formQueueInfo} />
       <InputSelect inputInfo={params.formQueueInfo} />
-      <InputTextarea inputInfo={params.formQueueInfo}/>
+      <InputTextarea inputInfo={params.formQueueInfo} />
       <Buttons />
     </StyledForm>
   );

@@ -20,6 +20,7 @@ import theme from "../theme";
 import axios from "axios";
 import EditGuestPage from "../pages/EditGuestPage";
 import { API_URI } from "../constant.jsx";
+// import Controller from "./Controller";
 
 const SingleQueue = ({
   _id,
