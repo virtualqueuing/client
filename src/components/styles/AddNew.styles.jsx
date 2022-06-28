@@ -138,6 +138,7 @@ export const SuggestedTagsWrapper = styled.div`
 
 export const StyledTextarea = styled.textarea`
   ${InputLayout};
+  display: none;
   font-size: ${({ theme }) => theme.fontSizes["1x"]};
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
