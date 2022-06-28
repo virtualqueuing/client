@@ -1,7 +1,7 @@
 import { InputWrapper, Label, SuggestedTagsWrapper } from "../styles/AddNew.styles";
 import Tag from "../Tag";
 import CreateTags from "./CreateTags";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { StyledTextarea } from "../styles/AddNew.styles";
 
 
@@ -13,9 +13,9 @@ const InputTextarea = (params) => {
 
   const SuggestedTag = (e) => {
     setTags((prevState) => [...prevState, e.target.value]);
-    console.log(e.target.value);
-    console.log(tags.toString())
-    console.log(ref.current.value)
+    // console.log(e.target.value);
+    // console.log(tags.toString())
+    // console.log(ref.current.value)
     // console.log(StyledTextarea)
     // console.log(tags);
   }
