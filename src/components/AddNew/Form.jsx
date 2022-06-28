@@ -7,13 +7,14 @@ import axios from "axios";
 import { showRequiredInfoContext } from "../../pages/Context";
 import { useContext } from "react";
 import Buttons from "./AddNewButton";
+import { API_URI } from "../../constant";
 
 const Form = (params) => {
   const { setShowRequiredInfo } = useContext(showRequiredInfoContext);
 
   const handleSumbit = (event) => {
     const data = new FormData(event.target);
-    axios.post(`http://localhost:3000/v1/queues`, Object.fromEntries(data.entries())).then();
+    axios.post(`${API_URI}/v1/queues`, Object.fromEntries(data.entries())).then();
   };
 
   return (
