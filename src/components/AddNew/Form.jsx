@@ -14,7 +14,7 @@ const Form = (params) => {
 
   const handleSumbit = (event) => {
     const data = new FormData(event.target);
-    axios.post(`http://localhost:3000/v1/queues`, Object.fromEntries(data.entries())).then();
+    axios.post(`${API_URI}/v1/queues`, Object.fromEntries(data.entries())).then();
     // console.log(Object.fromEntries(data.entries()));
     // event.preventDefault();
   };
