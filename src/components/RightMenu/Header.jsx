@@ -17,7 +17,7 @@ import {
 import { Logo } from "../styles/Logo";
 import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
 
-const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearchQueue }) => {
+const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) => {
   const changeTable = (size) => {
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);
@@ -47,7 +47,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, tableType, setSearc
           <form>
             <SearchBar
               type="search"
-              placeholder="Search"
+              placeholder="Name or Phone No."
               onChange={(e) => {
                 setSearchQueue(e.target.value);
               }}

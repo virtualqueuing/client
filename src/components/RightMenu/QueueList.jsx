@@ -19,14 +19,15 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
     showList = queues.filter((queue) => queue.status === "Absent");
   }
 
-  if (_.isEmpty(showList)) {
+  if (!_.isEmpty(showList)) {
     showList =
       tableType === "Table Type"
-        ? queues
+        ? showList
         : tableType === "Small"
-        ? queues.filter((queue) => queue.tableSize === "small")
-        : queues.filter((queue) => queue.tableSize === tableType);
+        ? showList.filter((queue) => queue.tableSize === "Small")
+        : showList.filter((queue) => queue.tableSize === tableType);
   }
+
   const [activeQueueId, setActiveQueueId] = useState("");
   const singleQueues = useMemo(
     () =>
