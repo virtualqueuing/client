@@ -55,7 +55,6 @@ export const StatusButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index:0;
 `;
 
 export const StatusButton = styled.button`
