@@ -2,7 +2,6 @@ import InputText from "./InputText";
 import InputSelect from "./InputSelect";
 import InputTextarea from "./InputTextarea";
 import { StyledForm } from "../styles/AddNew.styles";
-// import { queues } from "../../assets/dummyData/dummyData";
 import axios from "axios";
 import { showRequiredInfoContext } from "../../pages/Context";
 import { useContext } from "react";
@@ -23,7 +22,7 @@ const Form = (params) => {
     <StyledForm onSubmit={handleSumbit} onInvalid={() => setShowRequiredInfo(true)}>
       <InputText inputInfo={params.formQueueInfo} />
       <InputSelect inputInfo={params.formQueueInfo} />
-      <InputTextarea inputInfo={params.formQueueInfo}/>
+      <InputTextarea inputInfo={params.formQueueInfo} />
       <Buttons />
     </StyledForm>
   );

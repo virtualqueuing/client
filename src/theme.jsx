@@ -44,6 +44,9 @@ const colors = {
       background: "#e5e5e5",
       fontColor: "#606060",
     },
+    modal: {
+      fontColor: "#606060",
+    },
   },
   page: {
     main: "#77A48E",
