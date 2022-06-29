@@ -19,7 +19,7 @@ const Background = styled.div`
   flex-direction: column;
   /* justify-content: space-around; */
   gap: 6%;
-  width: 15vw;
+  width: 15%;
   height: 100vh;
   padding: 40px 15px;
   /* margin: 5px auto 5px 5px; */

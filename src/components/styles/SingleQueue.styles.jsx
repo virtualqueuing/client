@@ -18,7 +18,7 @@ export const QueueItem = styled.div`
   align-items: center;
   margin-top: 25px;
   cursor: pointer;
-  overflow: visible;
+  overflow-y: visible;
   ${(props) =>
     props.active
       ? css`
@@ -47,7 +47,8 @@ export const TooltipContainer = styled.div`
   gap: 38%;
   align-items: center;
   padding: 1vh 0.8vw;
-  margin-right: 3%;
+  margin-right: 2%;
+  overflow-y:visible;
 `;
 
 export const StatusButtonContainer = styled.div`
