@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import _ from "lodash";
 import SingleQueue from "../SingleQueue";
-import { QueueSection } from "../styles/QueueList.styles";
+import { QueueListContainer, QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 
@@ -53,7 +53,8 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
     [showList, activeQueueId, searchQueue]
   );
 
-  return <QueueSection>{singleQueues}</QueueSection>;
+  return <QueueSection>
+  <QueueListContainer>{singleQueues}</QueueListContainer></QueueSection>;
 };
 
 export default MainQueues;

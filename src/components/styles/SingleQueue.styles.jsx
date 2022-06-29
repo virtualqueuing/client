@@ -3,12 +3,15 @@ import styled, { css } from "styled-components";
 export const QueueDataContainer = styled.div`
   padding: 0;
   width: 60%;
-  margin-left: 2%;
+  /* margin-left: 2%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: auto;
+  @media (max-width: 1500px) {
+    font-size: 1rem;
+  }
 `;
 
 export const QueueItem = styled.div`
@@ -16,15 +19,20 @@ export const QueueItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 25px;
+  /* margin-top: 25px; */
+  padding: 20px 0;
   cursor: pointer;
-  overflow: hidden;
+  overflow: visible;
   ${(props) =>
     props.active
       ? css`
           background-color: ${({ theme }) => theme.colors.page.secondary};
+          border-radius: 15px;
         `
       : " "}
+  @media (max-width: 1500px) {
+    padding: 10px 0;
+  }
 `;
 
 export const QueueData = styled.div`
@@ -37,6 +45,11 @@ export const QueueData = styled.div`
   & p {
     color: ${({ theme }) => theme.colors.fonts.main};
     font-size: 20px;
+  }
+  @media (max-width: 1500px) {
+    & p {
+    font-size: 1rem;
+  }
   }
 `;
 
@@ -55,6 +68,9 @@ export const StatusButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 1500px) {
+    width: 18%;
+  }
 `;
 
 export const StatusButton = styled.button`

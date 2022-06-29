@@ -5,17 +5,19 @@ export const AddNewWrapper = styled.div`
   height: 710px;
   margin: auto;
   position: fixed;
-  top: 0;
+  /* top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  overflow: hidden;
+  bottom: 0; */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: scroll;
   background: white;
   z-index: 999;
   border-radius: 30px;
   -webkit-box-shadow: 0px 20px 30px 15px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 20px 30px 15px rgba(0, 0, 0, 0.15);
-  overflow: auto;
 `;
 
 export const LayoutWrapper = styled.div`

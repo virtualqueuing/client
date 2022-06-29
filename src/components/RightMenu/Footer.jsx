@@ -1,4 +1,4 @@
-import FunctionButton from "../FunctionButton";
+import {FunctionButton, AddGuestButton} from "../FunctionButton";
 import { StyledFooter } from "../styles/Footer.styles";
 import AddNewPage from "../../pages/AddNewPage";
 import { useState, useEffect, useRef } from "react";
@@ -31,17 +31,12 @@ const Footer = () => {
         </div>
       )}
       <StyledFooter>
-        <FunctionButton
-          bg={theme.colors.page.main}
-          color="#fff"
-          fontSize="30px"
-          fontWeight="500"
-          width="250px"
-          borderRadius="20px"
-          onClick={() => setShowAddNewForm(true)}
+        <AddGuestButton
+          onClick={() => setShowAddNewForm(true)
+          }
         >
           Add Guest
-        </FunctionButton>
+        </AddGuestButton>
       </StyledFooter>
     </showNewFormContext.Provider>
   );

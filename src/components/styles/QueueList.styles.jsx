@@ -5,3 +5,10 @@ export const QueueSection = styled.div`
   width: 100%;
   overflow: auto;
 `;
+
+export const QueueListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+  margin: 0 2%;
+`
