@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FunctionButton = styled.button`
+export const FunctionButton = styled.button`
   border-radius: ${({ borderRadius }) => borderRadius || "50px"};
   width: ${({ width }) => width || "130px"};
   border: none;
@@ -19,4 +19,17 @@ const FunctionButton = styled.button`
   }
 `;
 
-export default FunctionButton;
+export const AddGuestButton = styled(FunctionButton)`
+   background-color:  ${({ theme }) => theme.colors.page.main};
+   color: #fff;
+   font-Size:30px;
+   font-Weight:500;
+   width:250px;
+   border-Radius:20px;
+   @media (max-width: 1500px) {
+    width: 150px;
+    border-Radius: 10px;
+    padding: 10px;
+    font-Size: 20px;
+   }
+`

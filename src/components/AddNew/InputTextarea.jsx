@@ -10,7 +10,6 @@ const InputTextarea = (params) => {
   const [tags, setTags] = useState([]);
   const ref = useRef(null);
 
-
   const SuggestedTag = (e) => {
     setTags((prevState) => [...prevState, e.target.value]);
     // console.log(e.target.value);
@@ -19,6 +18,7 @@ const InputTextarea = (params) => {
     // console.log(StyledTextarea)
     // console.log(tags);
   }
+
 
   return (
     <>

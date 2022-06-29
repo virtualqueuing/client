@@ -21,8 +21,8 @@ export const PathContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 30%;
-  margin: 3% 3% 0;
+  height: 35%;
+  margin: 0 3% 0;
 `;
 
 export const PathIdentifier = styled.ul`
@@ -53,6 +53,9 @@ export const IdentifierLink = styled.a`
           padding-bottom: 16px;
         `
       : " "};
+  @media (max-width: 1500px) {
+    font-size: 1rem;
+  }
 `;
 
 export const SearchBar = styled.input`
@@ -78,18 +81,22 @@ export const SeparateLine = styled.div`
 `;
 
 export const QueueTitleContainer = styled.div`
-  height: 30%;
-  margin: 1.5% 2% 0;
+  height: 20%;
+  margin: 0.5% 2% 0;
   border: 1px solid transparent;
   background: ${({ theme }) => theme.colors.components.queueContainer.background};
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1500px) {
+    padding: 10px 0;
+    margin: 1% 2%;
+  }
 `;
 
 export const QueueLeftTitle = styled.ul`
   margin: 0;
-  width: 62%;
+  width: 60%;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -103,16 +110,21 @@ export const QueueLeftTitle = styled.ul`
     list-style: none;
     text-align: center;
   }
+  @media (max-width: 1500px) {
+    &>li{
+      font-size: 0.75rem;
+    }
+  }
 `;
 
 export const QueueRightTitle = styled.ul`
-  margin: 0;
-  width: 15%;
+  margin: 0 2% 0 0;
+  width: 16%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
+  /* padding: 0; */
   & li {
     color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
     font-size: 15px;
@@ -121,19 +133,24 @@ export const QueueRightTitle = styled.ul`
     list-style: none;
     text-align: center;
   }
-`;
-
-export const OpenDate = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: ${({ theme }) => theme.fontSizes.md};
-  color: ${({ theme }) => theme.colors.fontColor};
-  & p {
-    margin-bottom: 5px;
+  @media (max-width: 1500px) {
+    &>li{
+      font-size: 0.75rem;
+    }
   }
 `;
+
+// export const OpenDate = styled.div`
+//   position: absolute;
+//   bottom: 0;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   font-size: ${({ theme }) => theme.fontSizes.md};
+//   color: ${({ theme }) => theme.colors.fontColor};
+//   & p {
+//     margin-bottom: 5px;
+//   }
+// `;
 
 export const TableFilter = styled.select`
   height: 100%;
@@ -146,5 +163,8 @@ export const TableFilter = styled.select`
 
   &:focus {
     outline: none;
+  }
+  @media (max-width: 1500px) {
+    font-size: 0.75rem;
   }
 `;
