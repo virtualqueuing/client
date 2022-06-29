@@ -48,7 +48,7 @@ export const TooltipContainer = styled.div`
   align-items: center;
   padding: 1vh 0.8vw;
   margin-right: 2%;
-  overflow-y:visible;
+  overflow-y: visible;
 `;
 
 export const StatusButtonContainer = styled.div`
