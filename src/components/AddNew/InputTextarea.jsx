@@ -4,7 +4,6 @@ import CreateTags from "./CreateTags";
 import { useState, useRef } from "react";
 import { StyledTextarea } from "../styles/AddNew.styles";
 
-
 const InputTextarea = (params) => {
   // click Tag to create new tag in CreateTags
   const [tags, setTags] = useState([]);
@@ -17,8 +16,7 @@ const InputTextarea = (params) => {
     // console.log(ref.current.value)
     // console.log(StyledTextarea)
     // console.log(tags);
-  }
-
+  };
 
   return (
     <>
@@ -34,15 +32,18 @@ const InputTextarea = (params) => {
           Babyseat
         </Tag>
       </SuggestedTagsWrapper>
-          <StyledTextarea type="text" id="notes" name="notes" rows="8" ref={ref} value={tags.toString()} />
+      <StyledTextarea
+        type="text"
+        id="notes"
+        name="notes"
+        rows="8"
+        ref={ref}
+        value={tags.toString()}
+      />
       <InputWrapper>
         <div style={{ width: "100%", height: "150px", marginBottom: "50px" }}>
           <Label for="notes">Notes</Label>
-          <CreateTags
-            tags={tags} 
-            setTags={setTags} 
-            />
-
+          <CreateTags tags={tags} setTags={setTags} />
         </div>
       </InputWrapper>
     </>

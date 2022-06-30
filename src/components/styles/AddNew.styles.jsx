@@ -12,7 +12,7 @@ export const AddNewWrapper = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  overflow: scroll;
+  overflow: hidden;
   background: white;
   z-index: 999;
   border-radius: 30px;
