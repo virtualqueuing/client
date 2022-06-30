@@ -1,10 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
 import BirthdayIcon from "../../assets/Icons/Note_Birthday.svg";
 import WheelchairIcon from "../../assets/Icons/Note_WheelChair.svg";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
+import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 
 // const VerticalDivider = styled.div`
 //   width: 3px;
@@ -30,6 +31,9 @@ const UserPanel = styled.div`
   width: 90%;
   height: 50px;
   gap: 8%;
+  position: relative;
+  align-items: center;
+
   @media (max-width: 1500px) {
     padding-right: 40px;
   }
@@ -57,6 +61,52 @@ const UserName = styled.h5`
 const UserLocation = styled.span`
   color: ${({ theme }) => theme.colors.fonts.secondary};
 `;
+
+const ArrowDownBtn = styled.img`
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+`
+
+const DropDownListContainer = styled.ul`
+  position: absolute;
+  display: none;
+  height: 160px;;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  /* box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14); */
+  top: 100%;
+  width: 100%;
+  list-style: none;
+  background-color: ${({ theme }) => theme.colors.page.main};
+  margin: 18px 0 0 0;
+  padding: 0 10px;
+  z-index: 1;
+  /* display: none; */
+  ${(props) =>
+    props.dropState
+      ? css`
+          display: flex;
+        `
+      : " "}
+`
+
+const DropDownList = styled.li`
+  text-align: center;
+  & a {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  padding: 10px 12px;
+  border: 3px solid white;
+  border-radius: 15px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 10px 5px 5px white;
+  }
+`
 
 const LeftSideBarOptionContainer = styled.div`
   /* width: auto;
@@ -164,7 +214,15 @@ const SingleQueueDescription = styled.span`
 
 
 const LeftMenu = () => {
-  // const menuOption = ["Queue List", "Dashboard"];
+  // const dropOption = ["Sign Out", "Profile"];
+  const dropOption = [
+    {name: "Sign Out",path:"/home"},
+    {name: "Profile",path:"/profile"},
+  ];
+  const[dropState, setDropState] = useState(false);
+  const handleClick = () => {
+    setDropState(!dropState);
+  }
   return (
     <Background>
       <UserPanel>
@@ -173,6 +231,14 @@ const LeftMenu = () => {
           <UserName>Roy</UserName>
           <UserLocation>Sunnybank</UserLocation>
         </UserDetails>
+        <ArrowDownBtn src={ArrowDown} alt="Arrow Down Button Image" onClick={handleClick} />
+        <DropDownListContainer dropState={dropState}>
+          {dropOption.map((option, index) => {
+            return (
+              <DropDownList key={index}><a href={option.path}>{option.name}</a></DropDownList>
+            )
+          })}
+        </DropDownListContainer>
       </UserPanel>
       <LeftSideBarOptionContainer>
         <LeftSideBarOption>
