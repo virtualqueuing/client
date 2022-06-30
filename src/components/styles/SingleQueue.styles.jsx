@@ -22,7 +22,6 @@ export const QueueItem = styled.div`
   /* margin-top: 25px; */
   padding: 20px 0;
   cursor: pointer;
-  overflow: visible;
   ${(props) =>
     props.active
       ? css`
@@ -48,8 +47,8 @@ export const QueueData = styled.div`
   }
   @media (max-width: 1500px) {
     & p {
-    font-size: 1rem;
-  }
+      font-size: 1rem;
+    }
   }
 `;
 

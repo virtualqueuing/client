@@ -11,4 +11,4 @@ export const QueueListContainer = styled.div`
   flex-direction: column;
   width: 96%;
   margin: 0 2%;
-`
+`;

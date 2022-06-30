@@ -58,21 +58,23 @@ const CustomedInputOptionBG = styled.div`
 `;
 
 const SignupPage = () => {
-  const [email, setEmail] = useState();
-  const [userName, setUserName] = useState();
-  const [role, setRole] = useState();
-  const [branch, setBranch] = useState();
-  const [password, setPassword] = useState();
-  const [confirmPassword, setconfirmPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [role, setRole] = useState("");
+  const [branch, setBranch] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setconfirmPassword] = useState("");
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
     axios
       .post(`${API_URI}/v1/auth/register`, {
         email,
@@ -82,7 +84,7 @@ const SignupPage = () => {
         password,
         confirmPassword,
       })
-      .then(() => nav("/"));
+      .then(() => navigate("/"));
   };
 
   return (

@@ -140,7 +140,7 @@ const SingleQueueNotes = styled.div`
   border-radius: 10px;
   padding: 10px 20px 10px 10px;
   margin: 10px 0;
-  overflow: scroll;
+  overflow: hidden;
 `;
 
 const SingleQueueIcon = styled.img`
@@ -160,8 +160,6 @@ const SingleQueueDescription = styled.span`
     font-size: 1rem;
   }
 `;
-
-
 
 const LeftMenu = () => {
   // const menuOption = ["Queue List", "Dashboard"];

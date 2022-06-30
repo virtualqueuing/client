@@ -87,15 +87,11 @@ const ArrivalModal = () => {
     <ModalBackground>
       <Modal>
         <Wrapper>
-          <Title>
-            Confirm Arrival
-          </Title>
+          <Title>Confirm Arrival</Title>
         </Wrapper>
         <HorizontalDivider />
         <Wrapper>
-          <Description>
-            Please confirm if the customers have arrived.
-          </Description>
+          <Description>Please confirm if the customers have arrived.</Description>
         </Wrapper>
         <HorizontalDivider />
         <ButtonWrapper>
@@ -104,7 +100,7 @@ const ArrivalModal = () => {
         </ButtonWrapper>
       </Modal>
     </ModalBackground>
-  )
+  );
 };
 
 export default ArrivalModal;
