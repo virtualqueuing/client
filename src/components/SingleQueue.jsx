@@ -19,7 +19,7 @@ import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
 import EditGuestPage from "../pages/EditGuestPage";
-import { API_URI } from "../constant.jsx";
+import { API_URI, QUEUE_STATUS } from "../constant.jsx";
 
 const SingleQueue = ({
   _id,
@@ -67,6 +67,14 @@ const SingleQueue = ({
     setIsSending(false);
   };
 
+  const queueAbsent = async () => {
+    if (isSending) return;
+    setIsSending(true);
+    const { data } = await axios.put(`${API_URI}/v1/queues/${_id}/Absent`, {});
+    setSelectedQueue(data);
+    setIsSending(false);
+  };
+
   return (
     <>
       <QueueItem active={_id === activeQueueId} onClick={handleClick}>
@@ -96,8 +104,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                  ? "rgba(254, 63, 127, 0.1)"
-                  : "rgba(46, 173, 124, 0.1)",
+                    ? "rgba(254, 63, 127, 0.1)"
+                    : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
@@ -107,7 +115,7 @@ const SingleQueue = ({
         <StatusButtonContainer>
           <StatusButton
             onClick={queueComplete}
-            disabled={isSending}
+            disabled={isSending || status === QUEUE_STATUS.COMPLETED}
             fontColor={theme.colors.components.arrivalButton.fontColor}
             borderColor={theme.colors.components.arrivalButton.borderColor}
           >
@@ -115,7 +123,8 @@ const SingleQueue = ({
             Arrival
           </StatusButton>
           <StatusButton
-            disabled={isSending}
+            onClick={queueAbsent}
+            disabled={isSending || QUEUE_STATUS.ABSENT}
             fontColor={theme.colors.components.absentButton.fontColor}
             borderColor={theme.colors.components.absentButton.fontColor}
           >

@@ -4,6 +4,7 @@ import SingleQueue from "../SingleQueue";
 import { QueueListContainer, QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
+import { QUEUE_STATUS } from "../../constant";
 
 const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
   MainQueues.propTypes = {
@@ -14,9 +15,9 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
   if (queueStatus === "All") {
     showList = queues;
   } else if (queueStatus === "Queuing") {
-    showList = queues.filter((queue) => queue.status === "Waiting");
+    showList = queues.filter((queue) => queue.status === QUEUE_STATUS.WAITING);
   } else if (queueStatus === "Absent") {
-    showList = queues.filter((queue) => queue.status === "Absent");
+    showList = queues.filter((queue) => queue.status === QUEUE_STATUS.ABSENT);
   }
 
   if (!_.isEmpty(showList)) {
@@ -24,8 +25,8 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
       tableType === "Table Type"
         ? showList
         : tableType === "Small"
-        ? showList.filter((queue) => queue.tableSize === "Small")
-        : showList.filter((queue) => queue.tableSize === tableType);
+          ? showList.filter((queue) => queue.tableSize === "Small")
+          : showList.filter((queue) => queue.tableSize === tableType);
   }
 
   const [activeQueueId, setActiveQueueId] = useState("");
@@ -53,11 +54,8 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
     [showList, activeQueueId, searchQueue]
   );
 
-  return (
-    <QueueSection>
-      <QueueListContainer>{singleQueues}</QueueListContainer>
-    </QueueSection>
-  );
+  return <QueueSection>
+    <QueueListContainer>{singleQueues}</QueueListContainer></QueueSection>;
 };
 
 export default MainQueues;
