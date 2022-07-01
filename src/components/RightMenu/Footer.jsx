@@ -1,9 +1,8 @@
-import {FunctionButton, AddGuestButton} from "../FunctionButton";
+import { AddGuestButton } from "../FunctionButton";
 import { StyledFooter } from "../styles/Footer.styles";
 import AddNewPage from "../../pages/AddNewPage";
 import { useState, useEffect, useRef } from "react";
 import { showNewFormContext } from "../../pages/Context";
-import theme from "../../theme";
 
 const Footer = () => {
   const [showAddNewForm, setShowAddNewForm] = useState(false);
@@ -31,12 +30,7 @@ const Footer = () => {
         </div>
       )}
       <StyledFooter>
-        <AddGuestButton
-          onClick={() => setShowAddNewForm(true)
-          }
-        >
-          Add Guest
-        </AddGuestButton>
+        <AddGuestButton onClick={() => setShowAddNewForm(true)}>Add Guest</AddGuestButton>
       </StyledFooter>
     </showNewFormContext.Provider>
   );

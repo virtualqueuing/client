@@ -82,29 +82,30 @@ const Cancel = styled.span`
   }
 `;
 
-const ArrivalModal = () => {
+const ArrivalModal = ({ id, setShowArrivalModal, queueComplete }) => {
+  const sendConfirmCommand = (id) => {
+    queueComplete(id)
+    setShowArrivalModal(false)
+  }
+
   return (
-    <ModalBackground>
-      <Modal>
+    <ModalBackground onClick={() => setShowArrivalModal(false)}>
+      <Modal onClick={(e) => e.stopPropagation()}>
         <Wrapper>
-          <Title>
-            Confirm Arrival
-          </Title>
+          <Title>Confirm Arrival</Title>
         </Wrapper>
         <HorizontalDivider />
         <Wrapper>
-          <Description>
-            Please confirm if the customers have arrived.
-          </Description>
+          <Description>Please confirm if the customers have arrived.</Description>
         </Wrapper>
         <HorizontalDivider />
         <ButtonWrapper>
-          <Cancel>Cancel</Cancel>
-          <Confirm>Yes</Confirm>
+          <Cancel onClick={() => setShowArrivalModal(false)}>Cancel</Cancel>
+          <Confirm onClick={() => sendConfirmCommand(id)}>Yes</Confirm>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>
-  )
+  );
 };
 
 export default ArrivalModal;

@@ -14,13 +14,19 @@ export const TAG_COLORLIST = [
   "#E2F0CB",
 ];
 export const OPTION_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+export const ABSENT_REASONS = [
+  "No show without a reason",
+  "Rescheduling",
+  "Delayed",
+  "Other Reasons",
+]
 export const QUEUE_FILTER = ["All", "Queuing", "Absent"];
 export const TABLE_SIZE = ["Small", "Medium", "Large"];
 export const QUEUE_STATUS = {
   WAITING: "Waiting",
   COMPLETED: "Completed",
   ABSENT: "Absent",
-}
+};
 export const TeamMembers = [
   { name: "Roy", position: "Full-stack Developer" },
   { name: "Alfred", position: "Full-stack Developer" },
@@ -40,7 +46,6 @@ export const QueueAdvantage = [
 
 export const Roles = ["Manager", "Staff"];
 export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];
-export const API_URI =
-  import.meta.env.DEV
-    ? "http://localhost:3000"
-    : "http://p3-back-lb-1729390372.ap-southeast-2.elb.amazonaws.com";
+export const API_URI = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : "http://p3-back-lb-1729390372.ap-southeast-2.elb.amazonaws.com";

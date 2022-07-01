@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import FlexDisplay from "../components/MainHomepage/FlexDisplay";
-import LoadingPic from "../assets/LoadingPic.png"
+import LoadingPic from "../assets/LoadingPic.png";
 
 const LoaderContainer = styled(FlexDisplay)`
   width: 100vw;
@@ -12,43 +12,43 @@ const LoaderContainer = styled(FlexDisplay)`
 
 const LoadingAnimation = styled.div`
   animation: rotate 3s linear infinite;
-	height: 50px;
-	transform-origin: bottom center;
+  height: 50px;
+  transform-origin: bottom center;
   z-index: 1;
   position: absolute;
   top: 55%;
   @keyframes rotate {
     to {
-		transform: rotate(360deg);
-	  }
+      transform: rotate(360deg);
+    }
   }
-`
+`;
 
 const LoadingCircleOne = styled.div`
   animation: grow 1.5s linear infinite;
-	background-color: #B5EAD7;
-	border-radius: 50%;
-	display: inline-block;
-	margin: -10px;
-	height: 40px;
-	width: 40px;
-	transform: scale(0);
-`
+  background-color: #b5ead7;
+  border-radius: 50%;
+  display: inline-block;
+  margin: -10px;
+  height: 40px;
+  width: 40px;
+  transform: scale(0);
+`;
 const LoadingCircleTwo = styled(LoadingCircleOne)`
-  animation-delay: .75s;
-	background-color: #5F8C6A;
+  animation-delay: 0.75s;
+  background-color: #5f8c6a;
   @keyframes grow {
-	50% {
-		transform: scale(0.8);
-	}
-}
-`
+    50% {
+      transform: scale(0.8);
+    }
+  }
+`;
 
 const LoadingContent = styled.div`
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   font-size: 2.5vw;
   margin-right: 5px;
-`
+`;
 
 const DotOne = styled.div`
   border-radius: 50%;
@@ -57,22 +57,21 @@ const DotOne = styled.div`
   background-color: black;
   margin: 0 5px;
   transform: scale(0);
-  animation: dot .7s ease-in-out alternate .3s infinite;
-  @keyframes dot{
-    100%{
+  animation: dot 0.7s ease-in-out alternate 0.3s infinite;
+  @keyframes dot {
+    100% {
       transform: scale(1.5);
-      box-shadow: 10px 10px 22px -2px rgba(0,0,0,0.25);
+      box-shadow: 10px 10px 22px -2px rgba(0, 0, 0, 0.25);
     }
   }
-`
+`;
 const DotTwo = styled(DotOne)`
-  animation: dot .7s ease-in-out alternate .5s infinite;
-`
+  animation: dot 0.7s ease-in-out alternate 0.5s infinite;
+`;
 
 const DotThree = styled(DotOne)`
-  animation: dot .7s ease-in-out alternate .8s infinite;
-`
-
+  animation: dot 0.7s ease-in-out alternate 0.8s infinite;
+`;
 
 const LoadingText = styled.div`
   display: flex;
@@ -81,21 +80,21 @@ const LoadingText = styled.div`
   z-index: 1;
   position: absolute;
   top: 60%;
-`
+`;
 
 const LoadingPageImage = styled.img`
   position: absolute;
   width: 30vw;
-  height:auto;
-  top: 0;`
-
+  height: auto;
+  top: 0;
+`;
 
 LoaderContainer.displayName = "LoaderContainer";
 
 const LoadingPage = () => (
   <section className="loadingPage">
     <LoaderContainer>
-    <LoadingPageImage src={LoadingPic}/>
+      <LoadingPageImage src={LoadingPic} />
       <LoadingAnimation>
         <LoadingCircleOne />
         <LoadingCircleTwo />

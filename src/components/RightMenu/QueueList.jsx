@@ -54,8 +54,11 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
     [showList, activeQueueId, searchQueue]
   );
 
-  return <QueueSection>
-    <QueueListContainer>{singleQueues}</QueueListContainer></QueueSection>;
+  return (
+    <QueueSection>
+      <QueueListContainer>{singleQueues}</QueueListContainer>
+    </QueueSection>
+  );
 };
 
 export default MainQueues;

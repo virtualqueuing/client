@@ -111,7 +111,7 @@ export const QueueLeftTitle = styled.ul`
     text-align: center;
   }
   @media (max-width: 1500px) {
-    &>li{
+    & > li {
       font-size: 0.75rem;
     }
   }
@@ -134,7 +134,7 @@ export const QueueRightTitle = styled.ul`
     text-align: center;
   }
   @media (max-width: 1500px) {
-    &>li{
+    & > li {
       font-size: 0.75rem;
     }
   }

@@ -22,7 +22,7 @@ const AddNewPage = (params) => {
           </HeaderInfo>
           <HeaderInfo>
             {showRequiredInfo && (
-              <HeaderAlert>Please fill all infomation before submitting</HeaderAlert>
+              <HeaderAlert>Please fill all information before submitting</HeaderAlert>
             )}
           </HeaderInfo>
         </LayoutWrapper>

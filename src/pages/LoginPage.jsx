@@ -7,6 +7,7 @@ import passwordShow from "../assets/Icons/Button_Password-show.svg";
 import passwordShowActive from "../assets/Icons/Button_Password-showActive.svg";
 import axios from "axios";
 import { API_URI } from "../constant";
+import { useNavigate } from "react-router-dom";
 
 export const LoginContainer = styled.div`
   width: 370px;
@@ -135,6 +136,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -142,7 +145,7 @@ const LoginPage = () => {
         email,
         password,
       })
-      .then();
+      .then(() => navigate("/"));
   };
 
   return (
