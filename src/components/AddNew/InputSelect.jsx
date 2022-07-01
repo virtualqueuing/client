@@ -7,7 +7,7 @@ import {
 import React, { useState } from "react";
 import { OPTION_NUMBERS } from "../../constant";
 
-const InputSelect = (params) => {
+const InputSelect = ({ inputInfo }) => {
   const [guestNum, setGuestNum] = useState();
   const getTableType = (guestNum) => {
     if (guestNum >= 1 && guestNum <= 4) {
@@ -26,7 +26,7 @@ const InputSelect = (params) => {
           id="people"
           name="guestsNumber"
           value={guestNum}
-          defaultValue={params?.inputInfo?.guestsNumber ? params.inputInfo.guestsNumber : ""}
+          defaultValue={inputInfo?.guestsNumber ? inputInfo.guestsNumber : ""}
           onChange={(e) => setGuestNum(e.target.value)}
           required
         >
@@ -42,8 +42,8 @@ const InputSelect = (params) => {
           <option selected hidden>
             {getTableType(guestNum)
               ? getTableType(guestNum)
-              : params?.inputInfo?.tableSize
-              ? params.inputInfo.tableSize
+              : inputInfo?.tableSize
+              ? inputInfo.tableSize
               : ""}
           </option>
         </StyledInputSelect>

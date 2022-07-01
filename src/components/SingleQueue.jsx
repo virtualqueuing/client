@@ -10,6 +10,7 @@ import SeparateLine from "./styles/SeparateLine.styles";
 
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../pages/Context";
+import { showNewFormContext } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
 import arrivalActiveIcon from "../assets/Icons/Button_Arrival.svg";
@@ -18,9 +19,10 @@ import guestIcon from "../assets/Icons/guest.svg";
 import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
-import EditGuestPage from "../pages/EditGuestPage";
 import ArrivalModal from "./RightMenu/components/ArrivalModal";
+import AbsentModal from "./RightMenu/components/AbsentModal";
 import { API_URI, QUEUE_STATUS } from "../constant.jsx";
+import AddNewPage from "../pages/AddNewPage";
 
 const SingleQueue = ({
   _id,
@@ -38,6 +40,7 @@ const SingleQueue = ({
   const [, setSelectedQueue] = useContext(Context);
   const [isSending, setIsSending] = useState(false);
   const [showArrivalModal, setShowArrivalModal] = useState(false);
+  const [showAbsentModal, setShowAbsentModal] = useState(false);
   const [showAddNewForm, setShowAddNewForm] = useState(false);
 
   const addNewRef = useRef(); // close add-new page ouside the popup region
@@ -60,17 +63,17 @@ const SingleQueue = ({
     };
   }, []);
 
-  const queueComplete = async () => {
+  const queueComplete = async (id) => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(`${API_URI}/v1/queues/${_id}/Completed`, {});
+    await axios.put(`${API_URI}/v1/queues/${id}/Completed`, {});
     setIsSending(false);
   };
 
-  const queueAbsent = async () => {
+  const queueAbsent = async (id) => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(`${API_URI}/v1/queues/${_id}/Absent`, {});
+    await axios.put(`${API_URI}/v1/queues/${id}/Absent`, {});
     setIsSending(false);
   };
 
@@ -113,7 +116,7 @@ const SingleQueue = ({
         </QueueDataContainer>
         <StatusButtonContainer>
           <StatusButton
-            onClick={queueComplete}
+            onClick={() => setShowArrivalModal(true)}
             disabled={isSending || status === QUEUE_STATUS.COMPLETED}
             fontColor={theme.colors.components.arrivalButton.fontColor}
             borderColor={theme.colors.components.arrivalButton.borderColor}
@@ -122,10 +125,10 @@ const SingleQueue = ({
             Arrival
           </StatusButton>
           <StatusButton
-            onClick={queueAbsent}
+            onClick={() => setShowAbsentModal(true)}
             disabled={isSending || status === QUEUE_STATUS.ABSENT}
             fontColor={theme.colors.components.absentButton.fontColor}
-            borderColor={theme.colors.components.absentButton.fontColor}
+            borderColor={theme.colors.components.absentButton.borderColor}
           >
             <img src={absentActiveIcon} alt="arrivalIcon" />
             Absent
@@ -147,10 +150,10 @@ const SingleQueue = ({
         </TooltipContainer>
       </QueueItem>
       <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
-      <Context.Provider value={{ setShowAddNewForm }}>
+      <showNewFormContext.Provider value={{ setShowAddNewForm }}>
         {showAddNewForm && (
           <div ref={addNewRef}>
-            <EditGuestPage
+            <AddNewPage
               setShowAddNewForm={setShowAddNewForm}
               queueInfo={{
                 _id,
@@ -165,13 +168,16 @@ const SingleQueue = ({
             />
           </div>
         )}
-      </Context.Provider>
+      </showNewFormContext.Provider>
       {showArrivalModal && (
         <ArrivalModal
           id={_id}
           setShowArrivalModal={setShowArrivalModal}
           queueComplete={queueComplete}
         />
+      )}
+      {showAbsentModal && (
+        <AbsentModal id={_id} setShowAbsentModal={setShowAbsentModal} queueAbsent={queueAbsent} />
       )}
     </>
   );

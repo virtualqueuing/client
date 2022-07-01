@@ -14,6 +14,12 @@ export const TAG_COLORLIST = [
   "#E2F0CB",
 ];
 export const OPTION_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+export const ABSENT_REASONS = [
+  "No show without a reason",
+  "Rescheduling",
+  "Delayed",
+  "Other Reasons",
+]
 export const QUEUE_FILTER = ["All", "Queuing", "Absent"];
 export const TABLE_SIZE = ["Small", "Medium", "Large"];
 export const QUEUE_STATUS = {
