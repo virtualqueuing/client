@@ -85,87 +85,87 @@ const SignupPage = () => {
   };
 
   return (
-      <LoginContainer>
-        <LoginInfo>
-          <h2>Sign Up</h2>
-          <p>
-            Enter your details below to sign up.
-          </p>
-        </LoginInfo>
-        <form onSubmit={handleSubmit}>
+    <LoginContainer>
+      <LoginInfo>
+        <h2>Sign Up</h2>
+        <p>Enter your details below to sign up.</p>
+      </LoginInfo>
+      <form onSubmit={handleSubmit}>
+        <LoginInput
+          type="text"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        <LoginInput
+          type="text"
+          placeholder="Enter Username"
+          value={userName}
+          onChange={(event) => setUserName(event.target.value)}
+        />
+        <InputWrapper>
+          <InputOption value={role} onChange={(event) => setRole(event.target.value)}>
+            <option value="role">Select a Role</option>
+            {Roles.map((role) => (
+              <option key={role} value={Roles.value}>
+                {role}
+              </option>
+            ))}
+          </InputOption>
+          <CustomedInputOptionBG />
+        </InputWrapper>
+        <InputWrapper>
+          <InputOption value={branch} onChange={(event) => setBranch(event.target.value)}>
+            <option value="branch">Select a Branch</option>
+            {Branches.map((branch) => (
+              <option key={branch} value={Branches.value}>
+                {branch}
+              </option>
+            ))}
+          </InputOption>
+          <CustomedInputOptionBG />
+        </InputWrapper>
+        <InputWrapper>
           <LoginInput
-            type="text"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            type={passwordShown ? "text" : "password"}
+            placeholder="Enter Password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
+          {passwordShown ? (
+            <HidePassword onClick={togglePassword} />
+          ) : (
+            <ShowPassword onClick={togglePassword} />
+          )}
+        </InputWrapper>
+        <InputWrapper>
           <LoginInput
-            type="text"
-            placeholder="Enter Username"
-            value={userName}
-            onChange={(event) => setUserName(event.target.value)}
+            type={passwordShown ? "text" : "password"}
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(event) => setconfirmPassword(event.target.value)}
           />
-          <InputWrapper>
-            <InputOption value={role} onChange={(event) => setRole(event.target.value)}>
-              <option value="role">Select a Role</option>
-              {Roles.map((role) => (
-                <option key={role} value={Roles.value}>
-                  {role}
-                </option>
-              ))}
-            </InputOption>
-            <CustomedInputOptionBG />
-          </InputWrapper>
-          <InputWrapper>
-            <InputOption value={branch} onChange={(event) => setBranch(event.target.value)}>
-              <option value="branch">Select a Branch</option>
-              {Branches.map((branch) => (
-                <option key={branch} value={Branches.value}>
-                  {branch}
-                </option>
-              ))}
-            </InputOption>
-            <CustomedInputOptionBG />
-          </InputWrapper>
-          <InputWrapper>
-            <LoginInput
-              type={passwordShown ? "text" : "password"}
-              placeholder="Enter Password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-            {passwordShown ? (
-              <HidePassword onClick={togglePassword} />
-            ) : (
-              <ShowPassword onClick={togglePassword} />
-            )}
-          </InputWrapper>
-          <InputWrapper>
-            <LoginInput
-              type={passwordShown ? "text" : "password"}
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(event) => setconfirmPassword(event.target.value)}
-            />
-            {passwordShown ? (
-              <HidePassword onClick={togglePassword} />
-            ) : (
-              <ShowPassword onClick={togglePassword} />
-            )}
-          </InputWrapper>
-          <SetAccount>
-            <h6>
-              <a href="/login">Already have an account?</a>
-            </h6>
-          </SetAccount>
-          <SignupButton type="submit">
-            <p>Sign up</p>
-          </SignupButton>
-        </form>
-        <Footer>
-          <a href="/home" ><Logo/></a>
-        </Footer>  
-      </LoginContainer>
+          {passwordShown ? (
+            <HidePassword onClick={togglePassword} />
+          ) : (
+            <ShowPassword onClick={togglePassword} />
+          )}
+        </InputWrapper>
+        <SetAccount>
+          <h6>
+            <a href="/login">Already have an account?</a>
+          </h6>
+        </SetAccount>
+        <SignupButton type="submit">
+          <p>Sign up</p>
+        </SignupButton>
+      </form>
+      <Footer>
+        <a href="/home">
+          <Logo />
+        </a>
+      </Footer>
+    </LoginContainer>
   );
 };
 

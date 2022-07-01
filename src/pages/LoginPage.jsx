@@ -103,7 +103,7 @@ export const LoginButton = styled.button`
   margin: 5% 10% 0 10%;
   height: 35px;
   border-radius: 5px;
-  border:none;
+  border: none;
   background-color: ${({ theme }) => theme.colors.page["main"]};
   color: #fff;
   & p {
@@ -120,7 +120,7 @@ export const Footer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const Logo = styled.div`
   width: 120px;
@@ -136,8 +136,8 @@ const LoginPage = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -156,9 +156,7 @@ const LoginPage = () => {
       <LoginContainer>
         <LoginInfo>
           <h2>Sign in</h2>
-          <p>
-            Enter your details to sign in to your account
-          </p>
+          <p>Enter your details to sign in to your account</p>
         </LoginInfo>
         <LoginInput
           type="text"
@@ -193,8 +191,10 @@ const LoginPage = () => {
           <p>Sign in</p>
         </LoginButton>
         <Footer>
-          <a href="/home" ><Logo/></a>
-        </Footer>        
+          <a href="/home">
+            <Logo />
+          </a>
+        </Footer>
       </LoginContainer>
     </form>
   );
