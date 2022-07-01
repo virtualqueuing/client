@@ -10,6 +10,7 @@ import SeparateLine from "./styles/SeparateLine.styles";
 
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../pages/Context";
+import { showNewFormContext } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
 import arrivalActiveIcon from "../assets/Icons/Button_Arrival.svg";
@@ -18,8 +19,8 @@ import guestIcon from "../assets/Icons/guest.svg";
 import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
-import EditGuestPage from "../pages/EditGuestPage";
 import { API_URI, QUEUE_STATUS } from "../constant.jsx";
+import AddNewPage from "../pages/AddNewPage";
 
 const SingleQueue = ({
   _id,
@@ -148,10 +149,10 @@ const SingleQueue = ({
         </TooltipContainer>
       </QueueItem>
       <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
-      <Context.Provider value={{ setShowAddNewForm }}>
+      <showNewFormContext.Provider value={{ setShowAddNewForm }}>
         {showAddNewForm && (
           <div ref={addNewRef}>
-            <EditGuestPage
+            <AddNewPage
               setShowAddNewForm={setShowAddNewForm}
               queueInfo={{
                 _id,
@@ -166,7 +167,7 @@ const SingleQueue = ({
             />
           </div>
         )}
-      </Context.Provider>
+      </showNewFormContext.Provider>
     </>
   );
 };

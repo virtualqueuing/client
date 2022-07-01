@@ -1,6 +1,6 @@
 import { InputWrapper, StyledInputText, Label } from "../styles/AddNew.styles";
 
-const InputText = (params) => {
+const InputText = ({inputInfo}) => {
   return (
     <InputWrapper>
       <div>
@@ -9,7 +9,7 @@ const InputText = (params) => {
           id="Name"
           type="text"
           name="name"
-          defaultValue={params?.inputInfo?.name ? params.inputInfo.name : ""}
+          defaultValue={inputInfo?.name ? inputInfo.name : ""}
           required
         />
       </div>
@@ -19,7 +19,7 @@ const InputText = (params) => {
           id="phoneNumber"
           type="text"
           name="phoneNumber"
-          defaultValue={params?.inputInfo?.phoneNumber ? params.inputInfo.phoneNumber : ""}
+          defaultValue={inputInfo?.phoneNumber ? inputInfo.phoneNumber : ""}
           required
         />
       </div>
