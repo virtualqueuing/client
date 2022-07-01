@@ -13,7 +13,7 @@ const Form = ({ formQueueInfo }) => {
 
   const addNewSubmit = (event) => {
     const data = new FormData(event.target);
-    addGuestApi(Object.fromEntries(data.entries()))
+    addGuestApi(Object.fromEntries(data.entries()));
   };
 
   const updateSubmit = (event) => {
@@ -22,7 +22,10 @@ const Form = ({ formQueueInfo }) => {
   };
 
   return (
-    <StyledForm onSubmit={formQueueInfo?updateSubmit:addNewSubmit} onInvalid={() => setShowRequiredInfo(true)}>
+    <StyledForm
+      onSubmit={formQueueInfo ? updateSubmit : addNewSubmit}
+      onInvalid={() => setShowRequiredInfo(true)}
+    >
       <InputText inputInfo={formQueueInfo} />
       <InputSelect inputInfo={formQueueInfo} />
       <InputTextarea inputInfo={formQueueInfo} />

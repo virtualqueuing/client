@@ -7,7 +7,7 @@ import {
 import React, { useState } from "react";
 import { OPTION_NUMBERS } from "../../constant";
 
-const InputSelect = ({inputInfo}) => {
+const InputSelect = ({ inputInfo }) => {
   const [guestNum, setGuestNum] = useState();
   const getTableType = (guestNum) => {
     if (guestNum >= 1 && guestNum <= 4) {

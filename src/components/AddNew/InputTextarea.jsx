@@ -4,7 +4,7 @@ import CreateTags from "./CreateTags";
 import { useState, useRef } from "react";
 import { StyledTextarea } from "../styles/AddNew.styles";
 
-const InputTextarea = ({inputInfo}) => {
+const InputTextarea = ({ inputInfo }) => {
   // click Tag to create new tag in CreateTags
   const [tags, setTags] = useState([]);
   const ref = useRef(null);

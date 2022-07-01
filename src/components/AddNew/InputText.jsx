@@ -1,6 +1,6 @@
 import { InputWrapper, StyledInputText, Label } from "../styles/AddNew.styles";
 
-const InputText = ({inputInfo}) => {
+const InputText = ({ inputInfo }) => {
   return (
     <InputWrapper>
       <div>
