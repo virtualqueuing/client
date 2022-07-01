@@ -2,25 +2,33 @@ import InputText from "./InputText";
 import InputSelect from "./InputSelect";
 import InputTextarea from "./InputTextarea";
 import { StyledForm } from "../styles/AddNew.styles";
-import axios from "axios";
 import { showRequiredInfoContext } from "../../pages/Context";
 import { useContext } from "react";
 import Buttons from "./AddNewButton";
-import { API_URI } from "../../constant";
+import addGuestApi from "../../apis/addGuestApi";
+import updateGuestApi from "../../apis/updateGuestApi";
 
-const Form = (params) => {
+const Form = ({ formQueueInfo }) => {
   const { setShowRequiredInfo } = useContext(showRequiredInfoContext);
 
-  const handleSumbit = (event) => {
+  const addNewSubmit = (event) => {
     const data = new FormData(event.target);
-    axios.post(`${API_URI}/v1/queues`, Object.fromEntries(data.entries())).then();
+    addGuestApi(Object.fromEntries(data.entries()));
+  };
+
+  const updateSubmit = (event) => {
+    const data = new FormData(event.target);
+    updateGuestApi(formQueueInfo._id, Object.fromEntries(data.entries()));
   };
 
   return (
-    <StyledForm onSubmit={handleSumbit} onInvalid={() => setShowRequiredInfo(true)}>
-      <InputText inputInfo={params.formQueueInfo} />
-      <InputSelect inputInfo={params.formQueueInfo} />
-      <InputTextarea inputInfo={params.formQueueInfo} />
+    <StyledForm
+      onSubmit={formQueueInfo ? updateSubmit : addNewSubmit}
+      onInvalid={() => setShowRequiredInfo(true)}
+    >
+      <InputText inputInfo={formQueueInfo} />
+      <InputSelect inputInfo={formQueueInfo} />
+      <InputTextarea inputInfo={formQueueInfo} />
       <Buttons />
     </StyledForm>
   );
