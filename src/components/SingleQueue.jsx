@@ -19,6 +19,7 @@ import guestIcon from "../assets/Icons/guest.svg";
 import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
+import ArrivalModal from "./RightMenu/components/ArrivalModal";
 import { API_URI, QUEUE_STATUS } from "../constant.jsx";
 import AddNewPage from "../pages/AddNewPage";
 
@@ -37,15 +38,15 @@ const SingleQueue = ({
 }) => {
   const [, setSelectedQueue] = useContext(Context);
   const [isSending, setIsSending] = useState(false);
+  const [showArrivalModal, setShowArrivalModal] = useState(false);
+  const [showAddNewForm, setShowAddNewForm] = useState(false);
+
+  const addNewRef = useRef(); // close add-new page ouside the popup region
 
   const handleClick = () => {
     setSelectedQueue({ _id, name, phoneNumber, queueNumber, status, notes, createdAt });
     setActiveQueueId(_id);
   };
-
-  const [showAddNewForm, setShowAddNewForm] = useState(false);
-
-  const addNewRef = useRef(); // close add-new page ouside the popup region
 
   useEffect(() => {
     const handler = (event) => {
@@ -63,16 +64,14 @@ const SingleQueue = ({
   const queueComplete = async () => {
     if (isSending) return;
     setIsSending(true);
-    const { data } = await axios.put(`${API_URI}/v1/queues/${_id}/Completed`, {});
-    setSelectedQueue(data);
+    await axios.put(`${API_URI}/v1/queues/${_id}/Completed`, {});
     setIsSending(false);
   };
 
   const queueAbsent = async () => {
     if (isSending) return;
     setIsSending(true);
-    const { data } = await axios.put(`${API_URI}/v1/queues/${_id}/Absent`, {});
-    setSelectedQueue(data);
+    await axios.put(`${API_URI}/v1/queues/${_id}/Absent`, {});
     setIsSending(false);
   };
 
@@ -105,8 +104,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                  ? "rgba(254, 63, 127, 0.1)"
-                  : "rgba(46, 173, 124, 0.1)",
+                    ? "rgba(254, 63, 127, 0.1)"
+                    : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
@@ -125,7 +124,7 @@ const SingleQueue = ({
           </StatusButton>
           <StatusButton
             onClick={queueAbsent}
-            disabled={isSending || QUEUE_STATUS.ABSENT}
+            disabled={isSending || status === QUEUE_STATUS.ABSENT}
             fontColor={theme.colors.components.absentButton.fontColor}
             borderColor={theme.colors.components.absentButton.fontColor}
           >
@@ -168,6 +167,9 @@ const SingleQueue = ({
           </div>
         )}
       </showNewFormContext.Provider>
+      {showArrivalModal && (
+        <ArrivalModal id={_id} setShowArrivalModal={setShowArrivalModal} queueComplete={queueComplete} />
+      )}
     </>
   );
 };

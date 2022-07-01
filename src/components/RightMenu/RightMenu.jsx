@@ -19,7 +19,7 @@ const MainBar = () => {
       setQueues(data);
     };
     fetchQueue();
-  }, []);
+  }, [queues]);
 
   return (
     <RightMenuContainer>

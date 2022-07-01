@@ -82,10 +82,10 @@ const Cancel = styled.span`
   }
 `;
 
-const ArrivalModal = () => {
+const ArrivalModal = ({ id, setShowArrivalModal, queueComplete }) => {
   return (
-    <ModalBackground>
-      <Modal>
+    <ModalBackground onClick={() => setShowArrivalModal(false)}>
+      <Modal onClick={(e) => e.stopPropagation()}>
         <Wrapper>
           <Title>Confirm Arrival</Title>
         </Wrapper>
@@ -95,7 +95,7 @@ const ArrivalModal = () => {
         </Wrapper>
         <HorizontalDivider />
         <ButtonWrapper>
-          <Cancel>Cancel</Cancel>
+          <Cancel onClick={() => setShowArrivalModal(false)}>Cancel</Cancel>
           <Confirm>Yes</Confirm>
         </ButtonWrapper>
       </Modal>
