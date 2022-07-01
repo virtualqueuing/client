@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 
 export const LoginContainer = styled.div`
   width: 370px;
-  height: 390px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -104,6 +103,7 @@ export const LoginButton = styled.button`
   margin: 5% 10% 0 10%;
   height: 35px;
   border-radius: 5px;
+  border:none;
   background-color: ${({ theme }) => theme.colors.page["main"]};
   color: #fff;
   & p {
@@ -116,13 +116,16 @@ export const LoginButton = styled.button`
   }
 `;
 
+export const Footer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 export const Logo = styled.div`
   width: 120px;
   height: 60px;
   margin: 3% 0;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   background-image: url(${logo});
   background-size: 100% 100%;
 `;
@@ -133,8 +136,8 @@ const LoginPage = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
 
@@ -152,9 +155,9 @@ const LoginPage = () => {
     <form onSubmit={handleSubmit}>
       <LoginContainer>
         <LoginInfo>
-          <h2>Agent Login</h2>
+          <h2>Sign in</h2>
           <p>
-            Hey, Enter your details to get <br /> sign in to your account
+            Enter your details to sign in to your account
           </p>
         </LoginInfo>
         <LoginInput
@@ -189,7 +192,9 @@ const LoginPage = () => {
         <LoginButton>
           <p>Sign in</p>
         </LoginButton>
-        <Logo />
+        <Footer>
+          <a href="/home" ><Logo/></a>
+        </Footer>        
       </LoginContainer>
     </form>
   );

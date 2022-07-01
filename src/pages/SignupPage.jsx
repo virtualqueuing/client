@@ -10,16 +10,13 @@ import {
   SetAccount,
   LoginButton,
   Logo,
+  Footer,
 } from "./LoginPage";
 import { Branches, Roles } from "../constant";
 import ArrowDownIcon from "../assets/Icons/down-arrow-svgrepo-com.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_URI } from "../constant";
-
-const SignupContainer = styled(LoginContainer)`
-  height: 590px;
-`;
 
 const SignupButton = styled(LoginButton)`
   margin: 3% 10% 0 10%;
@@ -88,12 +85,11 @@ const SignupPage = () => {
   };
 
   return (
-    <>
-      <SignupContainer>
+      <LoginContainer>
         <LoginInfo>
-          <h2>Agent Sign Up</h2>
+          <h2>Sign Up</h2>
           <p>
-            Hey, Enter your details to <br /> sign up an new account
+            Enter your details below to sign up.
           </p>
         </LoginInfo>
         <form onSubmit={handleSubmit}>
@@ -166,9 +162,10 @@ const SignupPage = () => {
             <p>Sign up</p>
           </SignupButton>
         </form>
-        <Logo />
-      </SignupContainer>
-    </>
+        <Footer>
+          <a href="/home" ><Logo/></a>
+        </Footer>  
+      </LoginContainer>
   );
 };
 

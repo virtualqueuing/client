@@ -103,8 +103,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                    ? "rgba(254, 63, 127, 0.1)"
-                    : "rgba(46, 173, 124, 0.1)",
+                  ? "rgba(254, 63, 127, 0.1)"
+                  : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
@@ -167,7 +167,11 @@ const SingleQueue = ({
         )}
       </Context.Provider>
       {showArrivalModal && (
-        <ArrivalModal id={_id} setShowArrivalModal={setShowArrivalModal} queueComplete={queueComplete} />
+        <ArrivalModal
+          id={_id}
+          setShowArrivalModal={setShowArrivalModal}
+          queueComplete={queueComplete}
+        />
       )}
     </>
   );
