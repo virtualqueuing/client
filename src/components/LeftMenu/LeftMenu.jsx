@@ -7,33 +7,23 @@ import WheelchairIcon from "../../assets/Icons/Note_WheelChair.svg";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 
-// const VerticalDivider = styled.div`
-//   width: 3px;
-//   height: 100px;
-//   background-color: #c4c4c4;
-//   border: 2px;
-// `;
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   gap: 6%;
   width: auto;
   height: 100vh;
   padding: 40px 15px;
-  /* margin: 5px auto 5px 5px; */
 `;
 const UserPanel = styled.div`
   display: flex;
-  /* justify-content: space-between; */
-  width: 90%;
+  width: 100%;
   height: 50px;
   gap: 8%;
   position: relative;
   align-items: center;
-
   @media (max-width: 1500px) {
     padding-right: 40px;
   }
@@ -66,51 +56,61 @@ const ArrowDownBtn = styled.img`
   position: absolute;
   right: 0;
   cursor: pointer;
+  ${(props) =>
+    props.dropState
+      ? css`
+          transform: rotate(180deg);
+        `
+      : " "}
 `
 
+
+
 const DropDownListContainer = styled.ul`
-  position: absolute;
+  margin: -35px 0 0 0;
   display: none;
-  height: 160px;;
+  height: 160px;
   flex-direction: column;
   justify-content: space-around;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  /* box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14); */
-  top: 100%;
+  /* border: 1px solid rgba(0, 0, 0, 0.04); */
   width: 100%;
   list-style: none;
-  background-color: ${({ theme }) => theme.colors.page.main};
-  margin: 18px 0 0 0;
-  padding: 0 10px;
+  padding: 0;
   z-index: 1;
-  /* display: none; */
+  @keyframes slide-down {
+    0%{transform: scale(1,0)}
+    100%{transform: scale(1,1)}
+  }
   ${(props) =>
     props.dropState
       ? css`
           display: flex;
+          transition: max-height .3s ease-in;
+          transform-origin: 50% 0;
+          animation: slide-down 0.3s ease-in;
         `
       : " "}
 `
 
 const DropDownList = styled.li`
   text-align: center;
+  transition: .5s;
   & a {
-    color: white;
+    color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
     font-weight: 700;
     text-decoration: none;
   }
   padding: 10px 12px;
-  border: 3px solid white;
+  border: 3px solid ${({ theme }) => theme.colors.components.queueContainer.background};
   border-radius: 15px;
   cursor: pointer;
   &:hover {
-    box-shadow: 10px 5px 5px white;
+    box-shadow: ${({ theme }) => theme.colors.components.queueContainer.background} 0px 20px 30px -10px;
+    transform: scale(1.05);
   }
 `
 
 const LeftSideBarOptionContainer = styled.div`
-  /* width: auto;
-  height: 180px; */
   padding-bottom: 90px;
   @media (max-width: 1500px) {
     padding-bottom: 0;
@@ -229,15 +229,15 @@ const LeftMenu = () => {
           <UserName>Roy</UserName>
           <UserLocation>Sunnybank</UserLocation>
         </UserDetails>
-        <ArrowDownBtn src={ArrowDown} alt="Arrow Down Button Image" onClick={handleClick} />
-        <DropDownListContainer dropState={dropState}>
+        <ArrowDownBtn src={ArrowDown} alt="Arrow Down Button Image" onClick={handleClick} dropState={dropState}/>
+      </UserPanel>
+      <DropDownListContainer dropState={dropState}>
           {dropOption.map((option, index) => {
             return (
               <DropDownList key={index}><a href={option.path}>{option.name}</a></DropDownList>
             )
           })}
-        </DropDownListContainer>
-      </UserPanel>
+      </DropDownListContainer>
       <LeftSideBarOptionContainer>
         <LeftSideBarOption>
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
