@@ -8,8 +8,7 @@ import {
 } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { Context } from "../pages/Context";
+import React, { useEffect, useState, useRef } from "react";
 import { showNewFormContext } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
@@ -33,11 +32,9 @@ const SingleQueue = ({
   tableSize,
   status,
   notes,
-  createdAt,
   activeQueueId,
   setActiveQueueId,
 }) => {
-  const [, setSelectedQueue] = useContext(Context);
   const [isSending, setIsSending] = useState(false);
   const [showArrivalModal, setShowArrivalModal] = useState(false);
   const [showAbsentModal, setShowAbsentModal] = useState(false);
@@ -46,7 +43,6 @@ const SingleQueue = ({
   const addNewRef = useRef(); // close add-new page ouside the popup region
 
   const handleClick = () => {
-    setSelectedQueue({ _id, name, phoneNumber, queueNumber, status, notes, createdAt });
     setActiveQueueId(_id);
   };
 
@@ -106,8 +102,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                    ? "rgba(254, 63, 127, 0.1)"
-                    : "rgba(46, 173, 124, 0.1)",
+                  ? "rgba(254, 63, 127, 0.1)"
+                  : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
@@ -170,7 +166,11 @@ const SingleQueue = ({
         )}
       </showNewFormContext.Provider>
       {showArrivalModal && (
-        <ArrivalModal id={_id} setShowArrivalModal={setShowArrivalModal} queueComplete={queueComplete} />
+        <ArrivalModal
+          id={_id}
+          setShowArrivalModal={setShowArrivalModal}
+          queueComplete={queueComplete}
+        />
       )}
       {showAbsentModal && (
         <AbsentModal id={_id} setShowAbsentModal={setShowAbsentModal} queueAbsent={queueAbsent} />

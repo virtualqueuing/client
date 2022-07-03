@@ -84,9 +84,9 @@ const Cancel = styled.span`
 
 const ArrivalModal = ({ id, setShowArrivalModal, queueComplete }) => {
   const sendConfirmCommand = (id) => {
-    queueComplete(id)
-    setShowArrivalModal(false)
-  }
+    queueComplete(id);
+    setShowArrivalModal(false);
+  };
 
   return (
     <ModalBackground onClick={() => setShowArrivalModal(false)}>

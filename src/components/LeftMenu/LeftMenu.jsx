@@ -62,9 +62,7 @@ const ArrowDownBtn = styled.img`
           transform: rotate(180deg);
         `
       : " "}
-`
-
-
+`;
 
 const DropDownListContainer = styled.ul`
   margin: -35px 0 0 0;
@@ -78,23 +76,27 @@ const DropDownListContainer = styled.ul`
   padding: 0;
   z-index: 1;
   @keyframes slide-down {
-    0%{transform: scale(1,0)}
-    100%{transform: scale(1,1)}
+    0% {
+      transform: scale(1, 0);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
   }
   ${(props) =>
     props.dropState
       ? css`
           display: flex;
-          transition: max-height .3s ease-in;
+          transition: max-height 0.3s ease-in;
           transform-origin: 50% 0;
           animation: slide-down 0.3s ease-in;
         `
       : " "}
-`
+`;
 
 const DropDownList = styled.li`
   text-align: center;
-  transition: .5s;
+  transition: 0.5s;
   & a {
     color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
     font-weight: 700;
@@ -108,7 +110,7 @@ const DropDownList = styled.li`
     box-shadow: ${({ theme }) => theme.colors.components.queueContainer.background} 0px 20px 30px -10px;
     transform: scale(1.05);
   }
-`
+`;
 
 const LeftSideBarOptionContainer = styled.div`
   padding-bottom: 90px;
@@ -214,13 +216,13 @@ const SingleQueueDescription = styled.span`
 const LeftMenu = () => {
   // const dropOption = ["Sign Out", "Profile"];
   const dropOption = [
-    {name: "Sign Out",path:"/home"},
-    {name: "Profile",path:"/profile"},
+    { name: "Sign Out", path: "/home" },
+    { name: "Profile", path: "/profile" },
   ];
-  const[dropState, setDropState] = useState(false);
+  const [dropState, setDropState] = useState(false);
   const handleClick = () => {
     setDropState(!dropState);
-  }
+  };
   return (
     <Background>
       <UserPanel>
@@ -229,14 +231,21 @@ const LeftMenu = () => {
           <UserName>Roy</UserName>
           <UserLocation>Sunnybank</UserLocation>
         </UserDetails>
-        <ArrowDownBtn src={ArrowDown} alt="Arrow Down Button Image" onClick={handleClick} dropState={dropState}/>
+        <ArrowDownBtn
+          src={ArrowDown}
+          alt="Arrow Down Button Image"
+          onClick={handleClick}
+          dropState={dropState}
+        />
       </UserPanel>
       <DropDownListContainer dropState={dropState}>
-          {dropOption.map((option, index) => {
-            return (
-              <DropDownList key={index}><a href={option.path}>{option.name}</a></DropDownList>
-            )
-          })}
+        {dropOption.map((option, index) => {
+          return (
+            <DropDownList key={index}>
+              <a href={option.path}>{option.name}</a>
+            </DropDownList>
+          );
+        })}
       </DropDownListContainer>
       <LeftSideBarOptionContainer>
         <LeftSideBarOption>
