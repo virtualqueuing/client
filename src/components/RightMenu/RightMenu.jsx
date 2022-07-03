@@ -19,7 +19,7 @@ const MainBar = () => {
       setQueues(data);
     };
     fetchQueue();
-  }, [queues]);
+  }, []);
 
   return (
     <RightMenuContainer>
@@ -34,6 +34,7 @@ const MainBar = () => {
         tableType={tableType}
         queues={queues}
         searchQueue={searchQueue}
+        setQueues={setQueues}
       />
       <Footer />
     </RightMenuContainer>

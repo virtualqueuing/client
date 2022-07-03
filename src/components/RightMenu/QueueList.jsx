@@ -6,11 +6,15 @@ import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { QUEUE_STATUS } from "../../constant";
 
-const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
+const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) => {
   MainQueues.propTypes = {
     queues: PropTypes.array.isRequired,
     tableType: PropTypes.string.isRequired,
+    searchQueue: PropTypes.string.isRequired,
+    queueStatus: PropTypes.string.isRequired,
+    setQueues: PropTypes.func.isRequired,
   };
+
   let showList = [];
   if (queueStatus === "All") {
     showList = queues;
@@ -47,6 +51,7 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue }) => {
             {...queue}
             activeQueueId={activeQueueId}
             setActiveQueueId={setActiveQueueId}
+            setQueues={setQueues}
           />
         )),
     [showList, activeQueueId, searchQueue]
