@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import React, { useState } from "react";
 import { ModalBackground } from "../../../components/Modal/ModalBackground";
 import { ABSENT_REASONS } from "../../../constant";
+import PropTypes from "prop-types";
 
 const Modal = styled.div`
   width: 540px;
@@ -140,11 +141,18 @@ const Cancel = styled.span`
   }
 `;
 
-const AbsentModal = ({ id, setShowAbsentModal, queueAbsent }) => {
+const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
+  AbsentModal.propTypes = {
+    id: PropTypes.string.isRequired,
+    setShowAbsentModal: PropTypes.func.isRequired,
+    queueAbsent: PropTypes.func.isRequired,
+    setQueues: PropTypes.func.isRequired,
+  };
+
   const [absentReason, setAbsentReason] = useState("");
 
-  const sendAbsentCommand = (id) => {
-    queueAbsent(id);
+  const sendAbsentCommand = (id, setQueues) => {
+    queueAbsent(id, setQueues);
     setShowAbsentModal(false);
   };
 
@@ -180,7 +188,7 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent }) => {
         <HorizontalDivider />
         <ButtonWrapper>
           <Cancel onClick={() => setShowAbsentModal(false)}>Cancel</Cancel>
-          <Absent onClick={() => sendAbsentCommand(id)}>Proceed</Absent>
+          <Absent onClick={() => sendAbsentCommand(id, setQueues)}>Proceed</Absent>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>
