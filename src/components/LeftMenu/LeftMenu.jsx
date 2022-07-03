@@ -5,6 +5,8 @@ import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
 import BirthdayIcon from "../../assets/Icons/Note_Birthday.svg";
 import WheelchairIcon from "../../assets/Icons/Note_WheelChair.svg";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
+import { QUEUE_STATUS } from "../../constant";
+import _ from "lodash";
 
 // const VerticalDivider = styled.div`
 //   width: 3px;
@@ -116,12 +118,39 @@ const CurrentQueueDetailTitle = styled.span`
 `;
 
 const CurrentQueueNumberAndName = styled.div`
+  font-size: 4vh;
   width: 100%;
   height: 80%;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
+const HeadNumber = styled.div`
+  color: ${({ theme }) => theme.colors.fonts.secondary};
+  width: 15%;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vh;
+`;
+
+const CurrentQueueBar = styled.div`
+  width: 1%;
+  height: 70%;
+  background-color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
+  margin-right: 15px;
+  margin-left: 15px;
+`;
+
+const HeadCustomerName = styled.div`
+  color: ${({ theme }) => theme.colors.fonts.secondary};
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vh;
+`;
 const SingleQueueNotesContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -161,8 +190,12 @@ const SingleQueueDescription = styled.span`
   }
 `;
 
-const LeftMenu = () => {
-  // const menuOption = ["Queue List", "Dashboard"];
+const LeftMenu = ({ leftQueues }) => {
+  if (_.isEmpty(leftQueues)) return null;
+  const waitingList = leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING);
+  const headCustomerName = waitingList?.name;
+  const headNumber = waitingList?.queueNumber;
+
   return (
     <Background>
       <UserPanel>
@@ -184,7 +217,11 @@ const LeftMenu = () => {
       </LeftSideBarOptionContainer>
       <CurrentQueueDetailsContainer>
         <CurrentQueueDetailTitle>Current Queue:</CurrentQueueDetailTitle>
-        <CurrentQueueNumberAndName></CurrentQueueNumberAndName>
+        <CurrentQueueNumberAndName>
+          <HeadNumber>{headNumber}</HeadNumber>
+          <CurrentQueueBar></CurrentQueueBar>
+          <HeadCustomerName>{headCustomerName}</HeadCustomerName>
+        </CurrentQueueNumberAndName>
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>
         <CurrentQueueDetailTitle>Notes:</CurrentQueueDetailTitle>
