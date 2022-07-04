@@ -2,7 +2,7 @@ import { AddGuestButton } from "../FunctionButton";
 import { StyledFooter } from "../styles/Footer.styles";
 import AddNewPage from "../../pages/AddNewPage";
 import { useState, useEffect, useRef } from "react";
-import { showNewFormContext } from "../../pages/Context";
+import { showNewFormContext } from "../../Context";
 
 const Footer = () => {
   const [showAddNewForm, setShowAddNewForm] = useState(false);

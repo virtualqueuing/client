@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { showNewFormContext } from "../../pages/Context";
+import { showNewFormContext } from "../../Context";
 import { useContext } from "react";
 
 const Wrapper = styled.div`

@@ -27,6 +27,7 @@ export const QueueItem = styled.div`
       ? css`
           background-color: ${({ theme }) => theme.colors.page.secondary};
           border-radius: 15px;
+          z-index: 1;
         `
       : " "}
   @media (max-width: 1500px) {

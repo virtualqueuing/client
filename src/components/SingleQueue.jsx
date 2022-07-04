@@ -9,8 +9,8 @@ import {
 import SeparateLine from "./styles/SeparateLine.styles";
 
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { Context } from "../pages/Context";
-import { showNewFormContext } from "../pages/Context";
+import { Context } from "../Context";
+import { showNewFormContext } from "../Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
 import arrivalActiveIcon from "../assets/Icons/Button_Arrival.svg";

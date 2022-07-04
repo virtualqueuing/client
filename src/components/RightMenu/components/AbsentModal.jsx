@@ -144,9 +144,9 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent }) => {
   const [absentReason, setAbsentReason] = useState("");
 
   const sendAbsentCommand = (id) => {
-    queueAbsent(id)
-    setShowAbsentModal(false)
-  }
+    queueAbsent(id);
+    setShowAbsentModal(false);
+  };
 
   return (
     <ModalBackground onClick={() => setShowAbsentModal(false)}>

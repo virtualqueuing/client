@@ -19,7 +19,7 @@ export const ABSENT_REASONS = [
   "Rescheduling",
   "Delayed",
   "Other Reasons",
-]
+];
 export const QUEUE_FILTER = ["All", "Queuing", "Absent"];
 export const TABLE_SIZE = ["Small", "Medium", "Large"];
 export const QUEUE_STATUS = {

@@ -54,7 +54,7 @@ const CustomedInputOptionBG = styled.div`
   pointer-events: none;
 `;
 
-const SignupPage = () => {
+const SignupPage = ({ authenticated }) => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [role, setRole] = useState("");
@@ -72,16 +72,23 @@ const SignupPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios
-      .post(`${API_URI}/v1/auth/register`, {
-        email,
-        userName,
-        role,
-        branch,
-        password,
-        confirmPassword,
-      })
-      .then(() => navigate("/"));
+    if (!authenticated) {
+      axios
+        .post(`${API_URI}/v1/auth/register`, {
+          email,
+          userName,
+          role,
+          branch,
+          password,
+          confirmPassword,
+        })
+        .then((res) => {
+          const jwt = res.headers["x-auth-token"];
+          localStorage.setItem("authToken", jwt);
+        })
+        .then(() => navigate("/"));
+      return;
+    }
   };
 
   return (

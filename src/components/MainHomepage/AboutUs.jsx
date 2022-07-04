@@ -24,7 +24,7 @@ const Aboutus = React.forwardRef((props, ref) => {
       <SectionTitle>About Us</SectionTitle>
       <Team>
         {TeamMembers.map((member) => (
-          <Profile key={member.id}>
+          <Profile key={member.name}>
             <Avartar>
               <img src={member.avatar} alt={member.name} />
             </Avartar>
