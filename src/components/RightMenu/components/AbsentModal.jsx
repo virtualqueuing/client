@@ -121,7 +121,7 @@ const Absent = styled.button`
   border: none;
   color: white;
   font-size: ${({ theme }) => theme.fontSizes.lg};
-  background-color: ${({ theme }) => theme.colors.components.absentButton.fontColor};
+  background-color: ${({ theme }) => theme.colors.page.main};
 
   :hover {
     cursor: pointer;
