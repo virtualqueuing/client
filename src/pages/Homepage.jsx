@@ -6,12 +6,13 @@ import { Context } from "./Context";
 
 const Homepage = () => {
   const [context, setContext] = useState(0);
+  const [queues, setQueues] = useState([]);
 
   return (
     <Container>
       <Context.Provider value={[context, setContext]}>
-        <LeftMenu />
-        <RightMenu />
+        <LeftMenu leftQueues={queues} />
+        <RightMenu queues={queues} setQueues={setQueues} />
       </Context.Provider>
     </Container>
   );
