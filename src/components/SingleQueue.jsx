@@ -8,9 +8,8 @@ import {
 } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { Context } from "../Context";
-import { showNewFormContext } from "../Context";
+import React, { useEffect, useState, useRef } from "react";
+import { showNewFormContext } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
 import arrivalActiveIcon from "../assets/Icons/Button_Arrival.svg";
@@ -23,6 +22,7 @@ import ArrivalModal from "./RightMenu/components/ArrivalModal";
 import AbsentModal from "./RightMenu/components/AbsentModal";
 import { API_URI, QUEUE_STATUS } from "../constant.jsx";
 import AddNewPage from "../pages/AddNewPage";
+import PropTypes from "prop-types";
 
 const SingleQueue = ({
   _id,
@@ -33,11 +33,24 @@ const SingleQueue = ({
   tableSize,
   status,
   notes,
-  createdAt,
   activeQueueId,
   setActiveQueueId,
+  setQueues,
 }) => {
-  const [, setSelectedQueue] = useContext(Context);
+  SingleQueue.propTypes = {
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    phoneNumber: PropTypes.string.isRequired,
+    queueNumber: PropTypes.number.isRequired,
+    guestsNumber: PropTypes.number.isRequired,
+    tableSize: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    notes: PropTypes.array.isRequired,
+    activeQueueId: PropTypes.string.isRequired,
+    setActiveQueueId: PropTypes.func.isRequired,
+    setQueues: PropTypes.func.isRequired,
+  };
+
   const [isSending, setIsSending] = useState(false);
   const [showArrivalModal, setShowArrivalModal] = useState(false);
   const [showAbsentModal, setShowAbsentModal] = useState(false);
@@ -46,7 +59,6 @@ const SingleQueue = ({
   const addNewRef = useRef(); // close add-new page ouside the popup region
 
   const handleClick = () => {
-    setSelectedQueue({ _id, name, phoneNumber, queueNumber, status, notes, createdAt });
     setActiveQueueId(_id);
   };
 
@@ -63,17 +75,21 @@ const SingleQueue = ({
     };
   }, []);
 
-  const queueComplete = async (id) => {
+  const queueComplete = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
     await axios.put(`${API_URI}/v1/queues/${id}/Completed`, {});
+    const { data } = await axios.get(`${API_URI}/v1/queues`);
+    setQueues(data);
     setIsSending(false);
   };
 
-  const queueAbsent = async (id) => {
+  const queueAbsent = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
     await axios.put(`${API_URI}/v1/queues/${id}/Absent`, {});
+    const { data } = await axios.get(`${API_URI}/v1/queues`);
+    setQueues(data);
     setIsSending(false);
   };
 
@@ -174,10 +190,16 @@ const SingleQueue = ({
           id={_id}
           setShowArrivalModal={setShowArrivalModal}
           queueComplete={queueComplete}
+          setQueues={setQueues}
         />
       )}
       {showAbsentModal && (
-        <AbsentModal id={_id} setShowAbsentModal={setShowAbsentModal} queueAbsent={queueAbsent} />
+        <AbsentModal
+          id={_id}
+          setShowAbsentModal={setShowAbsentModal}
+          queueAbsent={queueAbsent}
+          setQueues={setQueues}
+        />
       )}
     </>
   );

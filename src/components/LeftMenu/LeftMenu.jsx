@@ -1,35 +1,29 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
 import BirthdayIcon from "../../assets/Icons/Note_Birthday.svg";
 import WheelchairIcon from "../../assets/Icons/Note_WheelChair.svg";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
+import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 
-// const VerticalDivider = styled.div`
-//   width: 3px;
-//   height: 100px;
-//   background-color: #c4c4c4;
-//   border: 2px;
-// `;
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   gap: 6%;
   width: auto;
   height: 100vh;
   padding: 40px 15px;
-  /* margin: 5px auto 5px 5px; */
 `;
 const UserPanel = styled.div`
   display: flex;
-  /* justify-content: space-between; */
-  width: 90%;
+  width: 100%;
   height: 50px;
   gap: 8%;
+  position: relative;
+  align-items: center;
   @media (max-width: 1500px) {
     padding-right: 40px;
   }
@@ -58,9 +52,67 @@ const UserLocation = styled.span`
   color: ${({ theme }) => theme.colors.fonts.secondary};
 `;
 
+const ArrowDownBtn = styled.img`
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  ${(props) =>
+    props.dropState
+      ? css`
+          transform: rotate(180deg);
+        `
+      : " "}
+`;
+
+const DropDownListContainer = styled.ul`
+  margin: -35px 0 0 0;
+  display: none;
+  height: 160px;
+  flex-direction: column;
+  justify-content: space-around;
+  /* border: 1px solid rgba(0, 0, 0, 0.04); */
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+  @keyframes slide-down {
+    0% {
+      transform: scale(1, 0);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+  ${(props) =>
+    props.dropState
+      ? css`
+          display: flex;
+          transition: max-height 0.3s ease-in;
+          transform-origin: 50% 0;
+          animation: slide-down 0.3s ease-in;
+        `
+      : " "}
+`;
+
+const DropDownList = styled.li`
+  text-align: center;
+  transition: 0.5s;
+  & a {
+    color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
+    font-weight: 700;
+    text-decoration: none;
+  }
+  padding: 10px 12px;
+  border: 3px solid ${({ theme }) => theme.colors.components.queueContainer.background};
+  border-radius: 15px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: ${({ theme }) => theme.colors.components.queueContainer.background} 0px 20px 30px -10px;
+    transform: scale(1.05);
+  }
+`;
+
 const LeftSideBarOptionContainer = styled.div`
-  /* width: auto;
-  height: 180px; */
   padding-bottom: 90px;
   @media (max-width: 1500px) {
     padding-bottom: 0;
@@ -162,7 +214,15 @@ const SingleQueueDescription = styled.span`
 `;
 
 const LeftMenu = () => {
-  // const menuOption = ["Queue List", "Dashboard"];
+  // const dropOption = ["Sign Out", "Profile"];
+  const dropOption = [
+    { name: "Sign Out", path: "/home" },
+    { name: "Profile", path: "/profile" },
+  ];
+  const [dropState, setDropState] = useState(false);
+  const handleClick = () => {
+    setDropState(!dropState);
+  };
   return (
     <Background>
       <UserPanel>
@@ -171,7 +231,22 @@ const LeftMenu = () => {
           <UserName>Roy</UserName>
           <UserLocation>Sunnybank</UserLocation>
         </UserDetails>
+        <ArrowDownBtn
+          src={ArrowDown}
+          alt="Arrow Down Button Image"
+          onClick={handleClick}
+          dropState={dropState}
+        />
       </UserPanel>
+      <DropDownListContainer dropState={dropState}>
+        {dropOption.map((option, index) => {
+          return (
+            <DropDownList key={index}>
+              <a href={option.path}>{option.name}</a>
+            </DropDownList>
+          );
+        })}
+      </DropDownListContainer>
       <LeftSideBarOptionContainer>
         <LeftSideBarOption>
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />

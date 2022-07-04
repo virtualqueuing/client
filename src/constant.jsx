@@ -48,4 +48,4 @@ export const Roles = ["Manager", "Staff"];
 export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];
 export const API_URI = import.meta.env.DEV
   ? "http://localhost:3000"
-  : "http://p3-back-lb-1729390372.ap-southeast-2.elb.amazonaws.com";
+  : "https://backend.goexperts.click";
