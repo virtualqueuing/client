@@ -4,6 +4,8 @@ import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
 import BirthdayIcon from "../../assets/Icons/Note_Birthday.svg";
 import WheelchairIcon from "../../assets/Icons/Note_WheelChair.svg";
+import { QUEUE_STATUS } from "../../constant";
+import _ from "lodash";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 
@@ -168,10 +170,38 @@ const CurrentQueueDetailTitle = styled.span`
 `;
 
 const CurrentQueueNumberAndName = styled.div`
+  font-size: 4vh;
   width: 100%;
   height: 80%;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+const HeadNumber = styled.div`
+  color: ${({ theme }) => theme.colors.fonts.secondary};
+  width: 15%;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vh;
+`;
+
+const CurrentQueueBar = styled.div`
+  width: 1%;
+  height: 70%;
+  background-color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
+  margin-right: 15px;
+  margin-left: 15px;
+`;
+
+const HeadCustomerName = styled.div`
+  color: ${({ theme }) => theme.colors.fonts.secondary};
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vh;
 `;
 
 const SingleQueueNotesContainer = styled.div`
@@ -213,7 +243,14 @@ const SingleQueueDescription = styled.span`
   }
 `;
 
-const LeftMenu = () => {
+const LeftMenu = ({ leftQueues }) => {
+  let waitingList = [];
+  if (!_.isEmpty(leftQueues)) {
+    waitingList = leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING);
+  }
+  const headCustomerName = waitingList?.name;
+  const headNumber = waitingList?.queueNumber;
+
   // const dropOption = ["Sign Out", "Profile"];
   const dropOption = [
     { name: "Sign Out", path: "/home" },
@@ -259,7 +296,11 @@ const LeftMenu = () => {
       </LeftSideBarOptionContainer>
       <CurrentQueueDetailsContainer>
         <CurrentQueueDetailTitle>Current Queue:</CurrentQueueDetailTitle>
-        <CurrentQueueNumberAndName></CurrentQueueNumberAndName>
+        <CurrentQueueNumberAndName>
+          <HeadNumber>{headNumber}</HeadNumber>
+          <CurrentQueueBar></CurrentQueueBar>
+          <HeadCustomerName>{headCustomerName}</HeadCustomerName>
+        </CurrentQueueNumberAndName>
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>
         <CurrentQueueDetailTitle>Notes:</CurrentQueueDetailTitle>
