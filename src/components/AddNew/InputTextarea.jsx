@@ -11,11 +11,6 @@ const InputTextarea = ({ inputInfo }) => {
 
   const SuggestedTag = (e) => {
     setTags((prevState) => [...prevState, e.target.value]);
-    // console.log(e.target.value);
-    // console.log(tags.toString())
-    // console.log(ref.current.value)
-    // console.log(StyledTextarea)
-    // console.log(tags);
   };
 
   return (
@@ -28,8 +23,8 @@ const InputTextarea = ({ inputInfo }) => {
         <Tag type="button" tagTypes="wheelchair" value="Wheelchair" onClick={SuggestedTag}>
           Wheelchair
         </Tag>
-        <Tag type="button" tagTypes="babyseat" value="Babyseat" onClick={SuggestedTag}>
-          Babyseat
+        <Tag type="button" tagTypes="highchair" value="Highchair" onClick={SuggestedTag}>
+          Highchair
         </Tag>
       </SuggestedTagsWrapper>
       <StyledTextarea
