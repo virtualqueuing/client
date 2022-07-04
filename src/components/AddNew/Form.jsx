@@ -2,7 +2,7 @@ import InputText from "./InputText";
 import InputSelect from "./InputSelect";
 import InputTextarea from "./InputTextarea";
 import { StyledForm } from "../styles/AddNew.styles";
-import { showRequiredInfoContext } from "../../Context";
+import { showRequiredInfoContext } from "../../pages/Context";
 import { useContext } from "react";
 import Buttons from "./AddNewButton";
 import addGuestApi from "../../apis/addGuestApi";

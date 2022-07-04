@@ -2,7 +2,7 @@ import Container from "../components/Container";
 import LeftMenu from "../components/LeftMenu/LeftMenu";
 import RightMenu from "../components/RightMenu/RightMenu";
 import { useState } from "react";
-import { Context } from "../Context";
+import { Context } from "../pages/Context";
 
 const Homepage = () => {
   const [context, setContext] = useState(0);
