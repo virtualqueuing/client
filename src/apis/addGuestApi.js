@@ -1,7 +1,7 @@
-import VirtualQueuing from "../libs/VirtualQueuing";
+import AxiosApi from "../libs/axiosApi";
 
 const addGuestApi = (data) => {
-  VirtualQueuing.post("/v1/queues", data);
+  AxiosApi.post("/v1/queues", data);
 };
 
 export default addGuestApi;
