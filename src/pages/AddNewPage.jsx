@@ -8,17 +8,20 @@ import {
   HeaderAlert,
   HorizontalDivider,
 } from "../components/styles/AddNew.styles";
+import { ModalBackground } from "../components/Modal/ModalBackground";
 
-const AddNewPage = (params) => {
+const AddNewPage = ({ queueInfo, setShowAddNewForm }) => {
   const [showRequiredInfo, setShowRequiredInfo] = useState(false);
+  console.log(queueInfo)
 
   return (
     <showRequiredInfoContext.Provider value={{ setShowRequiredInfo }}>
-      <AddNewWrapper wrapperQueueInfo={params.queueInfo}>
+      <ModalBackground onClick={() => setShowAddNewForm(false)} />
+      <AddNewWrapper wrapperQueueInfo={queueInfo}>
         <LayoutWrapper>
           <HeaderInfo>
-            <h2>Set Customs Info</h2>
-            <p>Fill in required customs info</p>
+            <h2>Customer Info</h2>
+            <p>Fill in required customer info</p>
           </HeaderInfo>
           <HeaderInfo>
             {showRequiredInfo && (
@@ -27,7 +30,7 @@ const AddNewPage = (params) => {
           </HeaderInfo>
         </LayoutWrapper>
         <HorizontalDivider />
-        <Form formQueueInfo={params.queueInfo} />
+        <Form formQueueInfo={queueInfo} />
       </AddNewWrapper>
     </showRequiredInfoContext.Provider>
   );

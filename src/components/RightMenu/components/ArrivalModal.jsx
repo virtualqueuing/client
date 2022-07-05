@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ModalBackground } from "../../../components/Modal/ModalBackground";
+import PropTypes from "prop-types";
 
 const Modal = styled.div`
   width: 540px;
@@ -82,11 +83,18 @@ const Cancel = styled.span`
   }
 `;
 
-const ArrivalModal = ({ id, setShowArrivalModal, queueComplete }) => {
-  const sendConfirmCommand = (id) => {
-    queueComplete(id)
-    setShowArrivalModal(false)
-  }
+const ArrivalModal = ({ id, setShowArrivalModal, queueComplete, setQueues }) => {
+  ArrivalModal.propTypes = {
+    id: PropTypes.string.isRequired,
+    setShowArrivalModal: PropTypes.func.isRequired,
+    queueComplete: PropTypes.func.isRequired,
+    setQueues: PropTypes.func.isRequired,
+  };
+
+  const sendConfirmCommand = (id, setQueues) => {
+    queueComplete(id, setQueues);
+    setShowArrivalModal(false);
+  };
 
   return (
     <ModalBackground onClick={() => setShowArrivalModal(false)}>
@@ -101,7 +109,7 @@ const ArrivalModal = ({ id, setShowArrivalModal, queueComplete }) => {
         <HorizontalDivider />
         <ButtonWrapper>
           <Cancel onClick={() => setShowArrivalModal(false)}>Cancel</Cancel>
-          <Confirm onClick={() => sendConfirmCommand(id)}>Yes</Confirm>
+          <Confirm onClick={() => sendConfirmCommand(id, setQueues)}>Yes</Confirm>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>

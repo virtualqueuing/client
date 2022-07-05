@@ -8,13 +8,14 @@ import {
 } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { Context } from "../pages/Context";
+import React, { useState } from "react";
 import { showNewFormContext } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
 import arrivalActiveIcon from "../assets/Icons/Button_Arrival.svg";
+import arrivalDisableIcon from "../assets/Icons/Button_Arrival_Disable.svg";
 import absentActiveIcon from "../assets/Icons/Button_Absent.svg";
+import absentDisableIcon from "../assets/Icons/Button_Absent_Disable.svg";
 import guestIcon from "../assets/Icons/guest.svg";
 import Tooltip from "./Tooltip";
 import theme from "../theme";
@@ -23,6 +24,7 @@ import ArrivalModal from "./RightMenu/components/ArrivalModal";
 import AbsentModal from "./RightMenu/components/AbsentModal";
 import { API_URI, QUEUE_STATUS } from "../constant.jsx";
 import AddNewPage from "../pages/AddNewPage";
+import PropTypes from "prop-types";
 
 const SingleQueue = ({
   _id,
@@ -33,47 +35,54 @@ const SingleQueue = ({
   tableSize,
   status,
   notes,
-  createdAt,
   activeQueueId,
   setActiveQueueId,
+  setQueues,
 }) => {
-  const [, setSelectedQueue] = useContext(Context);
+  SingleQueue.propTypes = {
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    phoneNumber: PropTypes.string.isRequired,
+    queueNumber: PropTypes.number.isRequired,
+    guestsNumber: PropTypes.number.isRequired,
+    tableSize: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    notes: PropTypes.array.isRequired,
+    activeQueueId: PropTypes.string.isRequired,
+    setActiveQueueId: PropTypes.func.isRequired,
+    setQueues: PropTypes.func.isRequired,
+  };
+
   const [isSending, setIsSending] = useState(false);
   const [showArrivalModal, setShowArrivalModal] = useState(false);
   const [showAbsentModal, setShowAbsentModal] = useState(false);
   const [showAddNewForm, setShowAddNewForm] = useState(false);
 
-  const addNewRef = useRef(); // close add-new page ouside the popup region
+  const arrivalFontActive = "#5F5186";
+  const absenceFontActive = "#E74C3C";
+  const arrivalBorderActive = "#5F5186";
+  const absenceBorderActive = "#E60012";
+  const disableColor = "rgba(93, 86, 112, 0.7)";
 
   const handleClick = () => {
-    setSelectedQueue({ _id, name, phoneNumber, queueNumber, status, notes, createdAt });
     setActiveQueueId(_id);
   };
 
-  useEffect(() => {
-    const handler = (event) => {
-      if (!addNewRef?.current?.contains(event.target)) {
-        setShowAddNewForm(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  }, []);
-
-  const queueComplete = async (id) => {
+  const queueComplete = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
     await axios.put(`${API_URI}/v1/queues/${id}/Completed`, {});
+    const { data } = await axios.get(`${API_URI}/v1/queues`);
+    setQueues(data);
     setIsSending(false);
   };
 
-  const queueAbsent = async (id) => {
+  const queueAbsent = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
     await axios.put(`${API_URI}/v1/queues/${id}/Absent`, {});
+    const { data } = await axios.get(`${API_URI}/v1/queues`);
+    setQueues(data);
     setIsSending(false);
   };
 
@@ -106,8 +115,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                    ? "rgba(254, 63, 127, 0.1)"
-                    : "rgba(46, 173, 124, 0.1)",
+                  ? "rgba(254, 63, 127, 0.1)"
+                  : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
@@ -118,19 +127,35 @@ const SingleQueue = ({
           <StatusButton
             onClick={() => setShowArrivalModal(true)}
             disabled={isSending || status === QUEUE_STATUS.COMPLETED}
-            fontColor={theme.colors.components.arrivalButton.fontColor}
-            borderColor={theme.colors.components.arrivalButton.borderColor}
+            fontColor={
+              isSending || status === QUEUE_STATUS.COMPLETED ? disableColor : arrivalFontActive
+            }
+            borderColor={
+              isSending || status === QUEUE_STATUS.COMPLETED ? disableColor : arrivalBorderActive
+            }
           >
-            <img src={arrivalActiveIcon} alt="arrivalIcon" />
+            {isSending || status === QUEUE_STATUS.COMPLETED ? (
+              <img src={arrivalDisableIcon} alt="arrivalIcon" />
+            ) : (
+              <img src={arrivalActiveIcon} alt="arrivalIcon" />
+            )}
             Arrival
           </StatusButton>
           <StatusButton
             onClick={() => setShowAbsentModal(true)}
             disabled={isSending || status === QUEUE_STATUS.ABSENT}
-            fontColor={theme.colors.components.absentButton.fontColor}
-            borderColor={theme.colors.components.absentButton.borderColor}
+            fontColor={
+              isSending || status === QUEUE_STATUS.ABSENT ? disableColor : absenceFontActive
+            }
+            borderColor={
+              isSending || status === QUEUE_STATUS.ABSENT ? disableColor : absenceBorderActive
+            }
           >
-            <img src={absentActiveIcon} alt="arrivalIcon" />
+            {isSending || status === QUEUE_STATUS.ABSENT ? (
+              <img src={absentDisableIcon} alt="absenceIcon" />
+            ) : (
+              <img src={absentActiveIcon} alt="absenceIcon" />
+            )}
             Absent
           </StatusButton>
         </StatusButtonContainer>
@@ -152,28 +177,36 @@ const SingleQueue = ({
       <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
       <showNewFormContext.Provider value={{ setShowAddNewForm }}>
         {showAddNewForm && (
-          <div ref={addNewRef}>
-            <AddNewPage
-              setShowAddNewForm={setShowAddNewForm}
-              queueInfo={{
-                _id,
-                name,
-                phoneNumber,
-                queueNumber,
-                guestsNumber,
-                tableSize,
-                status,
-                notes,
-              }}
-            />
-          </div>
+          <AddNewPage
+            setShowAddNewForm={setShowAddNewForm}
+            queueInfo={{
+              _id,
+              name,
+              phoneNumber,
+              queueNumber,
+              guestsNumber,
+              tableSize,
+              status,
+              notes,
+            }}
+          />
         )}
       </showNewFormContext.Provider>
       {showArrivalModal && (
-        <ArrivalModal id={_id} setShowArrivalModal={setShowArrivalModal} queueComplete={queueComplete} />
+        <ArrivalModal
+          id={_id}
+          setShowArrivalModal={setShowArrivalModal}
+          queueComplete={queueComplete}
+          setQueues={setQueues}
+        />
       )}
       {showAbsentModal && (
-        <AbsentModal id={_id} setShowAbsentModal={setShowAbsentModal} queueAbsent={queueAbsent} />
+        <AbsentModal
+          id={_id}
+          setShowAbsentModal={setShowAbsentModal}
+          queueAbsent={queueAbsent}
+          setQueues={setQueues}
+        />
       )}
     </>
   );

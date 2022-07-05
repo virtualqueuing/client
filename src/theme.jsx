@@ -17,15 +17,24 @@ const colors = {
       fontColor: "#FFAB5D",
     },
     arrivalButton: {
-      fontColor: "#5F5186",
+      fontColor: {
+        normal: "#5F5186",
+        opacityColor: "rgba(93, 86, 112, 0.7)",
+      },
       borderColor: {
         normal: "#5D5670",
         opacityColor: "rgba(93, 86, 112, 0.7)",
       },
     },
     absentButton: {
-      fontColor: "#E74C3C",
-      borderColor: "#E60012",
+      fontColor: {
+        normal: "#E74C3C",
+        opacityColor: "rgba(93, 86, 112, 0.7)",
+      },
+      borderColor: {
+        normal: "#E60012",
+        opacityColor: "rgba(93, 86, 112, 0.7)",
+      },
     },
     tags: {
       birthdayTag: "rgba(255, 242, 175, 0.5)",
