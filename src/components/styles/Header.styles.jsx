@@ -55,6 +55,8 @@ export const IdentifierLink = styled.a`
       ? css`
           color: ${({ theme }) => theme.colors.components.negativeButton.outline};
           border-bottom: 4px solid ${({ theme }) => theme.colors.components.negativeButton.outline};
+          border-bottom-left-radius: 3px;
+          border-bottom-right-radius: 3px;
         `
       : ""};
   @media (max-width: 1500px) {
