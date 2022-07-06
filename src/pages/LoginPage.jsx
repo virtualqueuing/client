@@ -106,6 +106,7 @@ export const LoginButton = styled.button`
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.page["main"]};
   color: #fff;
+  border: none;
   & p {
     font-size: ${({ theme }) => theme.fontSizes["lg"]};
     font-weight: 500;
@@ -155,10 +156,8 @@ const LoginPage = () => {
     <form onSubmit={handleSubmit}>
       <LoginContainer>
         <LoginInfo>
-          <h2>Agent Login</h2>
-          <p>
-            Hey, Enter your details to get <br /> sign in to your account
-          </p>
+          <h2>Sign in</h2>
+          <p>Enter your details to sign in to your account</p>
         </LoginInfo>
         <LoginInput
           type="text"
@@ -192,7 +191,9 @@ const LoginPage = () => {
         <LoginButton>
           <p>Sign in</p>
         </LoginButton>
-        <Logo />
+        <a href="/home">
+          <Logo />
+        </a>
       </LoginContainer>
     </form>
   );

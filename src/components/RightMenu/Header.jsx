@@ -23,19 +23,21 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);
   };
-  const queuesFilter = useMemo(() => 
-    QUEUE_FILTER.map((filter) => (
-      <Identifier key={filter}>
-        <IdentifierLink
-          href={`#${filter}`}
-          filter={queueStatus === filter}
-          onClick={() => setQueueStatus(filter)}
-        >
-          {`${filter}`}
-        </IdentifierLink>
-      </Identifier>
-    )), [QUEUE_FILTER, queueStatus]
-  )
+  const queuesFilter = useMemo(
+    () =>
+      QUEUE_FILTER.map((filter) => (
+        <Identifier key={filter}>
+          <IdentifierLink
+            href={`#${filter}`}
+            filter={queueStatus === filter}
+            onClick={() => setQueueStatus(filter)}
+          >
+            {`${filter}`}
+          </IdentifierLink>
+        </Identifier>
+      )),
+    [QUEUE_FILTER, queueStatus]
+  );
   return (
     <>
       <StyledHeader>
@@ -44,9 +46,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
         </Branding>
         <SeparateLine />
         <PathContainer>
-          <PathIdentifier>
-            {queuesFilter}
-          </PathIdentifier>
+          <PathIdentifier>{queuesFilter}</PathIdentifier>
           <form>
             <SearchBar
               type="search"

@@ -4,9 +4,8 @@ import Insight from "./assets/MainHomePageIcon/Insight.svg";
 import Reduce from "./assets/MainHomePageIcon/Reduce.svg";
 import Savetime from "./assets/MainHomePageIcon/SaveTime.svg";
 import BirthdayIcon from "./assets/Icons/Note_Birthday.svg";
-import WheelchairIcon from "./assets/Icons/Note_Wheelchair.svg"
-import BabyseatIcon from "./assets/Icons/Baby.svg"
-
+import WheelchairIcon from "./assets/Icons/Note_Wheelchair.svg";
+import HighchairIcon from "./assets/Icons/Baby.svg";
 
 export const TAG_COLORLIST = [
   "#86E3CE",
@@ -50,10 +49,10 @@ export const QueueAdvantage = [
 ];
 
 export const NoteIcon = {
-  "Birthday": BirthdayIcon,
-  "Wheelchair": WheelchairIcon,
-  "Babyseat": BabyseatIcon,
-}
+  Birthday: BirthdayIcon,
+  Wheelchair: WheelchairIcon,
+  Highchair: HighchairIcon,
+};
 
 export const Roles = ["Manager", "Staff"];
 export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];

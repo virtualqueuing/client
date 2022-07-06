@@ -30,7 +30,7 @@ export const Tag = styled.button`
           background-color: ${({ theme }) => theme.colors.components.tags.wheelchairTag};
           background-image: ${`url('src/assets/Icons/Note_WheelChair.svg')`};
         `;
-      case "babyseat":
+      case "highchair":
         return css`
           background-color: ${({ theme }) => theme.colors.components.tags.highchairTag};
           background-image: ${`url('src/assets/Icons/Baby.svg')`};
