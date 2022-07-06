@@ -13,8 +13,8 @@ const MainBar = ({ queues, setQueues }) => {
 
   useEffect(() => {
     const fetchQueue = async () => {
-      // eslint-disable-next-line no-undef
-      const { data } = await axios.get(`${API_URI}/v1/queues`);
+      const BEARER_TOKEN = `Bearer ${localStorage.getItem("token")}`
+      const { data } = await axios.get(`${API_URI}/v1/queues`, {headers: {authorization: BEARER_TOKEN}});
       setQueues(data);
     };
     fetchQueue();

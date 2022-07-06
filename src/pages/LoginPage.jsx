@@ -145,7 +145,10 @@ const LoginPage = () => {
         email,
         password,
       })
-      .then(() => navigate("/"));
+      .then((res) => {
+        localStorage.setItem('token', res.data.token)
+        navigate("/");
+    });
   };
 
   return (
