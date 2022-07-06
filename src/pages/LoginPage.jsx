@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import logo from "../assets/Logo-v5.svg";
 import passwordHide from "../assets/Icons/Button_Password-hide.svg";
 import passwordHideActive from "../assets/Icons/Button_ShowPassword.svg";
@@ -8,6 +8,7 @@ import passwordShowActive from "../assets/Icons/Button_Password-showActive.svg";
 import axios from "axios";
 import { API_URI } from "../constant";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./Context";
 
 export const LoginContainer = styled.div`
   width: 370px;
@@ -130,26 +131,39 @@ export const Logo = styled.div`
 
 const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  const { setUser } = useContext(UserContext);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .post(`${API_URI}/v1/auth/login`, {
+
+    try {
+      setLoading(true);
+      const { data } = await axios.post(`${API_URI}/v1/auth/login`, {
         email,
         password,
-      })
-      .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        navigate("/");
       });
+
+      setLoading(false);
+      setUser((prev) => ({
+        ...prev,
+        data,
+      }));
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   };
 
   return (

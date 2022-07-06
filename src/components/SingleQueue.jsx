@@ -22,7 +22,7 @@ import theme from "../theme";
 import axios from "axios";
 import ArrivalModal from "./RightMenu/components/ArrivalModal";
 import AbsentModal from "./RightMenu/components/AbsentModal";
-import { API_URI, BEARER_TOKEN, QUEUE_STATUS } from "../constant.jsx";
+import { API_URI, QUEUE_STATUS } from "../constant.jsx";
 import AddNewPage from "../pages/AddNewPage";
 import PropTypes from "prop-types";
 import { HoverNotesContainer, NotesBox } from "./HoverNotes";
@@ -70,6 +70,7 @@ const SingleQueue = ({
   const handleClick = () => {
     setActiveQueueId(_id);
   };
+  const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user")).token}`;
 
   const queueComplete = async (id, setQueues) => {
     if (isSending) return;

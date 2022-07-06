@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   LoginContainer,
   LoginInfo,
@@ -16,6 +16,7 @@ import ArrowDownIcon from "../assets/Icons/down-arrow-svgrepo-com.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_URI } from "../constant";
+import { UserContext } from "./Context";
 
 const SignupContainer = styled(LoginContainer)`
   height: 590px;
@@ -71,6 +72,11 @@ const SignupPage = () => {
   const [branch, setBranch] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const { setUser } = useContext(UserContext);
 
   const [passwordCorrect, setPasswordCorrect] = useState(false);
 
@@ -81,27 +87,32 @@ const SignupPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      setPasswordCorrect(true);
-      return;
-    }
-    if (password === confirmPassword) {
-      axios
-        .post(`${API_URI}/v1/auth/register`, {
+      setMessage("Passwords Do not Match!");
+    } else {
+      setMessage(null);
+      try {
+        setLoading(true);
+        const { data } = await axios.post(`${API_URI}/v1/auth/register`, {
           email,
           userName,
           role,
           branch,
           password,
-          confirmPassword,
-        })
-        .then((res) => {
-          navigate("/");
-          localStorage.setItem("token", res.data.token);
         });
+        setLoading(false);
+        setUser((prev) => ({
+          ...prev,
+          data,
+        }));
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
     }
   };
 
