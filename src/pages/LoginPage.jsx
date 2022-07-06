@@ -156,10 +156,8 @@ const LoginPage = () => {
     <form onSubmit={handleSubmit}>
       <LoginContainer>
         <LoginInfo>
-          <h2>Agent Login</h2>
-          <p>
-            Hey, Enter your details to get <br /> sign in to your account
-          </p>
+          <h2>Sign in</h2>
+          <p>Enter your details to sign in to your account</p>
         </LoginInfo>
         <LoginInput
           type="text"

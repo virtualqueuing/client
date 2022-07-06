@@ -57,6 +57,13 @@ const CustomedInputOptionBG = styled.div`
   pointer-events: none;
 `;
 
+const ErrorMessage = styled.div`
+  color: red;
+  font-size: ${({ theme }) => theme.fontSizes["xxs"]};
+  padding: 4px 10px;
+  margin: 0 10%;
+`;
+
 const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -64,6 +71,8 @@ const SignupPage = () => {
   const [branch, setBranch] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
+
+  const [passwordCorrect, setPasswordCorrect] = useState(false);
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
@@ -75,29 +84,33 @@ const SignupPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios
-      .post(`${API_URI}/v1/auth/register`, {
-        email,
-        userName,
-        role,
-        branch,
-        password,
-        confirmPassword,
-      })
-      .then((res) => {
-        navigate("/");
-        localStorage.setItem("token", res.data.token);
-      });
+    if (password !== confirmPassword) {
+      setPasswordCorrect(true);
+      return;
+    }
+    if (password === confirmPassword) {
+      axios
+        .post(`${API_URI}/v1/auth/register`, {
+          email,
+          userName,
+          role,
+          branch,
+          password,
+          confirmPassword,
+        })
+        .then((res) => {
+          navigate("/");
+          localStorage.setItem("token", res.data.token);
+        });
+    }
   };
 
   return (
     <>
       <SignupContainer>
         <LoginInfo>
-          <h2>Agent Sign Up</h2>
-          <p>
-            Hey, Enter your details to <br /> sign up an new account
-          </p>
+          <h2>Sign Up</h2>
+          <p>Enter your details below to sign up.</p>
         </LoginInfo>
         <form onSubmit={handleSubmit}>
           <LoginInput
@@ -160,6 +173,7 @@ const SignupPage = () => {
               <ShowPassword onClick={togglePassword} />
             )}
           </InputWrapper>
+          {passwordCorrect && <ErrorMessage>Password is not match</ErrorMessage>}
           <SetAccount>
             <h6>
               <a href="/login">Already have an account?</a>
