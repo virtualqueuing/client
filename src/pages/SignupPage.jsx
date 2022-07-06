@@ -84,10 +84,10 @@ const SignupPage = () => {
         password,
         confirmPassword,
       })
-      .then((res) =>{
+      .then((res) => {
         navigate("/");
-        localStorage.setItem('token', res.data.token)
-    });
+        localStorage.setItem("token", res.data.token);
+      });
   };
 
   return (
