@@ -106,6 +106,7 @@ export const LoginButton = styled.button`
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.page["main"]};
   color: #fff;
+  border: none;
   & p {
     font-size: ${({ theme }) => theme.fontSizes["lg"]};
     font-weight: 500;
@@ -192,7 +193,9 @@ const LoginPage = () => {
         <LoginButton>
           <p>Sign in</p>
         </LoginButton>
-        <Logo />
+        <a href="/home">
+          <Logo />
+        </a>
       </LoginContainer>
     </form>
   );

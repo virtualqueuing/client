@@ -169,7 +169,9 @@ const SignupPage = () => {
             <p>Sign up</p>
           </SignupButton>
         </form>
-        <Logo />
+        <a href="/home">
+          <Logo />
+        </a>
       </SignupContainer>
     </>
   );
