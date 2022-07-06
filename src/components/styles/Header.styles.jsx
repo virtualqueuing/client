@@ -31,7 +31,10 @@ export const PathIdentifier = styled.ul`
   position: relative;
   align-items: flex-end;
   justify-content: space-between;
-  padding-left: 2.5%;
+  padding-left: 1%;
+  margin: 15px 0 0 0;
+  position: relative;
+  top: 4%;
 `;
 
 export const Identifier = styled.li`
@@ -42,6 +45,10 @@ export const IdentifierLink = styled.a`
   text-decoration: none;
   font-size: 20px;
   font-weight: 700;
+  display: block;
+  padding-bottom: 16px;
+  width: 85px;
+  text-align: center;
   color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
   ${(props) =>
     props.filter
@@ -50,9 +57,8 @@ export const IdentifierLink = styled.a`
           border-bottom: 4px solid ${({ theme }) => theme.colors.components.negativeButton.outline};
           border-bottom-left-radius: 3px;
           border-bottom-right-radius: 3px;
-          padding-bottom: 16px;
         `
-      : " "};
+      : ""};
   @media (max-width: 1500px) {
     font-size: 1rem;
   }
@@ -124,7 +130,6 @@ export const QueueRightTitle = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 0; */
   & li {
     color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
     font-size: 15px;
@@ -139,18 +144,6 @@ export const QueueRightTitle = styled.ul`
     }
   }
 `;
-
-// export const OpenDate = styled.div`
-//   position: absolute;
-//   bottom: 0;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   font-size: ${({ theme }) => theme.fontSizes.md};
-//   color: ${({ theme }) => theme.colors.fontColor};
-//   & p {
-//     margin-bottom: 5px;
-//   }
-// `;
 
 export const TableFilter = styled.select`
   height: 100%;
