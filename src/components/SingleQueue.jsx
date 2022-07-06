@@ -71,8 +71,14 @@ const SingleQueue = ({
   const queueComplete = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(`${API_URI}/v1/queues/${id}/Completed`, {}, {headers: {Authorization: BEARER_TOKEN}});
-    const { data } = await axios.get(`${API_URI}/v1/queues`, {headers: {Authorization: BEARER_TOKEN}});
+    await axios.put(
+      `${API_URI}/v1/queues/${id}/Completed`,
+      {},
+      { headers: { Authorization: BEARER_TOKEN } }
+    );
+    const { data } = await axios.get(`${API_URI}/v1/queues`, {
+      headers: { Authorization: BEARER_TOKEN },
+    });
     setQueues(data);
     setIsSending(false);
   };
@@ -80,8 +86,14 @@ const SingleQueue = ({
   const queueAbsent = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(`${API_URI}/v1/queues/${id}/Absent`, {}, {headers: {Authorization: BEARER_TOKEN}});
-    const { data } = await axios.get(`${API_URI}/v1/queues`, {headers: {Authorization: BEARER_TOKEN}});
+    await axios.put(
+      `${API_URI}/v1/queues/${id}/Absent`,
+      {},
+      { headers: { Authorization: BEARER_TOKEN } }
+    );
+    const { data } = await axios.get(`${API_URI}/v1/queues`, {
+      headers: { Authorization: BEARER_TOKEN },
+    });
     setQueues(data);
     setIsSending(false);
   };
