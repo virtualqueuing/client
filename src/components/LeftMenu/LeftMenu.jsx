@@ -1,20 +1,18 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
-// import BirthdayIcon from "../../assets/Icons/Note_Birthday.svg";
-// import WheelchairIcon from "../../assets/Icons/Note_WheelChair.svg";
 import { QUEUE_STATUS, NoteIcon } from "../../constant";
-// import _ from "lodash";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
+import { useNavigate } from "react-router-dom";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 6%;
+  gap: 3%;
   width: auto;
   height: 100vh;
   padding: 40px 15px;
@@ -69,15 +67,15 @@ const ArrowDownBtn = styled.img`
 `;
 
 const DropDownListContainer = styled.ul`
-  margin: -35px 0 0 0;
   display: none;
-  height: 160px;
+  margin: -20px 0px 0px;
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
   list-style: none;
   padding: 0;
   z-index: 1;
+
   @keyframes slide-down {
     0% {
       transform: scale(1, 0);
@@ -86,6 +84,7 @@ const DropDownListContainer = styled.ul`
       transform: scale(1, 1);
     }
   }
+
   ${(props) =>
     props.dropState
       ? css`
@@ -100,15 +99,21 @@ const DropDownListContainer = styled.ul`
 const DropDownList = styled.li`
   text-align: center;
   transition: 0.5s;
-  & a {
-    color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
-    font-weight: 700;
-    text-decoration: none;
-  }
   padding: 10px 12px;
   border: 3px solid ${({ theme }) => theme.colors.components.queueContainer.background};
   border-radius: 15px;
   cursor: pointer;
+  margin-top: 25px;
+
+  & button {
+    color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    background-color: inherit;
+  }
+
   &:hover {
     box-shadow: ${({ theme }) => theme.colors.components.queueContainer.background} 0px 20px 30px -10px;
     transform: scale(1.05);
@@ -124,7 +129,7 @@ const LeftSideBarOptionContainer = styled.div`
 
 const LeftSideBarOption = styled.div`
   width: 303px;
-  height: 53px;
+  height: 50px;
   display: flex;
   align-items: center;
   gap: 3%;
@@ -251,7 +256,6 @@ const SingleQueueDescription = styled.span`
   }
 `;
 
-
 const LeftMenu = ({ leftQueues, queueStatus }) => {
   // let waitingList = [];
   // if (!_.isEmpty(leftQueues)) {
@@ -260,21 +264,19 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
   // const headCustomerName = waitingList?.name;
   // const headNumber = waitingList?.queueNumber;
 
-  const dropOption = [
-    { name: "Sign Out", path: "/home" },
-    { name: "Profile", path: "/profile" },
-  ];
   const [dropState, setDropState] = useState(false);
+
+  const navigate = useNavigate();
+
   const handleClick = () => {
     setDropState(!dropState);
   };
-  const dropOptions = useMemo(
-    () => dropOption.map((option, index) => (
-      <DropDownList key={index}>
-        <a href={option.path}>{option.name}</a>
-      </DropDownList>
-    )))
-    
+
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    navigate("/home");
+  };
+
   return (
     <Background>
       <UserPanel>
@@ -291,7 +293,12 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
         />
       </UserPanel>
       <DropDownListContainer dropState={dropState}>
-        {dropOptions}
+        <DropDownList>
+          <button onClick={handleSignOut}>Sign out</button>
+        </DropDownList>
+        <DropDownList>
+          <button disabled>Profile</button>
+        </DropDownList>
       </DropDownListContainer>
       <LeftSideBarOptionContainer>
         <LeftSideBarOption>
@@ -306,56 +313,83 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
       <CurrentQueueDetailsContainer>
         <CurrentQueueDetailTitle>Current Queue:</CurrentQueueDetailTitle>
         <CurrentQueueNumberAndName>
-          {(queueStatus === "Absent") ? (
-            <HeadNumber>{leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.queueNumber}</HeadNumber>
-          ) : (queueStatus === "All") ? (
+          {queueStatus === "Absent" ? (
+            <HeadNumber>
+              {leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.queueNumber}
+            </HeadNumber>
+          ) : queueStatus === "All" ? (
             <HeadNumber>{leftQueues[0]?.queueNumber}</HeadNumber>
           ) : (
-            <HeadNumber>{leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.queueNumber}</HeadNumber>
+            <HeadNumber>
+              {leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.queueNumber}
+            </HeadNumber>
           )}
           {/* <HeadNumber>{headNumber}</HeadNumber> */}
           <CurrentQueueBar></CurrentQueueBar>
           <HeadCustomerName>
-            {(queueStatus === "Absent") ? (
-              <HeadNumber>{leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.name}</HeadNumber>
-            ) : (queueStatus === "All") ? (
+            {queueStatus === "Absent" ? (
+              <HeadNumber>
+                {leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.name}
+              </HeadNumber>
+            ) : queueStatus === "All" ? (
               <HeadNumber>{leftQueues[0]?.name}</HeadNumber>
             ) : (
-              <HeadNumber>{leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.name}</HeadNumber>
+              <HeadNumber>
+                {leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.name}
+              </HeadNumber>
             )}
           </HeadCustomerName>
         </CurrentQueueNumberAndName>
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>
         <CurrentQueueDetailTitle>Notes:</CurrentQueueDetailTitle>
-        {(queueStatus === "Absent") ? (
-          leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.notes[0].split(',').map((note, index) => (
-          <SingleQueueNotes key={index}>
-            {(note === "Birthday") ? (<SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />)
-              : (note === "Wheelchair") ? (<SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />)
-                : (note === "Babyseat") ? (<SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />)
-                  : null}
-            <SingleQueueDescription>{note}</SingleQueueDescription>
-          </SingleQueueNotes>))
-        ) : (queueStatus === "All") ? (
-          leftQueues.find((queue) => queue.status)?.notes[0].split(',').map((note, index) => (
-          <SingleQueueNotes key={index}>
-            {(note === "Birthday") ? (<SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />)
-              : (note === "Wheelchair") ? (<SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />)
-                : (note === "Babyseat") ? (<SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />)
-                  : null}
-            <SingleQueueDescription>{note}</SingleQueueDescription>
-          </SingleQueueNotes>))
-        ) : (
-          leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.notes[0].split(',').map((note, index) => (
-          <SingleQueueNotes key={index}>
-            {(note === "Birthday") ? (<SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />)
-              : (note === "Wheelchair") ? (<SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />)
-                : (note === "Babyseat") ? (<SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />)
-                  : null}
-            <SingleQueueDescription>{note}</SingleQueueDescription>
-          </SingleQueueNotes>))
-        )}
+        {queueStatus === "Absent"
+          ? leftQueues
+              .find((queue) => queue.status === QUEUE_STATUS.ABSENT)
+              ?.notes[0].split(",")
+              .map((note, index) => (
+                <SingleQueueNotes key={index}>
+                  {note === "Birthday" ? (
+                    <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
+                  ) : note === "Wheelchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
+                  ) : note === "Highchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
+                  ) : null}
+                  <SingleQueueDescription>{note}</SingleQueueDescription>
+                </SingleQueueNotes>
+              ))
+          : queueStatus === "All"
+          ? leftQueues
+              .find((queue) => queue.status)
+              ?.notes[0].split(",")
+              .map((note, index) => (
+                <SingleQueueNotes key={index}>
+                  {note === "Birthday" ? (
+                    <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
+                  ) : note === "Wheelchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
+                  ) : note === "Babyseat" ? (
+                    <SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />
+                  ) : null}
+                  <SingleQueueDescription>{note}</SingleQueueDescription>
+                </SingleQueueNotes>
+              ))
+          : leftQueues
+              .find((queue) => queue.status === QUEUE_STATUS.WAITING)
+              ?.notes[0].split(",")
+              .map((note, index) => (
+                <SingleQueueNotes key={index}>
+                  {note === "Birthday" ? (
+                    <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
+                  ) : note === "Wheelchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
+                  ) : note === "Babyseat" ? (
+                    <SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />
+                  ) : null}
+                  <SingleQueueDescription>{note}</SingleQueueDescription>
+                </SingleQueueNotes>
+              ))}
       </SingleQueueNotesContainer>
     </Background>
   );

@@ -12,8 +12,13 @@ const Homepage = () => {
   return (
     <Container>
       <Context.Provider value={[context, setContext]}>
-        <LeftMenu leftQueues={queues} queueStatus={queueStatus}/>
-        <RightMenu queues={queues} setQueues={setQueues} queueStatus={queueStatus} setQueueStatus={setQueueStatus}/>
+        <LeftMenu leftQueues={queues} queueStatus={queueStatus} />
+        <RightMenu
+          queues={queues}
+          setQueues={setQueues}
+          queueStatus={queueStatus}
+          setQueueStatus={setQueueStatus}
+        />
       </Context.Provider>
     </Container>
   );

@@ -106,16 +106,26 @@ const SingleQueue = ({
 
   return (
     <>
-      <QueueItem active={_id === activeQueueId} onClick={handleClick} onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}>
+      <QueueItem
+        active={_id === activeQueueId}
+        onClick={handleClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {showQueueNotes && (
           <HoverNotesContainer>
             <NotesBox>
-            Notes:   
-              {notes[0].split(',').map((note, index) => (
+              Notes:
+              {notes[0].split(",").map((note, index) => (
                 <NewTag
                   key={index}
-                  style={{marginLeft: 10 , backgroundColor: theme.colors.components.tags.HovertagColorList[random(0, theme.colors.components.tags.HovertagColorList.length - 1)] }}
+                  style={{
+                    marginLeft: 10,
+                    backgroundColor:
+                      theme.colors.components.tags.HovertagColorList[
+                        random(0, theme.colors.components.tags.HovertagColorList.length - 1)
+                      ],
+                  }}
                 >
                   {note}
                 </NewTag>
@@ -149,8 +159,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                    ? "rgba(254, 63, 127, 0.1)"
-                    : "rgba(46, 173, 124, 0.1)",
+                  ? "rgba(254, 63, 127, 0.1)"
+                  : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >

@@ -41,7 +41,15 @@ const colors = {
       wheelchairTag: "#AFE2FF",
       highchairTag: "#E1FFAF",
       tagColorList: ["#86E3CE", "#D0E6A5", "#FFDD94", "#FA897B", "#CCABDB", "#B5EAD7", "#E2F0CB"],
-      HovertagColorList: ["#c4f1e7", "#ecf5db", "#ffeec9", "#fcc4bc", "#eaddf0", "#daf4eb", "#E2F0CB"],
+      HovertagColorList: [
+        "#c4f1e7",
+        "#ecf5db",
+        "#ffeec9",
+        "#fcc4bc",
+        "#eaddf0",
+        "#daf4eb",
+        "#E2F0CB",
+      ],
     },
     loginButton: {
       background: "#77A48E",

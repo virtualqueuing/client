@@ -13,6 +13,7 @@ const MainBar = ({ queues, setQueues, queueStatus, setQueueStatus }) => {
   useEffect(() => {
     const fetchQueue = async () => {
       const BEARER_TOKEN = `Bearer ${localStorage.getItem("token")}`;
+      console.log(BEARER_TOKEN);
       const { data } = await axios.get(`${API_URI}/v1/queues`, {
         headers: { authorization: BEARER_TOKEN },
       });

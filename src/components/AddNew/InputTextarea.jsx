@@ -28,8 +28,8 @@ const InputTextarea = ({ inputInfo }) => {
         <Tag type="button" tagTypes="wheelchair" value="Wheelchair" onClick={SuggestedTag}>
           Wheelchair
         </Tag>
-        <Tag type="button" tagTypes="babyseat" value="Babyseat" onClick={SuggestedTag}>
-          Babyseat
+        <Tag type="button" tagTypes="highchair" value="Highchair" onClick={SuggestedTag}>
+          Highchair
         </Tag>
       </SuggestedTagsWrapper>
       <StyledTextarea
