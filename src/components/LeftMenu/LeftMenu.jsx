@@ -2,10 +2,10 @@ import React, { useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
-import BirthdayIcon from "../../assets/Icons/Note_Birthday.svg";
-import WheelchairIcon from "../../assets/Icons/Note_WheelChair.svg";
-import { QUEUE_STATUS } from "../../constant";
-import _ from "lodash";
+// import BirthdayIcon from "../../assets/Icons/Note_Birthday.svg";
+// import WheelchairIcon from "../../assets/Icons/Note_WheelChair.svg";
+import { QUEUE_STATUS, NoteIcon } from "../../constant";
+// import _ from "lodash";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 
@@ -183,8 +183,10 @@ const CurrentQueueNumberAndName = styled.div`
 
 const HeadNumber = styled.div`
   color: ${({ theme }) => theme.colors.fonts.secondary};
-  width: 15%;
-  align-items: center;
+  /* width: 15%; */
+  width: auto;
+  padding: 10%;
+  display: flex;
   justify-content: center;
   font-size: 3vh;
 `;
@@ -192,14 +194,17 @@ const HeadNumber = styled.div`
 const CurrentQueueBar = styled.div`
   width: 1%;
   height: 70%;
-  background-color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
-  margin-right: 15px;
-  margin-left: 15px;
+  border-radius: 2px;
+  background-color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
+  /* margin-right: 15px;
+  margin-left: 15px; */
 `;
 
 const HeadCustomerName = styled.div`
   color: ${({ theme }) => theme.colors.fonts.secondary};
-  width: 40%;
+  /* width: 40%; */
+  padding: 10%;
+  display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3vh;
@@ -215,18 +220,19 @@ const SingleQueueNotesContainer = styled.div`
 const SingleQueueNotes = styled.div`
   width: auto;
   height: auto;
+  max-width: 13vw;
   display: flex;
   align-items: center;
   justify-content: left;
   background: ${({ theme }) => theme.colors.components.tags.birthdayTag};
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  padding: 10px 20px 10px 10px;
+  padding: 10px;
   margin: 10px 0;
   overflow: hidden;
 `;
 
-const SingleQueueIcon = styled.img`
+export const SingleQueueIcon = styled.img`
   width: 30px;
   height: 30px;
   @media (max-width: 1500px) {
@@ -238,19 +244,21 @@ const SingleQueueIcon = styled.img`
 
 const SingleQueueDescription = styled.span`
   font-size: 25px;
+  margin: 0 5px;
   color: ${({ theme }) => theme.colors.fonts.secondary};
   @media (max-width: 1500px) {
     font-size: 1rem;
   }
 `;
 
-const LeftMenu = ({ leftQueues }) => {
-  let waitingList = [];
-  if (!_.isEmpty(leftQueues)) {
-    waitingList = leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING);
-  }
-  const headCustomerName = waitingList?.name;
-  const headNumber = waitingList?.queueNumber;
+
+const LeftMenu = ({ leftQueues, queueStatus }) => {
+  // let waitingList = [];
+  // if (!_.isEmpty(leftQueues)) {
+  //   waitingList = leftQueues.find((queue) => queue.status === QUEUE_STATUS.ALL);
+  // }
+  // const headCustomerName = waitingList?.name;
+  // const headNumber = waitingList?.queueNumber;
 
   const dropOption = [
     { name: "Sign Out", path: "/home" },
@@ -298,21 +306,56 @@ const LeftMenu = ({ leftQueues }) => {
       <CurrentQueueDetailsContainer>
         <CurrentQueueDetailTitle>Current Queue:</CurrentQueueDetailTitle>
         <CurrentQueueNumberAndName>
-          <HeadNumber>{headNumber}</HeadNumber>
+          {(queueStatus === "Absent") ? (
+            <HeadNumber>{leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.queueNumber}</HeadNumber>
+          ) : (queueStatus === "All") ? (
+            <HeadNumber>{leftQueues[0]?.queueNumber}</HeadNumber>
+          ) : (
+            <HeadNumber>{leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.queueNumber}</HeadNumber>
+          )}
+          {/* <HeadNumber>{headNumber}</HeadNumber> */}
           <CurrentQueueBar></CurrentQueueBar>
-          <HeadCustomerName>{headCustomerName}</HeadCustomerName>
+          <HeadCustomerName>
+            {(queueStatus === "Absent") ? (
+              <HeadNumber>{leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.name}</HeadNumber>
+            ) : (queueStatus === "All") ? (
+              <HeadNumber>{leftQueues[0]?.name}</HeadNumber>
+            ) : (
+              <HeadNumber>{leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.name}</HeadNumber>
+            )}
+          </HeadCustomerName>
         </CurrentQueueNumberAndName>
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>
         <CurrentQueueDetailTitle>Notes:</CurrentQueueDetailTitle>
-        <SingleQueueNotes>
-          <SingleQueueIcon src={BirthdayIcon} alt="Birthday Notes Icon" />
-          <SingleQueueDescription>Birthday</SingleQueueDescription>
-        </SingleQueueNotes>
-        <SingleQueueNotes>
-          <SingleQueueIcon src={WheelchairIcon} alt="Wheelchair Notes Icon" />
-          <SingleQueueDescription>Wheelchair</SingleQueueDescription>
-        </SingleQueueNotes>
+        {(queueStatus === "Absent") ? (
+          leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.notes[0].split(',').map((note, index) => (
+          <SingleQueueNotes key={index}>
+            {(note === "Birthday") ? (<SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />)
+              : (note === "Wheelchair") ? (<SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />)
+                : (note === "Babyseat") ? (<SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />)
+                  : null}
+            <SingleQueueDescription>{note}</SingleQueueDescription>
+          </SingleQueueNotes>))
+        ) : (queueStatus === "All") ? (
+          leftQueues.find((queue) => queue.status)?.notes[0].split(',').map((note, index) => (
+          <SingleQueueNotes key={index}>
+            {(note === "Birthday") ? (<SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />)
+              : (note === "Wheelchair") ? (<SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />)
+                : (note === "Babyseat") ? (<SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />)
+                  : null}
+            <SingleQueueDescription>{note}</SingleQueueDescription>
+          </SingleQueueNotes>))
+        ) : (
+          leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.notes[0].split(',').map((note, index) => (
+          <SingleQueueNotes key={index}>
+            {(note === "Birthday") ? (<SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />)
+              : (note === "Wheelchair") ? (<SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />)
+                : (note === "Babyseat") ? (<SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />)
+                  : null}
+            <SingleQueueDescription>{note}</SingleQueueDescription>
+          </SingleQueueNotes>))
+        )}
       </SingleQueueNotesContainer>
     </Background>
   );

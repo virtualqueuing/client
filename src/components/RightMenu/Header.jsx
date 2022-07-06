@@ -27,7 +27,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
     QUEUE_FILTER.map((filter) => (
       <Identifier key={filter}>
         <IdentifierLink
-          href={`/#${filter}`}
+          href={`#${filter}`}
           filter={queueStatus === filter}
           onClick={() => setQueueStatus(filter)}
         >

@@ -25,6 +25,9 @@ import AbsentModal from "./RightMenu/components/AbsentModal";
 import { API_URI, BEARER_TOKEN, QUEUE_STATUS } from "../constant.jsx";
 import AddNewPage from "../pages/AddNewPage";
 import PropTypes from "prop-types";
+import { HoverNotesContainer, NotesBox } from "./HoverNotes";
+import { NewTag } from "./AddNew/CreateTags";
+import { random } from "lodash";
 
 const SingleQueue = ({
   _id,
@@ -98,9 +101,28 @@ const SingleQueue = ({
     setIsSending(false);
   };
 
+  const [isHovered, setIsHovered] = useState(false);
+  const showQueueNotes = isHovered;
+
   return (
     <>
-      <QueueItem active={_id === activeQueueId} onClick={handleClick}>
+      <QueueItem active={_id === activeQueueId} onClick={handleClick} onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}>
+        {showQueueNotes && (
+          <HoverNotesContainer>
+            <NotesBox>
+            Notes:   
+              {notes[0].split(',').map((note, index) => (
+                <NewTag
+                  key={index}
+                  style={{marginLeft: 10 , backgroundColor: theme.colors.components.tags.HovertagColorList[random(0, theme.colors.components.tags.HovertagColorList.length - 1)] }}
+                >
+                  {note}
+                </NewTag>
+              ))}
+            </NotesBox>
+          </HoverNotesContainer>
+        )}
         <QueueDataContainer>
           <QueueData color="#000">
             <p>{queueNumber}</p>
@@ -127,8 +149,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                  ? "rgba(254, 63, 127, 0.1)"
-                  : "rgba(46, 173, 124, 0.1)",
+                    ? "rgba(254, 63, 127, 0.1)"
+                    : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >

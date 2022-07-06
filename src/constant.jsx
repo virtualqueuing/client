@@ -3,6 +3,10 @@ import Management from "./assets/MainHomePageIcon/ManagementIcon.svg";
 import Insight from "./assets/MainHomePageIcon/Insight.svg";
 import Reduce from "./assets/MainHomePageIcon/Reduce.svg";
 import Savetime from "./assets/MainHomePageIcon/SaveTime.svg";
+import BirthdayIcon from "./assets/Icons/Note_Birthday.svg";
+import WheelchairIcon from "./assets/Icons/Note_Wheelchair.svg"
+import BabyseatIcon from "./assets/Icons/Baby.svg"
+
 
 export const TAG_COLORLIST = [
   "#86E3CE",
@@ -23,6 +27,7 @@ export const ABSENT_REASONS = [
 export const QUEUE_FILTER = ["All", "Queuing", "Absent"];
 export const TABLE_SIZE = ["Small", "Medium", "Large"];
 export const QUEUE_STATUS = {
+  ALL: "All",
   WAITING: "Waiting",
   COMPLETED: "Completed",
   ABSENT: "Absent",
@@ -43,6 +48,12 @@ export const QueueAdvantage = [
   { icon: Reduce, description: "Reduce customer walkaways" },
   { icon: Savetime, description: "Increase customer lifetime value" },
 ];
+
+export const NoteIcon = {
+  "Birthday": BirthdayIcon,
+  "Wheelchair": WheelchairIcon,
+  "Babyseat": BabyseatIcon,
+}
 
 export const Roles = ["Manager", "Staff"];
 export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];

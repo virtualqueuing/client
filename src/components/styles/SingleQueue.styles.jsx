@@ -15,6 +15,7 @@ export const QueueDataContainer = styled.div`
 `;
 
 export const QueueItem = styled.div`
+  /* position: relative; */
   width: 100%;
   display: flex;
   justify-content: space-between;

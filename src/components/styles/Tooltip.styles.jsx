@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const TooltipWrapper = styled.div`
   position: relative;
   display: inline-flex;
+  z-index:1;
 `;
 
 export const CenterContainer = styled.div`

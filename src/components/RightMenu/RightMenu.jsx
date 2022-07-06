@@ -6,8 +6,7 @@ import { RightMenuContainer } from "../styles/RightMenu.styles";
 import axios from "axios";
 import { API_URI } from "../../constant.jsx";
 
-const MainBar = ({ queues, setQueues }) => {
-  const [queueStatus, setQueueStatus] = useState("All");
+const MainBar = ({ queues, setQueues, queueStatus, setQueueStatus }) => {
   const [tableType, setTableType] = useState("Table Type");
   const [searchQueue, setSearchQueue] = useState("");
 
