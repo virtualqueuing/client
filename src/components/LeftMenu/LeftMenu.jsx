@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
@@ -19,6 +19,7 @@ const Background = styled.div`
   height: 100vh;
   padding: 40px 15px;
 `;
+
 const UserPanel = styled.div`
   display: flex;
   width: 100%;
@@ -43,6 +44,7 @@ const UserDetails = styled.div`
   flex-direction: column;
   height: 45px;
 `;
+
 const UserName = styled.h5`
   padding: 0;
   margin: 0;
@@ -63,7 +65,7 @@ const ArrowDownBtn = styled.img`
       ? css`
           transform: rotate(180deg);
         `
-      : " "}
+      : ""}
 `;
 
 const DropDownListContainer = styled.ul`
@@ -72,7 +74,6 @@ const DropDownListContainer = styled.ul`
   height: 160px;
   flex-direction: column;
   justify-content: space-around;
-  /* border: 1px solid rgba(0, 0, 0, 0.04); */
   width: 100%;
   list-style: none;
   padding: 0;
@@ -93,7 +94,7 @@ const DropDownListContainer = styled.ul`
           transform-origin: 50% 0;
           animation: slide-down 0.3s ease-in;
         `
-      : " "}
+      : ""}
 `;
 
 const DropDownList = styled.li`
@@ -251,7 +252,6 @@ const LeftMenu = ({ leftQueues }) => {
   const headCustomerName = waitingList?.name;
   const headNumber = waitingList?.queueNumber;
 
-  // const dropOption = ["Sign Out", "Profile"];
   const dropOption = [
     { name: "Sign Out", path: "/home" },
     { name: "Profile", path: "/profile" },
@@ -260,6 +260,13 @@ const LeftMenu = ({ leftQueues }) => {
   const handleClick = () => {
     setDropState(!dropState);
   };
+  const dropOptions = useMemo(
+    () => dropOption.map((option, index) => (
+      <DropDownList key={index}>
+        <a href={option.path}>{option.name}</a>
+      </DropDownList>
+    )))
+    
   return (
     <Background>
       <UserPanel>
@@ -276,13 +283,7 @@ const LeftMenu = ({ leftQueues }) => {
         />
       </UserPanel>
       <DropDownListContainer dropState={dropState}>
-        {dropOption.map((option, index) => {
-          return (
-            <DropDownList key={index}>
-              <a href={option.path}>{option.name}</a>
-            </DropDownList>
-          );
-        })}
+        {dropOptions}
       </DropDownListContainer>
       <LeftSideBarOptionContainer>
         <LeftSideBarOption>
