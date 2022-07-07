@@ -273,7 +273,7 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     navigate("/home");
   };
 
