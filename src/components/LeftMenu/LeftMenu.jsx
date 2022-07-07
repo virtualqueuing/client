@@ -243,13 +243,16 @@ const SingleQueueDescription = styled.span`
   }
 `;
 
-const LeftMenu = ({ leftQueues }) => {
-  let waitingList = [];
+const LeftMenu = ({ leftQueues, tableType }) => {
+  let headCustomer = [];
   if (!_.isEmpty(leftQueues)) {
-    waitingList = leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING);
+    headCustomer = leftQueues.find(
+      (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+    );
   }
-  const headCustomerName = waitingList?.name;
-  const headNumber = waitingList?.queueNumber;
+
+  const queueHeadCustomerName = headCustomer?.name;
+  const queueHeadNumber = headCustomer?.queueNumber;
 
   // const dropOption = ["Sign Out", "Profile"];
   const dropOption = [
@@ -295,11 +298,14 @@ const LeftMenu = ({ leftQueues }) => {
         </LeftSideBarOption>
       </LeftSideBarOptionContainer>
       <CurrentQueueDetailsContainer>
-        <CurrentQueueDetailTitle>Current Queue:</CurrentQueueDetailTitle>
+        <CurrentQueueDetailTitle>
+          Next Customer
+          <br />*{tableType} table*
+        </CurrentQueueDetailTitle>
         <CurrentQueueNumberAndName>
-          <HeadNumber>{headNumber}</HeadNumber>
+          <HeadNumber>{queueHeadNumber}</HeadNumber>
           <CurrentQueueBar></CurrentQueueBar>
-          <HeadCustomerName>{headCustomerName}</HeadCustomerName>
+          <HeadCustomerName>{queueHeadCustomerName}</HeadCustomerName>
         </CurrentQueueNumberAndName>
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>
