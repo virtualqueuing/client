@@ -12,7 +12,6 @@ import { ModalBackground } from "../components/Modal/ModalBackground";
 
 const AddNewPage = ({ queueInfo, setShowAddNewForm }) => {
   const [showRequiredInfo, setShowRequiredInfo] = useState(false);
-  console.log(queueInfo);
 
   return (
     <showRequiredInfoContext.Provider value={{ setShowRequiredInfo }}>
