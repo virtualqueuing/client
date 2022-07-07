@@ -60,4 +60,4 @@ export const API_URI = import.meta.env.DEV
   ? "http://localhost:3000"
   : "https://backend.goexperts.click";
 
-export const BEARER_TOKEN = `Bearer ${localStorage.getItem("token")}`;
+export const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user"))?.token}` || null;

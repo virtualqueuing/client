@@ -6,7 +6,8 @@ import { StyledTextarea } from "../styles/AddNew.styles";
 
 const InputTextarea = ({ inputInfo }) => {
   // click Tag to create new tag in CreateTags
-  const [tags, setTags] = useState([]);
+  const existingNotes = inputInfo?.notes[0].split(",") || null;
+  const [tags, setTags] = useState(existingNotes || []);
   const ref = useRef(null);
 
   const SuggestedTag = (e) => {
