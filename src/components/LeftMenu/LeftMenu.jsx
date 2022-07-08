@@ -270,14 +270,14 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
 
   const navigate = useNavigate();
 
-  const { setUser } = useContext(UserContext)
+  const { setUser } = useContext(UserContext);
 
   const handleClick = () => {
     setDropState(!dropState);
   };
 
   const handleSignOut = () => {
-    setUser({ data: null })
+    setUser({ data: null });
     navigate("/home");
   };
 

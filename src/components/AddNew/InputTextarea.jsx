@@ -8,9 +8,9 @@ const InputTextarea = ({ inputInfo }) => {
   // click Tag to create new tag in CreateTags
   const noteString = inputInfo?.notes[0].split(",");
   const cleanedNotes = noteString?.filter((s) => {
-      return s && s.trim();
-  })
-  
+    return s && s.trim();
+  });
+
   const [tags, setTags] = useState(cleanedNotes);
   const ref = useRef(null);
 
