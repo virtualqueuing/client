@@ -15,7 +15,12 @@ const InputTextarea = ({ inputInfo }) => {
   const ref = useRef(null);
 
   const SuggestedTag = (e) => {
-    setTags((prevState) => [...prevState, e.target.value]);
+    setTags((prevState) => {
+      if (!prevState) {
+        return [e.target.value]
+      }
+      return [...prevState, e.target.value]
+    });
     // console.log(e.target.value);
     // console.log(tags.toString())
     // console.log(ref.current.value)
