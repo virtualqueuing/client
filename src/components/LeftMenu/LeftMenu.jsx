@@ -6,6 +6,8 @@ import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../pages/Context";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -268,12 +270,14 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
 
   const navigate = useNavigate();
 
+  const { setUser } = useContext(UserContext)
+
   const handleClick = () => {
     setDropState(!dropState);
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem("user");
+    setUser({ data: null })
     navigate("/home");
   };
 
