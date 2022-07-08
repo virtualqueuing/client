@@ -6,7 +6,13 @@ import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { UserContext } from "../../pages/Context";
+||||||| eead6d5
+=======
+import { useContext } from "react";
+import { UserContext } from "../../pages/Context";
+>>>>>>> main
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};

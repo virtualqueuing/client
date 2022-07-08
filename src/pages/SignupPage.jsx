@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import logo from "../assets/Logo-v5.svg";
 import { useState, useContext } from "react";
