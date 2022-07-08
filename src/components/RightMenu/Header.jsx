@@ -1,4 +1,4 @@
-import logo from "../../assets/Logo-v5.svg";
+import logo from "../../assets/Logo-v5.png";
 import {
   StyledHeader,
   Branding,
@@ -42,7 +42,9 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
     <>
       <StyledHeader>
         <Branding>
-          <Logo src={logo} alt="logo" />
+          <a href={`/`}>
+            <Logo src={logo} alt="logo" />
+          </a>
         </Branding>
         <SeparateLine />
         <PathContainer>
