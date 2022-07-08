@@ -66,21 +66,18 @@ export const InputValidation = [
   {
     name: "email",
     errorMessage: "It should be a valid email address!",
-    pattern:
-      "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
   },
   {
     name: "Username",
     errorMessage: "Username should be 3-16 characters and shouldn't include any special character!",
-    pattern: "^[A-Za-z0-9]{3,16}$",
   },
   {
     name: "Role",
-    errorMessage: "Please choose a role",
+    errorMessage: "Please choose a role!",
   },
   {
     name: "Branch",
-    errorMessage: "Please choose a Branch",
+    errorMessage: "Please choose a Branch!",
   },
   {
     name: "password",
@@ -88,6 +85,6 @@ export const InputValidation = [
   },
   {
     name: "confirmPassword",
-    errorMessage: "Passwords Do not match!",
+    errorMessage: "Password Does not match!",
   },
 ];

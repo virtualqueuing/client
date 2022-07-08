@@ -20,6 +20,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URI } from "../constant";
 import { UserContext } from "./Context";
+import validator from "validator";
 
 const SignupButton = styled(LoginButton)`
   margin: 3% 10% 0 10%;
@@ -93,8 +94,8 @@ const SignupPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (email !== InputValidation[0].pattern) setEmailError(true);
-    if (userName !== InputValidation[2].pattern) setUsernameError(true);
+    if (!validator.isEmail(email)) setEmailError(true);
+    userName.length < 3 && setUsernameError(true);
     !role && setroleError(true);
     !branch && setBranchError(true);
     password.length < 6 && setPasswordError(true);
