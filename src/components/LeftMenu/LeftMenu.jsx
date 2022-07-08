@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
@@ -6,6 +6,7 @@ import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../pages/Context";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -268,12 +269,14 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
 
   const navigate = useNavigate();
 
+  const { setUser } = useContext(UserContext);
+
   const handleClick = () => {
     setDropState(!dropState);
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem("user");
+    setUser({ data: null });
     navigate("/home");
   };
 
@@ -346,7 +349,7 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
         {queueStatus === "Absent"
           ? leftQueues
               .find((queue) => queue.status === QUEUE_STATUS.ABSENT)
-              ?.notes[0].split(",")
+              ?.notes[0]?.split(",")
               .map((note, index) => (
                 <SingleQueueNotes key={index}>
                   {note === "Birthday" ? (
@@ -362,7 +365,7 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
           : queueStatus === "All"
           ? leftQueues
               .find((queue) => queue.status)
-              ?.notes[0].split(",")
+              ?.notes[0]?.split(",")
               .map((note, index) => (
                 <SingleQueueNotes key={index}>
                   {note === "Birthday" ? (
@@ -377,7 +380,7 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
               ))
           : leftQueues
               .find((queue) => queue.status === QUEUE_STATUS.WAITING)
-              ?.notes[0].split(",")
+              ?.notes[0]?.split(",")
               .map((note, index) => (
                 <SingleQueueNotes key={index}>
                   {note === "Birthday" ? (
