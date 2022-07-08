@@ -80,7 +80,7 @@ const CreateTags = (props) => {
 
   return (
     <Container>
-      {props.tags.map((tag, index) => (
+      {props?.tags?.map((tag, index) => (
         <NewTag
           key={index}
           onClick={() => deleteTag(index)}
