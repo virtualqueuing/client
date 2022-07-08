@@ -8,6 +8,7 @@ import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../pages/Context";
+import _ from "lodash";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -258,7 +259,7 @@ const SingleQueueDescription = styled.span`
   }
 `;
 
-const LeftMenu = ({ leftQueues, tableType,queueStatus }) => {
+const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   let headCustomer = [];
   if (!_.isEmpty(leftQueues)) {
     headCustomer = leftQueues.find(
