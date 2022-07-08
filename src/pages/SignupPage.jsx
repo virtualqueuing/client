@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logo from "../assets/Logo-v5.svg";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import {
   LoginContainer,
   LoginInfo,
