@@ -8,12 +8,11 @@ import passwordShow from "../assets/Icons/Button_Password-show.svg";
 import passwordShowActive from "../assets/Icons/Button_Password-showActive.svg";
 import axios from "axios";
 import { API_URI } from "../constant";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "./Context";
 
 export const LoginContainer = styled.div`
   width: 370px;
-  height: 390px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -119,23 +118,27 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const Logo = styled.div`
+export const Footer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Logo = styled.img`
   width: 120px;
   height: 60px;
   margin: 3% 0;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  background-image: url(${logo});
-  background-size: 100% 100%;
 `;
 
 const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [error, setError] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswardError] = useState(false);
+
   const [loading, setLoading] = useState(false);
 
   const { setUser } = useContext(UserContext);
@@ -143,6 +146,7 @@ const LoginPage = () => {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -206,9 +210,11 @@ const LoginPage = () => {
         <LoginButton>
           <p>Sign in</p>
         </LoginButton>
-        <a href="/home">
-          <Logo />
-        </a>
+        <Footer>
+          <Link to="/home">
+            <Logo src={logo} alt="logo for redirecting to home page" />
+          </Link>
+        </Footer>
       </LoginContainer>
     </form>
   );

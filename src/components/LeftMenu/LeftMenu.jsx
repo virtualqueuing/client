@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
@@ -6,7 +6,6 @@ import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { UserContext } from "../../pages/Context";
 import _ from "lodash";
 
@@ -365,7 +364,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
         {queueStatus === "Absent"
           ? leftQueues
               .find((queue) => queue.status === QUEUE_STATUS.ABSENT)
-              ?.notes[0].split(",")
+              ?.notes[0]?.split(",")
               .map((note, index) => (
                 <SingleQueueNotes key={index}>
                   {note === "Birthday" ? (
@@ -381,22 +380,22 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
           : queueStatus === "All"
           ? leftQueues
               .find((queue) => queue.status)
-              ?.notes[0].split(",")
+              ?.notes[0]?.split(",")
               .map((note, index) => (
                 <SingleQueueNotes key={index}>
                   {note === "Birthday" ? (
                     <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                   ) : note === "Wheelchair" ? (
                     <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Babyseat" ? (
-                    <SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />
+                  ) : note === "Highchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
                   ) : null}
                   <SingleQueueDescription>{note}</SingleQueueDescription>
                 </SingleQueueNotes>
               ))
           : leftQueues
               .find((queue) => queue.status === QUEUE_STATUS.WAITING)
-              ?.notes[0].split(",")
+              ?.notes[0]?.split(",")
               .map((note, index) => (
                 <SingleQueueNotes key={index}>
                   {note === "Birthday" ? (
@@ -404,7 +403,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
                   ) : note === "Wheelchair" ? (
                     <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
                   ) : note === "Babyseat" ? (
-                    <SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />
+                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
                   ) : null}
                   <SingleQueueDescription>{note}</SingleQueueDescription>
                 </SingleQueueNotes>

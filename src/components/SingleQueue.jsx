@@ -111,7 +111,7 @@ const SingleQueue = ({
           <HoverNotesContainer>
             <NotesBox>
               Notes:
-              {notes[0].split(",").map((note, index) => (
+              {notes[0]?.split(",").map((note, index) => (
                 <NewTag
                   key={index}
                   style={{

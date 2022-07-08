@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import styled from "styled-components";
+import logo from "../assets/Logo-v5.svg";
 import { useState, useContext } from "react";
 import {
   LoginContainer,
@@ -11,17 +12,15 @@ import {
   SetAccount,
   LoginButton,
   Logo,
+  Footer,
 } from "./LoginPage";
-import { Branches, Roles } from "../constant";
+import { Branches, InputValidation, Roles } from "../constant";
 import ArrowDownIcon from "../assets/Icons/down-arrow-svgrepo-com.svg";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_URI } from "../constant";
 import { UserContext } from "./Context";
-
-const SignupContainer = styled(LoginContainer)`
-  height: 590px;
-`;
+import validator from "validator";
 
 const SignupButton = styled(LoginButton)`
   margin: 3% 10% 0 10%;
@@ -73,13 +72,17 @@ const SignupPage = () => {
   const [branch, setBranch] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
-  const [message, setMessage] = useState(null);
-  const [error, setError] = useState(false);
+
+  const [emailError, setEmailError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
+  const [roleError, setroleError] = useState(false);
+  const [branchError, setBranchError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+
   const [loading, setLoading] = useState(false);
 
   const { setUser } = useContext(UserContext);
-
-  const [passwordCorrect, setPasswordCorrect] = useState(false);
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
@@ -91,10 +94,15 @@ const SignupPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!validator.isEmail(email)) setEmailError(true);
+    userName.length < 3 && setUsernameError(true);
+    !role && setroleError(true);
+    !branch && setBranchError(true);
+    password.length < 6 && setPasswordError(true);
+
     if (password !== confirmPassword) {
-      setMessage("Passwords Do not Match!");
+      setConfirmPasswordError(true);
     } else {
-      setMessage(null);
       try {
         setLoading(true);
         const { data } = await axios.post(`${API_URI}/v1/auth/register`, {
@@ -119,7 +127,7 @@ const SignupPage = () => {
 
   return (
     <>
-      <SignupContainer>
+      <LoginContainer>
         <LoginInfo>
           <h2>Sign Up</h2>
           <p>Enter your details below to sign up.</p>
@@ -129,14 +137,20 @@ const SignupPage = () => {
             type="text"
             placeholder="Enter Email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
           />
+          {emailError && <ErrorMessage>{InputValidation[0].errorMessage}</ErrorMessage>}
           <LoginInput
             type="text"
             placeholder="Enter Username"
             value={userName}
-            onChange={(event) => setUserName(event.target.value)}
+            onChange={(event) => {
+              setUserName(event.target.value);
+            }}
           />
+          {usernameError && <ErrorMessage>{InputValidation[1].errorMessage}</ErrorMessage>}
           <InputWrapper>
             <InputOption value={role} onChange={(event) => setRole(event.target.value)}>
               <option value="role">Select a Role</option>
@@ -148,6 +162,7 @@ const SignupPage = () => {
             </InputOption>
             <CustomedInputOptionBG />
           </InputWrapper>
+          {roleError && <ErrorMessage>{InputValidation[2].errorMessage}</ErrorMessage>}
           <InputWrapper>
             <InputOption value={branch} onChange={(event) => setBranch(event.target.value)}>
               <option value="branch">Select a Branch</option>
@@ -159,6 +174,7 @@ const SignupPage = () => {
             </InputOption>
             <CustomedInputOptionBG />
           </InputWrapper>
+          {branchError && <ErrorMessage>{InputValidation[3].errorMessage}</ErrorMessage>}
           <InputWrapper>
             <LoginInput
               type={passwordShown ? "text" : "password"}
@@ -172,6 +188,7 @@ const SignupPage = () => {
               <ShowPassword onClick={togglePassword} />
             )}
           </InputWrapper>
+          {passwordError && <ErrorMessage>{InputValidation[4].errorMessage}</ErrorMessage>}
           <InputWrapper>
             <LoginInput
               type={passwordShown ? "text" : "password"}
@@ -185,7 +202,7 @@ const SignupPage = () => {
               <ShowPassword onClick={togglePassword} />
             )}
           </InputWrapper>
-          {passwordCorrect && <ErrorMessage>Password is not match</ErrorMessage>}
+          {confirmPasswordError && <ErrorMessage>{InputValidation[5].errorMessage}</ErrorMessage>}
           <SetAccount>
             <h6>
               <a href="/login">Already have an account?</a>
@@ -195,10 +212,12 @@ const SignupPage = () => {
             <p>Sign up</p>
           </SignupButton>
         </form>
-        <a href="/home">
-          <Logo />
-        </a>
-      </SignupContainer>
+        <Footer>
+          <Link to="/home">
+            <Logo src={logo} alt="logo for redirecting to home page" />
+          </Link>
+        </Footer>
+      </LoginContainer>
     </>
   );
 };

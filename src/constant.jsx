@@ -61,3 +61,30 @@ export const API_URI = import.meta.env.DEV
   : "https://backend.goexperts.click";
 
 export const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user"))?.token}`;
+
+export const InputValidation = [
+  {
+    name: "email",
+    errorMessage: "It should be a valid email address!",
+  },
+  {
+    name: "Username",
+    errorMessage: "Username should be 3-16 characters and shouldn't include any special character!",
+  },
+  {
+    name: "Role",
+    errorMessage: "Please choose a role!",
+  },
+  {
+    name: "Branch",
+    errorMessage: "Please choose a Branch!",
+  },
+  {
+    name: "password",
+    errorMessage: "Password should be 6-20 characters!",
+  },
+  {
+    name: "confirmPassword",
+    errorMessage: "Password Does not match!",
+  },
+];
