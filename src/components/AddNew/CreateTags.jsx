@@ -30,10 +30,11 @@ const Container = styled.div`
   }
 `;
 
-const NewTag = styled(Tag)`
+export const NewTag = styled(Tag)`
   padding: 5px 15px;
   box-shadow: 1px 1px 2px rgb(0, 0, 0, 30%);
   cursor: pointer;
+  margin: 0;
 `;
 
 // random index from 0 to tagColorList.length

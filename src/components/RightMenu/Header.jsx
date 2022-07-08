@@ -16,13 +16,28 @@ import {
 } from "../styles/Header.styles";
 import { Logo } from "../styles/Logo";
 import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
+import { useMemo } from "react";
 
 const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) => {
   const changeTable = (size) => {
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);
   };
-
+  const queuesFilter = useMemo(
+    () =>
+      QUEUE_FILTER.map((filter) => (
+        <Identifier key={filter}>
+          <IdentifierLink
+            href={`#${filter}`}
+            filter={queueStatus === filter}
+            onClick={() => setQueueStatus(filter)}
+          >
+            {`${filter}`}
+          </IdentifierLink>
+        </Identifier>
+      )),
+    [QUEUE_FILTER, queueStatus]
+  );
   return (
     <>
       <StyledHeader>
@@ -31,19 +46,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
         </Branding>
         <SeparateLine />
         <PathContainer>
-          <PathIdentifier>
-            {QUEUE_FILTER.map((filter) => {
-              return (
-                <Identifier key={filter}>
-                  <IdentifierLink
-                    href={`/#${filter}`}
-                    filter={queueStatus === filter}
-                    onClick={() => setQueueStatus(filter)}
-                  >{`${filter}`}</IdentifierLink>
-                </Identifier>
-              );
-            })}
-          </PathIdentifier>
+          <PathIdentifier>{queuesFilter}</PathIdentifier>
           <form>
             <SearchBar
               type="search"

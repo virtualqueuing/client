@@ -1,21 +1,16 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 export const Context = createContext();
 export const showNewFormContext = React.createContext();
 export const showRequiredInfoContext = React.createContext();
 
-const defaultActiveQueue = {};
+export const UserContext = createContext();
 
-export const activeQueueContext = createContext(defaultActiveQueue);
-export const setActiveQueueContext = createContext(undefined);
+export const UserContextProvider = ({ children }) => {
+  const [user, setUser] = useState({ data: JSON.parse(localStorage.getItem("user")) || null });
 
-export const ActiveQueueProvider = (props) => {
-  const [state, setState] = useState(defaultActiveQueue);
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user.data));
+  }, [user]);
 
-  return (
-    <activeQueueContext.Provider value={state}>
-      <setActiveQueueContext.Provider value={setState}>
-        {props.children}
-      </setActiveQueueContext.Provider>
-    </activeQueueContext.Provider>
-  );
+  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 };

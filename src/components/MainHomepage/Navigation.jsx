@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../assets/Logo-v5.svg";
 
@@ -45,6 +46,8 @@ const MainHomeLogo = styled.img`
 `;
 
 const Navigation = ({ scrollToSection }) => {
+  const navigate = useNavigate();
+
   return (
     <HomeNavigation>
       <MainHomeLogo src={logo} alt="logo" />
@@ -52,15 +55,14 @@ const Navigation = ({ scrollToSection }) => {
         <NavigationButton style={{ border: "none", paddingRight: 0 }} onClick={scrollToSection}>
           About Us
         </NavigationButton>
-        <NavigationButton style={{ backgroundColor: `${ButtonColor}` }}>
-          <a href="/signup" style={{ color: "#fff" }}>
-            Sign Up
-          </a>
+        <NavigationButton
+          onClick={() => navigate("/signup")}
+          style={{ backgroundColor: `${ButtonColor}`, color: "#fff" }}
+        >
+          Sign Up
         </NavigationButton>
-        <NavigationButton>
-          <a href="/login" style={{ color: `${ButtonColor}` }}>
-            Sign In
-          </a>
+        <NavigationButton onClick={() => navigate("/login")} style={{ color: `${ButtonColor}` }}>
+          Sign In
         </NavigationButton>
       </NavigationLinks>
     </HomeNavigation>

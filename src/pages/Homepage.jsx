@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Context } from "./Context";
 
 const Homepage = () => {
+  const [queueStatus, setQueueStatus] = useState("All");
   const [context, setContext] = useState(0);
   const [queues, setQueues] = useState([]);
   const [tableType, setTableType] = useState("Table Type");
@@ -12,12 +13,13 @@ const Homepage = () => {
   return (
     <Container>
       <Context.Provider value={[context, setContext]}>
-        <LeftMenu leftQueues={queues} tableType={tableType} />
+        <LeftMenu leftQueues={queues} tableType={tableType} queueStatus={queueStatus}/>
         <RightMenu
           queues={queues}
           setQueues={setQueues}
           tableType={tableType}
-          setTableType={setTableType}
+          queueStatus={queueStatus}
+          setQueueStatus={setQueueStatus}
         />
       </Context.Provider>
     </Container>

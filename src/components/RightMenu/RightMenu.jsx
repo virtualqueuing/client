@@ -6,14 +6,18 @@ import { RightMenuContainer } from "../styles/RightMenu.styles";
 import axios from "axios";
 import { API_URI } from "../../constant.jsx";
 
-const MainBar = ({ queues, setQueues, tableType, setTableType }) => {
-  const [queueStatus, setQueueStatus] = useState("All");
+const MainBar = ({ queues, setQueues,tableType, setTableType,queueStatus, setQueueStatus }) => {
+  // const [queueStatus, setQueueStatus] = useState("All");
+// const MainBar = ({ queues, setQueues, queueStatus, setQueueStatus }) => {
+  // const [tableType, setTableType] = useState("Table Type");
   const [searchQueue, setSearchQueue] = useState("");
 
   useEffect(() => {
     const fetchQueue = async () => {
-      // eslint-disable-next-line no-undef
-      const { data } = await axios.get(`${API_URI}/v1/queues`);
+      const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user")).token}`;
+      const { data } = await axios.get(`${API_URI}/v1/queues`, {
+        headers: { authorization: BEARER_TOKEN },
+      });
       setQueues(data);
     };
     fetchQueue();

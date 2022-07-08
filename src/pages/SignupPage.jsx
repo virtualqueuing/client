@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   LoginContainer,
   LoginInfo,
@@ -16,6 +17,7 @@ import ArrowDownIcon from "../assets/Icons/down-arrow-svgrepo-com.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_URI } from "../constant";
+import { UserContext } from "./Context";
 
 const SignupContainer = styled(LoginContainer)`
   height: 590px;
@@ -57,6 +59,13 @@ const CustomedInputOptionBG = styled.div`
   pointer-events: none;
 `;
 
+const ErrorMessage = styled.div`
+  color: red;
+  font-size: ${({ theme }) => theme.fontSizes["xxs"]};
+  padding: 4px 10px;
+  margin: 0 10%;
+`;
+
 const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -64,6 +73,13 @@ const SignupPage = () => {
   const [branch, setBranch] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const { setUser } = useContext(UserContext);
+
+  const [passwordCorrect, setPasswordCorrect] = useState(false);
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
@@ -72,29 +88,41 @@ const SignupPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    axios
-      .post(`${API_URI}/v1/auth/register`, {
-        email,
-        userName,
-        role,
-        branch,
-        password,
-        confirmPassword,
-      })
-      .then(() => navigate("/"));
+    if (password !== confirmPassword) {
+      setMessage("Passwords Do not Match!");
+    } else {
+      setMessage(null);
+      try {
+        setLoading(true);
+        const { data } = await axios.post(`${API_URI}/v1/auth/register`, {
+          email,
+          userName,
+          role,
+          branch,
+          password,
+        });
+        setLoading(false);
+        setUser((prev) => ({
+          ...prev,
+          data,
+        }));
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    }
   };
 
   return (
     <>
       <SignupContainer>
         <LoginInfo>
-          <h2>Agent Sign Up</h2>
-          <p>
-            Hey, Enter your details to <br /> sign up an new account
-          </p>
+          <h2>Sign Up</h2>
+          <p>Enter your details below to sign up.</p>
         </LoginInfo>
         <form onSubmit={handleSubmit}>
           <LoginInput
@@ -157,6 +185,7 @@ const SignupPage = () => {
               <ShowPassword onClick={togglePassword} />
             )}
           </InputWrapper>
+          {passwordCorrect && <ErrorMessage>Password is not match</ErrorMessage>}
           <SetAccount>
             <h6>
               <a href="/login">Already have an account?</a>
@@ -166,7 +195,9 @@ const SignupPage = () => {
             <p>Sign up</p>
           </SignupButton>
         </form>
-        <Logo />
+        <a href="/home">
+          <Logo />
+        </a>
       </SignupContainer>
     </>
   );

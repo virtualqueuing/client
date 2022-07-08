@@ -25,6 +25,9 @@ import AbsentModal from "./RightMenu/components/AbsentModal";
 import { API_URI, QUEUE_STATUS } from "../constant.jsx";
 import AddNewPage from "../pages/AddNewPage";
 import PropTypes from "prop-types";
+import { HoverNotesContainer, NotesBox } from "./HoverNotes";
+import { NewTag } from "./AddNew/CreateTags";
+import { random } from "lodash";
 
 const SingleQueue = ({
   _id,
@@ -67,12 +70,19 @@ const SingleQueue = ({
   const handleClick = () => {
     setActiveQueueId(_id);
   };
+  const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user")).token}`;
 
   const queueComplete = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(`${API_URI}/v1/queues/${id}/Completed`, {});
-    const { data } = await axios.get(`${API_URI}/v1/queues`);
+    await axios.put(
+      `${API_URI}/v1/queues/${id}/Completed`,
+      {},
+      { headers: { Authorization: BEARER_TOKEN } }
+    );
+    const { data } = await axios.get(`${API_URI}/v1/queues`, {
+      headers: { Authorization: BEARER_TOKEN },
+    });
     setQueues(data);
     setIsSending(false);
   };
@@ -80,15 +90,50 @@ const SingleQueue = ({
   const queueAbsent = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(`${API_URI}/v1/queues/${id}/Absent`, {});
-    const { data } = await axios.get(`${API_URI}/v1/queues`);
+    await axios.put(
+      `${API_URI}/v1/queues/${id}/Absent`,
+      {},
+      { headers: { Authorization: BEARER_TOKEN } }
+    );
+    const { data } = await axios.get(`${API_URI}/v1/queues`, {
+      headers: { Authorization: BEARER_TOKEN },
+    });
     setQueues(data);
     setIsSending(false);
   };
 
+  const [isHovered, setIsHovered] = useState(false);
+  const showQueueNotes = isHovered;
+
   return (
     <>
-      <QueueItem active={_id === activeQueueId} onClick={handleClick}>
+      <QueueItem
+        active={_id === activeQueueId}
+        onClick={handleClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {showQueueNotes && (
+          <HoverNotesContainer>
+            <NotesBox>
+              Notes:
+              {notes[0].split(",").map((note, index) => (
+                <NewTag
+                  key={index}
+                  style={{
+                    marginLeft: 10,
+                    backgroundColor:
+                      theme.colors.components.tags.HovertagColorList[
+                        random(0, theme.colors.components.tags.HovertagColorList.length - 1)
+                      ],
+                  }}
+                >
+                  {note}
+                </NewTag>
+              ))}
+            </NotesBox>
+          </HoverNotesContainer>
+        )}
         <QueueDataContainer>
           <QueueData color="#000">
             <p>{queueNumber}</p>
