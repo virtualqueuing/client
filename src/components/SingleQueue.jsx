@@ -75,29 +75,23 @@ const SingleQueue = ({
   const queueComplete = async (id, setQueues) => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(
-      `${API_URI}/v1/queues/${id}/Completed`,
+    const { data } = await axios.put(
+      `${API_URI}/v1/queues/${id}/complete`,
       {},
       { headers: { Authorization: BEARER_TOKEN } }
     );
-    const { data } = await axios.get(`${API_URI}/v1/queues`, {
-      headers: { Authorization: BEARER_TOKEN },
-    });
     setQueues(data);
     setIsSending(false);
   };
 
-  const queueAbsent = async (id, setQueues) => {
+  const queueAbsent = async (id, setQueues, absentReason) => {
     if (isSending) return;
     setIsSending(true);
-    await axios.put(
-      `${API_URI}/v1/queues/${id}/Absent`,
-      {},
+    const { data } = await axios.put(
+      `${API_URI}/v1/queues/${id}/absent`,
+      { absentReason },
       { headers: { Authorization: BEARER_TOKEN } }
     );
-    const { data } = await axios.get(`${API_URI}/v1/queues`, {
-      headers: { Authorization: BEARER_TOKEN },
-    });
     setQueues(data);
     setIsSending(false);
   };
@@ -124,7 +118,7 @@ const SingleQueue = ({
                     marginLeft: 10,
                     backgroundColor:
                       theme.colors.components.tags.HovertagColorList[
-                        random(0, theme.colors.components.tags.HovertagColorList.length - 1)
+                      random(0, theme.colors.components.tags.HovertagColorList.length - 1)
                       ],
                   }}
                 >
@@ -160,8 +154,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                  ? "rgba(254, 63, 127, 0.1)"
-                  : "rgba(46, 173, 124, 0.1)",
+                    ? "rgba(254, 63, 127, 0.1)"
+                    : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >

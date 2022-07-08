@@ -151,8 +151,8 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
 
   const [absentReason, setAbsentReason] = useState("");
 
-  const sendAbsentCommand = (id, setQueues) => {
-    queueAbsent(id, setQueues);
+  const sendAbsentCommand = (id, setQueues, absentReason) => {
+    queueAbsent(id, setQueues, absentReason);
     setShowAbsentModal(false);
   };
 
@@ -188,7 +188,7 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
         <HorizontalDivider />
         <ButtonWrapper>
           <Cancel onClick={() => setShowAbsentModal(false)}>Cancel</Cancel>
-          <Absent onClick={() => sendAbsentCommand(id, setQueues)}>Proceed</Absent>
+          <Absent onClick={() => sendAbsentCommand(id, setQueues, absentReason)}>Proceed</Absent>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>
