@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../../assets/Logo-v5.svg";
+import logo from "../../assets/Logo-v5.png";
 
 const ButtonColor = "#2EAD7C";
 

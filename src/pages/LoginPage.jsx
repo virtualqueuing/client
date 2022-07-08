@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import { useState, useContext } from "react";
-import logo from "../assets/Logo-v5.svg";
+import logo from "../assets/Logo-v5.png";
 import passwordHide from "../assets/Icons/Button_Password-hide.svg";
 import passwordHideActive from "../assets/Icons/Button_ShowPassword.svg";
 import passwordShow from "../assets/Icons/Button_Password-show.svg";

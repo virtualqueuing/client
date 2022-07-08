@@ -118,7 +118,7 @@ const SingleQueue = ({
                     marginLeft: 10,
                     backgroundColor:
                       theme.colors.components.tags.HovertagColorList[
-                      random(0, theme.colors.components.tags.HovertagColorList.length - 1)
+                        random(0, theme.colors.components.tags.HovertagColorList.length - 1)
                       ],
                   }}
                 >
@@ -154,8 +154,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                    ? "rgba(254, 63, 127, 0.1)"
-                    : "rgba(46, 173, 124, 0.1)",
+                  ? "rgba(254, 63, 127, 0.1)"
+                  : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
