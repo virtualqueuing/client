@@ -272,17 +272,11 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const queueHeadCustomerName = headCustomer?.name;
   const queueHeadNumber = headCustomer?.queueNumber;
 
-  // const dropOption = ["Sign Out", "Profile"];
-  const dropOption = [
-    { name: "Sign Out", path: "/home" },
-    { name: "Profile", path: "/profile" },
-  ];
-
   const [dropState, setDropState] = useState(false);
 
   const navigate = useNavigate();
 
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const handleClick = () => {
     setDropState(!dropState);
@@ -298,8 +292,8 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       <UserPanel>
         <UserAvatar src={UserLine} />
         <UserDetails>
-          <UserName>Roy</UserName>
-          <UserLocation>Sunnybank</UserLocation>
+          <UserName>{user.data.data.userName}</UserName>
+          <UserLocation>{user.data.data.branch}</UserLocation>
         </UserDetails>
         <ArrowDownBtn
           src={ArrowDown}

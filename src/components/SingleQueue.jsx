@@ -7,7 +7,6 @@ import {
   StatusButton,
 } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
-
 import React, { useState } from "react";
 import { showNewFormContext } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
@@ -28,6 +27,7 @@ import PropTypes from "prop-types";
 import { HoverNotesContainer, NotesBox } from "./HoverNotes";
 import { NewTag } from "./AddNew/CreateTags";
 import { random } from "lodash";
+import MessagingModal from "./RightMenu/components/MessagingModal";
 
 const SingleQueue = ({
   _id,
@@ -60,6 +60,7 @@ const SingleQueue = ({
   const [showArrivalModal, setShowArrivalModal] = useState(false);
   const [showAbsentModal, setShowAbsentModal] = useState(false);
   const [showAddNewForm, setShowAddNewForm] = useState(false);
+  const [showMessagingModal, setShowMessagingModal] = useState(false);
 
   const arrivalFontActive = "#5F5186";
   const absenceFontActive = "#E74C3C";
@@ -200,12 +201,22 @@ const SingleQueue = ({
         </StatusButtonContainer>
         <TooltipContainer>
           <Tooltip text="Notify">
-            <img src={messageIcon} alt="sending message icon" />
+            {status === QUEUE_STATUS.WAITING ? (
+              <img
+                src={messageIcon}
+                alt="message sending icon"
+                onClick={() => {
+                  setShowMessagingModal(true);
+                }}
+              />
+            ) : (
+              <img src={messageIcon} alt="message sending icon" />
+            )}
           </Tooltip>
           <Tooltip text="Update">
             <img
               src={editIcon}
-              alt="sending message icon"
+              alt="add new form icon"
               onClick={(e) => {
                 setShowAddNewForm(true);
               }}
@@ -245,6 +256,14 @@ const SingleQueue = ({
           setShowAbsentModal={setShowAbsentModal}
           queueAbsent={queueAbsent}
           setQueues={setQueues}
+        />
+      )}
+      {showMessagingModal && (
+        <MessagingModal
+          name={name}
+          setShowMessagingModal={setShowMessagingModal}
+          phoneNumber={phoneNumber}
+          id={_id}
         />
       )}
     </>
