@@ -372,8 +372,8 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
                     <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                   ) : note === "Wheelchair" ? (
                     <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Babyseat" ? (
-                    <SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />
+                  ) : note === "Highchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
                   ) : null}
                   <SingleQueueDescription>{note}</SingleQueueDescription>
                 </SingleQueueNotes>
@@ -388,7 +388,7 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
                   ) : note === "Wheelchair" ? (
                     <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
                   ) : note === "Babyseat" ? (
-                    <SingleQueueIcon src={NoteIcon.Babyseat} alt={`${note} icon`} />
+                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
                   ) : null}
                   <SingleQueueDescription>{note}</SingleQueueDescription>
                 </SingleQueueNotes>
