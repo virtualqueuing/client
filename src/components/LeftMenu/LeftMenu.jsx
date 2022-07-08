@@ -261,9 +261,12 @@ const SingleQueueDescription = styled.span`
 const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   let headCustomer = [];
   if (!_.isEmpty(leftQueues)) {
-    headCustomer = leftQueues.find(
-      (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
-    );
+    headCustomer =
+      tableType === "Table Type"
+        ? leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)
+        : leftQueues.find(
+            (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+          );
   }
 
   const queueHeadCustomerName = headCustomer?.name;
