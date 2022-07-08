@@ -8,6 +8,7 @@ import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../pages/Context";
+import _ from "lodash";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -258,13 +259,22 @@ const SingleQueueDescription = styled.span`
   }
 `;
 
-const LeftMenu = ({ leftQueues, queueStatus }) => {
-  // let waitingList = [];
-  // if (!_.isEmpty(leftQueues)) {
-  //   waitingList = leftQueues.find((queue) => queue.status === QUEUE_STATUS.ALL);
-  // }
-  // const headCustomerName = waitingList?.name;
-  // const headNumber = waitingList?.queueNumber;
+const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
+  let headCustomer = [];
+  if (!_.isEmpty(leftQueues)) {
+    headCustomer = leftQueues.find(
+      (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+    );
+  }
+
+  const queueHeadCustomerName = headCustomer?.name;
+  const queueHeadNumber = headCustomer?.queueNumber;
+
+  // const dropOption = ["Sign Out", "Profile"];
+  const dropOption = [
+    { name: "Sign Out", path: "/home" },
+    { name: "Profile", path: "/profile" },
+  ];
 
   const [dropState, setDropState] = useState(false);
 
@@ -315,9 +325,15 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
         </LeftSideBarOption>
       </LeftSideBarOptionContainer>
       <CurrentQueueDetailsContainer>
-        <CurrentQueueDetailTitle>Current Queue:</CurrentQueueDetailTitle>
+        <CurrentQueueDetailTitle>
+          Next Customer
+          <br />*{tableType} table*
+        </CurrentQueueDetailTitle>
         <CurrentQueueNumberAndName>
-          {queueStatus === "Absent" ? (
+          <HeadNumber>{queueHeadNumber}</HeadNumber>
+          <CurrentQueueBar></CurrentQueueBar>
+          <HeadCustomerName>{queueHeadCustomerName}</HeadCustomerName>
+          {/* {queueStatus === "Absent" ? (
             <HeadNumber>
               {leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.queueNumber}
             </HeadNumber>
@@ -329,8 +345,7 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
             </HeadNumber>
           )}
           {/* <HeadNumber>{headNumber}</HeadNumber> */}
-          <CurrentQueueBar></CurrentQueueBar>
-          <HeadCustomerName>
+          {/* <HeadCustomerName>
             {queueStatus === "Absent" ? (
               <HeadNumber>
                 {leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.name}
@@ -342,7 +357,7 @@ const LeftMenu = ({ leftQueues, queueStatus }) => {
                 {leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.name}
               </HeadNumber>
             )}
-          </HeadCustomerName>
+          </HeadCustomerName> */}
         </CurrentQueueNumberAndName>
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>
