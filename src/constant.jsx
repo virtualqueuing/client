@@ -4,7 +4,7 @@ import Insight from "./assets/MainHomePageIcon/Insight.svg";
 import Reduce from "./assets/MainHomePageIcon/Reduce.svg";
 import Savetime from "./assets/MainHomePageIcon/SaveTime.svg";
 import BirthdayIcon from "./assets/Icons/Note_Birthday.svg";
-import WheelchairIcon from "./assets/Icons/Note_Wheelchair.svg";
+import WheelChairIcon from "./assets/Icons/Note_WheelChair.svg";
 import HighchairIcon from "./assets/Icons/Baby.svg";
 
 export const TAG_COLORLIST = [
@@ -50,7 +50,7 @@ export const QueueAdvantage = [
 
 export const NoteIcon = {
   Birthday: BirthdayIcon,
-  Wheelchair: WheelchairIcon,
+  Wheelchair: WheelChairIcon,
   Highchair: HighchairIcon,
 };
 
