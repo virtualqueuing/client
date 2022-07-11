@@ -9,7 +9,8 @@ export const HoverNotesContainer = styled.div`
   border-radius: 20px;
   margin-bottom: 80px;
   padding: 0;
-  left: 20%;
+  left: 20px;
+  top: -60px;
   border: 1px solid #e6e6e6;
   /* margin-left: -60px; */
   background-color: #fff;
@@ -21,13 +22,15 @@ export const HoverNotesContainer = styled.div`
       visibility: hidden;
       transition: all 0.5s ease-in-out;
       opacity: 0;
-      margin-bottom: 0;
+      /* margin-bottom: 0; */
+      top: -30px;
     }
     100% {
       visibility: visible;
       transition: all 0.5s ease-in-out;
       opacity: 1;
-      margin-bottom: 80px;
+      /* margin-bottom: 80px; */
+      top: -60px;
     }
   }
 `;

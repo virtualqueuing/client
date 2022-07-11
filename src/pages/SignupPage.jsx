@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { LoginContainer, LoginInfo, SetAccount } from "./LoginPage";
 import { Branches, Roles } from "../constant";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_URI } from "../constant";
 import { UserContext } from "./Context";
 import Logo from "../components/Logo";

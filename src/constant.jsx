@@ -4,7 +4,7 @@ import Insight from "./assets/MainHomePageIcon/Insight.svg";
 import Reduce from "./assets/MainHomePageIcon/Reduce.svg";
 import Savetime from "./assets/MainHomePageIcon/SaveTime.svg";
 import BirthdayIcon from "./assets/Icons/Note_Birthday.svg";
-import WheelchairIcon from "./assets/Icons/Note_Wheelchair.svg";
+import WheelChairIcon from "./assets/Icons/Note_WheelChair.svg";
 import HighchairIcon from "./assets/Icons/Baby.svg";
 
 export const TAG_COLORLIST = [
@@ -50,7 +50,7 @@ export const QueueAdvantage = [
 
 export const NoteIcon = {
   Birthday: BirthdayIcon,
-  Wheelchair: WheelchairIcon,
+  Wheelchair: WheelChairIcon,
   Highchair: HighchairIcon,
 };
 
@@ -58,6 +58,33 @@ export const Roles = ["Manager", "Staff"];
 export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];
 export const API_URI = import.meta.env.DEV
   ? "http://localhost:3000"
-  : "https://backend.goexperts.click";
+  : "https://backend.virtualqueuing.net";
 
 export const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user"))?.token}`;
+
+export const InputValidation = [
+  {
+    name: "email",
+    errorMessage: "It should be a valid email address!",
+  },
+  {
+    name: "Username",
+    errorMessage: "Username should be 3-16 characters and shouldn't include any special character!",
+  },
+  {
+    name: "Role",
+    errorMessage: "Please choose a role!",
+  },
+  {
+    name: "Branch",
+    errorMessage: "Please choose a Branch!",
+  },
+  {
+    name: "password",
+    errorMessage: "Password should be 6-20 characters!",
+  },
+  {
+    name: "confirmPassword",
+    errorMessage: "Password Does not match!",
+  },
+];

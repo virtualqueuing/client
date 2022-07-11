@@ -69,7 +69,6 @@ const ArrowDownBtn = styled.img`
 `;
 
 const DropDownListContainer = styled.ul`
-  display: none;
   margin: -20px 0px 0px;
   flex-direction: column;
   justify-content: space-around;
@@ -90,12 +89,17 @@ const DropDownListContainer = styled.ul`
   ${(props) =>
     props.dropState
       ? css`
+          max-height: 120px;
           display: flex;
           transition: max-height 0.3s ease-in;
           transform-origin: 50% 0;
           animation: slide-down 0.3s ease-in;
         `
-      : ""}
+      : css`
+          overflow: auto;
+          max-height: 0px;
+          transition: max-height 0.3s ease-out;
+        `}
 `;
 
 const DropDownList = styled.li`
@@ -261,25 +265,22 @@ const SingleQueueDescription = styled.span`
 const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   let headCustomer = [];
   if (!_.isEmpty(leftQueues)) {
-    headCustomer = leftQueues.find(
-      (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
-    );
+    headCustomer =
+      tableType === "Table Type"
+        ? leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)
+        : leftQueues.find(
+            (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+          );
   }
 
   const queueHeadCustomerName = headCustomer?.name;
   const queueHeadNumber = headCustomer?.queueNumber;
 
-  // const dropOption = ["Sign Out", "Profile"];
-  // const dropOption = [
-  //   { name: "Sign Out", path: "/home" },
-  //   { name: "Profile", path: "/profile" },
-  // ];
-
   const [dropState, setDropState] = useState(false);
 
   const navigate = useNavigate();
 
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const handleClick = () => {
     setDropState(!dropState);
@@ -295,8 +296,8 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       <UserPanel>
         <UserAvatar src={UserLine} />
         <UserDetails>
-          <UserName>Roy</UserName>
-          <UserLocation>Sunnybank</UserLocation>
+          <UserName>{user.data.data.userName}</UserName>
+          <UserLocation>{user.data.data.branch}</UserLocation>
         </UserDetails>
         <ArrowDownBtn
           src={ArrowDown}
