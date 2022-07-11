@@ -69,7 +69,6 @@ const ArrowDownBtn = styled.img`
 `;
 
 const DropDownListContainer = styled.ul`
-  display: none;
   margin: -20px 0px 0px;
   flex-direction: column;
   justify-content: space-around;
@@ -90,12 +89,17 @@ const DropDownListContainer = styled.ul`
   ${(props) =>
     props.dropState
       ? css`
+          max-height: 120px;
           display: flex;
           transition: max-height 0.3s ease-in;
           transform-origin: 50% 0;
           animation: slide-down 0.3s ease-in;
         `
-      : ""}
+      : css`
+          overflow: auto;
+          max-height: 0px;
+          transition: max-height 0.3s ease-out;
+      `}
 `;
 
 const DropDownList = styled.li`
