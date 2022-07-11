@@ -210,8 +210,8 @@ const SingleQueue = ({
         </StatusButtonContainer>
         <TooltipContainer>
           <Popup trigger={status === QUEUE_STATUS.WAITING ? (
-            <img 
-            style={{width:'30px', height:'30px'}}
+            <img
+              style={{ width: '30px', height: '30px' }}
               src={messageIcon}
               alt="message sending icon"
               onClick={() => {
@@ -219,23 +219,19 @@ const SingleQueue = ({
               }}
             />
           ) : (
-            <img style={{width:'30px', height:'30px'}} src={messageIcon} alt="message sending icon" />
+            <img style={{ width: '30px', height: '30px' }} src={messageIcon} alt="message sending icon" />
           )}>
-            <Tooltip text="Notify">
-              <TooltipBox>Notify</TooltipBox>
-            </Tooltip>
+            <TooltipBox>Notify</TooltipBox>
           </Popup>
-          <Popup trigger={<img 
-            style={{width:'30px', height:'30px'}}
+          <Popup trigger={<img
+            style={{ width: '30px', height: '30px' }}
             src={editIcon}
             alt="add new form icon"
             onClick={(e) => {
               setShowAddNewForm(true);
             }}
           />}>
-            <Tooltip text="Update">
-              <TooltipBox>Update</TooltipBox>
-            </Tooltip>
+            <TooltipBox>Update</TooltipBox>
           </Popup>
         </TooltipContainer>
       </QueueItem>
