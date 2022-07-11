@@ -15,7 +15,7 @@ export const QueueDataContainer = styled.div`
 `;
 
 export const QueueItem = styled.div`
-  /* position: relative; */
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -90,3 +90,16 @@ export const StatusButton = styled.button`
     height: 26px;
   }
 `;
+
+export const NoteButton = styled.button`
+  width: 20px;
+  border-radius: 50%;
+  background: url('../assets/Icons/error-warning-line.png') !important; 
+  background-position: center;
+  background-size:cover;
+  background-color: none;
+  border: #FFE353 2px solid;
+  position: absolute;
+  color: #FFE353;
+  height: 20px;
+`

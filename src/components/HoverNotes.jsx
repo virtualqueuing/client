@@ -9,7 +9,7 @@ export const HoverNotesContainer = styled.div`
   border-radius: 20px;
   margin-bottom: 80px;
   padding: 0;
-  left: 20%;
+  left: 20px;
   border: 1px solid #e6e6e6;
   /* margin-left: -60px; */
   background-color: #fff;

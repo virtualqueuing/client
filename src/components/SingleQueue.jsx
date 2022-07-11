@@ -5,6 +5,7 @@ import {
   TooltipContainer,
   StatusButtonContainer,
   StatusButton,
+  NoteButton
 } from "./styles/SingleQueue.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useState } from "react";
@@ -28,6 +29,9 @@ import { HoverNotesContainer, NotesBox } from "./HoverNotes";
 import { NewTag } from "./AddNew/CreateTags";
 import { random } from "lodash";
 import MessagingModal from "./RightMenu/components/MessagingModal";
+import { Popup } from 'semantic-ui-react'
+
+
 
 const SingleQueue = ({
   _id,
@@ -109,25 +113,27 @@ const SingleQueue = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         {showQueueNotes && (
-          <HoverNotesContainer>
-            <NotesBox>
-              Notes:
-              {notes[0]?.split(",").map((note, index) => (
-                <NewTag
-                  key={index}
-                  style={{
-                    marginLeft: 10,
-                    backgroundColor:
-                      theme.colors.components.tags.HovertagColorList[
+          <Popup trigger={<NoteButton>i</NoteButton>}>
+            <HoverNotesContainer>
+              <NotesBox>
+                Notes:
+                {notes[0].split(",").map((note, index) => (
+                  <NewTag
+                    key={index}
+                    style={{
+                      marginLeft: 10,
+                      backgroundColor:
+                        theme.colors.components.tags.HovertagColorList[
                         random(0, theme.colors.components.tags.HovertagColorList.length - 1)
-                      ],
-                  }}
-                >
-                  {note}
-                </NewTag>
-              ))}
-            </NotesBox>
-          </HoverNotesContainer>
+                        ],
+                    }}
+                  >
+                    {note}
+                  </NewTag>
+                ))}
+              </NotesBox>
+            </HoverNotesContainer>
+          </Popup>
         )}
         <QueueDataContainer>
           <QueueData color="#000">
@@ -155,8 +161,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                  ? "rgba(254, 63, 127, 0.1)"
-                  : "rgba(46, 173, 124, 0.1)",
+                    ? "rgba(254, 63, 127, 0.1)"
+                    : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
@@ -200,19 +206,19 @@ const SingleQueue = ({
           </StatusButton>
         </StatusButtonContainer>
         <TooltipContainer>
-          <Tooltip text="Notify">
-            {status === QUEUE_STATUS.WAITING ? (
-              <img
-                src={messageIcon}
-                alt="message sending icon"
-                onClick={() => {
-                  setShowMessagingModal(true);
-                }}
-              />
-            ) : (
-              <img src={messageIcon} alt="message sending icon" />
-            )}
-          </Tooltip>
+            <Tooltip text="Notify">
+              {status === QUEUE_STATUS.WAITING ? (
+                <img
+                  src={messageIcon}
+                  alt="message sending icon"
+                  onClick={() => {
+                    setShowMessagingModal(true);
+                  }}
+                />
+              ) : (
+                <img src={messageIcon} alt="message sending icon" />
+              )}
+            </Tooltip>
           <Tooltip text="Update">
             <img
               src={editIcon}
