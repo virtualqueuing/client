@@ -8,6 +8,7 @@ import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
 import _ from "lodash";
+import { useEffect } from "react";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -277,10 +278,16 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const queueHeadNumber = headCustomer?.queueNumber;
 
   const [dropState, setDropState] = useState(false);
+  const [manager, setManager] = useState(false);
 
   const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    const roleState = user.data.data.role;
+    if (roleState === "Manager") setManager(true);
+  }, []);
 
   const handleClick = () => {
     setDropState(!dropState);
@@ -319,10 +326,12 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
           <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
         </LeftSideBarOption>
-        <LeftSideBarOption>
-          <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
-          <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
-        </LeftSideBarOption>
+        {manager && (
+          <LeftSideBarOption>
+            <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
+            <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
+          </LeftSideBarOption>
+        )}
       </LeftSideBarOptionContainer>
       <CurrentQueueDetailsContainer>
         <CurrentQueueDetailTitle>
