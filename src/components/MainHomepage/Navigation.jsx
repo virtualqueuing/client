@@ -45,7 +45,7 @@ const Navigation = ({ scrollToSection, path, alt }) => {
 
   return (
     <HomeNavigation>
-      <Logo style={{ width: "150px" }} path={"/"} alt={"logo for redirecting to main page"} />
+      <Logo style={{ width: "150px" }} path="/" alt="logo for redirecting to main page" />
       <NavigationLinks>
         <NavigationButton style={{ border: "none", paddingRight: 0 }} onClick={scrollToSection}>
           About Us
