@@ -7,7 +7,7 @@ import {
   StatusButton,
   NoteButton
 } from "./styles/SingleQueue.styles";
-import TooltipBox from "./styles/Tooltip.styles";
+import {TooltipBox} from "./styles/Tooltip.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useState } from "react";
 import { showNewFormContext } from "../pages/Context";
