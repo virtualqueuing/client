@@ -45,20 +45,6 @@ const SingleQueue = ({
   setActiveQueueId,
   setQueues,
 }) => {
-  SingleQueue.propTypes = {
-    _id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    phoneNumber: PropTypes.string.isRequired,
-    queueNumber: PropTypes.number.isRequired,
-    guestsNumber: PropTypes.number.isRequired,
-    tableSize: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    notes: PropTypes.array.isRequired,
-    activeQueueId: PropTypes.string.isRequired,
-    setActiveQueueId: PropTypes.func.isRequired,
-    setQueues: PropTypes.func.isRequired,
-  };
-
   const [isSending, setIsSending] = useState(false);
   const [showArrivalModal, setShowArrivalModal] = useState(false);
   const [showAbsentModal, setShowAbsentModal] = useState(false);
@@ -102,6 +88,7 @@ const SingleQueue = ({
 
   const [isHovered, setIsHovered] = useState(false);
   const showQueueNotes = isHovered;
+  const labelsOfFirstNote = notes[0].split(",");
 
   return (
     <>
@@ -116,7 +103,7 @@ const SingleQueue = ({
             <HoverNotesContainer>
               <NotesBox>
                 Notes:
-                {notes[0].split(",").map((note, index) => (
+                {labelsOfFirstNote.map((label, index) => (
                   <NewTag
                     key={index}
                     style={{
@@ -127,7 +114,7 @@ const SingleQueue = ({
                         ],
                     }}
                   >
-                    {note}
+                    {label}
                   </NewTag>
                 ))}
               </NotesBox>
@@ -294,3 +281,17 @@ const SingleQueue = ({
 };
 
 export default SingleQueue;
+
+SingleQueue.propTypes = {
+  _id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
+  queueNumber: PropTypes.number.isRequired,
+  guestsNumber: PropTypes.number.isRequired,
+  tableSize: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  notes: PropTypes.array.isRequired,
+  activeQueueId: PropTypes.string.isRequired,
+  setActiveQueueId: PropTypes.func.isRequired,
+  setQueues: PropTypes.func.isRequired,
+};

@@ -60,8 +60,8 @@ const ArrowDownBtn = styled.img`
   position: absolute;
   right: 0;
   cursor: pointer;
-  ${(props) =>
-    props.dropState
+  ${({ dropState }) =>
+    dropState
       ? css`
           transform: rotate(180deg);
         `
@@ -86,8 +86,8 @@ const DropDownListContainer = styled.ul`
     }
   }
 
-  ${(props) =>
-    props.dropState
+  ${({ dropState }) =>
+    dropState
       ? css`
           max-height: 120px;
           display: flex;
@@ -96,7 +96,7 @@ const DropDownListContainer = styled.ul`
           animation: slide-down 0.3s ease-in;
         `
       : css`
-          overflow: auto;
+          overflow: hidden;
           max-height: 0px;
           transition: max-height 0.3s ease-out;
         `}
@@ -333,31 +333,6 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
           <HeadNumber>{queueHeadNumber}</HeadNumber>
           <CurrentQueueBar></CurrentQueueBar>
           <HeadCustomerName>{queueHeadCustomerName}</HeadCustomerName>
-          {/* {queueStatus === "Absent" ? (
-            <HeadNumber>
-              {leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.queueNumber}
-            </HeadNumber>
-          ) : queueStatus === "All" ? (
-            <HeadNumber>{leftQueues[0]?.queueNumber}</HeadNumber>
-          ) : (
-            <HeadNumber>
-              {leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.queueNumber}
-            </HeadNumber>
-          )}
-          {/* <HeadNumber>{headNumber}</HeadNumber> */}
-          {/* <HeadCustomerName>
-            {queueStatus === "Absent" ? (
-              <HeadNumber>
-                {leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.name}
-              </HeadNumber>
-            ) : queueStatus === "All" ? (
-              <HeadNumber>{leftQueues[0]?.name}</HeadNumber>
-            ) : (
-              <HeadNumber>
-                {leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.name}
-              </HeadNumber>
-            )}
-          </HeadCustomerName> */}
         </CurrentQueueNumberAndName>
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>

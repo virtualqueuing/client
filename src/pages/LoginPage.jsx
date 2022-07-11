@@ -11,6 +11,7 @@ import SubmitButton from "../components/SingnupSignIn/Button.style";
 import InputPassword from "../components/SingnupSignIn/InputPassword";
 import emailValidation from "../components/SingnupSignIn/Apps/validation";
 import { ErrorMessage, ExsitedEmailMessge } from "../components/SingnupSignIn/ErrorMessage.style";
+import { StatusCodes } from "http-status-codes";
 
 export const LoginContainer = styled.div`
   width: 370px;
@@ -87,9 +88,8 @@ const LoginPage = () => {
       }));
       navigate("/");
     } catch (error) {
-      console.log(error);
       const status = error.request.status;
-      if (status === 401) setemailPasswordIncorrect(true);
+      if (status === StatusCodes.UNAUTHORIZED) setemailPasswordIncorrect(true);
       setLoading(false);
     }
   };
@@ -102,7 +102,7 @@ const LoginPage = () => {
           <p>Enter your details to sign in to your account</p>
         </LoginInfo>
         {emailPasswordIncorrect && (
-          <ExsitedEmailMessge>Email or password is incorrec!</ExsitedEmailMessge>
+          <ExsitedEmailMessge>Email or password is incorrect!</ExsitedEmailMessge>
         )}
         <Input
           type="text"
@@ -114,7 +114,7 @@ const LoginPage = () => {
         />
         {emailError && <ErrorMessage>It should be a valid email address!</ErrorMessage>}
         <InputPassword
-          placeholder={"Enter Password"}
+          placeholder="Enter Password"
           value={password}
           onChange={(event) => {
             setPassword(event.target.value);
@@ -129,7 +129,7 @@ const LoginPage = () => {
         <SubmitButton type="submit">
           <p>Sign in</p>
         </SubmitButton>
-        <Logo path={"/home"} alt={"logo for redirecting to home page"} />
+        <Logo path="/home" alt="logo for redirecting to home page" />
       </LoginContainer>
     </form>
   );
