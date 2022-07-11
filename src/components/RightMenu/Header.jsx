@@ -16,12 +16,7 @@ import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
 import { useMemo } from "react";
 import Logo from "../Logo";
 
-const Header = ({
-  queueStatus,
-  setQueueStatus,
-  setTableType,
-  setSearchQueue,
-}) => {
+const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) => {
   const changeTable = (size) => {
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);

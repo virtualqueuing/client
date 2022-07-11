@@ -89,8 +89,8 @@ const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, id }) => {
     phoneNumber: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   };
-  
-  // TODO: 
+
+  // TODO:
   const sendMessage = (name, phoneNumber, id) => {
     setShowMessagingModal(false);
   };
