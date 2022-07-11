@@ -9,14 +9,6 @@ export const StyledHeader = styled.header`
   padding: 0;
 `;
 
-export const Branding = styled.div`
-  height: 36%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 130px;
-`;
-
 export const PathContainer = styled.div`
   display: flex;
   justify-content: space-between;

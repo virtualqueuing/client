@@ -270,10 +270,10 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const queueHeadNumber = headCustomer?.queueNumber;
 
   // const dropOption = ["Sign Out", "Profile"];
-  const dropOption = [
-    { name: "Sign Out", path: "/home" },
-    { name: "Profile", path: "/profile" },
-  ];
+  // const dropOption = [
+  //   { name: "Sign Out", path: "/home" },
+  //   { name: "Profile", path: "/profile" },
+  // ];
 
   const [dropState, setDropState] = useState(false);
 

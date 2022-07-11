@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../../assets/Logo-v5.png";
+import Logo from "../Logo";
 
 const ButtonColor = "#2EAD7C";
 
@@ -40,17 +40,12 @@ const NavigationButton = styled.button`
   }
 `;
 
-const MainHomeLogo = styled.img`
-  width: 150px;
-  height: auto;
-`;
-
-const Navigation = ({ scrollToSection }) => {
+const Navigation = ({ scrollToSection, path, alt }) => {
   const navigate = useNavigate();
 
   return (
     <HomeNavigation>
-      <MainHomeLogo src={logo} alt="logo" />
+      <Logo style={{ width: "150px" }} path={"/"} alt={"logo for redirecting to main page"} />
       <NavigationLinks>
         <NavigationButton style={{ border: "none", paddingRight: 0 }} onClick={scrollToSection}>
           About Us

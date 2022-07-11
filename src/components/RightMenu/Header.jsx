@@ -1,7 +1,5 @@
-import logo from "../../assets/Logo-v5.png";
 import {
   StyledHeader,
-  Branding,
   PathIdentifier,
   SeparateLine,
   QueueLeftTitle,
@@ -14,11 +12,19 @@ import {
   SearchBar,
   QueueTitleContainer,
 } from "../styles/Header.styles";
-import { Logo } from "../styles/Logo";
 import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
 import { useMemo } from "react";
+import Logo from "../Logo";
 
-const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) => {
+const Header = ({
+  queueStatus,
+  setQueueStatus,
+  setTableType,
+  setSearchQueue,
+  path,
+  alt,
+  style,
+}) => {
   const changeTable = (size) => {
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);
@@ -41,11 +47,11 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
   return (
     <>
       <StyledHeader>
-        <Branding>
-          <a href={`/`}>
-            <Logo src={logo} alt="logo" />
-          </a>
-        </Branding>
+        <Logo
+          style={{ width: "150px", height: "auto" }}
+          path={"/"}
+          alt={"logo for redirecting to main page"}
+        />
         <SeparateLine />
         <PathContainer>
           <PathIdentifier>{queuesFilter}</PathIdentifier>

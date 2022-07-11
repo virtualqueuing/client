@@ -6,7 +6,17 @@ import { RightMenuContainer } from "../styles/RightMenu.styles";
 import axios from "axios";
 import { API_URI } from "../../constant.jsx";
 
-const MainBar = ({ queues, setQueues, tableType, setTableType, queueStatus, setQueueStatus }) => {
+const MainBar = ({
+  queues,
+  setQueues,
+  tableType,
+  setTableType,
+  queueStatus,
+  setQueueStatus,
+  path,
+  style,
+  alt,
+}) => {
   const [searchQueue, setSearchQueue] = useState("");
 
   useEffect(() => {
@@ -27,6 +37,9 @@ const MainBar = ({ queues, setQueues, tableType, setTableType, queueStatus, setQ
         setQueueStatus={setQueueStatus}
         setTableType={setTableType}
         setSearchQueue={setSearchQueue}
+        path={path}
+        alt={alt}
+        style={style}
       />
       <MainQueues
         queueStatus={queueStatus}
