@@ -16,9 +16,6 @@ const HomePageContainer = styled.div`
 
 const MainHomepage = () => {
   const ref = useRef(null);
-  // const scrollToSection = () => {
-  //     ref.current?.scrollIntoView({ behavior: 'smooth' });
-  // };
 
   const scrollToSection = () => {
     window.scrollTo({

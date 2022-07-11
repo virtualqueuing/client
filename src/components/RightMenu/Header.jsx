@@ -21,9 +21,6 @@ const Header = ({
   setQueueStatus,
   setTableType,
   setSearchQueue,
-  path,
-  alt,
-  style,
 }) => {
   const changeTable = (size) => {
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
@@ -35,7 +32,7 @@ const Header = ({
         <Identifier key={filter}>
           <IdentifierLink
             href={`#${filter}`}
-            filter={queueStatus === filter}
+            data-filter={queueStatus === filter}
             onClick={() => setQueueStatus(filter)}
           >
             {`${filter}`}
@@ -49,8 +46,8 @@ const Header = ({
       <StyledHeader>
         <Logo
           style={{ width: "150px", height: "auto" }}
-          path={"/"}
-          alt={"logo for redirecting to main page"}
+          path="/"
+          alt="logo for redirecting to main page"
         />
         <SeparateLine />
         <PathContainer>

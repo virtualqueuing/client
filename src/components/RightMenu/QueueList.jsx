@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import SingleQueue from "../SingleQueue";
 import { QueueListContainer, QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
@@ -24,7 +23,7 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) 
     showList = queues.filter((queue) => queue.status === QUEUE_STATUS.ABSENT);
   }
 
-  if (!_.isEmpty(showList)) {
+  if (!isEmpty(showList)) {
     showList =
       tableType === "Table Type"
         ? showList
