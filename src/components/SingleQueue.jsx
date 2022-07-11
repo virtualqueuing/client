@@ -7,9 +7,7 @@ import {
   StatusButton,
   NoteButton
 } from "./styles/SingleQueue.styles";
-import {
-  TooltipBox,
-} from "./styles/Tooltip.styles";
+import TooltipBox from "./styles/Tooltip.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useState } from "react";
 import { showNewFormContext } from "../pages/Context";
@@ -20,7 +18,7 @@ import arrivalDisableIcon from "../assets/Icons/Button_Arrival_Disable.svg";
 import absentActiveIcon from "../assets/Icons/Button_Absent.svg";
 import absentDisableIcon from "../assets/Icons/Button_Absent_Disable.svg";
 import guestIcon from "../assets/Icons/guest.svg";
-import Tooltip from "./Tooltip";
+// import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
 import ArrivalModal from "./RightMenu/components/ArrivalModal";
