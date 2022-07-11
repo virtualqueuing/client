@@ -99,7 +99,7 @@ const DropDownListContainer = styled.ul`
           overflow: auto;
           max-height: 0px;
           transition: max-height 0.3s ease-out;
-      `}
+        `}
 `;
 
 const DropDownList = styled.li`

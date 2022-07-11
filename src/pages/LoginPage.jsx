@@ -1,15 +1,16 @@
 /* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import { useState, useContext } from "react";
-import logo from "../assets/Logo-v5.png";
-import passwordHide from "../assets/Icons/Button_Password-hide.svg";
-import passwordHideActive from "../assets/Icons/Button_ShowPassword.svg";
-import passwordShow from "../assets/Icons/Button_Password-show.svg";
-import passwordShowActive from "../assets/Icons/Button_Password-showActive.svg";
 import axios from "axios";
 import { API_URI } from "../constant";
 import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "./Context";
+import Logo from "../components/Logo";
+import Input from "../components/SingnupSignIn/Input.style";
+import SubmitButton from "../components/SingnupSignIn/Button.style";
+import InputPassword from "../components/SingnupSignIn/InputPassword";
+import emailValidation from "../components/SingnupSignIn/Apps/validation";
+import { ErrorMessage, ExsitedEmailMessge } from "../components/SingnupSignIn/ErrorMessage.style";
 
 export const LoginContainer = styled.div`
   width: 370px;
@@ -42,46 +43,6 @@ export const LoginInfo = styled.div`
   }
 `;
 
-export const LoginInput = styled.input`
-  width: 80%;
-  margin: 5% 10% 0 10%;
-  height: 35px;
-  border-radius: 10px;
-  padding-left: 10px;
-  border: ${({ theme }) => theme.colors.fonts["inactiveRoute"]} solid 1px;
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.fonts["inactiveRoute"]};
-    font-size: ${({ theme }) => theme.fontSizes["sd"]};
-  }
-`;
-
-export const InputWrapper = styled.div`
-  display: flex;
-  position: relative;
-`;
-
-export const ShowPassword = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  position: absolute;
-  background-image: url(${passwordHide});
-  background-size: 100% 100%;
-  right: 15%;
-  top: 50%;
-  :hover {
-    background-image: url(${passwordHideActive});
-    cursor: pointer;
-  }
-`;
-
-export const HidePassword = styled(ShowPassword)`
-  background-image: url(${passwordShow});
-  :hover {
-    background-image: url(${passwordShowActive});
-  }
-`;
-
 export const SetAccount = styled.div`
   width: 80%;
   margin: 5px 10% 0 10%;
@@ -97,60 +58,20 @@ export const SetAccount = styled.div`
   }
 `;
 
-export const LoginButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  margin: 5% 10% 0 10%;
-  height: 35px;
-  border-radius: 5px;
-  background-color: ${({ theme }) => theme.colors.page["main"]};
-  color: #fff;
-  border: none;
-  & p {
-    font-size: ${({ theme }) => theme.fontSizes["lg"]};
-    font-weight: 500;
-  }
-  :hover {
-    cursor: pointer;
-    background-color: ${({ theme }) => theme.colors.components.loginButton["hover"]};
-  }
-`;
-
-export const Footer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Logo = styled.img`
-  width: 120px;
-  height: 60px;
-  margin: 3% 0;
-`;
-
 const LoginPage = () => {
-  const [passwordShown, setPasswordShown] = useState(false);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [emailPasswordIncorrect, setemailPasswordIncorrect] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswardError] = useState(false);
-
   const [loading, setLoading] = useState(false);
 
   const { setUser } = useContext(UserContext);
-
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
-
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    !emailValidation(email) && setEmailError(true);
 
     try {
       setLoading(true);
@@ -167,6 +88,8 @@ const LoginPage = () => {
       navigate("/");
     } catch (error) {
       console.log(error);
+      const status = error.request.status;
+      if (status === 401) setemailPasswordIncorrect(true);
       setLoading(false);
     }
   };
@@ -178,7 +101,10 @@ const LoginPage = () => {
           <h2>Sign in</h2>
           <p>Enter your details to sign in to your account</p>
         </LoginInfo>
-        <LoginInput
+        {emailPasswordIncorrect && (
+          <ExsitedEmailMessge>Email or password is incorrec!</ExsitedEmailMessge>
+        )}
+        <Input
           type="text"
           placeholder="Enter Email"
           value={email}
@@ -186,35 +112,24 @@ const LoginPage = () => {
             setEmail(event.target.value);
           }}
         />
-        <InputWrapper>
-          <LoginInput
-            type={passwordShown ? "text" : "password"}
-            placeholder="Enter Password"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
-          {passwordShown ? (
-            <HidePassword onClick={togglePassword} />
-          ) : (
-            <ShowPassword onClick={togglePassword} />
-          )}
-        </InputWrapper>
+        {emailError && <ErrorMessage>It should be a valid email address!</ErrorMessage>}
+        <InputPassword
+          placeholder={"Enter Password"}
+          value={password}
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
+        />
         <SetAccount>
           <h6>Having trouble in sign in?</h6>
           <h6>
             <a href="/signup">Sign up</a>
           </h6>
         </SetAccount>
-        <LoginButton>
+        <SubmitButton type="submit">
           <p>Sign in</p>
-        </LoginButton>
-        <Footer>
-          <Link to="/home">
-            <Logo src={logo} alt="logo for redirecting to home page" />
-          </Link>
-        </Footer>
+        </SubmitButton>
+        <Logo path={"/home"} alt={"logo for redirecting to home page"} />
       </LoginContainer>
     </form>
   );

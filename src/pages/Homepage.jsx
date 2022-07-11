@@ -4,7 +4,7 @@ import RightMenu from "../components/RightMenu/RightMenu";
 import { useState } from "react";
 import { Context } from "./Context";
 
-const Homepage = () => {
+const Homepage = (path, alt, style) => {
   const [queueStatus, setQueueStatus] = useState("All");
   const [context, setContext] = useState(0);
   const [queues, setQueues] = useState([]);
@@ -20,6 +20,9 @@ const Homepage = () => {
           queueStatus={queueStatus}
           setQueueStatus={setQueueStatus}
           setTableType={setTableType}
+          path={path}
+          alt={alt}
+          style={style}
         />
       </Context.Provider>
     </Container>
