@@ -7,6 +7,9 @@ import {
   StatusButton,
   NoteButton
 } from "./styles/SingleQueue.styles";
+import {
+  TooltipBox,
+} from "./styles/Tooltip.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useState } from "react";
 import { showNewFormContext } from "../pages/Context";
@@ -206,28 +209,34 @@ const SingleQueue = ({
           </StatusButton>
         </StatusButtonContainer>
         <TooltipContainer>
-            <Tooltip text="Notify">
-              {status === QUEUE_STATUS.WAITING ? (
-                <img
-                  src={messageIcon}
-                  alt="message sending icon"
-                  onClick={() => {
-                    setShowMessagingModal(true);
-                  }}
-                />
-              ) : (
-                <img src={messageIcon} alt="message sending icon" />
-              )}
-            </Tooltip>
-          <Tooltip text="Update">
-            <img
-              src={editIcon}
-              alt="add new form icon"
-              onClick={(e) => {
-                setShowAddNewForm(true);
+          <Popup trigger={status === QUEUE_STATUS.WAITING ? (
+            <img 
+            style={{width:'30px', height:'30px'}}
+              src={messageIcon}
+              alt="message sending icon"
+              onClick={() => {
+                setShowMessagingModal(true);
               }}
             />
-          </Tooltip>
+          ) : (
+            <img style={{width:'30px', height:'30px'}} src={messageIcon} alt="message sending icon" />
+          )}>
+            <Tooltip text="Notify">
+              <TooltipBox>Notify</TooltipBox>
+            </Tooltip>
+          </Popup>
+          <Popup trigger={<img 
+            style={{width:'30px', height:'30px'}}
+            src={editIcon}
+            alt="add new form icon"
+            onClick={(e) => {
+              setShowAddNewForm(true);
+            }}
+          />}>
+            <Tooltip text="Update">
+              <TooltipBox>Update</TooltipBox>
+            </Tooltip>
+          </Popup>
         </TooltipContainer>
       </QueueItem>
       <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
