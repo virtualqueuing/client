@@ -112,6 +112,7 @@ const DropDownList = styled.li`
   margin-top: 25px;
 
   & button {
+    cursor: pointer;
     color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
     font-size: 20px;
     font-weight: 700;
@@ -295,6 +296,10 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
     navigate("/home");
   };
 
+  const handleUserProfile = () => {
+    navigate("/profile");
+  };
+
   return (
     <Background>
       <UserPanel>
@@ -311,11 +316,11 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
         />
       </UserPanel>
       <DropDownListContainer dropState={dropState}>
-        <DropDownList>
-          <button onClick={handleSignOut}>Sign out</button>
+        <DropDownList onClick={handleSignOut}>
+          <button>Sign out</button>
         </DropDownList>
-        <DropDownList>
-          <button disabled>Profile</button>
+        <DropDownList onClick={handleUserProfile}>
+          <button>Profile</button>
         </DropDownList>
       </DropDownListContainer>
       <LeftSideBarOptionContainer>
