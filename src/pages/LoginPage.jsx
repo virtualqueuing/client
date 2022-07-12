@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState, useContext } from "react";
 import axios from "axios";
 import { API_URI } from "../constant";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "./Context";
 import Logo from "../components/Logo";
 import Input from "../components/SingnupSignIn/Input.style";

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
@@ -7,7 +7,7 @@ import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -194,7 +194,6 @@ const CurrentQueueNumberAndName = styled.div`
 
 const HeadNumber = styled.div`
   color: ${({ theme }) => theme.colors.fonts.secondary};
-  /* width: 15%; */
   width: auto;
   padding: 10%;
   display: flex;
@@ -207,13 +206,10 @@ const CurrentQueueBar = styled.div`
   height: 70%;
   border-radius: 2px;
   background-color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
-  /* margin-right: 15px;
-  margin-left: 15px; */
 `;
 
 const HeadCustomerName = styled.div`
   color: ${({ theme }) => theme.colors.fonts.secondary};
-  /* width: 40%; */
   padding: 10%;
   display: flex;
   align-items: center;
@@ -229,7 +225,7 @@ const SingleQueueNotesContainer = styled.div`
 `;
 
 const SingleQueueNotes = styled.div`
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 13vw;
   display: flex;
@@ -264,7 +260,7 @@ const SingleQueueDescription = styled.span`
 
 const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   let headCustomer = [];
-  if (!_.isEmpty(leftQueues)) {
+  if (!isEmpty(leftQueues)) {
     headCustomer =
       tableType === "Table Type"
         ? leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)
@@ -277,6 +273,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const queueHeadNumber = headCustomer?.queueNumber;
 
   const [dropState, setDropState] = useState(false);
+  const [manager, setManager] = useState(false);
 
   const navigate = useNavigate();
 
@@ -285,6 +282,11 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const handleClick = () => {
     setDropState(!dropState);
   };
+
+  useEffect(() => {
+    const roleState = user.data.data.role;
+    if (roleState === "Manager") setManager(true);
+  }, []);
 
   const handleSignOut = () => {
     setUser({ data: null });
@@ -319,10 +321,12 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
           <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
         </LeftSideBarOption>
-        <LeftSideBarOption>
-          <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
-          <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
-        </LeftSideBarOption>
+        {manager && (
+          <LeftSideBarOption>
+            <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
+            <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
+          </LeftSideBarOption>
+        )}
       </LeftSideBarOptionContainer>
       <CurrentQueueDetailsContainer>
         <CurrentQueueDetailTitle>

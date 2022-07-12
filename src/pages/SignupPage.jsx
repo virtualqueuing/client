@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useContext } from "react";
 import { LoginContainer, LoginInfo, SetAccount } from "./LoginPage";
 import { Branches, Roles } from "../constant";
