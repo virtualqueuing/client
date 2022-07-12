@@ -44,6 +44,7 @@ const SingleQueue = ({
   activeQueueId,
   setActiveQueueId,
   setQueues,
+  currentPosition,
 }) => {
   const [isSending, setIsSending] = useState(false);
   const [showArrivalModal, setShowArrivalModal] = useState(false);
@@ -110,7 +111,7 @@ const SingleQueue = ({
                       marginLeft: 10,
                       backgroundColor:
                         theme.colors.components.tags.HovertagColorList[
-                          random(0, theme.colors.components.tags.HovertagColorList.length - 1)
+                        random(0, theme.colors.components.tags.HovertagColorList.length - 1)
                         ],
                     }}
                   >
@@ -147,8 +148,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                  ? "rgba(254, 63, 127, 0.1)"
-                  : "rgba(46, 173, 124, 0.1)",
+                    ? "rgba(254, 63, 127, 0.1)"
+                    : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
@@ -273,7 +274,7 @@ const SingleQueue = ({
           name={name}
           setShowMessagingModal={setShowMessagingModal}
           phoneNumber={phoneNumber}
-          id={_id}
+          queueInFront={currentPosition}
         />
       )}
     </>
@@ -294,4 +295,5 @@ SingleQueue.propTypes = {
   activeQueueId: PropTypes.string.isRequired,
   setActiveQueueId: PropTypes.func.isRequired,
   setQueues: PropTypes.func.isRequired,
+  currentPosition: PropTypes.number.isRequired,
 };
