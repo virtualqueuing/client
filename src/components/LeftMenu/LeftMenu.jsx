@@ -190,6 +190,7 @@ const CurrentQueueNumberAndName = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background-color: #edf4f4;
 `;
 
 const HeadNumber = styled.div`
@@ -271,6 +272,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
 
   const queueHeadCustomerName = headCustomer?.name;
   const queueHeadNumber = headCustomer?.queueNumber;
+  const queueHeadTableType = headCustomer?.tableSize;
 
   const [dropState, setDropState] = useState(false);
   const [manager, setManager] = useState(false);
@@ -331,7 +333,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       <CurrentQueueDetailsContainer>
         <CurrentQueueDetailTitle>
           Next Customer
-          <br />*{tableType} table*
+          <br />*{queueHeadTableType} table*
         </CurrentQueueDetailTitle>
         <CurrentQueueNumberAndName>
           <HeadNumber>{queueHeadNumber}</HeadNumber>
