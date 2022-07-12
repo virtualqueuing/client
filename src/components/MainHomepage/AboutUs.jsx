@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import SectionTitle from "./SectionTitle";
-import { TeamMembers } from "../../constant";
 import { Profile, PersonalInfo, Avartar } from "./Profile";
 import React from "react";
 import FlexDisplay from "./FlexDisplay";
+import linkedInIcon from "../../assets/linkedin-box-fill.svg";
+import { Developers, DevOps } from "./AboutUsTeams";
 
 const AboutUs = styled(FlexDisplay)`
   width: 100%;
@@ -18,18 +19,64 @@ const Team = styled.div`
   flex-wrap: wrap;
 `;
 
+const NameWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > h3 {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  & > a > img {
+    height: 25px;
+    padding: 2px 6px 0;
+    margin-top: 10px;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-3px);
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+  }
+`;
+
 const Aboutus = React.forwardRef((props, ref) => {
   return (
     <AboutUs ref={ref}>
       <SectionTitle>About Us</SectionTitle>
       <Team>
-        {TeamMembers.map((member) => (
+        {Developers.map((member) => (
           <Profile key={member.name}>
             <Avartar>
               <img src={member.avatar} alt={member.name} />
             </Avartar>
             <PersonalInfo>
-              <h3>{member.name}</h3>
+              <NameWrapper>
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img src={linkedInIcon} alt="linkedin icon for redirecting" />
+                </a>
+                <h3>{member.name}</h3>
+              </NameWrapper>
+              <p>{member.position}</p>
+            </PersonalInfo>
+          </Profile>
+        ))}
+      </Team>
+      <Team>
+        {DevOps.map((member) => (
+          <Profile key={member.name}>
+            <Avartar>
+              <img src={member.avatar} alt={member.name} />
+            </Avartar>
+            <PersonalInfo>
+              <NameWrapper>
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img src={linkedInIcon} alt="linkedin icon for redirecting" />
+                </a>
+                <h3>{member.name}</h3>
+              </NameWrapper>
               <p>{member.position}</p>
             </PersonalInfo>
           </Profile>

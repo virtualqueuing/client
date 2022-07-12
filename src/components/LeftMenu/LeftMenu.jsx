@@ -237,6 +237,7 @@ const SingleQueueNotes = styled.div`
   padding: 10px;
   margin: 10px 0;
   overflow: hidden;
+  box-sizing: content-box;
 `;
 
 export const SingleQueueIcon = styled.img`
