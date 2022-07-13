@@ -386,6 +386,6 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       </SingleQueueNotesContainer>
     </Background>
   );
-};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+};
 
 export default LeftMenu;
