@@ -31,14 +31,6 @@ export const QUEUE_STATUS = {
   COMPLETED: "Completed",
   ABSENT: "Absent",
 };
-export const TeamMembers = [
-  { name: "Roy", position: "Full-stack Developer" },
-  { name: "Alfred", position: "Full-stack Developer" },
-  { name: "Stephy", position: "Full-stack Developer" },
-  { name: "Joe", position: "Full-stack Developer" },
-  { name: "Ting", position: "Full-stack Developer" },
-  { name: "Tianyu", position: "Full-stack Developer" },
-];
 
 export const QueueAdvantage = [
   { icon: Employee, description: "Improve employee productivity" },
@@ -60,4 +52,4 @@ export const API_URI = import.meta.env.DEV
   ? "http://localhost:3000"
   : "https://backend.virtualqueuing.net";
 
-export const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user"))?.token}`;
+export const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user")).token}`;

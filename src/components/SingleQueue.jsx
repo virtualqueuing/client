@@ -206,7 +206,7 @@ const SingleQueue = ({
               ) : (
                 <img src={arrivalActiveIcon} alt="arrivalIcon" />
               )}
-              Arrival
+              Arrived
             </StatusButton>
           </QueueData>
           <QueueData>

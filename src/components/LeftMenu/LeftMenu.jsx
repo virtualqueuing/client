@@ -8,8 +8,6 @@ import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
 import isEmpty from "lodash/isEmpty";
-import { clearConfigCache } from "prettier";
-import { indexOf } from "lodash";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -242,6 +240,7 @@ const SingleQueueNotes = styled.div`
   padding: 10px;
   margin: 10px 0;
   overflow: hidden;
+  box-sizing: content-box;
 `;
 
 export const SingleQueueIcon = styled.img`
@@ -361,7 +360,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
                     <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                   ) : note === "Wheelchair" ? (
                     <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Babyseat" ? (
+                  ) : note === "Highchair" ? (
                     <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
                   ) : null}
                   <SingleQueueDescription>{note}</SingleQueueDescription>
