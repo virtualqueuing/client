@@ -360,7 +360,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
                     <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                   ) : note === "Wheelchair" ? (
                     <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Babyseat" ? (
+                  ) : note === "Highchair" ? (
                     <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
                   ) : null}
                   <SingleQueueDescription>{note}</SingleQueueDescription>
