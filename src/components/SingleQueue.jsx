@@ -17,7 +17,6 @@ import arrivalDisableIcon from "../assets/Icons/Button_Arrival_Disable.svg";
 import absentActiveIcon from "../assets/Icons/Button_Absent.svg";
 import absentDisableIcon from "../assets/Icons/Button_Absent_Disable.svg";
 import guestIcon from "../assets/Icons/guest.svg";
-import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
 import ArrivalModal from "./RightMenu/components/ArrivalModal";
@@ -174,11 +173,8 @@ const SingleQueue = ({
                 )
               }
             >
-              <Tooltip text="Notify">
-                <TooltipBox>Notify</TooltipBox>
-              </Tooltip>
+              <TooltipBox>Notify</TooltipBox>
             </Popup>
-
             <Popup
               trigger={
                 <img
@@ -191,9 +187,7 @@ const SingleQueue = ({
                 />
               }
             >
-              <Tooltip text="Update">
-                <TooltipBox>Update</TooltipBox>
-              </Tooltip>
+              <TooltipBox>Update</TooltipBox>
             </Popup>
           </QueueData>
           <QueueData>
@@ -236,7 +230,6 @@ const SingleQueue = ({
           </QueueData>
         </QueueDataContainer>
       </QueueItem>
-
       <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
       <showNewFormContext.Provider value={{ setShowAddNewForm }}>
         {showAddNewForm && (

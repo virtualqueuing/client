@@ -86,13 +86,13 @@ export const StatusButton = styled.button`
 `;
 
 export const NoteButton = styled.button`
-  width: 20px;
+  width:20px;
   border-radius: 50%;
-  background-position: center;
-  background-size: cover;
   background-color: none;
-  border: #ffe353 2px solid;
+  background-image: none;
+  background: none;
+  border: #FFE353 2px solid;
   position: absolute;
-  color: #ffe353;
+  color: #FFE353;
   height: 20px;
-`;
+`
