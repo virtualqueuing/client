@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import MainQueues from "./QueueList";
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 import axios from "axios";
-import { API_URI, BEARER_TOKEN } from "../../constant.jsx";
+import { API_URI } from "../../constant.jsx";
 
 const MainBar = ({
   queues,
@@ -21,6 +21,7 @@ const MainBar = ({
 
   useEffect(() => {
     const fetchQueue = async () => {
+      const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user")).token}`
       const { data } = await axios.get(`${API_URI}/v1/queues`, {
         headers: { authorization: BEARER_TOKEN },
       });

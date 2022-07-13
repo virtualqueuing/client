@@ -51,5 +51,3 @@ export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];
 export const API_URI = import.meta.env.DEV
   ? "http://localhost:3000"
   : "https://backend.virtualqueuing.net";
-
-export const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user")).token}`;
