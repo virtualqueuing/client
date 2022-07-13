@@ -2,12 +2,11 @@ import {
   QueueItem,
   QueueData,
   QueueDataContainer,
-  TooltipContainer,
-  StatusButtonContainer,
+  QueueDataNumber,
   StatusButton,
-  NoteButton
+  NoteButton,
 } from "./styles/SingleQueue.styles";
-import {TooltipBox} from "./styles/Tooltip.styles";
+import { TooltipBox } from "./styles/Tooltip.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useState } from "react";
 import { showNewFormContext } from "../pages/Context";
@@ -18,7 +17,6 @@ import arrivalDisableIcon from "../assets/Icons/Button_Arrival_Disable.svg";
 import absentActiveIcon from "../assets/Icons/Button_Absent.svg";
 import absentDisableIcon from "../assets/Icons/Button_Absent_Disable.svg";
 import guestIcon from "../assets/Icons/guest.svg";
-// import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
 import ArrivalModal from "./RightMenu/components/ArrivalModal";
@@ -30,9 +28,7 @@ import { HoverNotesContainer, NotesBox } from "./HoverNotes";
 import { NewTag } from "./AddNew/CreateTags";
 import { random } from "lodash";
 import MessagingModal from "./RightMenu/components/MessagingModal";
-import { Popup } from 'semantic-ui-react'
-
-
+import { Popup } from "semantic-ui-react";
 
 const SingleQueue = ({
   _id,
@@ -113,7 +109,7 @@ const SingleQueue = ({
                       marginLeft: 10,
                       backgroundColor:
                         theme.colors.components.tags.HovertagColorList[
-                        random(0, theme.colors.components.tags.HovertagColorList.length - 1)
+                          random(0, theme.colors.components.tags.HovertagColorList.length - 1)
                         ],
                     }}
                   >
@@ -125,9 +121,9 @@ const SingleQueue = ({
           </Popup>
         )}
         <QueueDataContainer>
-          <QueueData color="#000">
+          <QueueDataNumber color="#000">
             <p>{queueNumber}</p>
-          </QueueData>
+          </QueueDataNumber>
           <QueueData color="#000">
             <p>{name}</p>
           </QueueData>
@@ -144,82 +140,95 @@ const SingleQueue = ({
           <QueueData
             style={{
               borderRadius: "5px",
-              boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.25)",
               color: status === "Waiting" ? "#FFAB5D" : status === "Absent" ? "#E64848" : "#2EAD7C",
               backgroundColor:
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                    ? "rgba(254, 63, 127, 0.1)"
-                    : "rgba(46, 173, 124, 0.1)",
+                  ? "rgba(254, 63, 127, 0.1)"
+                  : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
             {status}
           </QueueData>
+          <QueueData>
+            <Popup
+              trigger={
+                status === QUEUE_STATUS.WAITING ? (
+                  <img
+                    style={{ width: "30px", height: "30px" }}
+                    src={messageIcon}
+                    alt="message sending icon"
+                    onClick={() => {
+                      setShowMessagingModal(true);
+                    }}
+                  />
+                ) : (
+                  <img
+                    style={{ width: "30px", height: "30px" }}
+                    src={messageIcon}
+                    alt="message sending icon"
+                  />
+                )
+              }
+            >
+              <TooltipBox>Notify</TooltipBox>
+            </Popup>
+            <Popup
+              trigger={
+                <img
+                  style={{ width: "30px", height: "30px" }}
+                  src={editIcon}
+                  alt="add new form icon"
+                  onClick={(e) => {
+                    setShowAddNewForm(true);
+                  }}
+                />
+              }
+            >
+              <TooltipBox>Update</TooltipBox>
+            </Popup>
+          </QueueData>
+          <QueueData>
+            <StatusButton
+              onClick={() => setShowArrivalModal(true)}
+              disabled={isSending || status === QUEUE_STATUS.COMPLETED}
+              fontColor={
+                isSending || status === QUEUE_STATUS.COMPLETED ? disableColor : arrivalFontActive
+              }
+              borderColor={
+                isSending || status === QUEUE_STATUS.COMPLETED ? disableColor : arrivalBorderActive
+              }
+            >
+              {isSending || status === QUEUE_STATUS.COMPLETED ? (
+                <img src={arrivalDisableIcon} alt="arrivalIcon" />
+              ) : (
+                <img src={arrivalActiveIcon} alt="arrivalIcon" />
+              )}
+              Arrival
+            </StatusButton>
+          </QueueData>
+          <QueueData>
+            <StatusButton
+              onClick={() => setShowAbsentModal(true)}
+              disabled={isSending || status === QUEUE_STATUS.ABSENT}
+              fontColor={
+                isSending || status === QUEUE_STATUS.ABSENT ? disableColor : absenceFontActive
+              }
+              borderColor={
+                isSending || status === QUEUE_STATUS.ABSENT ? disableColor : absenceBorderActive
+              }
+            >
+              {isSending || status === QUEUE_STATUS.ABSENT ? (
+                <img src={absentDisableIcon} alt="absenceIcon" />
+              ) : (
+                <img src={absentActiveIcon} alt="absenceIcon" />
+              )}
+              Absent
+            </StatusButton>
+          </QueueData>
         </QueueDataContainer>
-        <StatusButtonContainer>
-          <StatusButton
-            onClick={() => setShowArrivalModal(true)}
-            disabled={isSending || status === QUEUE_STATUS.COMPLETED}
-            fontColor={
-              isSending || status === QUEUE_STATUS.COMPLETED ? disableColor : arrivalFontActive
-            }
-            borderColor={
-              isSending || status === QUEUE_STATUS.COMPLETED ? disableColor : arrivalBorderActive
-            }
-          >
-            {isSending || status === QUEUE_STATUS.COMPLETED ? (
-              <img src={arrivalDisableIcon} alt="arrivalIcon" />
-            ) : (
-              <img src={arrivalActiveIcon} alt="arrivalIcon" />
-            )}
-            Arrival
-          </StatusButton>
-          <StatusButton
-            onClick={() => setShowAbsentModal(true)}
-            disabled={isSending || status === QUEUE_STATUS.ABSENT}
-            fontColor={
-              isSending || status === QUEUE_STATUS.ABSENT ? disableColor : absenceFontActive
-            }
-            borderColor={
-              isSending || status === QUEUE_STATUS.ABSENT ? disableColor : absenceBorderActive
-            }
-          >
-            {isSending || status === QUEUE_STATUS.ABSENT ? (
-              <img src={absentDisableIcon} alt="absenceIcon" />
-            ) : (
-              <img src={absentActiveIcon} alt="absenceIcon" />
-            )}
-            Absent
-          </StatusButton>
-        </StatusButtonContainer>
-        <TooltipContainer>
-          <Popup trigger={status === QUEUE_STATUS.WAITING ? (
-            <img
-              style={{ width: '30px', height: '30px' }}
-              src={messageIcon}
-              alt="message sending icon"
-              onClick={() => {
-                setShowMessagingModal(true);
-              }}
-            />
-          ) : (
-            <img style={{ width: '30px', height: '30px' }} src={messageIcon} alt="message sending icon" />
-          )}>
-            <TooltipBox>Notify</TooltipBox>
-          </Popup>
-          <Popup trigger={<img
-            style={{ width: '30px', height: '30px' }}
-            src={editIcon}
-            alt="add new form icon"
-            onClick={(e) => {
-              setShowAddNewForm(true);
-            }}
-          />}>
-            <TooltipBox>Update</TooltipBox>
-          </Popup>
-        </TooltipContainer>
       </QueueItem>
       <SeparateLine color={theme.colors.fonts.inactiveRoute} width="100%"></SeparateLine>
       <showNewFormContext.Provider value={{ setShowAddNewForm }}>

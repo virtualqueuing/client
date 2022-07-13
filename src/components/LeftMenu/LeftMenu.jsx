@@ -235,7 +235,8 @@ const SingleQueueNotes = styled.div`
   display: flex;
   align-items: center;
   justify-content: left;
-  background: ${({ theme }) => theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]};
+  background: ${({ theme }) =>
+    theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]};
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 10px;

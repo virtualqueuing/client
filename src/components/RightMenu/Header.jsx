@@ -2,8 +2,6 @@ import {
   StyledHeader,
   PathIdentifier,
   SeparateLine,
-  QueueLeftTitle,
-  QueueRightTitle,
   Identifier,
   IdentifierLink,
   TableFilter,
@@ -11,6 +9,8 @@ import {
   PathSeparateLine,
   SearchBar,
   QueueTitleContainer,
+  QueueTitle,
+  QueueTitleNo,
 } from "../styles/Header.styles";
 import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
 import { useMemo } from "react";
@@ -60,27 +60,25 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
         </PathContainer>
         <PathSeparateLine />
         <QueueTitleContainer>
-          <QueueLeftTitle>
-            <li>Queue No.</li>
-            <li>Name</li>
-            <li>Phone No.</li>
-            <li>Guests</li>
-            <li>
-              {
-                <TableFilter onChange={changeTable}>
-                  <option value="Table">Table Type</option>
-                  {TABLE_SIZE.map((size) => (
-                    <option key={size}>{size}</option>
-                  ))}
-                </TableFilter>
-              }
-            </li>
-            <li>Status</li>
-          </QueueLeftTitle>
-          <QueueRightTitle>
+          <QueueTitleNo>Queue No.</QueueTitleNo>
+          <QueueTitle>Name</QueueTitle>
+          <QueueTitle>Phone No.</QueueTitle>
+          <QueueTitle>Guests</QueueTitle>
+          <QueueTitle>
+            {
+              <TableFilter onChange={changeTable}>
+                <option value="Table">Table Type</option>
+                {TABLE_SIZE.map((size) => (
+                  <option key={size}>{size}</option>
+                ))}
+              </TableFilter>
+            }
+          </QueueTitle>
+          <QueueTitle>Status</QueueTitle>
+          <QueueTitle>
             <li>Notify</li>
             <li>Edit</li>
-          </QueueRightTitle>
+          </QueueTitle>
         </QueueTitleContainer>
       </StyledHeader>
     </>
