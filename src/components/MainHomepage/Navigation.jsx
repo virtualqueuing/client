@@ -45,7 +45,7 @@ const NavigationButton = styled.button`
 const Navigation = ({ scrollToSection }) => {
   const navigate = useNavigate();
 
-  const { user } = useContext(UserContext)
+  const { user } = useContext(UserContext);
 
   return (
     <HomeNavigation>
@@ -60,7 +60,8 @@ const Navigation = ({ scrollToSection }) => {
             style={{ backgroundColor: `${ButtonColor}`, color: "#fff" }}
           >
             View Queues
-          </NavigationButton>) : (
+          </NavigationButton>
+        ) : (
           <>
             <NavigationButton
               onClick={() => navigate("/signup")}
@@ -68,7 +69,10 @@ const Navigation = ({ scrollToSection }) => {
             >
               Sign Up
             </NavigationButton>
-            <NavigationButton onClick={() => navigate("/login")} style={{ color: `${ButtonColor}` }}>
+            <NavigationButton
+              onClick={() => navigate("/login")}
+              style={{ color: `${ButtonColor}` }}
+            >
               Sign In
             </NavigationButton>
           </>

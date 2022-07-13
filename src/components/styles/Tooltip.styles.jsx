@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TooltipWrapper = styled.div`
   position: relative;
   display: inline-flex;
-  z-index:1;
+  z-index: 1;
 `;
 
 export const CenterContainer = styled.div`
@@ -20,8 +20,8 @@ export const CenterContainer = styled.div`
 
 export const TooltipBox = styled.span`
   position: absolute;
-  bottom:15px;
-  left:-15px;
+  bottom: 15px;
+  left: -15px;
   background-color: white;
   color: black;
   text-align: center;
@@ -46,13 +46,13 @@ export const TooltipBox = styled.span`
       visibility: hidden;
       transition: all 0.5s ease-in-out;
       opacity: 0;
-      bottom:10px;
+      bottom: 10px;
     }
     100% {
       visibility: visible;
       transition: all 0.5s ease-in-out;
       opacity: 1;
-      bottom:15px;
+      bottom: 15px;
     }
   }
 `;
