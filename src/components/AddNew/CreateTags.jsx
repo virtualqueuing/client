@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, memo } from "react";
 import Tag from "../Tag";
 import theme from "../../theme";
+import propTypes from "prop-types";
+import isEmpty from "lodash/isEmpty";
 
 const Container = styled.div`
   background-color: white;
@@ -15,7 +17,7 @@ const Container = styled.div`
   border: none;
   padding: 20px 14px;
   & input {
-    width: auto !important;
+    width: auto;
     padding: 5px 15px 5px 30px;
     border: none;
     height: 25px;
@@ -37,11 +39,8 @@ export const NewTag = styled(Tag)`
   margin: 0 5px;
 `;
 
-// random index from 0 to tagColorList.length
-
-const CreateTags = (props) => {
+const CreateTags = ({ tags, setTags }) => {
   const [input, setInput] = useState("");
-  // const [tags, setTags] = useState([]);
   const [isKeyReleased, setIsKeyReleased] = useState(false);
   const onChange = (e) => {
     const { value } = e.target;
@@ -52,18 +51,17 @@ const CreateTags = (props) => {
     const { key } = e;
     const trimmedInput = input.trim();
 
-    if (key === "Enter" && trimmedInput.length > 0 && !props.tags.includes(trimmedInput)) {
+    if (key === "Enter" && trimmedInput.length > 0 && tags.includes(trimmedInput)) {
       e.preventDefault();
-      props.setTags((prevState) => [...prevState, trimmedInput]);
+      setTags((prevState) => [...prevState, trimmedInput]);
       setInput("");
-      // console.log(props.tags)
     }
 
-    if (key === "Backspace" && !input.length && props.tags.length && isKeyReleased) {
-      const tagsCopy = [...props.tags];
+    if (key === "Backspace" && !input.length && tags.length && isKeyReleased) {
+      const tagsCopy = [...tags];
       const poppedTag = tagsCopy.pop();
       e.preventDefault();
-      props.setTags(tagsCopy);
+      setTags(tagsCopy);
       setInput(poppedTag);
     }
 
@@ -74,21 +72,22 @@ const CreateTags = (props) => {
     setIsKeyReleased(true);
   };
 
-  const deleteTag = (index) => {
-    props.setTags((prevState) => prevState.filter((tag, i) => i !== index));
+  const deleteTag = (tag) => {
+    setTags((prevState) => prevState.filter((tag) => tag !== tag));
   };
 
   return (
     <Container>
-      {props?.tags?.map((tag, index) => (
-        <NewTag
-          key={index}
-          onClick={() => deleteTag(index)}
-          style={{ backgroundColor: theme.colors.components.tags.tagColorList[index] }}
-        >
-          {tag}
-        </NewTag>
-      ))}
+      {!isEmpty(tags) &&
+        tags.map((tag) => (
+          <NewTag
+            key={tag}
+            onClick={() => deleteTag(tag)}
+            style={{ backgroundColor: theme.colors.components.tags.tagColorList[tag] }}
+          >
+            {tag}
+          </NewTag>
+        ))}
       <input
         value={input}
         type="text"
@@ -101,4 +100,9 @@ const CreateTags = (props) => {
   );
 };
 
-export default CreateTags;
+export default memo(CreateTags);
+
+CreateTags.propTypes = {
+  tags: propTypes.arrayOf(propTypes.string),
+  setTags: propTypes.func.isRequired,
+};

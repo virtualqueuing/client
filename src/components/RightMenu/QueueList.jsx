@@ -1,19 +1,13 @@
-// eslint-disable-next-line no-unused-vars
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import SingleQueue from "../SingleQueue";
 import { QueueListContainer, QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { QUEUE_STATUS } from "../../constant";
+import { clearConfigCache } from "prettier";
 
 const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) => {
-  MainQueues.propTypes = {
-    queues: PropTypes.array.isRequired,
-    tableType: PropTypes.string.isRequired,
-    searchQueue: PropTypes.string.isRequired,
-    queueStatus: PropTypes.string.isRequired,
-    setQueues: PropTypes.func.isRequired,
-  };
+  const waitingQueue = queues.filter((queue) => queue.status === QUEUE_STATUS.WAITING)
 
   let showList = [];
   if (queueStatus === "All") {
@@ -24,7 +18,7 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) 
     showList = queues.filter((queue) => queue.status === QUEUE_STATUS.ABSENT);
   }
 
-  if (!_.isEmpty(showList)) {
+  if (!isEmpty(showList)) {
     showList =
       tableType === "Table Type"
         ? showList
@@ -52,6 +46,7 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) 
             activeQueueId={activeQueueId}
             setActiveQueueId={setActiveQueueId}
             setQueues={setQueues}
+            currentPosition={queue.status === QUEUE_STATUS.WAITING ? waitingQueue.map((e) => { return e._id }).indexOf(queue._id) : 0}
           />
         )),
     [showList, activeQueueId, searchQueue]
@@ -65,3 +60,11 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) 
 };
 
 export default MainQueues;
+
+MainQueues.propTypes = {
+  queues: PropTypes.array.isRequired,
+  tableType: PropTypes.string.isRequired,
+  searchQueue: PropTypes.string.isRequired,
+  queueStatus: PropTypes.string.isRequired,
+  setQueues: PropTypes.func.isRequired,
+};

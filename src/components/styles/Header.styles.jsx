@@ -42,8 +42,8 @@ export const IdentifierLink = styled.a`
   width: 85px;
   text-align: center;
   color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
-  ${(props) =>
-    props.filter
+  ${({ "data-filter": dataFilter }) =>
+    dataFilter
       ? css`
           color: ${({ theme }) => theme.colors.components.negativeButton.outline};
           border-bottom: 4px solid ${({ theme }) => theme.colors.components.negativeButton.outline};

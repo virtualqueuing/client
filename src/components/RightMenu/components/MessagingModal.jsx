@@ -1,6 +1,9 @@
+import { useContext } from "react"
 import styled from "styled-components";
 import { ModalBackground } from "../../../components/Modal/ModalBackground";
-import PropTypes from "prop-types";
+import { UserContext } from "../../../pages/Context"
+import { API_URI } from "../../../constant";
+import axios from "axios";
 
 const Modal = styled.div`
   width: 540px;
@@ -82,16 +85,18 @@ const Cancel = styled.span`
   }
 `;
 
-const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, id }) => {
-  MessagingModal.propTypes = {
-    name: PropTypes.string.isRequired,
-    setShowMessagingModal: PropTypes.func.isRequired,
-    phoneNumber: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-  };
-
-  const sendMessage = (name, phoneNumber, id) => {
-    // console.log(name, phoneNumber, id);
+const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront }) => {
+  const { user } = useContext(UserContext);
+  const { branch } = user.data.data
+  const sendMessage = async (name, queueInFront, branch) => {
+    await axios.post(
+      `${API_URI}/v1/sendtext`,
+      {
+        name,
+        queueInFront,
+        branch,
+      }
+    );
     setShowMessagingModal(false);
   };
 
@@ -110,7 +115,7 @@ const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, id }) => {
         <HorizontalDivider />
         <ButtonWrapper>
           <Cancel onClick={() => setShowMessagingModal(false)}>Cancel</Cancel>
-          <Confirm onClick={() => sendMessage(name, phoneNumber, id)}>Send</Confirm>
+          <Confirm onClick={() => sendMessage(name, queueInFront, branch)}>Send</Confirm>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>

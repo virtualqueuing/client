@@ -92,14 +92,13 @@ export const StatusButton = styled.button`
 `;
 
 export const NoteButton = styled.button`
-  width: 20px;
+  width: 30px;
   border-radius: 50%;
-  background: url('../assets/Icons/error-warning-line.png') !important; 
-  background-position: center;
-  background-size:cover;
   background-color: none;
+  background-image: none;
+  background: none;
   border: #FFE353 2px solid;
   position: absolute;
   color: #FFE353;
-  height: 20px;
+  height: 30px;
 `

@@ -5,7 +5,6 @@ import { useState, useRef } from "react";
 import { StyledTextarea } from "../styles/AddNew.styles";
 
 const InputTextarea = ({ inputInfo }) => {
-  // click Tag to create new tag in CreateTags
   const noteString = inputInfo?.notes[0].split(",");
   const cleanedNotes = noteString?.filter((s) => {
     return s && s.trim();
@@ -21,11 +20,6 @@ const InputTextarea = ({ inputInfo }) => {
       }
       return [...prevState, e.target.value];
     });
-    // console.log(e.target.value);
-    // console.log(tags.toString())
-    // console.log(ref.current.value)
-    // console.log(StyledTextarea)
-    // console.log(tags);
   };
 
   return (

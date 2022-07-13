@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
@@ -7,7 +7,7 @@ import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -60,8 +60,8 @@ const ArrowDownBtn = styled.img`
   position: absolute;
   right: 0;
   cursor: pointer;
-  ${(props) =>
-    props.dropState
+  ${({ dropState }) =>
+    dropState
       ? css`
           transform: rotate(180deg);
         `
@@ -86,8 +86,8 @@ const DropDownListContainer = styled.ul`
     }
   }
 
-  ${(props) =>
-    props.dropState
+  ${({ dropState }) =>
+    dropState
       ? css`
           max-height: 120px;
           display: flex;
@@ -96,7 +96,7 @@ const DropDownListContainer = styled.ul`
           animation: slide-down 0.3s ease-in;
         `
       : css`
-          overflow: auto;
+          overflow: hidden;
           max-height: 0px;
           transition: max-height 0.3s ease-out;
         `}
@@ -112,6 +112,7 @@ const DropDownList = styled.li`
   margin-top: 25px;
 
   & button {
+    cursor: pointer;
     color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
     font-size: 20px;
     font-weight: 700;
@@ -190,11 +191,11 @@ const CurrentQueueNumberAndName = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background-color: #edf4f4;
 `;
 
 const HeadNumber = styled.div`
   color: ${({ theme }) => theme.colors.fonts.secondary};
-  /* width: 15%; */
   width: auto;
   padding: 10%;
   display: flex;
@@ -207,13 +208,10 @@ const CurrentQueueBar = styled.div`
   height: 70%;
   border-radius: 2px;
   background-color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
-  /* margin-right: 15px;
-  margin-left: 15px; */
 `;
 
 const HeadCustomerName = styled.div`
   color: ${({ theme }) => theme.colors.fonts.secondary};
-  /* width: 40%; */
   padding: 10%;
   display: flex;
   align-items: center;
@@ -229,7 +227,7 @@ const SingleQueueNotesContainer = styled.div`
 `;
 
 const SingleQueueNotes = styled.div`
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 13vw;
   display: flex;
@@ -264,7 +262,7 @@ const SingleQueueDescription = styled.span`
 
 const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   let headCustomer = [];
-  if (!_.isEmpty(leftQueues)) {
+  if (!isEmpty(leftQueues)) {
     headCustomer =
       tableType === "Table Type"
         ? leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)
@@ -275,8 +273,10 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
 
   const queueHeadCustomerName = headCustomer?.name;
   const queueHeadNumber = headCustomer?.queueNumber;
+  const queueHeadTableType = headCustomer?.tableSize;
 
   const [dropState, setDropState] = useState(false);
+  const [manager, setManager] = useState(false);
 
   const navigate = useNavigate();
 
@@ -286,9 +286,18 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
     setDropState(!dropState);
   };
 
+  useEffect(() => {
+    const roleState = user.data.data.role;
+    if (roleState === "Manager") setManager(true);
+  }, []);
+
   const handleSignOut = () => {
     setUser({ data: null });
     navigate("/home");
+  };
+
+  const handleUserProfile = () => {
+    navigate("/profile");
   };
 
   return (
@@ -307,11 +316,11 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
         />
       </UserPanel>
       <DropDownListContainer dropState={dropState}>
-        <DropDownList>
-          <button onClick={handleSignOut}>Sign out</button>
+        <DropDownList onClick={handleSignOut}>
+          <button>Sign out</button>
         </DropDownList>
-        <DropDownList>
-          <button disabled>Profile</button>
+        <DropDownList onClick={handleUserProfile}>
+          <button>Profile</button>
         </DropDownList>
       </DropDownListContainer>
       <LeftSideBarOptionContainer>
@@ -319,45 +328,22 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
           <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
         </LeftSideBarOption>
-        <LeftSideBarOption>
-          <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
-          <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
-        </LeftSideBarOption>
+        {manager && (
+          <LeftSideBarOption>
+            <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
+            <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
+          </LeftSideBarOption>
+        )}
       </LeftSideBarOptionContainer>
       <CurrentQueueDetailsContainer>
         <CurrentQueueDetailTitle>
           Next Customer
-          <br />*{tableType} table*
+          <br />*{queueHeadTableType} table*
         </CurrentQueueDetailTitle>
         <CurrentQueueNumberAndName>
           <HeadNumber>{queueHeadNumber}</HeadNumber>
           <CurrentQueueBar></CurrentQueueBar>
           <HeadCustomerName>{queueHeadCustomerName}</HeadCustomerName>
-          {/* {queueStatus === "Absent" ? (
-            <HeadNumber>
-              {leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.queueNumber}
-            </HeadNumber>
-          ) : queueStatus === "All" ? (
-            <HeadNumber>{leftQueues[0]?.queueNumber}</HeadNumber>
-          ) : (
-            <HeadNumber>
-              {leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.queueNumber}
-            </HeadNumber>
-          )}
-          {/* <HeadNumber>{headNumber}</HeadNumber> */}
-          {/* <HeadCustomerName>
-            {queueStatus === "Absent" ? (
-              <HeadNumber>
-                {leftQueues.find((queue) => queue.status === QUEUE_STATUS.ABSENT)?.name}
-              </HeadNumber>
-            ) : queueStatus === "All" ? (
-              <HeadNumber>{leftQueues[0]?.name}</HeadNumber>
-            ) : (
-              <HeadNumber>
-                {leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)?.name}
-              </HeadNumber>
-            )}
-          </HeadCustomerName> */}
         </CurrentQueueNumberAndName>
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>

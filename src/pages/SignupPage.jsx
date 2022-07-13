@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import { useState, useContext } from "react";
 import { LoginContainer, LoginInfo, SetAccount } from "./LoginPage";
 import { Branches, Roles } from "../constant";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { API_URI } from "../constant";
 import { UserContext } from "./Context";
 import Logo from "../components/Logo";
@@ -13,6 +12,10 @@ import InputOption from "../components/SingnupSignIn/InputOption";
 import InputPassword from "../components/SingnupSignIn/InputPassword";
 import { ErrorMessage, ExsitedEmailMessge } from "../components/SingnupSignIn/ErrorMessage.style";
 import emailValidation from "../components/SingnupSignIn/Apps/validation";
+import { StatusCodes } from "http-status-codes";
+
+const USER_NAME_VALID_MIN = 3;
+const PASSWORD_VALID_MAX = 6;
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
@@ -40,17 +43,16 @@ const SignupPage = () => {
     event.preventDefault();
 
     !emailValidation(email) && setEmailError(true);
-    userName.length < 3 && setUsernameError(true);
+    userName.length < USER_NAME_VALID_MIN && setUsernameError(true);
     !role && setroleError(true);
     !branch && setBranchError(true);
-    password.length < 6 && setPasswordError(true);
+    password.length < PASSWORD_VALID_MAX && setPasswordError(true);
 
     if (password !== confirmPassword) {
       setConfirmPasswordError(true);
     } else {
       try {
         setLoading(true);
-        console.log("======");
         const { data } = await axios.post(`${API_URI}/v1/auth/register`, {
           email,
           userName,
@@ -58,7 +60,6 @@ const SignupPage = () => {
           branch,
           password,
         });
-        console.log("+++++++");
         setLoading(false);
         setUser((prev) => ({
           ...prev,
@@ -66,9 +67,8 @@ const SignupPage = () => {
         }));
         navigate("/");
       } catch (error) {
-        console.log(error);
         const status = error.request.status;
-        if (status === 400) setExsitedEmail(true);
+        if (status === StatusCodes.BAD_REQUEST) setExsitedEmail(true);
         setLoading(false);
       }
     }
@@ -123,7 +123,7 @@ const SignupPage = () => {
         </InputOption>
         {branchError && <ErrorMessage>Please choose a Branch!</ErrorMessage>}
         <InputPassword
-          placeholder={"Enter Password"}
+          placeholder="Enter Password"
           value={password}
           onChange={(event) => {
             setPassword(event.target.value);
@@ -131,7 +131,7 @@ const SignupPage = () => {
         />
         {passwordError && <ErrorMessage>Password should be 6-20 characters!</ErrorMessage>}
         <InputPassword
-          placeholder={"Confirm Password"}
+          placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(event) => {
             setconfirmPassword(event.target.value);
@@ -147,7 +147,7 @@ const SignupPage = () => {
           <p>Sign up</p>
         </SubmitButton>
       </form>
-      <Logo path={"/home"} alt={"logo for redirecting to home page"} />
+      <Logo path="/home" alt="logo for redirecting to home page" />
     </LoginContainer>
   );
 };

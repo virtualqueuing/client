@@ -16,15 +16,7 @@ import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
 import { useMemo } from "react";
 import Logo from "../Logo";
 
-const Header = ({
-  queueStatus,
-  setQueueStatus,
-  setTableType,
-  setSearchQueue,
-  path,
-  alt,
-  style,
-}) => {
+const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) => {
   const changeTable = (size) => {
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);
@@ -35,7 +27,7 @@ const Header = ({
         <Identifier key={filter}>
           <IdentifierLink
             href={`#${filter}`}
-            filter={queueStatus === filter}
+            data-filter={queueStatus === filter}
             onClick={() => setQueueStatus(filter)}
           >
             {`${filter}`}
@@ -49,8 +41,8 @@ const Header = ({
       <StyledHeader>
         <Logo
           style={{ width: "150px", height: "auto" }}
-          path={"/"}
-          alt={"logo for redirecting to main page"}
+          path="/"
+          alt="logo for redirecting to main page"
         />
         <SeparateLine />
         <PathContainer>
