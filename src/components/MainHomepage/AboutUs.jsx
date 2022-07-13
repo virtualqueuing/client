@@ -6,6 +6,7 @@ import FlexDisplay from "./FlexDisplay";
 import linkedInIcon from "../../assets/linkedin-box-fill.svg";
 import { Developers, DevOps } from "./AboutUsTeams";
 import emailIcon from "../../assets/emailIcon.svg";
+import PropTypes from "prop-types";
 
 const AboutUs = styled(FlexDisplay)`
   width: 100%;
@@ -95,3 +96,19 @@ const Aboutus = React.forwardRef((props, ref) => {
 
 Aboutus.displayName = "Aboutus";
 export default Aboutus;
+
+Developers.propTypes = {
+  name: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  linkedIn: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+};
+
+DevOps.propTypes = {
+  name: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  linkedIn: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+};
