@@ -4,10 +4,9 @@ import { QueueListContainer, QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { QUEUE_STATUS } from "../../constant";
-import { clearConfigCache } from "prettier";
 
 const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) => {
-  const waitingQueue = queues.filter((queue) => queue.status === QUEUE_STATUS.WAITING)
+  const waitingQueue = queues.filter((queue) => queue.status === QUEUE_STATUS.WAITING);
 
   let showList = [];
   if (queueStatus === "All") {
@@ -46,7 +45,15 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) 
             activeQueueId={activeQueueId}
             setActiveQueueId={setActiveQueueId}
             setQueues={setQueues}
-            currentPosition={queue.status === QUEUE_STATUS.WAITING ? waitingQueue.map((e) => { return e._id }).indexOf(queue._id) : 0}
+            currentPosition={
+              queue.status === QUEUE_STATUS.WAITING
+                ? waitingQueue
+                    .map((e) => {
+                      return e._id;
+                    })
+                    .indexOf(queue._id)
+                : 0
+            }
           />
         )),
     [showList, activeQueueId, searchQueue]

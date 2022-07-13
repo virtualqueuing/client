@@ -1,7 +1,7 @@
-import { useContext } from "react"
+import { useContext } from "react";
 import styled from "styled-components";
 import { ModalBackground } from "../../../components/Modal/ModalBackground";
-import { UserContext } from "../../../pages/Context"
+import { UserContext } from "../../../pages/Context";
 import { API_URI } from "../../../constant";
 import axios from "axios";
 
@@ -87,16 +87,13 @@ const Cancel = styled.span`
 
 const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront }) => {
   const { user } = useContext(UserContext);
-  const { branch } = user.data.data
+  const { branch } = user.data.data;
   const sendMessage = async (name, queueInFront, branch) => {
-    await axios.post(
-      `${API_URI}/v1/sendtext`,
-      {
-        name,
-        queueInFront,
-        branch,
-      }
-    );
+    await axios.post(`${API_URI}/v1/sendtext`, {
+      name,
+      queueInFront,
+      branch,
+    });
     setShowMessagingModal(false);
   };
 

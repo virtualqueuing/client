@@ -79,7 +79,7 @@ const CreateTags = ({ tags, setTags }) => {
   return (
     <Container>
       {!isEmpty(tags) &&
-        tags.map((tag,index) => (
+        tags.map((tag, index) => (
           <NewTag
             key={tag}
             onClick={() => deleteTag(index)}

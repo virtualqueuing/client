@@ -2,8 +2,7 @@ import styled, { css } from "styled-components";
 
 export const QueueDataContainer = styled.div`
   padding: 0;
-  width: 60%;
-  /* margin-left: 2%; */
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,7 +19,6 @@ export const QueueItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-top: 25px; */
   padding: 20px 0;
   cursor: pointer;
   ${(props) =>
@@ -36,9 +34,10 @@ export const QueueItem = styled.div`
 `;
 
 export const QueueData = styled.div`
-  width: calc(100% / 6);
+  width: calc(100% / 9);
   display: flex;
   justify-content: center;
+  gap: 10%;
   align-items: center;
   padding: 1vh 1vw;
 
@@ -53,14 +52,9 @@ export const QueueData = styled.div`
   }
 `;
 
-export const TooltipContainer = styled.div`
-  width: 12%;
-  display: flex;
-  justify-content: space-around;
-  gap: 38%;
-  align-items: center;
-  padding: 1vh 0.8vw;
-  margin-right: 3%;
+export const QueueDataNumber = styled(QueueData)`
+  width: 50px;
+  margin-left: 35px;
 `;
 
 export const StatusButtonContainer = styled.div`
@@ -83,7 +77,7 @@ export const StatusButton = styled.button`
   background: #ffffff;
   border: 2px solid ${({ borderColor }) => borderColor};
   color: ${({ fontColor }) => fontColor};
-  box-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   & img {
     width: 26px;
@@ -92,13 +86,13 @@ export const StatusButton = styled.button`
 `;
 
 export const NoteButton = styled.button`
-  width:20px;
+  width: 20px;
   border-radius: 50%;
   background-color: none;
   background-image: none;
   background: none;
-  border: #FFE353 2px solid;
+  border: #ffe353 2px solid;
   position: absolute;
-  color: #FFE353;
+  color: #ffe353;
   height: 20px;
-`
+`;
