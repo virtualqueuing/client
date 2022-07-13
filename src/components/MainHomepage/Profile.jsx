@@ -23,6 +23,6 @@ export const Avartar = styled.div`
   overflow: hidden;
   & > img {
     width: 100px;
-    height: auto;
+    height: 100px;
   }
 `;

@@ -5,6 +5,7 @@ import React from "react";
 import FlexDisplay from "./FlexDisplay";
 import linkedInIcon from "../../assets/linkedin-box-fill.svg";
 import { Developers, DevOps } from "./AboutUsTeams";
+import emailIcon from "../../assets/emailIcon.svg";
 
 const AboutUs = styled(FlexDisplay)`
   width: 100%;
@@ -57,6 +58,9 @@ const Aboutus = React.forwardRef((props, ref) => {
                 <a href={member.linkedIn} target="_blank" rel="noreferrer">
                   <img src={linkedInIcon} alt="linkedin icon for redirecting" />
                 </a>
+                <a href={member.email} target="_blank" rel="noreferrer">
+                  <img src={emailIcon} alt="email icon for seinding email" />
+                </a>
                 <h3>{member.name}</h3>
               </NameWrapper>
               <p>{member.position}</p>
@@ -74,6 +78,9 @@ const Aboutus = React.forwardRef((props, ref) => {
               <NameWrapper>
                 <a href={member.linkedIn} target="_blank" rel="noreferrer">
                   <img src={linkedInIcon} alt="linkedin icon for redirecting" />
+                </a>
+                <a href={member.email} target="_blank" rel="noreferrer">
+                  <img src={emailIcon} alt="email icon for seinding email" />
                 </a>
                 <h3>{member.name}</h3>
               </NameWrapper>
