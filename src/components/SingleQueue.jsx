@@ -5,9 +5,9 @@ import {
   TooltipContainer,
   StatusButtonContainer,
   StatusButton,
-  NoteButton,
+  NoteButton
 } from "./styles/SingleQueue.styles";
-import { TooltipBox } from "./styles/Tooltip.styles";
+import {TooltipBox} from "./styles/Tooltip.styles";
 import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useState } from "react";
 import { showNewFormContext } from "../pages/Context";
@@ -18,7 +18,7 @@ import arrivalDisableIcon from "../assets/Icons/Button_Arrival_Disable.svg";
 import absentActiveIcon from "../assets/Icons/Button_Absent.svg";
 import absentDisableIcon from "../assets/Icons/Button_Absent_Disable.svg";
 import guestIcon from "../assets/Icons/guest.svg";
-import Tooltip from "./Tooltip";
+// import Tooltip from "./Tooltip";
 import theme from "../theme";
 import axios from "axios";
 import ArrivalModal from "./RightMenu/components/ArrivalModal";
@@ -30,7 +30,9 @@ import { HoverNotesContainer, NotesBox } from "./HoverNotes";
 import { NewTag } from "./AddNew/CreateTags";
 import { random } from "lodash";
 import MessagingModal from "./RightMenu/components/MessagingModal";
-import { Popup } from "semantic-ui-react";
+import { Popup } from 'semantic-ui-react'
+
+
 
 const SingleQueue = ({
   _id,
@@ -44,6 +46,7 @@ const SingleQueue = ({
   activeQueueId,
   setActiveQueueId,
   setQueues,
+  currentPosition,
 }) => {
   const [isSending, setIsSending] = useState(false);
   const [showArrivalModal, setShowArrivalModal] = useState(false);
@@ -110,7 +113,7 @@ const SingleQueue = ({
                       marginLeft: 10,
                       backgroundColor:
                         theme.colors.components.tags.HovertagColorList[
-                          random(0, theme.colors.components.tags.HovertagColorList.length - 1)
+                        random(0, theme.colors.components.tags.HovertagColorList.length - 1)
                         ],
                     }}
                   >
@@ -147,8 +150,8 @@ const SingleQueue = ({
                 status === "Waiting"
                   ? "rgba(255, 253, 205, 0.5)"
                   : status === "Absent"
-                  ? "rgba(254, 63, 127, 0.1)"
-                  : "rgba(46, 173, 124, 0.1)",
+                    ? "rgba(254, 63, 127, 0.1)"
+                    : "rgba(46, 173, 124, 0.1)",
               fontWeight: "bold",
             }}
           >
@@ -192,45 +195,29 @@ const SingleQueue = ({
           </StatusButton>
         </StatusButtonContainer>
         <TooltipContainer>
-          <Popup
-            trigger={
-              status === QUEUE_STATUS.WAITING ? (
-                <img
-                  style={{ width: "30px", height: "30px" }}
-                  src={messageIcon}
-                  alt="message sending icon"
-                  onClick={() => {
-                    setShowMessagingModal(true);
-                  }}
-                />
-              ) : (
-                <img
-                  style={{ width: "30px", height: "30px" }}
-                  src={messageIcon}
-                  alt="message sending icon"
-                />
-              )
-            }
-          >
-            <Tooltip text="Notify">
-              <TooltipBox>Notify</TooltipBox>
-            </Tooltip>
+          <Popup trigger={status === QUEUE_STATUS.WAITING ? (
+            <img
+              style={{ width: '30px', height: '30px' }}
+              src={messageIcon}
+              alt="message sending icon"
+              onClick={() => {
+                setShowMessagingModal(true);
+              }}
+            />
+          ) : (
+            <img style={{ width: '30px', height: '30px' }} src={messageIcon} alt="message sending icon" />
+          )}>
+            <TooltipBox>Notify</TooltipBox>
           </Popup>
-          <Popup
-            trigger={
-              <img
-                style={{ width: "30px", height: "30px" }}
-                src={editIcon}
-                alt="add new form icon"
-                onClick={(e) => {
-                  setShowAddNewForm(true);
-                }}
-              />
-            }
-          >
-            <Tooltip text="Update">
-              <TooltipBox>Update</TooltipBox>
-            </Tooltip>
+          <Popup trigger={<img
+            style={{ width: '30px', height: '30px' }}
+            src={editIcon}
+            alt="add new form icon"
+            onClick={(e) => {
+              setShowAddNewForm(true);
+            }}
+          />}>
+            <TooltipBox>Update</TooltipBox>
           </Popup>
         </TooltipContainer>
       </QueueItem>
@@ -273,7 +260,7 @@ const SingleQueue = ({
           name={name}
           setShowMessagingModal={setShowMessagingModal}
           phoneNumber={phoneNumber}
-          id={_id}
+          queueInFront={currentPosition}
         />
       )}
     </>
@@ -294,4 +281,5 @@ SingleQueue.propTypes = {
   activeQueueId: PropTypes.string.isRequired,
   setActiveQueueId: PropTypes.func.isRequired,
   setQueues: PropTypes.func.isRequired,
+  currentPosition: PropTypes.number.isRequired,
 };

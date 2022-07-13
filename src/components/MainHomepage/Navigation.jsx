@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useContext } from "react";
 import Logo from "../Logo";
+import { UserContext } from "../../pages/Context";
 
 const ButtonColor = "#2EAD7C";
 
@@ -40,8 +42,10 @@ const NavigationButton = styled.button`
   }
 `;
 
-const Navigation = ({ scrollToSection, path, alt }) => {
+const Navigation = ({ scrollToSection }) => {
   const navigate = useNavigate();
+
+  const { user } = useContext(UserContext)
 
   return (
     <HomeNavigation>
@@ -50,15 +54,25 @@ const Navigation = ({ scrollToSection, path, alt }) => {
         <NavigationButton style={{ border: "none", paddingRight: 0 }} onClick={scrollToSection}>
           About Us
         </NavigationButton>
-        <NavigationButton
-          onClick={() => navigate("/signup")}
-          style={{ backgroundColor: `${ButtonColor}`, color: "#fff" }}
-        >
-          Sign Up
-        </NavigationButton>
-        <NavigationButton onClick={() => navigate("/login")} style={{ color: `${ButtonColor}` }}>
-          Sign In
-        </NavigationButton>
+        {user.data ? (
+          <NavigationButton
+            onClick={() => navigate("/")}
+            style={{ backgroundColor: `${ButtonColor}`, color: "#fff" }}
+          >
+            View Queues
+          </NavigationButton>) : (
+          <>
+            <NavigationButton
+              onClick={() => navigate("/signup")}
+              style={{ backgroundColor: `${ButtonColor}`, color: "#fff" }}
+            >
+              Sign Up
+            </NavigationButton>
+            <NavigationButton onClick={() => navigate("/login")} style={{ color: `${ButtonColor}` }}>
+              Sign In
+            </NavigationButton>
+          </>
+        )}
       </NavigationLinks>
     </HomeNavigation>
   );
