@@ -8,7 +8,6 @@ import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
 import isEmpty from "lodash/isEmpty";
-import { indexOf } from "lodash";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -234,7 +233,8 @@ const SingleQueueNotes = styled.div`
   display: flex;
   align-items: center;
   justify-content: left;
-  background: ${({ theme }) => theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]};
+  background: ${({ theme }) =>
+    theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]};
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 10px;
