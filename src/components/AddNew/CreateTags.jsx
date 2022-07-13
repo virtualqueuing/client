@@ -36,7 +36,7 @@ export const NewTag = styled(Tag)`
   padding: 5px 15px;
   box-shadow: 1px 1px 2px rgb(0, 0, 0, 30%);
   cursor: pointer;
-  margin: 0;
+  margin: 5px;
 `;
 
 const CreateTags = ({ tags, setTags }) => {
@@ -51,7 +51,7 @@ const CreateTags = ({ tags, setTags }) => {
     const { key } = e;
     const trimmedInput = input.trim();
 
-    if (key === "Enter" && trimmedInput.length > 0 && tags.includes(trimmedInput)) {
+    if (key === "Enter" && trimmedInput.length > 0 && !tags.includes(trimmedInput)) {
       e.preventDefault();
       setTags((prevState) => [...prevState, trimmedInput]);
       setInput("");
@@ -72,18 +72,18 @@ const CreateTags = ({ tags, setTags }) => {
     setIsKeyReleased(true);
   };
 
-  const deleteTag = (tag) => {
-    setTags((prevState) => prevState.filter((tag) => tag !== tag));
+  const deleteTag = (index) => {
+    setTags((prevState) => prevState.filter((tag, i) => i !== index));
   };
 
   return (
     <Container>
       {!isEmpty(tags) &&
-        tags.map((tag) => (
+        tags.map((tag,index) => (
           <NewTag
             key={tag}
-            onClick={() => deleteTag(tag)}
-            style={{ backgroundColor: theme.colors.components.tags.tagColorList[tag] }}
+            onClick={() => deleteTag(index)}
+            style={{ backgroundColor: theme.colors.components.tags.tagColorList[index] }}
           >
             {tag}
           </NewTag>

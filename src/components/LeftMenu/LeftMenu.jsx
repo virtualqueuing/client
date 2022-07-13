@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
 import isEmpty from "lodash/isEmpty";
 import { clearConfigCache } from "prettier";
+import { indexOf } from "lodash";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -234,7 +235,7 @@ const SingleQueueNotes = styled.div`
   display: flex;
   align-items: center;
   justify-content: left;
-  background: ${({ theme }) => theme.colors.components.tags.birthdayTag};
+  background: ${({ theme }) => theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]};
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 10px;
@@ -376,7 +377,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
                     <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                   ) : note === "Wheelchair" ? (
                     <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Babyseat" ? (
+                  ) : note === "Highchair" ? (
                     <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
                   ) : null}
                   <SingleQueueDescription>{note}</SingleQueueDescription>
