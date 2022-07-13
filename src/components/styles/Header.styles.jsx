@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { QueueData } from "./SingleQueue.styles";
 
 export const StyledHeader = styled.header`
   position: relative;
@@ -79,62 +80,35 @@ export const SeparateLine = styled.div`
 `;
 
 export const QueueTitleContainer = styled.div`
+  width: 100%;
   height: 20%;
   margin: 0.5% 2% 0;
   border: 1px solid transparent;
   background: ${({ theme }) => theme.colors.components.queueContainer.background};
   border-radius: 5px;
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   @media (max-width: 1500px) {
     padding: 10px 0;
     margin: 1% 2%;
   }
 `;
 
-export const QueueLeftTitle = styled.ul`
-  margin: 0;
-  width: 60%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+export const QueueTitle = styled(QueueData)`
+  color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
+  font-size: 15px;
+  font-weight: 700;
   padding: 0;
-  & li {
-    color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
-    font-size: 15px;
-    font-weight: 700;
-    width: calc(100% / 6);
-    list-style: none;
-    text-align: center;
-  }
-  @media (max-width: 1500px) {
-    & > li {
-      font-size: 0.75rem;
-    }
+
+  & > li {
+    list-style-type: none;
   }
 `;
 
-export const QueueRightTitle = styled.ul`
-  margin: 0 2% 0 0;
-  width: 16%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  & li {
-    color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
-    font-size: 15px;
-    font-weight: 700;
-    width: calc(100% / 2);
-    list-style: none;
-    text-align: center;
-  }
-  @media (max-width: 1500px) {
-    & > li {
-      font-size: 0.75rem;
-    }
-  }
+export const QueueTitleNo = styled(QueueTitle)`
+  margin-left: 10px;
+  width: 80px;
+  justify-content: center;
 `;
 
 export const TableFilter = styled.select`
@@ -143,8 +117,8 @@ export const TableFilter = styled.select`
   text-align: center;
   background: none;
   color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
-  font-size: 15px;
-  font-weight: 700;
+  font-size: inherit;
+  font-weight: inherit;
 
   &:focus {
     outline: none;

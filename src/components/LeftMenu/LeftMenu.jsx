@@ -350,9 +350,9 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       </CurrentQueueDetailsContainer>
       <SingleQueueNotesContainer>
         <CurrentQueueDetailTitle>Notes:</CurrentQueueDetailTitle>
-        {queueStatus === "Absent"
+        {tableType === "Table Type"
           ? leftQueues
-              .find((queue) => queue.status === QUEUE_STATUS.ABSENT)
+              .find((queue) => queue.status === QUEUE_STATUS.WAITING)
               ?.notes[0]?.split(",")
               .map((note, index) => (
                 <SingleQueueNotes key={index}>
@@ -360,30 +360,16 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
                     <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                   ) : note === "Wheelchair" ? (
                     <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Highchair" ? (
-                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
-                  ) : null}
-                  <SingleQueueDescription>{note}</SingleQueueDescription>
-                </SingleQueueNotes>
-              ))
-          : queueStatus === "All"
-          ? leftQueues
-              .find((queue) => queue.status)
-              ?.notes[0]?.split(",")
-              .map((note, index) => (
-                <SingleQueueNotes key={index}>
-                  {note === "Birthday" ? (
-                    <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
-                  ) : note === "Wheelchair" ? (
-                    <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Highchair" ? (
+                  ) : note === "Babyseat" ? (
                     <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
                   ) : null}
                   <SingleQueueDescription>{note}</SingleQueueDescription>
                 </SingleQueueNotes>
               ))
           : leftQueues
-              .find((queue) => queue.status === QUEUE_STATUS.WAITING)
+              .find(
+                (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+              )
               ?.notes[0]?.split(",")
               .map((note, index) => (
                 <SingleQueueNotes key={index}>
