@@ -12,6 +12,7 @@ const HomePageContainer = styled.div`
   align-items: center;
   background-color: #f7f7f7;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 `;
 
 const MainHomepage = () => {
