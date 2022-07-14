@@ -33,11 +33,24 @@ export const QueueItem = styled.div`
   }
 `;
 
+export const QueueDataWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+`;
+
+export const QueueIconWrapper = styled(QueueDataWrapper)`
+  width: 30%;
+  gap: 10%;
+  margin: 0 30px;
+  justify-content: space-evenly;
+`;
+
 export const QueueData = styled.div`
-  width: calc(100% / 9);
+  width: calc(100% / 6);
   display: flex;
   justify-content: center;
-  gap: 10%;
   align-items: center;
   padding: 1vh 1vw;
 
@@ -55,6 +68,18 @@ export const QueueData = styled.div`
 export const QueueDataNumber = styled(QueueData)`
   width: 50px;
   margin-left: 35px;
+`;
+
+export const QueueIcon = styled.img`
+  width: 40px;
+  height: 40px;
+  margin-left: 50%;
+  transition: 0.3s ease-in-out;
+
+  & :hover {
+    transform: translateY(5px);
+    transition: 0.3s ease-in-out;
+  }
 `;
 
 export const StatusButtonContainer = styled.div`

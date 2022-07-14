@@ -8,7 +8,9 @@ export const UserContext = createContext();
 export const UserContextProvider = ({ children }) => {
   // TODO: refactor, as localStorage.getItem("user") is always a string
   const [user, setUser] = useState(
-    localStorage.getItem("user") ? { data: JSON.parse(localStorage.getItem("user")) } : { data: null }
+    localStorage.getItem("user")
+      ? { data: JSON.parse(localStorage.getItem("user")) }
+      : { data: null }
   );
 
   useEffect(() => {

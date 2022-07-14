@@ -11,10 +11,13 @@ import {
   QueueTitleContainer,
   QueueTitle,
   QueueTitleNo,
+  QueueTitleRightWrapper,
 } from "../styles/Header.styles";
+import { QueueListContainer } from "../styles/QueueList.styles";
 import { QUEUE_FILTER, TABLE_SIZE } from "../../constant";
 import { useMemo } from "react";
 import Logo from "../Logo";
+import { QueueDataWrapper } from "../styles/SingleQueue.styles";
 
 const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) => {
   const changeTable = (size) => {
@@ -40,7 +43,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
     <>
       <StyledHeader>
         <Logo
-          style={{ width: "150px", height: "auto" }}
+          style={{ width: "180px", height: "auto" }}
           path="/"
           alt="logo for redirecting to main page"
         />
@@ -59,27 +62,30 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
           </form>
         </PathContainer>
         <PathSeparateLine />
-        <QueueTitleContainer>
-          <QueueTitleNo>Queue No.</QueueTitleNo>
-          <QueueTitle>Name</QueueTitle>
-          <QueueTitle>Phone No.</QueueTitle>
-          <QueueTitle>Guests</QueueTitle>
-          <QueueTitle>
-            {
-              <TableFilter onChange={changeTable}>
-                <option value="Table">Table Type</option>
-                {TABLE_SIZE.map((size) => (
-                  <option key={size}>{size}</option>
-                ))}
-              </TableFilter>
-            }
-          </QueueTitle>
-          <QueueTitle>Status</QueueTitle>
-          <QueueTitle>
-            <li>Notify</li>
-            <li>Edit</li>
-          </QueueTitle>
-        </QueueTitleContainer>
+        <QueueListContainer>
+          <QueueTitleContainer>
+            <QueueTitleNo>Queue No.</QueueTitleNo>
+            <QueueDataWrapper>
+              <QueueTitle>Name</QueueTitle>
+              <QueueTitle>Phone No.</QueueTitle>
+              <QueueTitle>Guests</QueueTitle>
+              <QueueTitle>
+                {
+                  <TableFilter onChange={changeTable}>
+                    <option value="Table">Table Type</option>
+                    {TABLE_SIZE.map((size) => (
+                      <option key={size}>{size}</option>
+                    ))}
+                  </TableFilter>
+                }
+              </QueueTitle>
+              <QueueTitle>Status</QueueTitle>
+            </QueueDataWrapper>
+            <QueueTitleRightWrapper>
+              <QueueTitle>Modify</QueueTitle>
+            </QueueTitleRightWrapper>
+          </QueueTitleContainer>
+        </QueueListContainer>
       </StyledHeader>
     </>
   );

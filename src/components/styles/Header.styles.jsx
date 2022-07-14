@@ -1,13 +1,14 @@
 import styled, { css } from "styled-components";
-import { QueueData } from "./SingleQueue.styles";
+import { QueueData, QueueDataContainer, QueueIconWrapper } from "./SingleQueue.styles";
 
 export const StyledHeader = styled.header`
   position: relative;
   display: flex;
-  height: 27vh;
+  height: 25vh;
   flex-direction: column;
   margin: 0;
   padding: 0;
+  padding-top: 18px;
 `;
 
 export const PathContainer = styled.div`
@@ -79,36 +80,26 @@ export const SeparateLine = styled.div`
   margin: 0 1.2%;
 `;
 
-export const QueueTitleContainer = styled.div`
-  width: 100%;
-  height: 20%;
-  margin: 0.5% 2% 0;
+export const QueueTitleContainer = styled(QueueDataContainer)`
+  height: 100%;
+  margin: 0.5% 0;
   border: 1px solid transparent;
   background: ${({ theme }) => theme.colors.components.queueContainer.background};
   border-radius: 5px;
-  display: flex;
-  justify-content: left;
-  @media (max-width: 1500px) {
-    padding: 10px 0;
-    margin: 1% 2%;
-  }
+  box-sizing: border-box;
 `;
 
 export const QueueTitle = styled(QueueData)`
   color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
   font-size: 15px;
   font-weight: 700;
-  padding: 0;
-
-  & > li {
-    list-style-type: none;
-  }
 `;
 
 export const QueueTitleNo = styled(QueueTitle)`
-  margin-left: 10px;
   width: 80px;
   justify-content: center;
+  padding: 0;
+  margin-left: 8px;
 `;
 
 export const TableFilter = styled.select`
@@ -123,7 +114,10 @@ export const TableFilter = styled.select`
   &:focus {
     outline: none;
   }
-  @media (max-width: 1500px) {
-    font-size: 0.75rem;
-  }
+`;
+
+export const QueueTitleRightWrapper = styled(QueueIconWrapper)`
+  justify-content: left;
+  margin-left: 30px;
+  padding-left: 1vw;
 `;
