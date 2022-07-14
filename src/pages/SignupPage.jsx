@@ -34,7 +34,6 @@ const SignupPage = () => {
   const [exsitedEmail, setExsitedEmail] = useState(false);
 
   const [loading, setLoading] = useState(false);
-  console.log(loading);
 
   const { setUser } = useContext(UserContext);
 
