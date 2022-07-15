@@ -15,7 +15,7 @@ const AboutUs = styled(FlexDisplay)`
 
 const Team = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
   padding: 40px;
   flex-wrap: wrap;

@@ -119,5 +119,5 @@ export const TableFilter = styled.select`
 export const QueueTitleRightWrapper = styled(QueueIconWrapper)`
   justify-content: left;
   margin-left: 30px;
-  padding-left: 1vw;
+  padding-left: 2.5vw;
 `;
