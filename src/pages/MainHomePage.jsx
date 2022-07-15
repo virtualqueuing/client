@@ -24,7 +24,7 @@ const MainHomepage = () => {
       behavior: "smooth",
     });
   };
-  console.log(import.meta.env.VITE_SERVER_URL)
+
   return (
     <HomePageContainer>
       <Navigation scrollToSection={scrollToSection} />
