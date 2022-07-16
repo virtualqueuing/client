@@ -1,13 +1,10 @@
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 
-export const AddNewWrapper = styled.div`
+export const AddNewWrapper = styled(motion.div)`
   max-width: 670px;
   height: 710px;
   margin: auto;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   overflow: hidden;
   background: white;
   z-index: 999;

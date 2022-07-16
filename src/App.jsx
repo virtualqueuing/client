@@ -19,9 +19,9 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               {user.data ? (
-                <Route path="/" exact element={<Homepage />} />
+                <Route path="/" element={<Homepage />} />
               ) : (
-                <Route path="/" exact element={<Navigate to="/home" replace />} />
+                <Route path="/" element={<Navigate to="/home" replace />} />
               )}
               {routes.map((route) => {
                 const { path } = route;
