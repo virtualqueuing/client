@@ -3,15 +3,12 @@ import React, { useState } from "react";
 import { ModalBackground } from "../../../components/Modal/ModalBackground";
 import { ABSENT_REASONS } from "../../../constant";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion"
 
-const Modal = styled.div`
+const Modal = styled(motion.div)`
   width: 540px;
   height: 320px;
   margin: auto;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   overflow: hidden;
   background: white;
   z-index: 999;
@@ -114,7 +111,7 @@ const ButtonWrapper = styled.div`
   padding: 6px 40px 0px 0px;
 `;
 
-const Absent = styled.button`
+const Absent = styled(motion.button)`
   width: 100px;
   border-radius: 15px;
   margin-left: 20px;
@@ -128,7 +125,7 @@ const Absent = styled.button`
   }
 `;
 
-const Cancel = styled.span`
+const Cancel = styled(motion.span)`
   display: inline-block;
   padding: 5px 10px;
   margin-left: 20px;
@@ -141,14 +138,34 @@ const Cancel = styled.span`
   }
 `;
 
-const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
-  AbsentModal.propTypes = {
-    id: PropTypes.string.isRequired,
-    setShowAbsentModal: PropTypes.func.isRequired,
-    queueAbsent: PropTypes.func.isRequired,
-    setQueues: PropTypes.func.isRequired,
-  };
+const backdrop = {
+  after: { opacity: 1 },
+  before: { opacity: 0 }
+}
 
+const modal = {
+  before: {
+    y: '100vh',
+    opacity: 0
+  },
+  after: {
+    y: 0,
+    opacity: 1,
+    transition: { delay: 0.1, type: 'spring', stiffness: 80 }
+   }
+}
+
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px, 0px, 8px, rgb(255,255,255)",
+    transition: {
+      yoyo: 10
+    }
+  }
+}
+
+const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
   const [absentReason, setAbsentReason] = useState("");
 
   const sendAbsentCommand = (id, setQueues, absentReason) => {
@@ -157,8 +174,8 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
   };
 
   return (
-    <ModalBackground onClick={() => setShowAbsentModal(false)}>
-      <Modal onClick={(e) => e.stopPropagation()}>
+    <ModalBackground variants={backdrop} initial="before" animate="after" onClick={() => setShowAbsentModal(false)}>
+      <Modal variants={modal} onClick={(e) => e.stopPropagation()}>
         <Wrapper>
           <Title>Confirm Absent</Title>
         </Wrapper>
@@ -187,8 +204,8 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
         </Wrapper>
         <HorizontalDivider />
         <ButtonWrapper>
-          <Cancel onClick={() => setShowAbsentModal(false)}>Cancel</Cancel>
-          <Absent onClick={() => sendAbsentCommand(id, setQueues, absentReason)}>Proceed</Absent>
+          <Cancel variants={buttonVariants} whileHover="hover" onClick={() => setShowAbsentModal(false)}>Cancel</Cancel>
+          <Absent variants={buttonVariants} whileHover="hover" onClick={() => sendAbsentCommand(id, setQueues, absentReason)}>Proceed</Absent>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>
@@ -196,3 +213,10 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
 };
 
 export default AbsentModal;
+
+AbsentModal.propTypes = {
+  id: PropTypes.string.isRequired,
+  setShowAbsentModal: PropTypes.func.isRequired,
+  queueAbsent: PropTypes.func.isRequired,
+  setQueues: PropTypes.func.isRequired,
+};

@@ -4,15 +4,13 @@ import { ModalBackground } from "../../../components/Modal/ModalBackground";
 import { UserContext } from "../../../pages/Context";
 import { API_URI } from "../../../constant";
 import axios from "axios";
+import { motion } from "framer-motion"
+import PropTypes from "prop-types";
 
-const Modal = styled.div`
+const Modal = styled(motion.div)`
   width: 540px;
   height: 240px;
   margin: auto;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   overflow: hidden;
   background: white;
   z-index: 999;
@@ -58,7 +56,7 @@ const ButtonWrapper = styled.div`
   padding: 6px 40px 0px 0px;
 `;
 
-const Confirm = styled.button`
+const Confirm = styled(motion.button)`
   width: 100px;
   border-radius: 15px;
   margin-left: 20px;
@@ -72,7 +70,7 @@ const Confirm = styled.button`
   }
 `;
 
-const Cancel = styled.span`
+const Cancel = styled(motion.span)`
   display: inline-block;
   padding: 5px 10px;
   margin-left: 20px;
@@ -84,6 +82,33 @@ const Cancel = styled.span`
     cursor: pointer;
   }
 `;
+
+const backdrop = {
+  after: { opacity: 1 },
+  before: { opacity: 0 }
+}
+
+const modal = {
+  before: {
+    y: '100vh',
+    opacity: 0
+  },
+  after: {
+    y: 0,
+    opacity: 1,
+    transition: { delay: 0.1, type: 'spring', stiffness: 80 }
+   }
+}
+
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px, 0px, 8px, rgb(255,255,255)",
+    transition: {
+      yoyo: 10
+    }
+  }
+}
 
 const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront }) => {
   const { user } = useContext(UserContext);
@@ -98,8 +123,8 @@ const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront
   };
 
   return (
-    <ModalBackground onClick={() => setShowMessagingModal(false)}>
-      <Modal onClick={(e) => e.stopPropagation()}>
+    <ModalBackground variants={backdrop} initial="before" animate="after" onClick={() => setShowMessagingModal(false)}>
+      <Modal variants={modal} onClick={(e) => e.stopPropagation()}>
         <Wrapper>
           <Title>Send Message</Title>
         </Wrapper>
@@ -111,8 +136,8 @@ const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront
         </Wrapper>
         <HorizontalDivider />
         <ButtonWrapper>
-          <Cancel onClick={() => setShowMessagingModal(false)}>Cancel</Cancel>
-          <Confirm onClick={() => sendMessage(name, queueInFront, branch)}>Send</Confirm>
+          <Cancel variants={buttonVariants} whileHover="hover" onClick={() => setShowMessagingModal(false)}>Cancel</Cancel>
+          <Confirm variants={buttonVariants} whileHover="hover" onClick={() => sendMessage(name, queueInFront, branch)}>Send</Confirm>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>
@@ -120,3 +145,10 @@ const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront
 };
 
 export default MessagingModal;
+
+MessagingModal.propTypes = {
+  name: PropTypes.string.isRequired,
+  setShowMessagingModal: PropTypes.func.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
+  queueInFront: PropTypes.number.isRequired,
+}
