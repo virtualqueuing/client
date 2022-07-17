@@ -4,6 +4,7 @@ import { QueueListContainer, QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { QUEUE_STATUS } from "../../constant";
+import { indexOf } from "lodash";
 
 const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) => {
   const waitingQueue = queues.filter((queue) => queue.status === QUEUE_STATUS.WAITING);
@@ -58,6 +59,75 @@ const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) 
         )),
     [showList, activeQueueId, searchQueue]
   );
+
+  //Stephy
+
+  const forHidden = showList.map((item) => {
+    return item.phoneNumber;
+  });
+  console.log(typeof forHidden);
+  console.log(forHidden);
+
+  const grab = forHidden.forEach((hide) => {
+    console.log(hide);
+    // return hide;
+  });
+  // console.log(grab);
+  // const [star, setStar] = useState();
+  // forHidden.forEach((hide) => {
+  //   return hide;
+  // });
+  // console.log(grab);
+
+  // const arr = [4, 7, 8];
+  // const replceWithAsterisk = (grab, indices) => {
+  //   let res = "";
+  //   res = indices
+  //     .reduce((acc, val) => {
+  //       acc[val] = "*";
+  //       return acc;
+  //     }, grab.split(""))
+  //     .join("");
+  //   return res;
+  // };
+  // console.log(replceWithAsterisk(grab, arr));
+
+  // forHidden.forEach((hide) => {
+  //   replceWithAsterisk;
+  // });
+
+  // console.log(replceWithAsterisk);
+
+  // const test3 = forHidden.forEach(() => {
+  //   return indexOf;
+  // });
+  // const test2 = forHidden.map((per) => {
+  //   return per;
+  // });
+
+  // const test = test2.split(",");
+  // const every = forHidden.forEach();
+  // console.log(every);
+
+  console.log("start");
+  // console.log(test3);
+  // console.log(test);
+  // console.log(test2);
+  console.log(forHidden);
+  console.log(showList);
+  // let cellPhone = [];
+  // const cellPhone = showList?.phoneNumber;
+  // how to get a collectionof of value of a certain property from an objuect array?
+  // console.log(cellPhone);
+
+  // setQueueGetting(queueValue),
+
+  // const [queueGetting,setQueueGetting]=useState()
+  console.log(singleQueues);
+  // console.log(setQueueGetting);
+  // console.log(queueGetting);
+  console.log("done");
+  //Stephy
 
   return (
     <QueueSection>
