@@ -32,7 +32,7 @@ const AddNewPage = ({ queueInfo, setShowAddNewForm }) => {
   return (
     <showRequiredInfoContext.Provider value={{ setShowRequiredInfo }}>
       <ModalBackground variants={backdrop} initial="before" animate="after" onClick={() => setShowAddNewForm(false)} >
-      <AddNewWrapper variants={modal} wrapperQueueInfo={queueInfo}>
+      <AddNewWrapper variants={modal} wrapperQueueInfo={queueInfo} onClick={(e)=>e.stopPropagation()}>
         <LayoutWrapper>
           <HeaderInfo>
             <h2>Customer Info</h2>
