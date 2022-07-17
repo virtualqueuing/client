@@ -28,11 +28,11 @@ const colors = {
     },
     absentButton: {
       fontColor: {
-        normal: "#E74C3C",
+        normal: "#E60012",
         opacityColor: "rgba(93, 86, 112, 0.7)",
       },
       borderColor: {
-        normal: "#E60012",
+        normal: "#E74C3C",
         opacityColor: "rgba(93, 86, 112, 0.7)",
       },
     },
