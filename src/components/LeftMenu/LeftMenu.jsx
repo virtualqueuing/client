@@ -287,10 +287,9 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       tableType === "Table Type"
         ? leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)
         : leftQueues.find(
-          (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
-        );
+            (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+          );
   }
-
   const queueHeadCustomerName = headCustomer?.name;
   const queueHeadNumber = headCustomer?.queueNumber;
   const queueHeadTableType = headCustomer?.tableSize;
