@@ -4,7 +4,6 @@ import { QueueListContainer, QueueSection } from "../styles/QueueList.styles";
 import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { QUEUE_STATUS } from "../../constant";
-import { indexOf } from "lodash";
 
 const MainQueues = ({ queues, queueStatus, tableType, searchQueue, setQueues }) => {
   const waitingQueue = queues.filter((queue) => queue.status === QUEUE_STATUS.WAITING);
