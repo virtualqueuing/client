@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { showNewFormContext } from "../../pages/Context";
 import { useContext } from "react";
+import { motion } from "framer-motion"
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ const Wrapper = styled.div`
   margin-top: -10px;
 `;
 
-const Submit = styled.input`
+const Submit = styled(motion.input)`
   width: 100px;
   border-radius: 15px;
   margin-left: 20px;
@@ -23,7 +24,7 @@ const Submit = styled.input`
   }
 `;
 
-const Cancel = styled.span`
+const Cancel = styled(motion.span)`
   display: inline-block;
   padding: 5px 10px;
   margin-left: 20px;
@@ -36,12 +37,22 @@ const Cancel = styled.span`
   }
 `;
 
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px, 0px, 8px, rgb(255,255,255)",
+    transition: {
+      yoyo: 10
+    }
+  }
+}
+
 const Buttons = () => {
   const { setShowAddNewForm } = useContext(showNewFormContext);
   return (
     <Wrapper>
-      <Cancel onClick={() => setShowAddNewForm(false)}>Cancel</Cancel>
-      <Submit type="submit" name="submitInfo" value="Submit" />
+      <Cancel variants={buttonVariants} whileHover="hover" onClick={() => setShowAddNewForm(false)}>Cancel</Cancel>
+      <Submit variants={buttonVariants} whileHover="hover" type="submit" name="submitInfo" value="Submit" />
     </Wrapper>
   );
 };

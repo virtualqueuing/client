@@ -4,7 +4,7 @@ import { QueueData, QueueDataContainer, QueueIconWrapper } from "./SingleQueue.s
 export const StyledHeader = styled.header`
   position: relative;
   display: flex;
-  height: 25vh;
+  height: 30vh;
   flex-direction: column;
   margin: 0;
   padding: 0;
@@ -119,5 +119,5 @@ export const TableFilter = styled.select`
 export const QueueTitleRightWrapper = styled(QueueIconWrapper)`
   justify-content: left;
   margin-left: 30px;
-  padding-left: 1vw;
+  padding-left: 2.5vw;
 `;

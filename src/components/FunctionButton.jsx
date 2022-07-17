@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const FunctionButton = styled.button`
+export const FunctionButton = styled(motion.button)`
   border-radius: ${({ borderRadius }) => borderRadius || "50px"};
   width: ${({ width }) => width || "130px"};
   border: none;
@@ -12,11 +13,6 @@ export const FunctionButton = styled.button`
   padding: 20px 50px;
   background-color: ${({ bg }) => bg || "#fff"};
   color: ${({ color }) => color || "#333"};
-
-  &:hover {
-    opacity: 0.9;
-    transform: scale(0.98);
-  }
 `;
 
 export const AddGuestButton = styled(FunctionButton)`

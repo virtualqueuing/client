@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
-import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
+import MenuQueueList from "../../assets/Icons/Menu_QueueList.svg";
+import DashBoardClock from "../../assets/Icons/Menu_Dashboard.svg";
 import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
@@ -227,7 +227,7 @@ const SingleQueueNotesContainer = styled.div`
 `;
 
 const SingleQueueNotes = styled.div`
-  width: 100%;
+  width: 90%;
   height: auto;
   max-width: 13vw;
   display: flex;
@@ -269,8 +269,8 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       tableType === "Table Type"
         ? leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)
         : leftQueues.find(
-            (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
-          );
+          (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+        );
   }
   const cellPhoneNumber = headCustomer?.phoneNumber;
   const queueHeadCustomerName = headCustomer?.name;
@@ -355,37 +355,37 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
         <CurrentQueueDetailTitle>Notes:</CurrentQueueDetailTitle>
         {tableType === "Table Type"
           ? leftQueues
-              .find((queue) => queue.status === QUEUE_STATUS.WAITING)
-              ?.notes[0]?.split(",")
-              .map((note, index) => (
-                <SingleQueueNotes key={index}>
-                  {note === "Birthday" ? (
-                    <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
-                  ) : note === "Wheelchair" ? (
-                    <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Highchair" ? (
-                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
-                  ) : null}
-                  <SingleQueueDescription>{note}</SingleQueueDescription>
-                </SingleQueueNotes>
-              ))
+            .find((queue) => queue.status === QUEUE_STATUS.WAITING)
+            ?.notes[0]?.split(",")
+            .map((note, index) => (
+              <SingleQueueNotes key={index}>
+                {note === "Birthday" ? (
+                  <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
+                ) : note === "Wheelchair" ? (
+                  <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
+                ) : note === "Highchair" ? (
+                  <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
+                ) : null}
+                <SingleQueueDescription>{note}</SingleQueueDescription>
+              </SingleQueueNotes>
+            ))
           : leftQueues
-              .find(
-                (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
-              )
-              ?.notes[0]?.split(",")
-              .map((note, index) => (
-                <SingleQueueNotes key={index}>
-                  {note === "Birthday" ? (
-                    <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
-                  ) : note === "Wheelchair" ? (
-                    <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                  ) : note === "Highchair" ? (
-                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
-                  ) : null}
-                  <SingleQueueDescription>{note}</SingleQueueDescription>
-                </SingleQueueNotes>
-              ))}
+            .find(
+              (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+            )
+            ?.notes[0]?.split(",")
+            .map((note, index) => (
+              <SingleQueueNotes key={index}>
+                {note === "Birthday" ? (
+                  <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
+                ) : note === "Wheelchair" ? (
+                  <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
+                ) : note === "Highchair" ? (
+                  <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
+                ) : null}
+                <SingleQueueDescription>{note}</SingleQueueDescription>
+              </SingleQueueNotes>
+            ))}
       </SingleQueueNotesContainer>
     </Background>
   );
