@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
-import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
+import MenuQueueList from "../../assets/Icons/Menu_QueueList.svg";
+import DashBoardClock from "../../assets/Icons/Menu_Dashboard.svg";
 import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
