@@ -24,6 +24,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);
   };
+  
   const queuesFilter = useMemo(
     () =>
       QUEUE_FILTER.map((filter) => (
@@ -39,12 +40,13 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
       )),
     [QUEUE_FILTER, queueStatus]
   );
+
   return (
     <>
       <StyledHeader>
         <Logo
           style={{ width: "180px", height: "auto" }}
-          path="/"
+          path="/#All"
           alt="logo for redirecting to main page"
         />
         <SeparateLine />
