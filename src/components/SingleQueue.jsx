@@ -92,6 +92,20 @@ const SingleQueue = ({
   const showQueueNotes = isHovered;
   const labelsOfFirstNote = notes[0].split(",");
 
+
+  const replaceIndex = [3, 4, 5, 6];
+  const replaceWithAsterisk = (phoneNumber, indices) => {
+    let res = "";
+    res = indices
+      .reduce((acc, val) => {
+        acc[val] = "*";
+        return acc;
+      }, phoneNumber.split(""))
+      .join("");
+    return res;
+  };
+  const asteriskPhoneNumber = replaceWithAsterisk(phoneNumber, replaceIndex);
+
   return (
     <>
       <QueueItem
@@ -132,7 +146,7 @@ const SingleQueue = ({
               <p>{name}</p>
             </QueueData>
             <QueueData color="#000">
-              <p>{phoneNumber}</p>
+              <p>{asteriskPhoneNumber}</p>
             </QueueData>
             <QueueData color="#000" style={{ gap: "15px" }}>
               <img src={guestIcon} alt="guestIcon" />
