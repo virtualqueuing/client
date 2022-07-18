@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import MenuQueueList from "../../assets/Icons/Menu_QueueList-inactive.svg";
-import DashBoardClock from "../../assets/Icons/Menu_Dashboard-inactive.svg";
+import MenuQueueList from "../../assets/Icons/Menu_QueueList.svg";
+import DashBoardClock from "../../assets/Icons/Menu_Dashboard.svg";
 import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
 import isEmpty from "lodash/isEmpty";
+import { motion } from "framer-motion";
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -163,7 +164,7 @@ const LeftSideBarOptionDescription = styled.span`
   }
 `;
 
-const CurrentQueueDetailsContainer = styled.div`
+const CurrentQueueDetailsContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -226,15 +227,15 @@ const SingleQueueNotesContainer = styled.div`
   align-items: flex-start;
 `;
 
-const SingleQueueNotes = styled.div`
+const SingleQueueNotes = styled(motion.div)`
   width: 90%;
   height: auto;
   max-width: 13vw;
   display: flex;
   align-items: center;
   justify-content: left;
-  background: ${({ theme }) =>
-    theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]};
+  /* background: ${({ theme }) =>
+    theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]}; */
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 10px;
@@ -242,6 +243,16 @@ const SingleQueueNotes = styled.div`
   overflow: hidden;
   box-sizing: content-box;
 `;
+
+const HovertagColorList = [
+  "#c4f1e7",
+  "#ecf5db",
+  "#ffeec9",
+  "#fcc4bc",
+  "#eaddf0",
+  "#daf4eb",
+  "#E2F0CB",
+];
 
 export const SingleQueueIcon = styled.img`
   width: 30px;
@@ -262,6 +273,23 @@ const SingleQueueDescription = styled.span`
   }
 `;
 
+const sideMenuAnimation = {
+  before: {
+    x: "-100vw",
+    opacity: 0,
+  },
+  after: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.1,
+      type: "spring",
+      damping: 8,
+      stiffness: 30,
+    },
+  },
+};
+
 const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   let headCustomer = [];
   if (!isEmpty(leftQueues)) {
@@ -272,7 +300,6 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
             (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
           );
   }
-
   const queueHeadCustomerName = headCustomer?.name;
   const queueHeadNumber = headCustomer?.queueNumber;
   const queueHeadTableType = headCustomer?.tableSize;
@@ -337,7 +364,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
           </LeftSideBarOption>
         )}
       </LeftSideBarOptionContainer>
-      <CurrentQueueDetailsContainer>
+      <CurrentQueueDetailsContainer variants={sideMenuAnimation} initial="before" animate="after">
         <CurrentQueueDetailTitle>
           Next Customer
           <br />*{queueHeadTableType} table*
@@ -355,7 +382,13 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
               .find((queue) => queue.status === QUEUE_STATUS.WAITING)
               ?.notes[0]?.split(",")
               .map((note, index) => (
-                <SingleQueueNotes key={index}>
+                <SingleQueueNotes
+                  style={{ background: `${HovertagColorList[index]}` }}
+                  variants={sideMenuAnimation}
+                  initial="before"
+                  animate="after"
+                  key={index}
+                >
                   {note === "Birthday" ? (
                     <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                   ) : note === "Wheelchair" ? (
@@ -372,7 +405,13 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
               )
               ?.notes[0]?.split(",")
               .map((note, index) => (
-                <SingleQueueNotes key={index}>
+                <SingleQueueNotes
+                  style={{ background: `${HovertagColorList[index]}` }}
+                  variants={sideMenuAnimation}
+                  initial="before"
+                  animate="after"
+                  key={index}
+                >
                   {note === "Birthday" ? (
                     <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                   ) : note === "Wheelchair" ? (

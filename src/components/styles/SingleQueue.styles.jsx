@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion"
 
 export const QueueDataContainer = styled.div`
   padding: 0;
@@ -13,7 +14,7 @@ export const QueueDataContainer = styled.div`
   }
 `;
 
-export const QueueItem = styled.div`
+export const QueueItem = styled(motion.div)`
   position: relative;
   width: 100%;
   display: flex;
@@ -75,11 +76,6 @@ export const QueueIcon = styled.img`
   height: 40px;
   margin-left: 50%;
   transition: 0.3s ease-in-out;
-
-  & :hover {
-    transform: translateY(5px);
-    transition: 0.3s ease-in-out;
-  }
 `;
 
 export const StatusButtonContainer = styled.div`
@@ -92,14 +88,14 @@ export const StatusButtonContainer = styled.div`
   }
 `;
 
-export const StatusButton = styled.button`
+export const StatusButton = styled(motion.button)`
   cursor: pointer;
   width: 94px;
   height: 33px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #ffffff;
+  background: ${({ backgroundColor }) => backgroundColor};
   border: 2px solid ${({ borderColor }) => borderColor};
   color: ${({ fontColor }) => fontColor};
   box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.15);

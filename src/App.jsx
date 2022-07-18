@@ -7,7 +7,6 @@ import routes from "./router";
 import LoadingPage from "./pages/LoadingPage";
 import { UserContext } from "./pages/Context";
 import Homepage from "./pages/Homepage";
-import MessagingModal from "./components/RightMenu/components/MessagingModal";
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -28,7 +27,6 @@ const App = () => {
                 return <Route {...route} key={path} />;
               })}
               <Route path="/loading" element={<LoadingPage />} />
-              <Route path="/testing" element={<MessagingModal />} />
               <Route path="*" element={<Navigate to="/error" replace />} />
             </Routes>
           </BrowserRouter>

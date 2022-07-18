@@ -14,6 +14,7 @@ import SeparateLine from "./styles/SeparateLine.styles";
 import React, { useState } from "react";
 import { showNewFormContext } from "../pages/Context";
 import messageIcon from "../assets/Icons/Button_Message.svg";
+import inactiveMessageIcon from "../assets/Icons/Button_Message-inactive.svg";
 import editIcon from "../assets/Icons/Button_Edit.svg";
 import arrivalActiveIcon from "../assets/Icons/Button_Arrival.svg";
 import arrivalDisableIcon from "../assets/Icons/Button_Arrival_Disable.svg";
@@ -32,6 +33,22 @@ import { NewTag } from "./AddNew/CreateTags";
 import { random } from "lodash";
 import MessagingModal from "./RightMenu/components/MessagingModal";
 import { Popup } from "semantic-ui-react";
+
+const queueItems = {
+  before: {
+    opacity: 0
+  },
+  after: {
+    opacity: 1,
+  } 
+}
+
+const statusButton = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px, 0px, 8px, rgb(255,255,255)",
+  }
+}
 
 const SingleQueue = ({
   _id,
@@ -53,10 +70,10 @@ const SingleQueue = ({
   const [showAddNewForm, setShowAddNewForm] = useState(false);
   const [showMessagingModal, setShowMessagingModal] = useState(false);
 
-  const arrivalFontActive = "#5F5186";
-  const absenceFontActive = "#E74C3C";
-  const arrivalBorderActive = "#5F5186";
-  const absenceBorderActive = "#E60012";
+  const arrivalFontActive = "#fff";
+  const absenceFontActive = "#fff";
+  const arrivalBorderActive = theme.colors.components.arrivalButton.borderColor.normal;
+  const absenceBorderActive = theme.colors.components.absentButton.borderColor.normal;
   const disableColor = "rgba(93, 86, 112, 0.7)";
 
   const handleClick = () => {
@@ -92,6 +109,20 @@ const SingleQueue = ({
   const showQueueNotes = isHovered;
   const labelsOfFirstNote = notes[0].split(",");
 
+
+  const replaceIndex = [3, 4, 5, 6];
+  const replaceWithAsterisk = (phoneNumber, indices) => {
+    let res = "";
+    res = indices
+      .reduce((acc, val) => {
+        acc[val] = "*";
+        return acc;
+      }, phoneNumber.split(""))
+      .join("");
+    return res;
+  };
+  const asteriskPhoneNumber = replaceWithAsterisk(phoneNumber, replaceIndex);
+
   return (
     <>
       <QueueItem
@@ -99,6 +130,9 @@ const SingleQueue = ({
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        variants={queueItems}
+        initial="before"
+        animate="after"
       >
         {showQueueNotes && (
           <Popup trigger={<NoteButton>i</NoteButton>}>
@@ -132,7 +166,7 @@ const SingleQueue = ({
               <p>{name}</p>
             </QueueData>
             <QueueData color="#000">
-              <p>{phoneNumber}</p>
+              <p>{asteriskPhoneNumber}</p>
             </QueueData>
             <QueueData color="#000" style={{ gap: "15px" }}>
               <img src={guestIcon} alt="guestIcon" />
@@ -164,7 +198,6 @@ const SingleQueue = ({
                 trigger={
                   status === QUEUE_STATUS.WAITING ? (
                     <QueueIcon
-                      // style={{ width: "30px", height: "30px" }}
                       src={messageIcon}
                       alt="message sending icon"
                       onClick={() => {
@@ -173,8 +206,7 @@ const SingleQueue = ({
                     />
                   ) : (
                     <QueueIcon
-                      // style={{ width: "30px", height: "30px" }}
-                      src={messageIcon}
+                      src={inactiveMessageIcon}
                       alt="message sending icon"
                     />
                   )
@@ -187,7 +219,6 @@ const SingleQueue = ({
               <Popup
                 trigger={
                   <QueueIcon
-                    // style={{ width: "30px", height: "30px" }}
                     src={editIcon}
                     alt="add new form icon"
                     onClick={(e) => {
@@ -211,6 +242,11 @@ const SingleQueue = ({
                     ? disableColor
                     : arrivalBorderActive
                 }
+                backgroundColor={
+                  isSending || status === QUEUE_STATUS.COMPLETED ? "#fff" : theme.colors.components.arrivalButton.fontColor.normal
+                }
+                variants={statusButton}
+                whileHover={!isSending && status !== QUEUE_STATUS.COMPLETED && "hover"}
               >
                 {isSending || status === QUEUE_STATUS.COMPLETED ? (
                   <img src={arrivalDisableIcon} alt="arrivalIcon" />
@@ -230,6 +266,11 @@ const SingleQueue = ({
                 borderColor={
                   isSending || status === QUEUE_STATUS.ABSENT ? disableColor : absenceBorderActive
                 }
+                backgroundColor={
+                  isSending || status === QUEUE_STATUS.ABSENT ? "#fff" : theme.colors.components.absentButton.fontColor.normal
+                }
+                variants={statusButton}
+                whileHover={!isSending && status !== QUEUE_STATUS.ABSENT && "hover"}
               >
                 {isSending || status === QUEUE_STATUS.ABSENT ? (
                   <img src={absentDisableIcon} alt="absenceIcon" />

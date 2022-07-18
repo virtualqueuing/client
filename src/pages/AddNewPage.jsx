@@ -39,7 +39,7 @@ const AddNewPage = ({ queueInfo, setShowAddNewForm }) => {
             <p>Fill in required customer info</p>
           </HeaderInfo>
           <HeaderInfo>
-            {showRequiredInfo && (
+          {showRequiredInfo && (
               <HeaderAlert>Please fill all information before submitting</HeaderAlert>
             )}
           </HeaderInfo>
