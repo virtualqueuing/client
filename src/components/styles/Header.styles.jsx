@@ -4,11 +4,14 @@ import { QueueData, QueueDataContainer, QueueIconWrapper } from "./SingleQueue.s
 export const StyledHeader = styled.header`
   position: relative;
   display: flex;
-  height: 30vh;
+  height: 25vh;
   flex-direction: column;
   margin: 0;
   padding: 0;
   padding-top: 18px;
+  @media (max-height:900px) {
+    height: 30vh;
+  }
 `;
 
 export const PathContainer = styled.div`
@@ -25,7 +28,7 @@ export const PathIdentifier = styled.ul`
   position: relative;
   align-items: flex-end;
   justify-content: space-between;
-  padding-left: 1%;
+  padding-left: 0%;
   margin: 15px 0 0 0;
   position: relative;
   top: 4%;
@@ -82,24 +85,29 @@ export const SeparateLine = styled.div`
 
 export const QueueTitleContainer = styled(QueueDataContainer)`
   height: 100%;
-  margin: 0.5% 0;
+  margin: 0.5%;
   border: 1px solid transparent;
   background: ${({ theme }) => theme.colors.components.queueContainer.background};
   border-radius: 5px;
   box-sizing: border-box;
+
 `;
 
 export const QueueTitle = styled(QueueData)`
   color: ${({ theme }) => theme.colors.components.arrivalButton.borderColor.opacityColor};
   font-size: 15px;
   font-weight: 700;
+  padding: 1vh;
+  margin-left: -1vw;
+
 `;
 
 export const QueueTitleNo = styled(QueueTitle)`
   width: 80px;
   justify-content: center;
   padding: 0;
-  margin-left: 8px;
+  margin-left: 1%;
+  /* margin-right: -2%; */
 `;
 
 export const TableFilter = styled.select`
@@ -118,6 +126,5 @@ export const TableFilter = styled.select`
 
 export const QueueTitleRightWrapper = styled(QueueIconWrapper)`
   justify-content: left;
-  margin-left: 30px;
-  padding-left: 2.5vw;
+  padding-left: 3vw;
 `;

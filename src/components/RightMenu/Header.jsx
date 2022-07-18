@@ -81,7 +81,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
                   </TableFilter>
                 }
               </QueueTitle>
-              <QueueTitle>Status</QueueTitle>
+              <QueueTitle style={{paddingRight:'3.5%'}}>Status</QueueTitle>
             </QueueDataWrapper>
             <QueueTitleRightWrapper>
               <QueueTitle>Modify</QueueTitle>
