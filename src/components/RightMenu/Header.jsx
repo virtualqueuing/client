@@ -24,7 +24,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
     const type = TABLE_SIZE.includes(size.target.value) ? size.target.value : "Table Type";
     setTableType(type);
   };
-  
+
   const queuesFilter = useMemo(
     () =>
       QUEUE_FILTER.map((filter) => (
@@ -44,11 +44,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
   return (
     <>
       <StyledHeader>
-        <Logo
-          style={{ width: "180px", height: "auto" }}
-          path="/#All"
-          alt="logo for redirecting to main page"
-        />
+        <Logo logoSize="large" path="/#All" alt="logo for redirecting to main page" />
         <SeparateLine />
         <PathContainer>
           <PathIdentifier>{queuesFilter}</PathIdentifier>
@@ -81,7 +77,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
                   </TableFilter>
                 }
               </QueueTitle>
-              <QueueTitle style={{paddingRight:'3.5%'}}>Status</QueueTitle>
+              <QueueTitle style={{ paddingRight: "3.5%" }}>Status</QueueTitle>
             </QueueDataWrapper>
             <QueueTitleRightWrapper>
               <QueueTitle>Modify</QueueTitle>

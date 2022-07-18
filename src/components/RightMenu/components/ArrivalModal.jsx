@@ -82,30 +82,30 @@ const Cancel = styled(motion.span)`
 
 const backdrop = {
   after: { opacity: 1 },
-  before: { opacity: 0 }
-}
+  before: { opacity: 0 },
+};
 
 const modal = {
   before: {
-    y: '100vh',
-    opacity: 0
+    y: "100vh",
+    opacity: 0,
   },
   after: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.1, type: 'spring', stiffness: 80 }
-   }
-}
+    transition: { delay: 0.1, type: "spring", stiffness: 80 },
+  },
+};
 
 const buttonVariants = {
   hover: {
     scale: 1.1,
     textShadow: "0px, 0px, 8px, rgb(255,255,255)",
     transition: {
-      yoyo: 10
-    }
-  }
-}
+      yoyo: 10,
+    },
+  },
+};
 
 const ArrivalModal = ({ id, setShowArrivalModal, queueComplete, setQueues }) => {
   const sendConfirmCommand = (id, setQueues) => {
@@ -114,7 +114,12 @@ const ArrivalModal = ({ id, setShowArrivalModal, queueComplete, setQueues }) => 
   };
 
   return (
-    <ModalBackground variants={backdrop} initial="before" animate="after" onClick={() => setShowArrivalModal(false)}>
+    <ModalBackground
+      variants={backdrop}
+      initial="before"
+      animate="after"
+      onClick={() => setShowArrivalModal(false)}
+    >
       <Modal variants={modal} onClick={(e) => e.stopPropagation()}>
         <Wrapper>
           <Title>Confirm Arrival</Title>
@@ -125,8 +130,20 @@ const ArrivalModal = ({ id, setShowArrivalModal, queueComplete, setQueues }) => 
         </Wrapper>
         <HorizontalDivider />
         <ButtonWrapper>
-          <Cancel variants={buttonVariants} whileHover="hover" onClick={() => setShowArrivalModal(false)}>Cancel</Cancel>
-          <Confirm variants={buttonVariants} whileHover="hover" onClick={() => sendConfirmCommand(id, setQueues)}>Yes</Confirm>
+          <Cancel
+            variants={buttonVariants}
+            whileHover="hover"
+            onClick={() => setShowArrivalModal(false)}
+          >
+            Cancel
+          </Cancel>
+          <Confirm
+            variants={buttonVariants}
+            whileHover="hover"
+            onClick={() => sendConfirmCommand(id, setQueues)}
+          >
+            Yes
+          </Confirm>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>

@@ -19,7 +19,7 @@ const PASSWORD_VALID_MAX = 6;
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [role, setRole] = useState("");
   const [branch, setBranch] = useState("");
   const [password, setPassword] = useState("");
@@ -43,7 +43,7 @@ const SignupPage = () => {
     event.preventDefault();
 
     !emailValidation(email) && setEmailError(true);
-    userName.length < USER_NAME_VALID_MIN && setUsernameError(true);
+    fullName.length < USER_NAME_VALID_MIN && setUsernameError(true);
     !role && setroleError(true);
     !branch && setBranchError(true);
     password.length < PASSWORD_VALID_MAX && setPasswordError(true);
@@ -55,7 +55,7 @@ const SignupPage = () => {
         setLoading(true);
         const { data } = await axios.post(`${API_URI}/v1/auth/register`, {
           email,
-          userName,
+          fullName,
           role,
           branch,
           password,
@@ -93,15 +93,15 @@ const SignupPage = () => {
         {emailError && <ErrorMessage>It should be a valid email address!</ErrorMessage>}
         <Input
           type="text"
-          placeholder="Enter Username"
-          value={userName}
+          placeholder="Enter Full Name"
+          value={fullName}
           onChange={(event) => {
-            setUserName(event.target.value);
+            setFullName(event.target.value);
           }}
         />
         {usernameError && (
           <ErrorMessage>
-            Username should be 3-16 characters and should not include any special character!
+            Full name should be 3-40 characters and should not include any special character!
           </ErrorMessage>
         )}
         <InputOption value={role} onChange={(event) => setRole(event.target.value)}>
@@ -147,7 +147,7 @@ const SignupPage = () => {
           <p>Sign up</p>
         </SubmitButton>
       </form>
-      <Logo path="/home" alt="logo for redirecting to home page" />
+      <Logo logoSize="small" path="/home" alt="logo for redirecting to home page" />
     </LoginContainer>
   );
 };
