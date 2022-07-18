@@ -234,8 +234,8 @@ const SingleQueueNotes = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: left;
-  background: ${({ theme }) =>
-    theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]};
+  /* background: ${({ theme }) =>
+    theme.colors.components.tags.HovertagColorList[Math.floor(Math.random() * 6)]}; */
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 10px;
@@ -243,6 +243,16 @@ const SingleQueueNotes = styled(motion.div)`
   overflow: hidden;
   box-sizing: content-box;
 `;
+
+const HovertagColorList = [
+  "#c4f1e7",
+  "#ecf5db",
+  "#ffeec9",
+  "#fcc4bc",
+  "#eaddf0",
+  "#daf4eb",
+  "#E2F0CB",
+]
 
 export const SingleQueueIcon = styled.img`
   width: 30px;
@@ -287,8 +297,8 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       tableType === "Table Type"
         ? leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)
         : leftQueues.find(
-            (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
-          );
+          (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+        );
   }
   const queueHeadCustomerName = headCustomer?.name;
   const queueHeadNumber = headCustomer?.queueNumber;
@@ -372,7 +382,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
             .find((queue) => queue.status === QUEUE_STATUS.WAITING)
             ?.notes[0]?.split(",")
             .map((note, index) => (
-              <SingleQueueNotes variants={sideMenuAnimation} initial="before" animate="after" key={index}>
+              <SingleQueueNotes style={{background:`${HovertagColorList[index]}`}} variants={sideMenuAnimation} initial="before" animate="after" key={index}>
                 {note === "Birthday" ? (
                   <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                 ) : note === "Wheelchair" ? (
@@ -389,7 +399,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
             )
             ?.notes[0]?.split(",")
             .map((note, index) => (
-              <SingleQueueNotes variants={sideMenuAnimation} initial="before" animate="after" key={index}>
+              <SingleQueueNotes style={{background:`${HovertagColorList[index]}`}} variants={sideMenuAnimation} initial="before" animate="after" key={index}>
                 {note === "Birthday" ? (
                   <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
                 ) : note === "Wheelchair" ? (
