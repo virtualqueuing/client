@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ModalBackground } from "../../../components/Modal/ModalBackground";
 import { ABSENT_REASONS } from "../../../constant";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const Modal = styled(motion.div)`
   width: 540px;
@@ -140,30 +140,30 @@ const Cancel = styled(motion.span)`
 
 const backdrop = {
   after: { opacity: 1 },
-  before: { opacity: 0 }
-}
+  before: { opacity: 0 },
+};
 
 const modal = {
   before: {
-    y: '100vh',
-    opacity: 0
+    y: "100vh",
+    opacity: 0,
   },
   after: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.1, type: 'spring', stiffness: 80 }
-   }
-}
+    transition: { delay: 0.1, type: "spring", stiffness: 80 },
+  },
+};
 
 const buttonVariants = {
   hover: {
     scale: 1.1,
     textShadow: "0px, 0px, 8px, rgb(255,255,255)",
     transition: {
-      yoyo: 10
-    }
-  }
-}
+      yoyo: 10,
+    },
+  },
+};
 
 const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
   const [absentReason, setAbsentReason] = useState("");
@@ -174,7 +174,12 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
   };
 
   return (
-    <ModalBackground variants={backdrop} initial="before" animate="after" onClick={() => setShowAbsentModal(false)}>
+    <ModalBackground
+      variants={backdrop}
+      initial="before"
+      animate="after"
+      onClick={() => setShowAbsentModal(false)}
+    >
       <Modal variants={modal} onClick={(e) => e.stopPropagation()}>
         <Wrapper>
           <Title>Confirm Absent</Title>
@@ -186,7 +191,7 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
         <Wrapper>
           <InputWrapper>
             <CustomerInputSelectBg>
-              <Label for="reasons">Reasons for Absence</Label>
+              <Label htmlFor="reasons">Reasons for Absence</Label>
               <StyledInputSelect
                 id="reasons"
                 name="reasons"
@@ -204,8 +209,20 @@ const AbsentModal = ({ id, setShowAbsentModal, queueAbsent, setQueues }) => {
         </Wrapper>
         <HorizontalDivider />
         <ButtonWrapper>
-          <Cancel variants={buttonVariants} whileHover="hover" onClick={() => setShowAbsentModal(false)}>Cancel</Cancel>
-          <Absent variants={buttonVariants} whileHover="hover" onClick={() => sendAbsentCommand(id, setQueues, absentReason)}>Proceed</Absent>
+          <Cancel
+            variants={buttonVariants}
+            whileHover="hover"
+            onClick={() => setShowAbsentModal(false)}
+          >
+            Cancel
+          </Cancel>
+          <Absent
+            variants={buttonVariants}
+            whileHover="hover"
+            onClick={() => sendAbsentCommand(id, setQueues, absentReason)}
+          >
+            Proceed
+          </Absent>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>

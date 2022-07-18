@@ -46,7 +46,7 @@ const InputTextarea = ({ inputInfo }) => {
       />
       <InputWrapper>
         <div style={{ width: "100%", height: "150px", marginBottom: "50px" }}>
-          <Label for="notes">Notes</Label>
+          <Label htmlFor="notes">Notes</Label>
           <CreateTags tags={tags} setTags={setTags} />
         </div>
       </InputWrapper>

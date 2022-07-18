@@ -269,8 +269,8 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       tableType === "Table Type"
         ? leftQueues.find((queue) => queue.status === QUEUE_STATUS.WAITING)
         : leftQueues.find(
-          (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
-        );
+            (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+          );
   }
 
   const queueHeadCustomerName = headCustomer?.name;
@@ -307,7 +307,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
       <UserPanel>
         <UserAvatar src={UserLine} />
         <UserDetails>
-          <UserName>{user.data.data.userName}</UserName>
+          <UserName>{user.data.data.fullName}</UserName>
           <UserLocation>{user.data.data.branch}</UserLocation>
         </UserDetails>
         <ArrowDownBtn
@@ -352,37 +352,37 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
         <CurrentQueueDetailTitle>Notes:</CurrentQueueDetailTitle>
         {tableType === "Table Type"
           ? leftQueues
-            .find((queue) => queue.status === QUEUE_STATUS.WAITING)
-            ?.notes[0]?.split(",")
-            .map((note, index) => (
-              <SingleQueueNotes key={index}>
-                {note === "Birthday" ? (
-                  <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
-                ) : note === "Wheelchair" ? (
-                  <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                ) : note === "Highchair" ? (
-                  <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
-                ) : null}
-                <SingleQueueDescription>{note}</SingleQueueDescription>
-              </SingleQueueNotes>
-            ))
+              .find((queue) => queue.status === QUEUE_STATUS.WAITING)
+              ?.notes[0]?.split(",")
+              .map((note, index) => (
+                <SingleQueueNotes key={index}>
+                  {note === "Birthday" ? (
+                    <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
+                  ) : note === "Wheelchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
+                  ) : note === "Highchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
+                  ) : null}
+                  <SingleQueueDescription>{note}</SingleQueueDescription>
+                </SingleQueueNotes>
+              ))
           : leftQueues
-            .find(
-              (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
-            )
-            ?.notes[0]?.split(",")
-            .map((note, index) => (
-              <SingleQueueNotes key={index}>
-                {note === "Birthday" ? (
-                  <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
-                ) : note === "Wheelchair" ? (
-                  <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
-                ) : note === "Highchair" ? (
-                  <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
-                ) : null}
-                <SingleQueueDescription>{note}</SingleQueueDescription>
-              </SingleQueueNotes>
-            ))}
+              .find(
+                (queue) => queue.status === QUEUE_STATUS.WAITING && queue.tableSize === tableType
+              )
+              ?.notes[0]?.split(",")
+              .map((note, index) => (
+                <SingleQueueNotes key={index}>
+                  {note === "Birthday" ? (
+                    <SingleQueueIcon src={NoteIcon.Birthday} alt={`${note} icon`} />
+                  ) : note === "Wheelchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Wheelchair} alt={`${note} icon`} />
+                  ) : note === "Highchair" ? (
+                    <SingleQueueIcon src={NoteIcon.Highchair} alt={`${note} icon`} />
+                  ) : null}
+                  <SingleQueueDescription>{note}</SingleQueueDescription>
+                </SingleQueueNotes>
+              ))}
       </SingleQueueNotesContainer>
     </Background>
   );
