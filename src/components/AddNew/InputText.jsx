@@ -4,7 +4,7 @@ const InputText = ({ inputInfo }) => {
   return (
     <InputWrapper>
       <div>
-        <Label for="name">Name</Label>
+        <Label htmlFor="name">Name</Label>
         <StyledInputText
           id="Name"
           type="text"
@@ -14,7 +14,7 @@ const InputText = ({ inputInfo }) => {
         />
       </div>
       <div>
-        <Label for="phoneNumber">Phone number</Label>
+        <Label htmlFor="phoneNumber">Phone number</Label>
         <StyledInputText
           id="phoneNumber"
           type="text"

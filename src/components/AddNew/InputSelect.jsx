@@ -21,7 +21,7 @@ const InputSelect = ({ inputInfo }) => {
   return (
     <InputWrapper>
       <CustomerInputSelectBg>
-        <Label for="people">People</Label>
+        <Label htmlFor="people">People</Label>
         <StyledInputSelect
           id="people"
           name="guestsNumber"
@@ -30,16 +30,16 @@ const InputSelect = ({ inputInfo }) => {
           onChange={(e) => setGuestNum(e.target.value)}
           required
         >
-          <option selected hidden />
+          <option hidden />
           {OPTION_NUMBERS.map((number) => (
             <option key={number}> {number} </option>
           ))}
         </StyledInputSelect>
       </CustomerInputSelectBg>
       <div>
-        <Label for="Table">Table</Label>
+        <Label htmlFor="Table">Table</Label>
         <StyledInputSelect id="Table" name="tableSize">
-          <option selected hidden>
+          <option hidden>
             {getTableType(guestNum)
               ? getTableType(guestNum)
               : inputInfo?.tableSize

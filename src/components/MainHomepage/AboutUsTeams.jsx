@@ -68,7 +68,7 @@ export const DevOps = [
     position: "DevOps",
     avatar: edwardPhoto,
     linkedIn: "https://www.linkedin.com/in/edward-chen-au/",
-    email: "mailto:#",
+    email: "mailto:edwardchen89@hotmail.com",
   },
   {
     name: "Jessie",

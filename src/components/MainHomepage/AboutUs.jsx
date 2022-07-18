@@ -7,6 +7,7 @@ import linkedInIcon from "../../assets/linkedin-box-fill.svg";
 import { Developers, DevOps } from "./AboutUsTeams";
 import emailIcon from "../../assets/emailIcon.svg";
 import PropTypes from "prop-types";
+import { useMemo } from "react";
 
 const AboutUs = styled(FlexDisplay)`
   width: 100%;
@@ -45,51 +46,55 @@ const NameWrapper = styled.div`
 `;
 
 const Aboutus = React.forwardRef((props, ref) => {
+  const developersMemo = useMemo(() => {
+    return Developers.map((member) => (
+      <Profile key={member.name}>
+        <Avartar>
+          <img src={member.avatar} alt={member.name} />
+        </Avartar>
+        <PersonalInfo>
+          <NameWrapper>
+            <a href={member.linkedIn} target="_blank" rel="noreferrer">
+              <img src={linkedInIcon} alt="linkedin icon for redirecting" />
+            </a>
+            <a href={member.email} target="_blank" rel="noreferrer">
+              <img src={emailIcon} alt="email icon for seinding email" />
+            </a>
+            <h3>{member.name}</h3>
+          </NameWrapper>
+          <p>{member.position}</p>
+        </PersonalInfo>
+      </Profile>
+    ));
+  }, [Developers]);
+
+  const devOpsMemo = useMemo(() => {
+    return DevOps.map((member) => (
+      <Profile key={member.name}>
+        <Avartar>
+          <img src={member.avatar} alt={member.name} />
+        </Avartar>
+        <PersonalInfo>
+          <NameWrapper>
+            <a href={member.linkedIn} target="_blank" rel="noreferrer">
+              <img src={linkedInIcon} alt="linkedin icon for redirecting" />
+            </a>
+            <a href={member.email} target="_blank" rel="noreferrer">
+              <img src={emailIcon} alt="email icon for seinding email" />
+            </a>
+            <h3>{member.name}</h3>
+          </NameWrapper>
+          <p>{member.position}</p>
+        </PersonalInfo>
+      </Profile>
+    ));
+  }, [Developers]);
+
   return (
     <AboutUs ref={ref}>
       <SectionTitle>About Us</SectionTitle>
-      <Team>
-        {Developers.map((member) => (
-          <Profile key={member.name}>
-            <Avartar>
-              <img src={member.avatar} alt={member.name} />
-            </Avartar>
-            <PersonalInfo>
-              <NameWrapper>
-                <a href={member.linkedIn} target="_blank" rel="noreferrer">
-                  <img src={linkedInIcon} alt="linkedin icon for redirecting" />
-                </a>
-                <a href={member.email} target="_blank" rel="noreferrer">
-                  <img src={emailIcon} alt="email icon for seinding email" />
-                </a>
-                <h3>{member.name}</h3>
-              </NameWrapper>
-              <p>{member.position}</p>
-            </PersonalInfo>
-          </Profile>
-        ))}
-      </Team>
-      <Team>
-        {DevOps.map((member) => (
-          <Profile key={member.name}>
-            <Avartar>
-              <img src={member.avatar} alt={member.name} />
-            </Avartar>
-            <PersonalInfo>
-              <NameWrapper>
-                <a href={member.linkedIn} target="_blank" rel="noreferrer">
-                  <img src={linkedInIcon} alt="linkedin icon for redirecting" />
-                </a>
-                <a href={member.email} target="_blank" rel="noreferrer">
-                  <img src={emailIcon} alt="email icon for seinding email" />
-                </a>
-                <h3>{member.name}</h3>
-              </NameWrapper>
-              <p>{member.position}</p>
-            </PersonalInfo>
-          </Profile>
-        ))}
-      </Team>
+      <Team>{developersMemo}</Team>
+      <Team>{devOpsMemo}</Team>
     </AboutUs>
   );
 });

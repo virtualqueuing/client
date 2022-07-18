@@ -9,7 +9,7 @@ export const StyledHeader = styled.header`
   margin: 0;
   padding: 0;
   padding-top: 18px;
-  @media (max-height:900px) {
+  @media (max-height: 900px) {
     height: 30vh;
   }
 `;
@@ -90,7 +90,6 @@ export const QueueTitleContainer = styled(QueueDataContainer)`
   background: ${({ theme }) => theme.colors.components.queueContainer.background};
   border-radius: 5px;
   box-sizing: border-box;
-
 `;
 
 export const QueueTitle = styled(QueueData)`
@@ -99,7 +98,6 @@ export const QueueTitle = styled(QueueData)`
   font-weight: 700;
   padding: 1vh;
   margin-left: -1vw;
-
 `;
 
 export const QueueTitleNo = styled(QueueTitle)`
