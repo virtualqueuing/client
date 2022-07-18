@@ -36,19 +36,19 @@ import { Popup } from "semantic-ui-react";
 
 const queueItems = {
   before: {
-    opacity: 0
+    opacity: 0,
   },
   after: {
     opacity: 1,
-  } 
-}
+  },
+};
 
 const statusButton = {
   hover: {
     scale: 1.1,
     textShadow: "0px, 0px, 8px, rgb(255,255,255)",
-  }
-}
+  },
+};
 
 const SingleQueue = ({
   _id,
@@ -108,7 +108,6 @@ const SingleQueue = ({
   const [isHovered, setIsHovered] = useState(false);
   const showQueueNotes = isHovered;
   const labelsOfFirstNote = notes[0].split(",");
-
 
   const replaceIndex = [3, 4, 5, 6];
   const replaceWithAsterisk = (phoneNumber, indices) => {
@@ -205,10 +204,7 @@ const SingleQueue = ({
                       }}
                     />
                   ) : (
-                    <QueueIcon
-                      src={inactiveMessageIcon}
-                      alt="message sending icon"
-                    />
+                    <QueueIcon src={inactiveMessageIcon} alt="message sending icon" />
                   )
                 }
               >
@@ -243,7 +239,9 @@ const SingleQueue = ({
                     : arrivalBorderActive
                 }
                 backgroundColor={
-                  isSending || status === QUEUE_STATUS.COMPLETED ? "#fff" : theme.colors.components.arrivalButton.fontColor.normal
+                  isSending || status === QUEUE_STATUS.COMPLETED
+                    ? "#fff"
+                    : theme.colors.components.arrivalButton.fontColor.normal
                 }
                 variants={statusButton}
                 whileHover={!isSending && status !== QUEUE_STATUS.COMPLETED && "hover"}
@@ -267,7 +265,9 @@ const SingleQueue = ({
                   isSending || status === QUEUE_STATUS.ABSENT ? disableColor : absenceBorderActive
                 }
                 backgroundColor={
-                  isSending || status === QUEUE_STATUS.ABSENT ? "#fff" : theme.colors.components.absentButton.fontColor.normal
+                  isSending || status === QUEUE_STATUS.ABSENT
+                    ? "#fff"
+                    : theme.colors.components.absentButton.fontColor.normal
                 }
                 variants={statusButton}
                 whileHover={!isSending && status !== QUEUE_STATUS.ABSENT && "hover"}

@@ -4,7 +4,7 @@ import { ModalBackground } from "../../../components/Modal/ModalBackground";
 import { UserContext } from "../../../pages/Context";
 import { API_URI } from "../../../constant";
 import axios from "axios";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 const Modal = styled(motion.div)`
@@ -85,30 +85,30 @@ const Cancel = styled(motion.span)`
 
 const backdrop = {
   after: { opacity: 1 },
-  before: { opacity: 0 }
-}
+  before: { opacity: 0 },
+};
 
 const modal = {
   before: {
-    y: '100vh',
-    opacity: 0
+    y: "100vh",
+    opacity: 0,
   },
   after: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.1, type: 'spring', stiffness: 80 }
-   }
-}
+    transition: { delay: 0.1, type: "spring", stiffness: 80 },
+  },
+};
 
 const buttonVariants = {
   hover: {
     scale: 1.1,
     textShadow: "0px, 0px, 8px, rgb(255,255,255)",
     transition: {
-      yoyo: 10
-    }
-  }
-}
+      yoyo: 10,
+    },
+  },
+};
 
 const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront }) => {
   const { user } = useContext(UserContext);
@@ -123,7 +123,12 @@ const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront
   };
 
   return (
-    <ModalBackground variants={backdrop} initial="before" animate="after" onClick={() => setShowMessagingModal(false)}>
+    <ModalBackground
+      variants={backdrop}
+      initial="before"
+      animate="after"
+      onClick={() => setShowMessagingModal(false)}
+    >
       <Modal variants={modal} onClick={(e) => e.stopPropagation()}>
         <Wrapper>
           <Title>Send Message</Title>
@@ -136,8 +141,20 @@ const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront
         </Wrapper>
         <HorizontalDivider />
         <ButtonWrapper>
-          <Cancel variants={buttonVariants} whileHover="hover" onClick={() => setShowMessagingModal(false)}>Cancel</Cancel>
-          <Confirm variants={buttonVariants} whileHover="hover" onClick={() => sendMessage(name, queueInFront, branch)}>Send</Confirm>
+          <Cancel
+            variants={buttonVariants}
+            whileHover="hover"
+            onClick={() => setShowMessagingModal(false)}
+          >
+            Cancel
+          </Cancel>
+          <Confirm
+            variants={buttonVariants}
+            whileHover="hover"
+            onClick={() => sendMessage(name, queueInFront, branch)}
+          >
+            Send
+          </Confirm>
         </ButtonWrapper>
       </Modal>
     </ModalBackground>
@@ -151,4 +168,4 @@ MessagingModal.propTypes = {
   setShowMessagingModal: PropTypes.func.isRequired,
   phoneNumber: PropTypes.string.isRequired,
   queueInFront: PropTypes.number.isRequired,
-}
+};

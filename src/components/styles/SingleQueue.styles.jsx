@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export const QueueDataContainer = styled.div`
   padding: 0;
