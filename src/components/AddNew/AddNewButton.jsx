@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import React from "react";
 import { showNewFormContext } from "../../pages/Context";
 import { useContext } from "react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,17 +43,25 @@ const buttonVariants = {
     scale: 1.1,
     textShadow: "0px, 0px, 8px, rgb(255,255,255)",
     transition: {
-      yoyo: 10
-    }
-  }
-}
+      yoyo: 10,
+    },
+  },
+};
 
 const Buttons = () => {
   const { setShowAddNewForm } = useContext(showNewFormContext);
   return (
     <Wrapper>
-      <Cancel variants={buttonVariants} whileHover="hover" onClick={() => setShowAddNewForm(false)}>Cancel</Cancel>
-      <Submit variants={buttonVariants} whileHover="hover" type="submit" name="submitInfo" value="Submit" />
+      <Cancel variants={buttonVariants} whileHover="hover" onClick={() => setShowAddNewForm(false)}>
+        Cancel
+      </Cancel>
+      <Submit
+        variants={buttonVariants}
+        whileHover="hover"
+        type="submit"
+        name="submitInfo"
+        value="Submit"
+      />
     </Wrapper>
   );
 };
