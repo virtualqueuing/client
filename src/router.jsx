@@ -4,6 +4,7 @@ const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 const SignupPage = React.lazy(() => import("./pages/SignupPage"));
 const MainHomepage = React.lazy(() => import("./pages/MainHomePage"));
+const ProfilePage = React.lazy(() => import("./pages/ProfilePage"));
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
   {
     path: "/home",
     element: <MainHomepage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
   },
 ];
 
