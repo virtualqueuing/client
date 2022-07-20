@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { UserAvatar } from '../LeftMenu/LeftMenu';
 import UserLine from '../../assets/Icons/Netflix-avatar 1.svg'
 import ChangeBtn from '../../assets/Icons/Profile-Vector.svg'
+import ProfileInfoProperty from './ProfileInfoProperty';
+import ProfileButton from './ProfileButton';
+import { useContext } from 'react';
+import { UserContext } from '../../pages/Context';
+import { useState } from 'react';
 
 export const UserDetailsContainer = styled.div`
     height: 432px;
@@ -16,6 +21,10 @@ export const Title = styled.h2`
 export const DetailsInfoContainer = styled.div`
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 43px;
     background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
 `
 
@@ -44,7 +53,20 @@ const UploadBtn = styled.img`
     height: 12px;
 `
 
+const DetailsForm = styled.form`
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+`
+
 const UserDetails = () => {
+    const {user} = useContext(UserContext);
+    const {fullName, email, role, branch} = user.data.data;
+    const UserNameEmailArr = {"User Name" : fullName, "Email" : email};
+    const roleBranchArr = {"Role" : role, "Branch" : branch};
+    const [disabledState, setDisabledState] = useState(true);
+
     return (
         <UserDetailsContainer>
             <Title>Personal Details</Title>
@@ -55,6 +77,11 @@ const UserDetails = () => {
                         <UploadBtn src={ChangeBtn} alt="Upload photo button" />
                     </UploadBtnWrapper>
                 </UserAvatarWrapper>
+                <DetailsForm>
+                    <ProfileInfoProperty personDetailsArr={UserNameEmailArr} disabled={disabledState} />
+                    <ProfileInfoProperty personDetailsArr={roleBranchArr} disabled={disabledState} />
+                </DetailsForm>
+                <ProfileButton disabledState={disabledState} setDisabledState={setDisabledState} />
             </DetailsInfoContainer>
         </UserDetailsContainer>
     )

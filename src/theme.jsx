@@ -55,6 +55,9 @@ const colors = {
       background: "#77A48E",
       hover: "#5F8C6A",
     },
+    profileButton: {
+      fontColor: "#fff",
+    },
     queueContainer: {
       background: "#F7F7F7",
     },
