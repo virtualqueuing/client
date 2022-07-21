@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import logo from "../assets/Logo-v5.svg";
+import React from 'react';
 
 const Wrapper = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const LogoImage = styled.img`
+export const LogoImage = styled.img`
   margin: 3% 0;
   ${({ logoSize }) => {
     switch (logoSize) {
