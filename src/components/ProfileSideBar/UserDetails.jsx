@@ -6,7 +6,6 @@ import ProfileInfoProperty from './ProfileInfoProperty';
 import ProfileButton from './ProfileButton';
 import { useContext } from 'react';
 import { UserContext } from '../../pages/Context';
-import { useState } from 'react';
 
 export const UserDetailsContainer = styled.div`
     height: 432px;
@@ -53,19 +52,18 @@ const UploadBtn = styled.img`
     height: 12px;
 `
 
-const DetailsForm = styled.form`
+export const DetailsForm = styled.form`
     height: 190px;
     display: flex;
     flex-direction: column;
     justify-content:space-between;
 `
 
-const UserDetails = () => {
+const UserDetails = ({disabled}) => {
     const {user} = useContext(UserContext);
     const {fullName, email, role, branch} = user.data.data;
     const UserNameEmailArr = {"User Name" : fullName, "Email" : email};
     const roleBranchArr = {"Role" : role, "Branch" : branch};
-    const [disabledState, setDisabledState] = useState(true);
 
     return (
         <UserDetailsContainer>
@@ -78,10 +76,10 @@ const UserDetails = () => {
                     </UploadBtnWrapper>
                 </UserAvatarWrapper>
                 <DetailsForm>
-                    <ProfileInfoProperty personDetailsArr={UserNameEmailArr} disabled={disabledState} />
-                    <ProfileInfoProperty personDetailsArr={roleBranchArr} disabled={disabledState} />
+                    <ProfileInfoProperty personDetailsArr={UserNameEmailArr} disabled={disabled} />
+                    <ProfileInfoProperty personDetailsArr={roleBranchArr} disabled={disabled} />
                 </DetailsForm>
-                <ProfileButton disabledState={disabledState} setDisabledState={setDisabledState} />
+                <ProfileButton />
             </DetailsInfoContainer>
         </UserDetailsContainer>
     )

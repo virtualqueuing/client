@@ -4,7 +4,7 @@ import AddNewPage from "../../pages/AddNewPage";
 import { useState } from "react";
 import { showNewFormContext } from "../../pages/Context";
 
-const buttonVariants = {
+export const buttonVariants = {
   before: { y: "100vh" },
   after: {
     y: 0,

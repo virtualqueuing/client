@@ -1,14 +1,19 @@
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 import styled from 'styled-components';
 import UserDetails from "./UserDetails";
-import { UserDetailsContainer, Title, DetailsInfoContainer } from './UserDetails' 
+import UserPassword from "./UserPassword";
+import { useState } from "react";
+import ProfileFooter from "./ProfileFooter";
+import { motion } from "framer-motion";
+import { buttonVariants } from '../../components/RightMenu/Footer'
+
 
 const ProfileContentWrapper = styled(RightMenuContainer)`
     align-items: center;
     justify-content: space-between;
 `
 
-const ProfileContent = styled.div`
+const ProfileContent = styled(motion.div)`
     width: 970px;
     height: 880px;
     display: flex;
@@ -16,28 +21,15 @@ const ProfileContent = styled.div`
     justify-content: space-around;
 `
 
-const UserPasswordContainer = styled(UserDetailsContainer)`
-    height: 254px;
-`
-
-const ProfileFooter = styled.div`
-    width: 100%;
-    height: 210px;
-    background-color: ${({ theme }) => theme.colors.components.arrivalButton.fontColor.normal};
-`
-
 const ProfileSideInfo = () => {
+    const [disabledState, setDisabledState] = useState(true);
     return (
         <ProfileContentWrapper>
-            <ProfileContent>
-                <UserDetails />
-                <UserPasswordContainer>
-                    <Title>Change Password</Title>
-                    <DetailsInfoContainer>
-                    </DetailsInfoContainer>
-                </UserPasswordContainer>
+            <ProfileContent variants={buttonVariants} initial="before" animate="after">
+                <UserDetails disabled={disabledState} />
+                <UserPassword disabled={disabledState} />
             </ProfileContent>
-            <ProfileFooter></ProfileFooter>
+            <ProfileFooter />
         </ProfileContentWrapper>
     )
 }

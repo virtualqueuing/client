@@ -25,10 +25,13 @@ const PersonalDetailsBtn = styled.button`
     }
 `
 
-const ProfileButton = ({disabledState ,setDisabledState}) => {
+const ProfileButton = () => {
     const [btnContent, setBtnContent] = useState("Edit");
+    const handleEdit = () => {
+        setBtnContent("Save")
+    }
     return (
-        <PersonalDetailsBtnWrapper onClick={setDisabledState(false)}>
+        <PersonalDetailsBtnWrapper onClick={handleEdit}>
             <PersonalDetailsBtn>{btnContent}</PersonalDetailsBtn>
         </PersonalDetailsBtnWrapper>
     )

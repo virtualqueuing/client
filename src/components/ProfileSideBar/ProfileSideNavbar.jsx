@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Logo from '../../assets/Profile-Logo.svg';
 import AccountIcon from '../../assets/Icons/Menu-accoount.svg';
 import { LeftSideBarOption, LeftSideBarOptionIcon, LeftSideBarOptionDescription } from '../LeftMenu/LeftMenu'
+import { useNavigate } from 'react-router-dom';
 
 const NavContainer = styled.div`
     margin: 0;
@@ -28,9 +29,13 @@ const ProfileSideBarOption = styled(LeftSideBarOption)`
 
 
 const ProfileSideNavbar = () => {
+    const navigate = useNavigate()
+    const handleLogo = () => {
+        navigate("/");
+    }
     return (
         <NavContainer>
-            <ProfileLogo src={Logo} alt="profileLogo" />
+            <ProfileLogo src={Logo} alt="profileLogo" onClick={handleLogo} />
             <ProfileSideBarOption>
                 <LeftSideBarOptionIcon src={AccountIcon} alt="Account Icon" />
                 <LeftSideBarOptionDescription>Account</LeftSideBarOptionDescription>
