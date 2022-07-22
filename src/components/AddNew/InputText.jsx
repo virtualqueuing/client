@@ -1,4 +1,5 @@
 import { InputWrapper, StyledInputText, Label } from "../styles/AddNew.styles";
+import React from "react";
 
 const InputText = ({ inputInfo }) => {
   return (

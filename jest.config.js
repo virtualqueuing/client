@@ -4,13 +4,13 @@ module.exports = {
   moduleFileExtensions: ["js", "jsx", "json"],
   transform: {
     "^.+\\.(js|jsx)?$": "babel-jest",
-    "^.+\\.svg$": "<rootDir>/src/svgTransform.js",
+    "\\.svg$": "svg-jest",
   },
   moduleDirectories: ["node_modules", __dirname],
   clearMocks: true,
   coverageDirectory: "coverage",
   moduleNameMapper: {
-    "^.+\\.svg$": "<rootDir>/src/svgTransform.js",
+    "\\.svg$": "svg-jest",
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "test-file-stub",
     "\\.(css|less|scss)$": "identity-obj-proxy",
