@@ -33,7 +33,7 @@ const UserPanel = styled.div`
   }
 `;
 
-const UserAvatar = styled.img`
+export const UserAvatar = styled.img`
   width: 52px;
   height: 52px;
   border-radius: 20px;
@@ -135,7 +135,7 @@ const LeftSideBarOptionContainer = styled.div`
   }
 `;
 
-const LeftSideBarOption = styled.div`
+export const LeftSideBarOption = styled.div`
   width: 303px;
   height: 50px;
   display: flex;
@@ -147,7 +147,7 @@ const LeftSideBarOption = styled.div`
   }
 `;
 
-const LeftSideBarOptionIcon = styled.img`
+export const LeftSideBarOptionIcon = styled.img`
   width: 30px;
   height: 30px;
   @media (max-width: 1500px) {
@@ -156,7 +156,7 @@ const LeftSideBarOptionIcon = styled.img`
   }
 `;
 
-const LeftSideBarOptionDescription = styled.span`
+export const LeftSideBarOptionDescription = styled.span`
   font-size: 25px;
   color: ${({ theme }) => theme.colors.fonts.activeRoute};
   @media (max-width: 1500px) {
@@ -332,7 +332,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   return (
     <Background>
       <UserPanel>
-        <UserAvatar src={UserLine} />
+        <UserAvatar src={UserLine} alt="User photo" />
         <UserDetails>
           <UserName>{user.data.data.fullName}</UserName>
           <UserLocation>{user.data.data.branch}</UserLocation>
