@@ -10,7 +10,7 @@ import { UserContext } from "../../pages/Context";
 import isEmpty from "lodash/isEmpty";
 import { motion } from "framer-motion";
 
-const Background = styled.div`
+export const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
   margin: 0;
   display: flex;
@@ -21,7 +21,7 @@ const Background = styled.div`
   padding: 40px 15px;
 `;
 
-const UserPanel = styled.div`
+export const UserPanel = styled.div`
   display: flex;
   width: 100%;
   height: 50px;
@@ -39,25 +39,25 @@ export const UserAvatar = styled.img`
   border-radius: 20px;
 `;
 
-const UserDetails = styled.div`
+export const UserDetails = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   height: 45px;
 `;
 
-const UserName = styled.h5`
+export const UserName = styled.h5`
   padding: 0;
   margin: 0;
   font-size: 15px;
   color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
 `;
 
-const UserLocation = styled.span`
+export const UserLocation = styled.span`
   color: ${({ theme }) => theme.colors.fonts.secondary};
 `;
 
-const ArrowDownBtn = styled.img`
+export const ArrowDownBtn = styled.img`
   position: absolute;
   right: 0;
   cursor: pointer;
@@ -69,7 +69,7 @@ const ArrowDownBtn = styled.img`
       : ""}
 `;
 
-const DropDownListContainer = styled.ul`
+export const DropDownListContainer = styled.ul`
   margin: -20px 0px 0px;
   flex-direction: column;
   justify-content: space-around;
@@ -103,7 +103,7 @@ const DropDownListContainer = styled.ul`
         `}
 `;
 
-const DropDownList = styled.li`
+export const DropDownList = styled.li`
   text-align: center;
   transition: 0.5s;
   padding: 10px 12px;
@@ -128,7 +128,7 @@ const DropDownList = styled.li`
   }
 `;
 
-const LeftSideBarOptionContainer = styled.div`
+export const LeftSideBarOptionContainer = styled.div`
   padding-bottom: 90px;
   @media (max-width: 1500px) {
     padding-bottom: 0;
@@ -329,6 +329,10 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
     navigate("/profile");
   };
 
+  const navigateToDashboard = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <Background>
       <UserPanel>
@@ -358,7 +362,7 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
           <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
         </LeftSideBarOption>
         {manager && (
-          <LeftSideBarOption>
+          <LeftSideBarOption onClick={navigateToDashboard}>
             <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
             <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
           </LeftSideBarOption>
