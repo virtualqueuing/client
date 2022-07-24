@@ -3,6 +3,7 @@ import Tag from "../Tag";
 import CreateTags from "./CreateTags";
 import { useState, useRef } from "react";
 import { StyledTextarea } from "../styles/AddNew.styles";
+import React from "react";
 
 const InputTextarea = ({ inputInfo }) => {
   const noteString = inputInfo?.notes[0].split(",");

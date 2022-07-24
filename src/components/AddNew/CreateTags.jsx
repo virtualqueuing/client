@@ -4,6 +4,7 @@ import Tag from "../Tag";
 import theme from "../../theme";
 import propTypes from "prop-types";
 import isEmpty from "lodash/isEmpty";
+import React from "react";
 
 const Container = styled.div`
   background-color: white;
