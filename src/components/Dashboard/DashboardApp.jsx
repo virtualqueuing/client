@@ -3,6 +3,7 @@ import Logo from "../Logo";
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 import styled from "styled-components";
 import NotesPieChart from "./PieChart/NotesPieChart";
+import CardChart from "./CardChart/CardChart";
 
 const DashboardAppWrapper = styled(RightMenuContainer)`
   justify-content: space-between;
@@ -22,6 +23,7 @@ const DashboardApp = () => {
     <DashboardAppWrapper>
       <Logo path={"/"} alt="profileLogo" logoSize="large" />
       <MainboardContainer>
+        <CardChart />
         <NotesPieChart />
       </MainboardContainer>
     </DashboardAppWrapper>

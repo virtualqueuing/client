@@ -21,6 +21,7 @@ const ProfileContent = styled(motion.div)`
 `;
 
 const ProfileSideInfo = () => {
+  // eslint-disable-next-line no-unused-vars
   const [disabledState, setDisabledState] = useState(true);
   return (
     <ProfileContentWrapper>

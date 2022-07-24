@@ -6,6 +6,10 @@ const SingleChartContainer = styled(motion.div)`
   height: ${({ containerHeight }) => containerHeight || "360px"};
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   padding: 40px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export default SingleChartContainer;
