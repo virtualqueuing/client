@@ -1,6 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import notesData from "../../../assets/data/notes";
+import arrivedRateData from "../../../assets/data/arrivedRate";
 import SingleChartContainer from "../components/SingleChartContainer";
 import TitleforTheChart from "../components/Title";
 
@@ -38,7 +38,7 @@ const chartAnimation = {
   },
 };
 
-const NotesPieChart = () => {
+const ArrivedPieChart = () => {
   return (
     <SingleChartContainer
       variants={chartAnimation}
@@ -46,20 +46,21 @@ const NotesPieChart = () => {
       animate="after"
       whileHover="hover"
     >
-      <TitleforTheChart>Special request rate</TitleforTheChart>
+      <TitleforTheChart>Arrival rate</TitleforTheChart>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
           <Pie
-            data={notesData}
+            data={arrivedRateData}
             cx="50%"
             cy="45%"
-            labelLine={false}
-            label={renderCustomizedLabel}
+            innerRadius={5}
             outerRadius={80}
             fill="#8884d8"
             dataKey="value"
+            labelLine={false}
+            label={renderCustomizedLabel}
           >
-            {notesData.map((entry, index) => (
+            {arrivedRateData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
@@ -71,4 +72,4 @@ const NotesPieChart = () => {
   );
 };
 
-export default NotesPieChart;
+export default ArrivedPieChart;
