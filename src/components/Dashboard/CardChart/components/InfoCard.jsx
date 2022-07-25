@@ -2,25 +2,24 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 8vh;
-  width: 10vh;
-  padding: 1vh;
+  height: 6vh;
+  width: 12vh;
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+  justify-content: center;
+  gap: 5%;
   align-items: center;
-  border: 3px solid rgba(93, 86, 112, 0.7);
+  border: 2px solid rgba(93, 86, 112, 0.2);
   border-radius: 10%;
 `;
 
 const CardNumber = styled.div`
   text-align: center;
-  width: 30%;
-  font-size: 25px;
+  font-size: 24px;
+  color: #e54848;
 `;
 
-const CardDescription = styled.div`
-  font-size: 15px;
+const CardDescription = styled.span`
+  font-size: 16px;
   color: rgba(0, 0, 0, 0.4);
 `;
 

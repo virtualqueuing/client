@@ -1,5 +1,7 @@
 import React from "react";
 import SingleChartContainer from "../components/SingleChartContainer";
+import TitleforTheChart from "../components/Title";
+import ItemDescription from "./components/ItemDescription";
 import TableCard from "./components/TableCard";
 
 const chartAnimation = {
@@ -21,9 +23,9 @@ const chartAnimation = {
   },
 };
 
-const smallTableInfo = { tableType: "Small", averageNumber: 2, maximumNumber: 4 };
-const mediumTableInfo = { tableType: "Medium", averageNumber: 6, maximumNumber: 8 };
-const largeTableInfo = { tableType: "Large", averageNumber: 9, maximumNumber: 11 };
+const smallTableInfo = { tableType: "S", averageNumber: 2, maximumNumber: 4 };
+const mediumTableInfo = { tableType: "M", averageNumber: 6, maximumNumber: 8 };
+const largeTableInfo = { tableType: "L", averageNumber: 9, maximumNumber: 11 };
 
 const CardChart = () => {
   return (
@@ -33,6 +35,8 @@ const CardChart = () => {
       animate="after"
       whileHover="hover"
     >
+      <TitleforTheChart>Waiting time</TitleforTheChart>
+      <ItemDescription />
       <TableCard tableInfo={smallTableInfo} />
       <TableCard tableInfo={mediumTableInfo} />
       <TableCard tableInfo={largeTableInfo} />

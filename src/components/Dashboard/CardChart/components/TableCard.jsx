@@ -10,15 +10,17 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.div`
+  padding-left: 1vw;
   width: 10%;
+  font-size: 20px;
 `;
 
 const TableCard = ({ tableInfo }) => {
   return (
     <Wrapper>
       <Title>{tableInfo.tableType}</Title>
-      <InfoCard number={tableInfo.averageNumber}>Average</InfoCard>
-      <InfoCard number={tableInfo.maximumNumber}>Maximum</InfoCard>
+      <InfoCard number={tableInfo.averageNumber}>mins</InfoCard>
+      <InfoCard number={tableInfo.maximumNumber}>mins</InfoCard>
     </Wrapper>
   );
 };
