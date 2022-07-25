@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import chartAnimation from "./PieChart/NotesPieChart";
+import TitleforTheChart from "./components/Title";
 
 const data = [
   {
@@ -71,6 +71,25 @@ const data = [
   },
 ];
 
+const chartAnimation = {
+  before: {
+    opacity: 0,
+    x: "100vw",
+  },
+  after: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.1,
+      type: "tween",
+      duration: 0.6,
+    },
+  },
+  hover: {
+    scale: 1.1,
+  },
+};
+
 const TotalCustomerLineChart = () => {
   return (
     <SingleChartContainer
@@ -79,6 +98,7 @@ const TotalCustomerLineChart = () => {
       animate="after"
       whileHover="hover"
     >
+      <TitleforTheChart>Daily Customers</TitleforTheChart>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
