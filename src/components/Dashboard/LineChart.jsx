@@ -71,9 +71,6 @@ const data = [
   },
 ];
 
-// export default class Example extends PureComponent {
-//   static demoUrl = 'https://codesandbox.io/s/simple-line-chart-kec3v';
-
 const TotalCustomerLineChart = () => {
   return (
     <SingleChartContainer
@@ -100,7 +97,6 @@ const TotalCustomerLineChart = () => {
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="Customers" stroke="#0088fe" activeDot={{ r: 8 }} />
-          {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
         </LineChart>
       </ResponsiveContainer>
     </SingleChartContainer>
