@@ -33,6 +33,7 @@ const SignupPage = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [exsitedEmail, setExsitedEmail] = useState(false);
 
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
 
   const { setUser } = useContext(UserContext);
