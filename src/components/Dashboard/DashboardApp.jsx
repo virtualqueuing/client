@@ -3,6 +3,7 @@ import Logo from "../Logo";
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 import styled from "styled-components";
 import NotesPieChart from "./PieChart/NotesPieChart";
+import TotalCustomerLineChart from "./LineChart";
 import CardChart from "./CardChart/CardChart";
 import ArrivedPieChart from "./PieChart/ArrivedPieChart";
 
@@ -28,6 +29,7 @@ const DashboardApp = () => {
         <CardChart />
         <ArrivedPieChart />
         <NotesPieChart />
+        <TotalCustomerLineChart />
       </MainboardContainer>
     </DashboardAppWrapper>
   );
