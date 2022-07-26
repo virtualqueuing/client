@@ -5,6 +5,7 @@ import MainQueues from "./QueueList";
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 import axios from "axios";
 import { API_URI } from "../../constant.jsx";
+import { useNavigate } from "react-router-dom";
 
 const MainBar = ({
   queues,
@@ -18,14 +19,19 @@ const MainBar = ({
   alt,
 }) => {
   const [searchQueue, setSearchQueue] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchQueue = async () => {
       const BEARER_TOKEN = `Bearer ${JSON.parse(localStorage.getItem("user")).token}`;
-      const { data } = await axios.get(`${API_URI}/v1/queues`, {
-        headers: { authorization: BEARER_TOKEN },
-      });
-      setQueues(data);
+      try {
+        const { data } = await axios.get(`${API_URI}/v1/queues`, {
+          headers: { authorization: BEARER_TOKEN },
+        });
+        setQueues(data);
+      } catch (err) {
+        navigate("/home");
+      }
     };
     fetchQueue();
   }, []);
