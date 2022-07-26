@@ -42,6 +42,10 @@ const DashboardPage = () => {
     navigate("/profile");
   };
 
+  const navigateToMainQueues = () => {
+    navigate("/");
+  };
+
   return (
     <Container>
       <Background>
@@ -67,7 +71,7 @@ const DashboardPage = () => {
           </DropDownList>
         </DropDownListContainer>
         <LeftSideBarOptionContainer>
-          <LeftSideBarOption>
+          <LeftSideBarOption onClick={navigateToMainQueues}>
             <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
             <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
           </LeftSideBarOption>

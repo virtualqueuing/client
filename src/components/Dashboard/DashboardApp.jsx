@@ -14,9 +14,27 @@ const DashboardAppWrapper = styled(RightMenuContainer)`
 
 const MainboardContainer = styled.div`
   display: flex;
-  gap: 3%;
-  height: 85vh;
   width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const UpperContainer = styled.div`
+  display: flex;
+  height: 40%;
+  width: 100%;
+  padding: 0 15px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LowerContainer = styled.div`
+  display: flex;
+  height: 56%;
+  width: 100%;
+  padding: 0 15px;
   justify-content: center;
   align-items: center;
 `;
@@ -26,10 +44,14 @@ const DashboardApp = () => {
     <DashboardAppWrapper>
       <Logo path={"/"} alt="profileLogo" logoSize="large" />
       <MainboardContainer>
-        <CardChart />
-        <ArrivedPieChart />
-        <NotesPieChart />
-        <TotalCustomerLineChart />
+        <UpperContainer>
+          <CardChart />
+          <ArrivedPieChart />
+          <NotesPieChart />
+        </UpperContainer>
+        <LowerContainer>
+          <TotalCustomerLineChart />
+        </LowerContainer>
       </MainboardContainer>
     </DashboardAppWrapper>
   );
