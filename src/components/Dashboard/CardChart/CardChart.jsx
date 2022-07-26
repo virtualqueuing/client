@@ -34,6 +34,8 @@ const CardChart = () => {
       initial="before"
       animate="after"
       whileHover="hover"
+      containerWidth="33.3%"
+      containerHeight="calc(100% - 30px)"
     >
       <TitleforTheChart>Waiting time</TitleforTheChart>
       <ItemDescription />

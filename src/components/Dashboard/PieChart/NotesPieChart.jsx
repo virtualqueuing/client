@@ -45,6 +45,8 @@ const NotesPieChart = () => {
       initial="before"
       animate="after"
       whileHover="hover"
+      containerWidth="33.3%"
+      containerHeight="calc(100% - 30px)"
     >
       <TitleforTheChart>Special request rate</TitleforTheChart>
       <ResponsiveContainer width="100%" height="100%">

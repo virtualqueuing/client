@@ -97,6 +97,8 @@ const TotalCustomerLineChart = () => {
       initial="before"
       animate="after"
       whileHover="hover"
+      containerWidth="48%"
+      containerHeight="calc(100% - 30px)"
     >
       <TitleforTheChart>Daily Customers</TitleforTheChart>
       <ResponsiveContainer width="100%" height="100%">
