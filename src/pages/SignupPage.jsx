@@ -68,8 +68,9 @@ const SignupPage = () => {
         }));
         navigate("/");
       } catch (error) {
-        const status = error.request.status;
-        if (status === StatusCodes.CONFLICT) setExsitedEmail(true);
+        console.log(error);
+        const statusCode = error.response.status;
+        if (statusCode === StatusCodes.CONFLICT) setExsitedEmail(true);
         setLoading(false);
       }
     }
