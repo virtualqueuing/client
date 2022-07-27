@@ -88,8 +88,8 @@ const LoginPage = () => {
       }));
       navigate("/");
     } catch (error) {
-      const status = error.request.status;
-      if (status === StatusCodes.UNAUTHORIZED) setemailPasswordIncorrect(true);
+      const statusCode = error.response.status;
+      if (statusCode === StatusCodes.UNAUTHORIZED) setemailPasswordIncorrect(true);
       setLoading(false);
     }
   };
