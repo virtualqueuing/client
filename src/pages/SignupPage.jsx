@@ -69,8 +69,7 @@ const SignupPage = () => {
         navigate("/");
       } catch (error) {
         const status = error.request.status;
-        if (status === StatusCodes.BAD_REQUEST || StatusCodes.INTERNAL_SERVER_ERROR)
-          setExsitedEmail(true);
+        if (status === StatusCodes.CONFLICT) setExsitedEmail(true);
         setLoading(false);
       }
     }
