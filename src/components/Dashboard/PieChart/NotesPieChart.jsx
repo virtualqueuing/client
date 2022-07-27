@@ -3,12 +3,7 @@ import { PieChart, Pie, Legend, Cell, ResponsiveContainer, Tooltip } from "recha
 import notesData from "../../../assets/data/notes";
 import SingleChartContainer from "../components/SingleChartContainer";
 import TitleforTheChart from "../components/Title";
-
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+import { chartAnimation } from "../../../constant"; const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"]; const RADIAN = Math.PI / 180; const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => { const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -17,25 +12,6 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
-};
-
-const chartAnimation = {
-  before: {
-    opacity: 0,
-    x: "100vw",
-  },
-  after: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: 0.1,
-      type: "tween",
-      duration: 0.6,
-    },
-  },
-  hover: {
-    scale: 1.1,
-  },
 };
 
 const NotesPieChart = () => {
@@ -48,7 +24,7 @@ const NotesPieChart = () => {
       containerWidth="33.3%"
       containerHeight="calc(100% - 30px)"
     >
-      <TitleforTheChart>Special request rate</TitleforTheChart>
+      <TitleforTheChart>Special Request</TitleforTheChart>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
           <Pie

@@ -3,25 +3,7 @@ import SingleChartContainer from "../components/SingleChartContainer";
 import TitleforTheChart from "../components/Title";
 import ItemDescription from "./components/ItemDescription";
 import TableCard from "./components/TableCard";
-
-const chartAnimation = {
-  before: {
-    opacity: 0,
-    x: "100vw",
-  },
-  after: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: 0.1,
-      type: "tween",
-      duration: 0.6,
-    },
-  },
-  hover: {
-    scale: 1.1,
-  },
-};
+import { chartAnimation } from "../../../constant"
 
 const smallTableInfo = { tableType: "S", averageNumber: 2, maximumNumber: 4 };
 const mediumTableInfo = { tableType: "M", averageNumber: 6, maximumNumber: 8 };
@@ -37,7 +19,7 @@ const CardChart = () => {
       containerWidth="33.3%"
       containerHeight="calc(100% - 30px)"
     >
-      <TitleforTheChart>Waiting time</TitleforTheChart>
+      <TitleforTheChart>Waiting Time</TitleforTheChart>
       <ItemDescription />
       <TableCard tableInfo={smallTableInfo} />
       <TableCard tableInfo={mediumTableInfo} />
