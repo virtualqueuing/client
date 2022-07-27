@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { useContext } from "react";
 import Logo from "../Logo";
 import { UserContext } from "../../pages/Context";
+import theme from "../../theme"
 
-const ButtonColor = "#2EAD7C";
+const ButtonColor = theme.colors.components.positiveButton.fontColor;
 
 const HomeNavigation = styled.div`
   display: flex;
@@ -13,7 +14,9 @@ const HomeNavigation = styled.div`
   padding: 0 20px;
   width: 100vw;
   height: 60px;
-  background-color: #fff;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, .9);
   z-index: 1;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   /* position: fixed; */
@@ -45,22 +48,35 @@ const NavigationButton = styled.button`
 const Navigation = ({ scrollToSection }) => {
   const navigate = useNavigate();
 
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+
+  const handleSignOut = () => {
+    setUser({ data: null });
+    navigate("/home");
+  };
 
   return (
     <HomeNavigation>
       <Logo logoSize="medium" path="/" alt="logo for redirecting to main page" />
       <NavigationLinks>
-        <NavigationButton style={{ border: "none", paddingRight: 0 }} onClick={scrollToSection}>
+        <NavigationButton style={{ border: "none", paddingRight: 0, backgroundColor: "rgba(255, 255, 255, .9)" }} onClick={scrollToSection}>
           About Us
         </NavigationButton>
         {user.data ? (
-          <NavigationButton
-            onClick={() => navigate("/")}
-            style={{ backgroundColor: `${ButtonColor}`, color: "#fff" }}
-          >
-            View Queues
-          </NavigationButton>
+          <>
+            <NavigationButton
+              onClick={() => navigate("/")}
+              style={{ backgroundColor: `${ButtonColor}`, color: "#fff" }}
+            >
+              View Queues
+            </NavigationButton>
+            <NavigationButton
+              onClick={handleSignOut}
+              style={{ color: `${ButtonColor}` }}
+            >
+              Sign Out
+            </NavigationButton>
+          </>
         ) : (
           <>
             <NavigationButton
