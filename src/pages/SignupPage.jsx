@@ -13,6 +13,7 @@ import InputPassword from "../components/SingnupSignIn/InputPassword";
 import { ErrorMessage, ExsitedEmailMessge } from "../components/SingnupSignIn/ErrorMessage.style";
 import emailValidation from "../components/SingnupSignIn/Apps/validation";
 import { StatusCodes } from "http-status-codes";
+import LoadingPage from "../pages/LoadingPage";
 
 const USER_NAME_VALID_MIN = 3;
 const PASSWORD_VALID_MAX = 6;
@@ -61,12 +62,14 @@ const SignupPage = () => {
           branch,
           password,
         });
-        setLoading(false);
         setUser((prev) => ({
           ...prev,
           data,
         }));
-        navigate("/");
+        setTimeout(() => {
+          setLoading(false);
+          navigate("/");
+        }, 200);
       } catch (error) {
         console.log(error);
         const statusCode = error.response.status;
@@ -75,6 +78,10 @@ const SignupPage = () => {
       }
     }
   };
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <LoginContainer>

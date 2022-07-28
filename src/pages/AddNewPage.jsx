@@ -23,7 +23,7 @@ const modal = {
   after: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.1, type: "spring", stiffness: 80 },
+    transition: { type: "spring", stiffness: 50 },
   },
 };
 const AddNewPage = ({ queueInfo, setShowAddNewForm }) => {

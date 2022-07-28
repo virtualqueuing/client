@@ -4,6 +4,7 @@ import { UserContext } from "./Context";
 import UserLine from "../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../assets/Icons/arrow-down-s-line.svg";
 import MenuQueueList from "../assets/Icons/Menu_QueueList.svg";
+import DashBoardClock from "../assets/Icons/Menu_DashBoard.svg";
 import Container from "../components/Container";
 import {
   Background,
@@ -74,6 +75,10 @@ const DashboardPage = () => {
           <LeftSideBarOption onClick={navigateToMainQueues}>
             <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
             <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
+          </LeftSideBarOption>
+          <LeftSideBarOption>
+            <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
+            <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
           </LeftSideBarOption>
         </LeftSideBarOptionContainer>
       </Background>
