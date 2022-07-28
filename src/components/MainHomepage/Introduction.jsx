@@ -6,14 +6,21 @@ const Introduction = styled(FlexDisplay)`
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100vw;
-  height: 100vh;
+  width: 70vw;
+  /* height: 100vh; */
   background-color: #fff;
-  @media (max-width: 800px) {
+  padding-top: 60px;
+
+  @media (max-width: 1024px) {
+    width: 90vw;
+    flex-direction: row;
+  }
+
+  /* @media (max-width: 800px) {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-  }
+  } */
 `;
 
 const QueueImage = styled.img`
@@ -27,7 +34,7 @@ const QueueImage = styled.img`
 const Description = styled.div`
   width: 30vw;
   height: auto;
-  @media (max-width: 800px) {
+  @media (max-width: 1024px) {
     width: 80vw;
   }
 `;
