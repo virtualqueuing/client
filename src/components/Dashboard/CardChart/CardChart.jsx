@@ -5,9 +5,11 @@ import ItemDescription from "./components/ItemDescription";
 import TableCard from "./components/TableCard";
 import { chartAnimation } from "../../../constant";
 
-const smallTableInfo = { tableType: "S", averageNumber: 2, maximumNumber: 4 };
-const mediumTableInfo = { tableType: "M", averageNumber: 6, maximumNumber: 8 };
-const largeTableInfo = { tableType: "L", averageNumber: 9, maximumNumber: 11 };
+const smallTableInfo = { tableType: "Small", averageNumber: 2, maximumNumber: 4 };
+const mediumTableInfo = { tableType: "Medium", averageNumber: 6, maximumNumber: 8 };
+const largeTableInfo = { tableType: "Large", averageNumber: 9, maximumNumber: 11 };
+
+
 
 const CardChart = () => {
   return (
