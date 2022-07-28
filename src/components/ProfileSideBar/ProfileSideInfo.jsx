@@ -14,7 +14,6 @@ const ProfileContentWrapper = styled(RightMenuContainer)`
 
 const ProfileContent = styled(motion.div)`
   width: 970px;
-  height: 880px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

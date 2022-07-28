@@ -6,7 +6,7 @@ import NotesPieChart from "./PieChart/NotesPieChart";
 import TotalCustomerLineChart from "./LineChart/LineChart";
 import CardChart from "./CardChart/CardChart";
 import ArrivedPieChart from "./PieChart/ArrivedPieChart";
-import CustomerTableBarChart from "./BarChart/CustomerTableBarChart"
+import CustomerTableBarChart from "./BarChart/CustomerTableBarChart";
 
 const DashboardAppWrapper = styled(RightMenuContainer)`
   justify-content: space-between;
@@ -16,19 +16,19 @@ const DashboardAppWrapper = styled(RightMenuContainer)`
 const MainboardContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 const RowContainer = styled.div`
   display: flex;
-  height: ${({ rowHeight }) => rowHeight || "480px" };
-  min-width: 85vw;
-  padding: 0 15px;
+  height: ${({ rowHeight }) => rowHeight || "480px"};
+  min-width: 80vw;
   justify-content: center;
   align-items: center;
+  gap: 1%;
 `;
 
 const DashboardApp = () => {

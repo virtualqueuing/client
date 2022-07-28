@@ -53,20 +53,20 @@ export const API_URI = import.meta.env.DEV
   : `${import.meta.env.VITE_SERVER_URL}`;
 
 export const chartAnimation = {
-    before: {
-        opacity: 0,
-        x: "100vw",
+  before: {
+    opacity: 0,
+    x: "100vw",
+  },
+  after: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.1,
+      type: "tween",
+      duration: 0.6,
     },
-    after: {
-        opacity: 1,
-        x: 0,
-        transition: {
-            delay: 0.1,
-            type: "tween",
-            duration: 0.6,
-        },
-    },
-    hover: {
-        scale: 1.04,
-    },
+  },
+  hover: {
+    scale: 1.04,
+  },
 };

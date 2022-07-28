@@ -12,7 +12,7 @@ import InputPassword from "../components/SingnupSignIn/InputPassword";
 import emailValidation from "../components/SingnupSignIn/Apps/validation";
 import { ErrorMessage, ExsitedEmailMessge } from "../components/SingnupSignIn/ErrorMessage.style";
 import { StatusCodes } from "http-status-codes";
-import LoadingPage from "../pages/LoadingPage"
+import LoadingPage from "../pages/LoadingPage";
 
 export const LoginContainer = styled.div`
   width: 370px;
@@ -86,19 +86,19 @@ const LoginPage = () => {
         ...prev,
         data,
       }));
-      setTimeout(() => {  
-      setLoading(false);
-      navigate("/");
-      }, 500)
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/");
+      }, 500);
     } catch (error) {
       const statusCode = error.response.status;
       if (statusCode === StatusCodes.UNAUTHORIZED) setemailPasswordIncorrect(true);
       setLoading(false);
     }
   };
-  
+
   if (loading) {
-    return <LoadingPage />
+    return <LoadingPage />;
   }
 
   return (

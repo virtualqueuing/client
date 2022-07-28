@@ -4,7 +4,6 @@ import FlexDisplay from "./FlexDisplay";
 
 const HomeFooter = styled(FlexDisplay)`
   width: 100vw;
-  height: auto;
   color: #fff;
   background-color: #5d5670;
   padding-bottom: 20px;
@@ -18,13 +17,7 @@ const FooterContent = styled.div`
 const Footer = () => (
   <HomeFooter>
     <SectionTitle style={{ color: "#fff" }}>Virtual Queuing</SectionTitle>
-    <FooterContent>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum ipsa aspernatur minus
-        veritatis enim quos fugiat pariatur, amet adipisci. Voluptates suscipit at sapiente minus
-        sunt in officiis animi error iure?
-      </p>
-    </FooterContent>
+    <FooterContent></FooterContent>
     <p>Copyright &copy;2022 Hard to Beat</p>
   </HomeFooter>
 );

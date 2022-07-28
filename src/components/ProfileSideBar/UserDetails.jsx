@@ -8,23 +8,24 @@ import { useContext } from "react";
 import { UserContext } from "../../pages/Context";
 
 export const UserDetailsContainer = styled.div`
-  height: 432px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Title = styled.h2`
-  margin: 0;
+  margin-bottom: 10px;
   font-size: 30px;
   font-weight: 500;
 `;
 
 export const DetailsInfoContainer = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0 43px;
+  padding: 1rem 4rem 1.5rem 4rem;
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
+  border-radius: 20px;
 `;
 
 const UserAvatarWrapper = styled.div`
@@ -53,7 +54,6 @@ const UploadBtn = styled.img`
 `;
 
 export const DetailsForm = styled.form`
-  height: 190px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

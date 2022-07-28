@@ -3,7 +3,7 @@ import SingleChartContainer from "../components/SingleChartContainer";
 import TitleforTheChart from "../components/Title";
 import ItemDescription from "./components/ItemDescription";
 import TableCard from "./components/TableCard";
-import { chartAnimation } from "../../../constant"
+import { chartAnimation } from "../../../constant";
 
 const smallTableInfo = { tableType: "S", averageNumber: 2, maximumNumber: 4 };
 const mediumTableInfo = { tableType: "M", averageNumber: 6, maximumNumber: 8 };

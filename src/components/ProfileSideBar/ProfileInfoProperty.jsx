@@ -1,25 +1,22 @@
 import styled from "styled-components";
 
 export const PropertyWrapper = styled.div`
-  height: 73px;
   display: flex;
   justify-content: space-between;
 `;
 
 export const AttributeWrapper = styled.div`
-  width: 243px;
-  height: 100%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
 export const AttributeLabelName = styled.label`
-  width: 84px;
-  height: 18px;
-  font-size: 15px;
-  padding-left: 3px;
+  font-size: 18x;
+  padding: 0 0 6px 12px;
   color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
+  margin-top: 18px;
 `;
 
 export const UserInfoAttribute = styled.input`

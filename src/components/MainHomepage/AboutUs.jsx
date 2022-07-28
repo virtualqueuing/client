@@ -10,15 +10,19 @@ import PropTypes from "prop-types";
 import { useMemo } from "react";
 
 const AboutUs = styled(FlexDisplay)`
-  width: 100%;
+  width: 75vw;
   background-color: #fff;
+
+  @media (max-width: 1024px) {
+    width: 85vw;
+  } ;
 `;
 
 const Team = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 40px;
+  padding: 10px;
   flex-wrap: wrap;
 `;
 
