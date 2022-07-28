@@ -24,7 +24,7 @@ const TotalCustomerLineChart = () => {
       containerWidth="48%"
       containerHeight="calc(100% - 30px)"
     >
-      <TitleforTheChart>Daily No. of Customers</TitleforTheChart>
+      <TitleforTheChart>Customer Numbers per Day</TitleforTheChart>
       <ResponsiveContainer width="100%" height="80%">
         <LineChart
           width={400}

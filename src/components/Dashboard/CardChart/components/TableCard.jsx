@@ -13,6 +13,8 @@ const Title = styled.div`
   padding-left: 1vw;
   width: 10%;
   font-size: 20px;
+  margin-right: 2.5vw;
+  color: #ff8042;
 `;
 
 const TableCard = ({ tableInfo }) => {

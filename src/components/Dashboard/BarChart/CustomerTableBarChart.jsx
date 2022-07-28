@@ -16,7 +16,7 @@ const CustomerTableBarChart = () => {
       containerWidth="48%"
       containerHeight="calc(100% - 30px)"
     >
-      <TitleforTheChart>No. of Customers by Table Sizes</TitleforTheChart>
+      <TitleforTheChart>Customer Numbers by Table Sizes</TitleforTheChart>
       <BarChart
         width={550}
         height={330}
@@ -25,7 +25,7 @@ const CustomerTableBarChart = () => {
           top: 5,
           right: 0,
           left: -30,
-          bottom: 5,
+          bottom: 10,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
@@ -33,9 +33,9 @@ const CustomerTableBarChart = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="S" fill={theme.colors.components.neutralButton.fontColor} />
-        <Bar dataKey="M" fill={theme.colors.components.arrivalButton.fontColor.normal} />
-        <Bar dataKey="L" fill={theme.colors.components.positiveButton.fontColor} />
+        <Bar dataKey="Small" fill={theme.colors.components.neutralButton.fontColor} />
+        <Bar dataKey="Medium" fill={theme.colors.components.arrivalButton.fontColor.normal} />
+        <Bar dataKey="Large" fill={theme.colors.components.positiveButton.fontColor} />
       </BarChart>
     </SingleChartContainer>
   );
