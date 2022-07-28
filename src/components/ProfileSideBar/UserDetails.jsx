@@ -10,6 +10,7 @@ import { UserContext } from "../../pages/Context";
 export const UserDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
 `;
 
 export const Title = styled.h2`
