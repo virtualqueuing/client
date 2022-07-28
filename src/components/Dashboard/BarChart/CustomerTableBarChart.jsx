@@ -24,7 +24,7 @@ const CustomerTableBarChart = () => {
         margin={{
           top: 5,
           right: 0,
-          left: -40,
+          left: -30,
           bottom: 10,
         }}
       >
