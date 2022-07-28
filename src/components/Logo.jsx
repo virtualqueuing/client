@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import logo from "../assets/Logo-v5.svg";
+import logo from "../assets/Logo-v5.png";
 import React from "react";
 
 const Wrapper = styled.div`
