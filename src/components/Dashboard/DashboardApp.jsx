@@ -3,9 +3,10 @@ import Logo from "../Logo";
 import { RightMenuContainer } from "../styles/RightMenu.styles";
 import styled from "styled-components";
 import NotesPieChart from "./PieChart/NotesPieChart";
-import TotalCustomerLineChart from "./LineChart";
+import TotalCustomerLineChart from "./LineChart/LineChart";
 import CardChart from "./CardChart/CardChart";
 import ArrivedPieChart from "./PieChart/ArrivedPieChart";
+import CustomerTableBarChart from "./BarChart/CustomerTableBarChart";
 
 const DashboardAppWrapper = styled(RightMenuContainer)`
   justify-content: space-between;
@@ -21,19 +22,10 @@ const MainboardContainer = styled.div`
   flex-direction: column;
 `;
 
-const UpperContainer = styled.div`
+const RowContainer = styled.div`
   display: flex;
-  height: 40%;
-  width: 100%;
-  padding: 0 15px;
-  justify-content: center;
-  align-items: center;
-`;
-
-const LowerContainer = styled.div`
-  display: flex;
-  height: 56%;
-  width: 100%;
+  height: ${({ rowHeight }) => rowHeight || "480px"};
+  min-width: 85vw;
   padding: 0 15px;
   justify-content: center;
   align-items: center;
@@ -44,14 +36,15 @@ const DashboardApp = () => {
     <DashboardAppWrapper>
       <Logo path={"/"} alt="profileLogo" logoSize="large" />
       <MainboardContainer>
-        <UpperContainer>
+        <RowContainer>
           <CardChart />
           <ArrivedPieChart />
           <NotesPieChart />
-        </UpperContainer>
-        <LowerContainer>
+        </RowContainer>
+        <RowContainer>
           <TotalCustomerLineChart />
-        </LowerContainer>
+          <CustomerTableBarChart />
+        </RowContainer>
       </MainboardContainer>
     </DashboardAppWrapper>
   );

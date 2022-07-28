@@ -48,7 +48,7 @@ const DashboardPage = () => {
 
   return (
     <Container>
-      <Background>
+      <Background backgroundHeight={"120vh"}>
         <UserPanel>
           <UserAvatar src={UserLine} alt="User photo" />
           <UserDetails>

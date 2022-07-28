@@ -51,3 +51,22 @@ export const Branches = ["Brisbane CBD", "Sunnybank", "Chermside"];
 export const API_URI = import.meta.env.DEV
   ? "http://localhost:3000"
   : `${import.meta.env.VITE_SERVER_URL}`;
+
+export const chartAnimation = {
+  before: {
+    opacity: 0,
+    x: "100vw",
+  },
+  after: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.1,
+      type: "tween",
+      duration: 0.6,
+    },
+  },
+  hover: {
+    scale: 1.04,
+  },
+};

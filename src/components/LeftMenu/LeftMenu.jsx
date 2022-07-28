@@ -16,8 +16,8 @@ export const Background = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3%;
-  width: auto;
-  height: 100vh;
+  min-width: 200px;
+  height: ${({ backgroundHeight }) => backgroundHeight || "100vh"};
   padding: 40px 15px;
 `;
 

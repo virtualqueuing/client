@@ -3,8 +3,9 @@ import { PieChart, Pie, Legend, Cell, ResponsiveContainer, Tooltip } from "recha
 import arrivedRateData from "../../../assets/data/arrivedRate";
 import SingleChartContainer from "../components/SingleChartContainer";
 import TitleforTheChart from "../components/Title";
+import { chartAnimation } from "../../../constant";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#00C49F", "#FF8042", "#FFBB28", "#0088FE"];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -19,25 +20,6 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const chartAnimation = {
-  before: {
-    opacity: 0,
-    x: "100vw",
-  },
-  after: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: 0.1,
-      type: "tween",
-      duration: 0.6,
-    },
-  },
-  hover: {
-    scale: 1.1,
-  },
-};
-
 const ArrivedPieChart = () => {
   return (
     <SingleChartContainer
@@ -48,7 +30,7 @@ const ArrivedPieChart = () => {
       containerWidth="33.3%"
       containerHeight="calc(100% - 30px)"
     >
-      <TitleforTheChart>Arrival rate</TitleforTheChart>
+      <TitleforTheChart>Arrival Rate</TitleforTheChart>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
           <Pie
