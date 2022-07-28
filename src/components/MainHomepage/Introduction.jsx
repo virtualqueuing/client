@@ -28,15 +28,15 @@ const QueueImage = styled.img`
 const Description = styled.div`
   width: 25vw;
   height: auto;
-  text-align: left;
+  text-align: center;
 
   & > h1 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   & > h2 {
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 300;
   }
 
   @media (max-width: 1024px) {
@@ -47,17 +47,11 @@ const Description = styled.div`
 const HomeIntroduction = () => (
   <Introduction>
     <Description>
-      <h1>Restaurant Queue Management</h1>
-      <h2>Improve your customer&apos;s waiting experience:</h2>
-      <ul>
-        <li>Eliminate traditional, frustrating standing queues</li>
-        <li>Notify customers queuing status via SMS message</li>
-        <li>Reduce perceived waiting times and improve customer experience</li>
-        <li>
-          Create queue efficiencies with staff members servicing the best matched customer based on
-          their service selection
-        </li>
-      </ul>
+      <h1>Better Management Better Experience</h1>
+      <h2>
+        Virtual Queuing allows your company to easily manage queuing list, increase working
+        efficiency, enhance customer relationship, and improve user satisfaction and trust.
+      </h2>
     </Description>
     <QueueImage src={queue} alt="Queue" />
   </Introduction>

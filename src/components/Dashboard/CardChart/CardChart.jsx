@@ -9,8 +9,6 @@ const smallTableInfo = { tableType: "Small", averageNumber: 2, maximumNumber: 4 
 const mediumTableInfo = { tableType: "Medium", averageNumber: 6, maximumNumber: 8 };
 const largeTableInfo = { tableType: "Large", averageNumber: 9, maximumNumber: 11 };
 
-
-
 const CardChart = () => {
   return (
     <SingleChartContainer
