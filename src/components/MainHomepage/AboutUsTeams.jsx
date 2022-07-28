@@ -61,7 +61,7 @@ export const DevOps = [
     position: "Business Analyst",
     avatar: elvaPhoto,
     linkedIn: "https://www.linkedin.com/in/elvalpw/",
-    email: "mailto:peiwen.li1@uqconnect.edu.au",
+    email: "mailto:lpwsea@gmail.com",
   },
   {
     name: "Edward",

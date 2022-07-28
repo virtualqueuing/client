@@ -38,8 +38,8 @@ const TotalCustomerLineChart = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="day" stroke="#ff8042" fontSize={"12px"} />
-          <YAxis stroke="#ffbb28" fontSize={"12px"} />
+          <XAxis dataKey="day" stroke="#ff8042" />
+          <YAxis stroke="#ffbb28" />
           <Tooltip />
           <Legend wrapperStyle={{ bottom: 0 }} />
           <Line type="monotone" dataKey="Customers" stroke="#0088fe" activeDot={{ r: 7 }} />

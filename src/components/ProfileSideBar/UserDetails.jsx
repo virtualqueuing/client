@@ -16,6 +16,7 @@ export const Title = styled.h2`
   margin-bottom: 10px;
   font-size: 30px;
   font-weight: 500;
+  color: ${({ theme }) => theme.colors.fonts.secondary};
 `;
 
 export const DetailsInfoContainer = styled.div`

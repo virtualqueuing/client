@@ -24,12 +24,12 @@ const CustomerTableBarChart = () => {
         margin={{
           top: 5,
           right: 0,
-          left: -40,
-          bottom: 10,
+          left: -30,
+          bottom: 5,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="day" />
         <YAxis />
         <Tooltip />
         <Legend />
