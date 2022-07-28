@@ -89,7 +89,7 @@ const LoginPage = () => {
       setTimeout(() => {
         setLoading(false);
         navigate("/");
-      }, 500);
+      }, 200);
     } catch (error) {
       const statusCode = error.response.status;
       if (statusCode === StatusCodes.UNAUTHORIZED) setemailPasswordIncorrect(true);

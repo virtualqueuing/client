@@ -18,7 +18,7 @@ const Modal = styled(motion.div)`
 `;
 
 const Wrapper = styled.div`
-  margin: 10px;
+  margin: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -151,7 +151,7 @@ const modal = {
   after: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.1, type: "spring", stiffness: 80 },
+    transition: { type: "spring", stiffness: 50 },
   },
 };
 
