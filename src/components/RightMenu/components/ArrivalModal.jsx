@@ -3,9 +3,8 @@ import { ModalBackground } from "../../../components/Modal/ModalBackground";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
-const Modal = styled(motion.div)`
+export const Modal = styled(motion.div)`
   width: 540px;
-  height: 260px;
   margin: auto;
   overflow: hidden;
   background: white;
@@ -13,9 +12,10 @@ const Modal = styled(motion.div)`
   border-radius: 30px;
   -webkit-box-shadow: 0px 20px 30px 15px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 20px 30px 15px rgba(0, 0, 0, 0.15);
+  padding-bottom: 20px;
 `;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   margin: 5px;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   padding: 0 30px;
 `;
 
-const HorizontalDivider = styled.div`
+export const HorizontalDivider = styled.div`
   height: 1px;
   margin: auto;
   margin-bottom: 10px;
@@ -33,7 +33,7 @@ const HorizontalDivider = styled.div`
   opacity: 0.8;
 `;
 
-const Title = styled.h2`
+export const Title = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes["1x"]};
   color: ${({ theme }) => theme.colors.components.modal.fontColor};
   margin-bottom: 0;
