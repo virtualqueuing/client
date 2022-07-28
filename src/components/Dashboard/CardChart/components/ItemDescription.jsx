@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-left: 1.2vw;
 `;
 
 const Title = styled.div`
@@ -20,14 +21,13 @@ const CardDescription = styled.div`
   font-weight: 600;
   width: 12vh;
   color: rgba(0, 0, 0, 0.4);
-  padding-bottom: 6px;
 `;
 
 const ItemDescription = () => (
   <Wrapper>
     <Title>Table size</Title>
-    <CardDescription>Aver.</CardDescription>
-    <CardDescription>Max</CardDescription>
+    <CardDescription>Average</CardDescription>
+    <CardDescription>Maxium</CardDescription>
   </Wrapper>
 );
 
