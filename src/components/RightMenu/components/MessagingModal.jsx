@@ -6,18 +6,7 @@ import { API_URI } from "../../../constant";
 import axios from "axios";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-
-const Modal = styled(motion.div)`
-  width: 540px;
-  height: 240px;
-  margin: auto;
-  overflow: hidden;
-  background: white;
-  z-index: 999;
-  border-radius: 30px;
-  -webkit-box-shadow: 0px 20px 30px 15px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 20px 30px 15px rgba(0, 0, 0, 0.15);
-`;
+import { HorizontalDivider, Modal, Title } from "./ArrivalModal";
 
 const Wrapper = styled.div`
   margin: 10px;
@@ -25,22 +14,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
-`;
-
-const HorizontalDivider = styled.div`
-  height: 1px;
-  margin: auto;
-  margin-bottom: 10px;
-  width: 90%;
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.fonts.inactiveRoute};
-  opacity: 0.8;
-`;
-
-const Title = styled.h2`
-  font-size: ${({ theme }) => theme.fontSizes["1x"]};
-  color: ${({ theme }) => theme.colors.components.modal.fontColor};
-  margin-bottom: 0;
 `;
 
 const Description = styled.p`
