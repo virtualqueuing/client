@@ -5,8 +5,13 @@ import { Profile, PersonalInfo } from "./Profile";
 import FlexDisplay from "./FlexDisplay";
 
 const Advantange = styled(FlexDisplay)`
-  width: 100vw;
+  width: 75vw;
   height: auto;
+  background-color: rgba(225, 225, 225, 0.3);
+
+  @media (max-width: 1024px) {
+    width: 85vw;
+  } ;
 `;
 
 const AdvantageList = styled(FlexDisplay)`

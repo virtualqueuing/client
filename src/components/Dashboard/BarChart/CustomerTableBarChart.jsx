@@ -18,13 +18,13 @@ const CustomerTableBarChart = () => {
     >
       <TitleforTheChart>No. of Customers by Table Sizes</TitleforTheChart>
       <BarChart
-        width={500}
-        height={240}
+        width={550}
+        height={330}
         data={customerNumberData}
         margin={{
-          top: 10,
-          right: 10,
-          left: 10,
+          top: 5,
+          right: 0,
+          left: -40,
           bottom: 10,
         }}
       >

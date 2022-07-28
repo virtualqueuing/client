@@ -16,19 +16,19 @@ const DashboardAppWrapper = styled(RightMenuContainer)`
 const MainboardContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 const RowContainer = styled.div`
   display: flex;
   height: ${({ rowHeight }) => rowHeight || "480px"};
-  min-width: 85vw;
-  padding: 0 15px;
+  min-width: 80vw;
   justify-content: center;
   align-items: center;
+  gap: 1%;
 `;
 
 const DashboardApp = () => {

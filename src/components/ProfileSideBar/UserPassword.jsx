@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import ProfileButton from "./ProfileButton";
 import {
   AttributeLabelName,
@@ -8,43 +7,26 @@ import {
 } from "./ProfileInfoProperty";
 import { DetailsForm, DetailsInfoContainer, Title, UserDetailsContainer } from "./UserDetails";
 
-const UserPasswordContainer = styled(UserDetailsContainer)`
-  height: 254px;
-`;
-
-const PasswordForm = styled(DetailsForm)`
-  height: auto;
-  display: block;
-`;
-
-const PasswordAttributeLabelName = styled(AttributeLabelName)`
-  width: 110px;
-`;
-
 const UserPassword = ({ disabled }) => {
   return (
-    <UserPasswordContainer>
+    <UserDetailsContainer>
       <Title>Change Password</Title>
       <DetailsInfoContainer>
-        <PasswordForm>
+        <DetailsForm>
           <PropertyWrapper>
             <AttributeWrapper>
-              <PasswordAttributeLabelName htmlFor="Old Password">
-                Old Password:
-              </PasswordAttributeLabelName>
+              <AttributeLabelName htmlFor="Old Password">Old Password:</AttributeLabelName>
               <UserInfoAttribute type="text" value="" disabled={disabled} />
             </AttributeWrapper>
             <AttributeWrapper>
-              <PasswordAttributeLabelName htmlFor="New Password">
-                New Password:
-              </PasswordAttributeLabelName>
+              <AttributeLabelName htmlFor="New Password">New Password:</AttributeLabelName>
               <UserInfoAttribute type="text" value="" disabled={disabled} />
             </AttributeWrapper>
           </PropertyWrapper>
-        </PasswordForm>
+        </DetailsForm>
         <ProfileButton />
       </DetailsInfoContainer>
-    </UserPasswordContainer>
+    </UserDetailsContainer>
   );
 };
 

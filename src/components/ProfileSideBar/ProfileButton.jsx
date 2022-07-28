@@ -5,18 +5,18 @@ const PersonalDetailsBtnWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 `;
 
 const PersonalDetailsBtn = styled.button`
-  display: block;
   width: 243px;
-  height: 55px;
+  height: 50px;
   cursor: pointer;
   background-color: ${({ theme }) => theme.colors.components.loginButton.background};
-  border-radius: 15px;
+  border-radius: 20px;
   border: transparent;
   color: ${({ theme }) => theme.colors.components.profileButton.fontColor};
-  font-size: 30px;
+  font-size: 26px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transition: 0.5s;
   &:hover {

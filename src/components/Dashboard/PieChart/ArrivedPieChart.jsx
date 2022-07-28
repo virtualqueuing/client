@@ -31,14 +31,14 @@ const ArrivedPieChart = () => {
       containerHeight="calc(100% - 30px)"
     >
       <TitleforTheChart>Arrival Rate</TitleforTheChart>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="80%">
         <PieChart width={400} height={400}>
           <Pie
             data={arrivedRateData}
             cx="50%"
-            cy="45%"
-            innerRadius={5}
-            outerRadius={80}
+            cy="43%"
+            innerRadius={10}
+            outerRadius={110}
             fill="#8884d8"
             dataKey="value"
             labelLine={false}
@@ -48,7 +48,7 @@ const ArrivedPieChart = () => {
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
-          <Legend verticalAlign="bottom" height={36} wrapperStyle={{ bottom: -5 }} />
+          <Legend verticalAlign="bottom" height={36} wrapperStyle={{ bottom: 10 }} />
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>

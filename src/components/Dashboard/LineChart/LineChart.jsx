@@ -25,15 +25,15 @@ const TotalCustomerLineChart = () => {
       containerHeight="calc(100% - 30px)"
     >
       <TitleforTheChart>Daily No. of Customers</TitleforTheChart>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="80%">
         <LineChart
-          width={500}
+          width={400}
           height={300}
           data={customerNumberData}
           margin={{
-            top: 10,
-            right: 10,
-            left: 10,
+            top: 5,
+            right: 100,
+            left: 50,
             bottom: 10,
           }}
         >
@@ -41,7 +41,7 @@ const TotalCustomerLineChart = () => {
           <XAxis dataKey="day" stroke="#ff8042" fontSize={"12px"} />
           <YAxis stroke="#ffbb28" fontSize={"12px"} />
           <Tooltip />
-          <Legend />
+          <Legend wrapperStyle={{ bottom: 0 }} />
           <Line type="monotone" dataKey="Customers" stroke="#0088fe" activeDot={{ r: 7 }} />
         </LineChart>
       </ResponsiveContainer>

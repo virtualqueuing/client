@@ -9,7 +9,7 @@ import Logo from "../Logo";
 
 const NavContainer = styled.div`
   margin: 0;
-  padding: 40px 15px;
+  padding: 30px 15px;
   width: auto;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
