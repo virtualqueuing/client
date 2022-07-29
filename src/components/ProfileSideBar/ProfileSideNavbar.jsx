@@ -8,18 +8,6 @@ import {
 } from "../LeftMenu/LeftMenu";
 import Logo from "../Logo";
 
-// const NavContainer = styled.div`
-//   margin: 0;
-//   padding: 30px 15px;
-//   width: auto;
-//   height: 100vh;
-//   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 3%;
-// `;
-
 const ProfileSideBarOption = styled(LeftSideBarOption)`
   justify-content: center;
 `;

@@ -10,10 +10,12 @@ import { UserContext } from "../../pages/Context";
 export const UserDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  margin-top: 0px;
   font-size: 30px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.fonts.secondary};
