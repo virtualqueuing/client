@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import UserLine from "../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../assets/Icons/arrow-down-s-line.svg";
 import MenuQueueList from "../assets/Icons/Menu_QueueList.svg";
-import DashBoardClock from "../assets/Icons/Menu_DashBoard.svg";
+import DashBoardClock from "../assets/Icons/Menu_Dashboard.svg";
 
 import {
   Background,
