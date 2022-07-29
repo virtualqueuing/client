@@ -5,6 +5,7 @@ import GlobalStyles from "./components/styles/GlobalStyles";
 import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
 import routes from "./router";
 import LoadingPage from "./pages/LoadingPage";
+import DashboardPage from "./pages/DashboardPage";
 import { UserContext } from "./pages/Context";
 import Homepage from "./pages/Homepage";
 
@@ -21,6 +22,11 @@ const App = () => {
                 <Route path="/" element={<Homepage />} />
               ) : (
                 <Route path="/" element={<Navigate to="/home" replace />} />
+              )}
+              {user?.data?.data.role === "Manager" ? (
+                <Route path="/dashboard" element={<DashboardPage />} />
+              ) : (
+                <Route path="/dashboard" element={<Navigate to="/home" replace />} />
               )}
               {routes.map((route) => {
                 const { path } = route;

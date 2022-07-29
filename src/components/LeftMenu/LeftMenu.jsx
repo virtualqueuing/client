@@ -7,6 +7,7 @@ import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
+import { ManagerContext } from "../../context/ManagerContext";
 import isEmpty from "lodash/isEmpty";
 import { motion } from "framer-motion";
 
@@ -305,11 +306,11 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const queueHeadTableType = headCustomer?.tableSize;
 
   const [dropState, setDropState] = useState(false);
-  const [manager, setManager] = useState(false);
-
+  
   const navigate = useNavigate();
-
+  
   const { user, setUser } = useContext(UserContext);
+  const { manager, setManager } = useContext(ManagerContext);
 
   const handleClick = () => {
     setDropState(!dropState);
