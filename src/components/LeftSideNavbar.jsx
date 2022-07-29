@@ -78,10 +78,10 @@ const LeftSideNavbar = () => {
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
           <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
         </LeftSideBarOption>
-        <LeftSideBarOption onClick={navigateToDashBoard}>
+        {user.data.data.role === "Manager" && (<LeftSideBarOption onClick={navigateToDashBoard}>
           <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
           <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
-        </LeftSideBarOption>
+        </LeftSideBarOption>)}
       </LeftSideBarOptionContainer>
     </Background>
   );
