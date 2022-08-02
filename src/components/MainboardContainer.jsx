@@ -20,7 +20,7 @@ const Container = styled.div`
 const MainboardContainer = ({ children }) => {
   return (
     <Wrapper>
-      <Logo path={"/"} alt="profileLogo" logoSize="large" />
+      <Logo logoSize="large" />
       <Container>{children}</Container>
     </Wrapper>
   );

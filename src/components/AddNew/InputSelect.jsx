@@ -18,6 +18,7 @@ const InputSelect = ({ inputInfo }) => {
       return "Large";
     }
   };
+
   return (
     <InputWrapper>
       <CustomerInputSelectBg>

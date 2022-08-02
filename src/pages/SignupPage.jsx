@@ -71,7 +71,6 @@ const SignupPage = () => {
           navigate("/");
         }, 200);
       } catch (error) {
-        console.log(error);
         const statusCode = error.response.status;
         if (statusCode === StatusCodes.CONFLICT) setExsitedEmail(true);
         setLoading(false);
@@ -156,7 +155,7 @@ const SignupPage = () => {
           <p>Sign up</p>
         </SubmitButton>
       </form>
-      <Logo logoSize="small" path="/home" alt="logo for redirecting to home page" />
+      <Logo logoSize="small" />
     </LoginContainer>
   );
 };

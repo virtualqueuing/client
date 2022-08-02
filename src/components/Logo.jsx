@@ -34,11 +34,11 @@ export const LogoImage = styled.img`
   }}
 `;
 
-const Logo = ({ path, alt, logoSize }) => {
+const Logo = ({ logoSize }) => {
   return (
     <Wrapper>
-      <Link to={path}>
-        <LogoImage logoSize={logoSize} src={logo} alt={alt} />
+      <Link to="/home">
+        <LogoImage logoSize={logoSize} src={logo} alt="logo for redirecting to home page" />
       </Link>
     </Wrapper>
   );

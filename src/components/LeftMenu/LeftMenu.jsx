@@ -17,9 +17,10 @@ export const Background = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3%;
-  min-width: 200px;
+  max-width: 280px;
   height: ${({ backgroundHeight }) => backgroundHeight || "100vh"};
-  padding: 40px 15px;
+  padding: 40px 30px;
+  height: 100vh;
 `;
 
 export const UserPanel = styled.div`
@@ -306,9 +307,9 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const queueHeadTableType = headCustomer?.tableSize;
 
   const [dropState, setDropState] = useState(false);
-  
+
   const navigate = useNavigate();
-  
+
   const { user, setUser } = useContext(UserContext);
   const { manager, setManager } = useContext(ManagerContext);
 
@@ -323,7 +324,6 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
 
   const handleSignOut = () => {
     setUser({ data: null });
-    navigate("/home");
   };
 
   const handleUserProfile = () => {

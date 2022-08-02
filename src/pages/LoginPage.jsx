@@ -136,7 +136,7 @@ const LoginPage = () => {
         <SubmitButton type="submit">
           <p>Sign in</p>
         </SubmitButton>
-        <Logo logoSize="small" path="/home" alt="logo for redirecting to home page" />
+        <Logo logoSize="small" />
       </LoginContainer>
     </form>
   );

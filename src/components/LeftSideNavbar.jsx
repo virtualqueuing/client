@@ -78,10 +78,12 @@ const LeftSideNavbar = () => {
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
           <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
         </LeftSideBarOption>
-        {user.data.data.role === "Manager" && (<LeftSideBarOption onClick={navigateToDashBoard}>
-          <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
-          <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
-        </LeftSideBarOption>)}
+        {user.data.data.role === "Manager" && (
+          <LeftSideBarOption onClick={navigateToDashBoard}>
+            <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
+            <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
+          </LeftSideBarOption>
+        )}
       </LeftSideBarOptionContainer>
     </Background>
   );

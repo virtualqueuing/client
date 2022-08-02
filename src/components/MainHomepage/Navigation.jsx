@@ -68,7 +68,7 @@ const Navigation = ({ scrollToSection }) => {
   return (
     <HomeNavigation>
       <NavigationWrapper>
-        <Logo logoSize="medium" path="/" alt="logo for redirecting to main page" />
+        <Logo logoSize="medium" />
         <NavigationLinks>
           <NavigationButton
             style={{ border: "none", paddingRight: 0, backgroundColor: "rgba(255, 255, 255, .9)" }}
