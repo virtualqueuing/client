@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const PersonalDetailsBtnWrapper = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const PersonalDetailsBtnWrapper = styled.div`
   margin-top: 35px;
 `;
 
-const PersonalDetailsBtn = styled.button`
+const EditBtnStyle = css`
   width: 243px;
   height: 50px;
   cursor: pointer;
@@ -26,14 +26,27 @@ const PersonalDetailsBtn = styled.button`
   }
 `;
 
-const ProfileButton = () => {
-  const [btnContent, setBtnContent] = useState("Edit");
-  const handleEdit = () => {
-    setBtnContent("Save");
-  };
+const PersonalDetailsBtn = styled.button`
+  ${EditBtnStyle};
+`;
+
+const PersonalDetailsEdit = styled.div`
+  ${EditBtnStyle};
+  margin: auto 0;
+  text-align: center;
+  line-height: 50px;
+`;
+
+const ProfileButton = ({ onClick }) => {
+  const [editableBtn, seteditableBtn] = useState(true);
+
   return (
-    <PersonalDetailsBtnWrapper onClick={handleEdit}>
-      <PersonalDetailsBtn>{btnContent}</PersonalDetailsBtn>
+    <PersonalDetailsBtnWrapper onClick={() => seteditableBtn(false)}>
+      {editableBtn ? (
+        <PersonalDetailsEdit onClick={onClick}>Edit</PersonalDetailsEdit>
+      ) : (
+        <PersonalDetailsBtn type="submit">Save</PersonalDetailsBtn>
+      )}
     </PersonalDetailsBtnWrapper>
   );
 };

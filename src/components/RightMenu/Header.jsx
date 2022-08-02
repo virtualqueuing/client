@@ -44,7 +44,7 @@ const Header = ({ queueStatus, setQueueStatus, setTableType, setSearchQueue }) =
   return (
     <>
       <StyledHeader>
-        <Logo logoSize="large" path="/#All" alt="logo for redirecting to main page" />
+        <Logo logoSize="large" />
         <SeparateLine />
         <PathContainer>
           <PathIdentifier>{queuesFilter}</PathIdentifier>

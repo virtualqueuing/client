@@ -15,7 +15,7 @@ const ProfileSideBarOption = styled(LeftSideBarOption)`
 const ProfileSideNavbar = () => {
   return (
     <Background>
-      <Logo path={"/"} alt="profileLogo" logoSize="large" />
+      <Logo logoSize="large" />
       <ProfileSideBarOption>
         <LeftSideBarOptionIcon src={AccountIcon} alt="Account Icon" />
         <LeftSideBarOptionDescription>Account</LeftSideBarOptionDescription>

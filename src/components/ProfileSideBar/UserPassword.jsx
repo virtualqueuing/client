@@ -1,30 +1,24 @@
+import DetailsForm from "./components/DetailsForm.style";
 import ProfileButton from "./ProfileButton";
-import {
-  AttributeLabelName,
-  AttributeWrapper,
-  PropertyWrapper,
-  UserInfoAttribute,
-} from "./ProfileInfoProperty";
-import { DetailsForm, DetailsInfoContainer, Title, UserDetailsContainer } from "./UserDetails";
+import ProfileInfoProperty from "./components/ProfileInfoProperty";
+import { DetailsInfoContainer, Title, UserDetailsContainer } from "./UserDetails";
+import { PropertyWrapper } from "./UserDetailsForm";
+import { useState } from "react";
 
-const UserPassword = ({ disabled }) => {
+const UserPassword = () => {
+  const [unEditable, setUnEditable] = useState(true);
+
   return (
     <UserDetailsContainer>
       <Title>Change Password</Title>
       <DetailsInfoContainer>
         <DetailsForm>
           <PropertyWrapper>
-            <AttributeWrapper>
-              <AttributeLabelName htmlFor="Old Password">Old Password:</AttributeLabelName>
-              <UserInfoAttribute type="text" value="" disabled={disabled} />
-            </AttributeWrapper>
-            <AttributeWrapper>
-              <AttributeLabelName htmlFor="New Password">New Password:</AttributeLabelName>
-              <UserInfoAttribute type="text" value="" disabled={disabled} />
-            </AttributeWrapper>
+            <ProfileInfoProperty label="Old Password" disabled={unEditable} />
+            <ProfileInfoProperty label="New Password" disabled={unEditable} />
           </PropertyWrapper>
+          <ProfileButton onClick={() => setUnEditable(false)} />
         </DetailsForm>
-        <ProfileButton />
       </DetailsInfoContainer>
     </UserDetailsContainer>
   );

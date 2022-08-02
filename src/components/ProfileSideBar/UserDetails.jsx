@@ -2,10 +2,7 @@ import styled from "styled-components";
 import { UserAvatar } from "../LeftMenu/LeftMenu";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ChangeBtn from "../../assets/Icons/Profile-Vector.svg";
-import ProfileInfoProperty from "./ProfileInfoProperty";
-import ProfileButton from "./ProfileButton";
-import { useContext } from "react";
-import { UserContext } from "../../pages/Context";
+import UserDetailsForm from "./UserDetailsForm";
 
 export const UserDetailsContainer = styled.div`
   display: flex;
@@ -34,6 +31,7 @@ export const DetailsInfoContainer = styled.div`
 const UserAvatarWrapper = styled.div`
   width: auto;
   position: relative;
+  margin-top: 15px;
 `;
 
 const UploadBtnWrapper = styled.div`
@@ -56,18 +54,7 @@ const UploadBtn = styled.img`
   height: 12px;
 `;
 
-export const DetailsForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const UserDetails = ({ disabled }) => {
-  const { user } = useContext(UserContext);
-  const { fullName, email, role, branch } = user.data.data;
-  const UserNameEmailArr = { "User Name": fullName, Email: email };
-  const roleBranchArr = { Role: role, Branch: branch };
-
+const UserDetails = () => {
   return (
     <UserDetailsContainer>
       <Title>Personal Details</Title>
@@ -78,11 +65,7 @@ const UserDetails = ({ disabled }) => {
             <UploadBtn src={ChangeBtn} alt="Upload photo button" />
           </UploadBtnWrapper>
         </UserAvatarWrapper>
-        <DetailsForm>
-          <ProfileInfoProperty personDetailsArr={UserNameEmailArr} disabled={disabled} />
-          <ProfileInfoProperty personDetailsArr={roleBranchArr} disabled={disabled} />
-        </DetailsForm>
-        <ProfileButton />
+        <UserDetailsForm />
       </DetailsInfoContainer>
     </UserDetailsContainer>
   );
