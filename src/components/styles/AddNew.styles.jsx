@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 export const AddNewWrapper = styled(motion.div)`
   max-width: 670px;
-  height: 710px;
   margin: auto;
   overflow: hidden;
   background: white;
@@ -49,7 +48,7 @@ export const HeaderAlert = styled.span`
 export const StyledForm = styled.form`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 50px;
+  margin: 0 50px 25px 50px;
   line-height: 2rem;
 
   input[type="text"],

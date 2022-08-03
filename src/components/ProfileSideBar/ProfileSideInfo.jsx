@@ -4,6 +4,9 @@ import UserPassword from "./UserPassword";
 import { motion } from "framer-motion";
 import { buttonVariants } from "../../components/RightMenu/Footer";
 import MainboardContainer from "../MainboardContainer";
+import { showProfileUpdateContext } from "../../pages/Context";
+import { useState } from "react";
+import ProfileUpdateMessage from "./UpdateSuccessMessage";
 
 const ProfileContent = styled(motion.div)`
   width: 970px;
@@ -12,13 +15,20 @@ const ProfileContent = styled(motion.div)`
 `;
 
 const ProfileSideInfo = () => {
+  const [showProfileUpdateModal, setShowProfileUpdateModal] = useState(false);
+
   return (
-    <MainboardContainer>
-      <ProfileContent variants={buttonVariants} initial="before" animate="after">
-        <UserDetails />
-        <UserPassword />
-      </ProfileContent>
-    </MainboardContainer>
+    <showProfileUpdateContext.Provider value={{ setShowProfileUpdateModal }}>
+      {showProfileUpdateModal && (
+        <ProfileUpdateMessage setShowProfileUpdateModal={setShowProfileUpdateModal} />
+      )}
+      <MainboardContainer>
+        <ProfileContent variants={buttonVariants} initial="before" animate="after">
+          <UserDetails />
+          <UserPassword />
+        </ProfileContent>
+      </MainboardContainer>
+    </showProfileUpdateContext.Provider>
   );
 };
 

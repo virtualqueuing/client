@@ -31,7 +31,7 @@ const SelectWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0;
-  margin-bottom: 20px;
+
   width: 100%;
   & > div {
     width: 100%;
@@ -39,7 +39,7 @@ const SelectWrapper = styled.div`
   }
 `;
 
-const ProfileInfoPropertySelect = ({ label, defaultValue, children, onchange }) => {
+const ProfileInfoPropertySelect = ({ label, children }) => {
   return (
     <AttributeWrapper>
       <AttributeLabelName htmlFor={label}>{label}:</AttributeLabelName>
