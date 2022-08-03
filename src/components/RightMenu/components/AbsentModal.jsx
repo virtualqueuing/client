@@ -28,7 +28,7 @@ const CustomerInputSelectBg = styled.div`
     background-image: ${`url('src/assets/Icons/down-arrow-svgrepo-com.svg')`};
     width: 15px;
     height: 15px;
-    right: 15px;
+    right: 30px;
     top: 28px;
     position: absolute;
     pointer-events: none;

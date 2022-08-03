@@ -8,6 +8,7 @@ import { useState } from "react";
 import updateUserApi from "../../apis/updateUserApi";
 import ProfileButton from "./ProfileButton";
 import { Branches, Roles } from "../../constant";
+// import ProfileUpdateModal from "./ProfileUpdateModal";
 
 export const PropertyWrapper = styled.div`
   display: flex;
@@ -45,7 +46,8 @@ const UserDetailsForm = () => {
 
   const [unEditable, setUnEditable] = useState(true);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const updateInfo = {
       fullName: updateFullName,
       email: updateEmail,

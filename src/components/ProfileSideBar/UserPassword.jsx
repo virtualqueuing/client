@@ -7,15 +7,31 @@ import { useState } from "react";
 
 const UserPassword = () => {
   const [unEditable, setUnEditable] = useState(true);
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  };
 
   return (
     <UserDetailsContainer>
       <Title>Change Password</Title>
       <DetailsInfoContainer>
-        <DetailsForm>
+        <DetailsForm onSubmit={handleSubmit}>
           <PropertyWrapper>
-            <ProfileInfoProperty label="Old Password" disabled={unEditable} />
-            <ProfileInfoProperty label="New Password" disabled={unEditable} />
+            <ProfileInfoProperty
+              label="Old Password"
+              disabled={unEditable}
+              valuse={oldPassword}
+              onChange={(event) => setOldPassword(event.target.value)}
+            />
+            <ProfileInfoProperty
+              label="New Password"
+              disabled={unEditable}
+              valuse={newPassword}
+              onChange={(event) => setNewPassword(event.target.value)}
+            />
           </PropertyWrapper>
           <ProfileButton onClick={() => setUnEditable(false)} />
         </DetailsForm>

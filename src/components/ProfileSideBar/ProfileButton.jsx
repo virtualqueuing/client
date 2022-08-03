@@ -1,11 +1,18 @@
+import { useContext } from "react";
 import { useState } from "react";
 import styled, { css } from "styled-components";
+import { showProfileUpdateContext } from "../../pages/Context";
 
-const PersonalDetailsBtnWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 35px;
+`;
+
+const PersonalDetailsBtnWrapper = styled.div`
+  width: auto;
+  height: auto;
 `;
 
 const EditBtnStyle = css`
@@ -39,15 +46,20 @@ const PersonalDetailsEdit = styled.div`
 
 const ProfileButton = ({ onClick }) => {
   const [editableBtn, seteditableBtn] = useState(true);
+  const { setShowProfileUpdateModal } = useContext(showProfileUpdateContext);
 
   return (
-    <PersonalDetailsBtnWrapper onClick={() => seteditableBtn(false)}>
-      {editableBtn ? (
-        <PersonalDetailsEdit onClick={onClick}>Edit</PersonalDetailsEdit>
-      ) : (
-        <PersonalDetailsBtn type="submit">Save</PersonalDetailsBtn>
-      )}
-    </PersonalDetailsBtnWrapper>
+    <Wrapper>
+      <PersonalDetailsBtnWrapper onClick={() => seteditableBtn(false)}>
+        {editableBtn ? (
+          <PersonalDetailsEdit onClick={onClick}>Edit</PersonalDetailsEdit>
+        ) : (
+          <PersonalDetailsBtn type="submit" onClick={() => setShowProfileUpdateModal(true)}>
+            Save
+          </PersonalDetailsBtn>
+        )}
+      </PersonalDetailsBtnWrapper>
+    </Wrapper>
   );
 };
 

@@ -3,6 +3,8 @@ import { UserAvatar } from "../LeftMenu/LeftMenu";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import ChangeBtn from "../../assets/Icons/Profile-Vector.svg";
 import UserDetailsForm from "./UserDetailsForm";
+// import { showProfileUpdateContext } from "../../pages/Context";
+// import ProfileUpdateModal from "./ProfileUpdateModal";
 
 export const UserDetailsContainer = styled.div`
   display: flex;
