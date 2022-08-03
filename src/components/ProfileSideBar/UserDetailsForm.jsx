@@ -8,7 +8,6 @@ import { useState } from "react";
 import updateUserApi from "../../apis/updateUserApi";
 import ProfileButton from "./ProfileButton";
 import { Branches, Roles } from "../../constant";
-// import ProfileUpdateModal from "./ProfileUpdateModal";
 
 export const PropertyWrapper = styled.div`
   display: flex;
