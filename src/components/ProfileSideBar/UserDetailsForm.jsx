@@ -56,16 +56,13 @@ const UserDetailsForm = () => {
       branch: updateBranch,
     };
 
-    try {
-      const data = await updateUserApi(user.data.data._id, updateInfo);
-      setUser((prevData) => ({
-        ...prevData,
-        data,
-      }));
-      if (data) setShowProfileUpdateModal(true);
-    } catch (err) {
-      return;
-    }
+    const data = await updateUserApi(user.data.data._id, updateInfo);
+    setUser((prevData) => ({
+      ...prevData,
+      data,
+    }));
+
+    if (data) setShowProfileUpdateModal(true);
   };
 
   return (
