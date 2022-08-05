@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import { UserContext } from "../../pages/Context";
+import { showProfileUpdateContext, UserContext } from "../../pages/Context";
 import ProfileInfoProperty from "./components/ProfileInfoProperty";
 import DetailsForm from "./components/DetailsForm.style";
 import ProfileInfoPropertySelect from "./components/ProfileInfoPropertSelect";
@@ -36,6 +36,7 @@ const UserInfoSelectAttribute = styled.select`
 
 const UserDetailsForm = () => {
   const { user, setUser } = useContext(UserContext);
+  const { setShowProfileUpdateModal } = useContext(showProfileUpdateContext);
   const { fullName, email, role, branch } = user.data.data;
 
   const [updateFullName, setUpdateFullName] = useState(fullName);
@@ -47,17 +48,24 @@ const UserDetailsForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const updateInfo = {
       fullName: updateFullName,
       email: updateEmail,
       role: updateRole,
       branch: updateBranch,
     };
-    const data = await updateUserApi(user.data.data._id, updateInfo);
-    setUser((prevData) => ({
-      ...prevData,
-      data,
-    }));
+
+    try {
+      const data = await updateUserApi(user.data.data._id, updateInfo);
+      setUser((prevData) => ({
+        ...prevData,
+        data,
+      }));
+      if (data) setShowProfileUpdateModal(true);
+    } catch (err) {
+      return;
+    }
   };
 
   return (

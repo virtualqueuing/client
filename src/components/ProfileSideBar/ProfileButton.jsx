@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import { showProfileUpdateContext } from "../../pages/Context";
 
 const Wrapper = styled.div`
   display: flex;
@@ -46,7 +44,6 @@ const PersonalDetailsEdit = styled.div`
 
 const ProfileButton = ({ onClick }) => {
   const [editableBtn, seteditableBtn] = useState(true);
-  const { setShowProfileUpdateModal } = useContext(showProfileUpdateContext);
 
   return (
     <Wrapper>
@@ -54,9 +51,7 @@ const ProfileButton = ({ onClick }) => {
         {editableBtn ? (
           <PersonalDetailsEdit onClick={onClick}>Edit</PersonalDetailsEdit>
         ) : (
-          <PersonalDetailsBtn type="submit" onClick={() => setShowProfileUpdateModal(true)}>
-            Save
-          </PersonalDetailsBtn>
+          <PersonalDetailsBtn type="submit">Save</PersonalDetailsBtn>
         )}
       </PersonalDetailsBtnWrapper>
     </Wrapper>
