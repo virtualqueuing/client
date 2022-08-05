@@ -19,9 +19,7 @@ const ProfileSideInfo = () => {
 
   return (
     <showProfileUpdateContext.Provider value={{ setShowProfileUpdateModal }}>
-      {showProfileUpdateModal && (
-        <ProfileUpdateMessage setShowProfileUpdateModal={setShowProfileUpdateModal} />
-      )}
+      {showProfileUpdateModal && <ProfileUpdateMessage />}
       <MainboardContainer>
         <ProfileContent variants={buttonVariants} initial="before" animate="after">
           <UserDetails />
