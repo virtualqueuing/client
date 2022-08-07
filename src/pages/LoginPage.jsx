@@ -13,6 +13,8 @@ import emailValidation from "../components/SingnupSignIn/Apps/validation";
 import { ErrorMessage, ExsitedEmailMessge } from "../components/SingnupSignIn/ErrorMessage.style";
 import { StatusCodes } from "http-status-codes";
 import LoadingPage from "../pages/LoadingPage";
+import { FormContainer, BackgroundIMG } from "../components/SingnupSignIn/FormContainer";
+import queue from "../assets/Queue.jpeg";
 
 export const LoginContainer = styled.div`
   width: 370px;
@@ -22,7 +24,7 @@ export const LoginContainer = styled.div`
   transform: translate(-50%, -50%);
   background-color: #fff;
   border-radius: 20px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   font-family: Arial, Helvetica, sans-serif;
 `;
 
@@ -102,43 +104,46 @@ const LoginPage = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <LoginContainer>
-        <LoginInfo>
-          <h2>Sign in</h2>
-          <p>Enter your details to sign in to your account</p>
-        </LoginInfo>
-        {emailPasswordIncorrect && (
-          <ExsitedEmailMessge>Email or password is incorrect!</ExsitedEmailMessge>
-        )}
-        <Input
-          type="text"
-          placeholder="Enter Email"
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        />
-        {emailError && <ErrorMessage>It should be a valid email address!</ErrorMessage>}
-        <InputPassword
-          placeholder="Enter Password"
-          value={password}
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-        <SetAccount>
-          <h6>Having trouble in sign in?</h6>
-          <h6>
-            <a href="/signup">Sign up</a>
-          </h6>
-        </SetAccount>
-        <SubmitButton type="submit">
-          <p>Sign in</p>
-        </SubmitButton>
-        <Logo logoSize="small" />
-      </LoginContainer>
-    </form>
+    <FormContainer>
+      <BackgroundIMG src={queue} />
+      <form onSubmit={handleSubmit}>
+        <LoginContainer>
+          <LoginInfo>
+            <h2>Sign in</h2>
+            <p>Enter your details to sign in to your account</p>
+          </LoginInfo>
+          {emailPasswordIncorrect && (
+            <ExsitedEmailMessge>Email or password is incorrect!</ExsitedEmailMessge>
+          )}
+          <Input
+            type="text"
+            placeholder="Enter Email"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+          />
+          {emailError && <ErrorMessage>It should be a valid email address!</ErrorMessage>}
+          <InputPassword
+            placeholder="Enter Password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+          <SetAccount>
+            <h6>Having trouble in sign in?</h6>
+            <h6>
+              <a href="/signup">Sign up</a>
+            </h6>
+          </SetAccount>
+          <SubmitButton type="submit">
+            <p>Sign in</p>
+          </SubmitButton>
+          <Logo logoSize="small" />
+        </LoginContainer>
+      </form>
+    </FormContainer>
   );
 };
 
