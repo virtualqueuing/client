@@ -93,7 +93,9 @@ const SignupPage = () => {
           <p>Enter your details below to sign up.</p>
         </LoginInfo>
         <form onSubmit={handleSubmit}>
-          {exsitedEmail && <ExsitedEmailMessge>This email is already being used!</ExsitedEmailMessge>}
+          {exsitedEmail && (
+            <ExsitedEmailMessge>This email is already being used!</ExsitedEmailMessge>
+          )}
           <Input
             type="text"
             placeholder="Enter Email"

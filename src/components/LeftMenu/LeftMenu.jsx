@@ -18,9 +18,8 @@ export const Background = styled.div`
   flex-direction: column;
   gap: 3%;
   max-width: 280px;
-  height: ${({ backgroundHeight }) => backgroundHeight || "100vh"};
-  padding: 40px 30px;
   height: 100vh;
+  padding: 40px 0px;
 `;
 
 export const UserPanel = styled.div`
@@ -30,6 +29,7 @@ export const UserPanel = styled.div`
   gap: 8%;
   position: relative;
   align-items: center;
+  padding: 0 10px;
   @media (max-width: 1500px) {
     padding-right: 40px;
   }
@@ -138,20 +138,32 @@ export const LeftSideBarOptionContainer = styled.div`
 `;
 
 export const LeftSideBarOption = styled.div`
-  width: 303px;
+  width: 280px;
   height: 50px;
   display: flex;
   align-items: center;
   gap: 3%;
+  position: relative;
+  padding: 0 10px;
   cursor: pointer;
+  &:hover {
+    background-color: #c7c7c7;
+    transition: all 0.3s ease-in-out;
+    border-right: 4px solid ${({ theme }) => theme.colors.fonts.activeRoute};
+  }
   @media (max-width: 1500px) {
     width: auto;
+    height: 40px;
   }
 `;
 
 export const LeftSideBarOptionIcon = styled.img`
   width: 30px;
   height: 30px;
+  color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
+  &:hover {
+    color: ${({ theme }) => theme.colors.fonts.activeRoute};
+  }
   @media (max-width: 1500px) {
     width: 20px;
     height: 20px;
@@ -160,7 +172,11 @@ export const LeftSideBarOptionIcon = styled.img`
 
 export const LeftSideBarOptionDescription = styled.span`
   font-size: 25px;
-  color: ${({ theme }) => theme.colors.fonts.activeRoute};
+  padding: 0 5px;
+  color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
+  &:hover {
+    color: ${({ theme }) => theme.colors.fonts.activeRoute};
+  }
   @media (max-width: 1500px) {
     font-size: 1rem;
   }

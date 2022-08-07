@@ -51,7 +51,7 @@ const LeftSideNavbar = () => {
   };
 
   return (
-    <Background backgroundHeight={"120vh"}>
+    <Background>
       <UserPanel>
         <UserAvatar src={UserLine} alt="User photo" />
         <UserDetails>
