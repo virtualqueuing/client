@@ -61,8 +61,11 @@ export const UserLocation = styled.span`
 
 export const ArrowDownBtn = styled.img`
   position: absolute;
-  right: 0;
+  right: 12px;
   cursor: pointer;
+  @media (max-width: 1500px) {
+    right: 4px;
+  }
   ${({ dropState }) =>
     dropState
       ? css`
@@ -144,16 +147,50 @@ export const LeftSideBarOption = styled.div`
   align-items: center;
   gap: 3%;
   position: relative;
-  padding: 0 10px;
+  padding: 0 20px;
   cursor: pointer;
-  &:hover {
-    background-color: #c7c7c7;
+  /* &::before {
+    content: "";
+    background-color: ${({ theme }) => theme.colors.fonts.activeRoute};
+    height: 48px;
+    border-radius: 10px;
+    position: absolute;
+    left: 14px;
+    transition: 0.3s;
+  }
+  &:hover::before {
+    width: 90%;
+  }
+  &:hover span {
+    color: #fff;
+    font-weight: 500;
+  } */
+  &::before {
+    content: "";
+    background-color: #c8c8c8;
+    height: 48px;
+    border-radius: 10px;
+    position: absolute;
+    left: 14px;
     transition: all 0.3s ease-in-out;
-    border-right: 4px solid ${({ theme }) => theme.colors.fonts.activeRoute};
+  }
+  &:hover::before {
+    width: 90%;
+  }
+  &:hover span {
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.fonts.activeRoute};
   }
   @media (max-width: 1500px) {
     width: auto;
     height: 40px;
+    &::before {
+      height: 38px;
+      left: 10px;
+    }
+    &:hover::before {
+      width: 90%;
+    }
   }
 `;
 
@@ -173,10 +210,9 @@ export const LeftSideBarOptionIcon = styled.img`
 export const LeftSideBarOptionDescription = styled.span`
   font-size: 25px;
   padding: 0 5px;
+  position: relative;
   color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
-  &:hover {
-    color: ${({ theme }) => theme.colors.fonts.activeRoute};
-  }
+  transition: all 0.3s ease-in-out;
   @media (max-width: 1500px) {
     font-size: 1rem;
   }
@@ -184,6 +220,7 @@ export const LeftSideBarOptionDescription = styled.span`
 
 const CurrentQueueDetailsContainer = styled(motion.div)`
   display: flex;
+  padding: 0 20px;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
@@ -219,7 +256,7 @@ const HeadNumber = styled.div`
   padding: 10%;
   display: flex;
   justify-content: center;
-  font-size: 3vh;
+  font-size: 1.6rem;
 `;
 
 const CurrentQueueBar = styled.div`
@@ -235,12 +272,13 @@ const HeadCustomerName = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3vh;
+  font-size: 1.6rem;
 `;
 
 const SingleQueueNotesContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
   justify-content: space-between;
   align-items: flex-start;
 `;
