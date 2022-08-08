@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const DropdownMenu = styled.div`
   position: absolute;
@@ -30,11 +30,13 @@ const DropdownItem = styled.li`
 `;
 
 const Dropdown = (props) => {
-  <DropdownMenu isOpen={props.openDropdown}>
-    <ul>
-      <DropdownItem>Testing</DropdownItem>
-    </ul>
-  </DropdownMenu>;
+  return (
+    <DropdownMenu isOpen={props.openDropdown}>
+      <ul>
+        <DropdownItem>Testing</DropdownItem>
+      </ul>
+    </DropdownMenu>
+  );
 };
 
 export default Dropdown;
