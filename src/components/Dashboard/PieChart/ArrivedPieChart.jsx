@@ -1,6 +1,5 @@
 import React from "react";
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import arrivedRateData from "../../../assets/data/arrivedRate";
 import SingleChartContainer from "../components/SingleChartContainer";
 import TitleforTheChart from "../components/Title";
 import { chartAnimation } from "../../../constant";
@@ -20,7 +19,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const ArrivedPieChart = () => {
+const ArrivedPieChart = ({arrivedData}) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}
@@ -34,7 +33,7 @@ const ArrivedPieChart = () => {
       <ResponsiveContainer width="100%" height="80%">
         <PieChart width={400} height={400}>
           <Pie
-            data={arrivedRateData}
+            data={arrivedData}
             cx="50%"
             cy="43%"
             innerRadius={10}
@@ -44,7 +43,7 @@ const ArrivedPieChart = () => {
             labelLine={false}
             label={renderCustomizedLabel}
           >
-            {arrivedRateData.map((entry, index) => (
+            {arrivedData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>

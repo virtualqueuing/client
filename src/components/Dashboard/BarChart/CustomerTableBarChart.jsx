@@ -2,11 +2,10 @@ import SingleChartContainer from "../components/SingleChartContainer";
 import React from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 import TitleforTheChart from "../components/Title";
-import customerNumberData from "../../../assets/data/customerNumbers";
 import { chartAnimation } from "../../../constant";
 import theme from "../../../theme";
 
-const CustomerTableBarChart = () => {
+const CustomerTableBarChart = ({customerData}) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}
@@ -20,7 +19,7 @@ const CustomerTableBarChart = () => {
       <BarChart
         width={550}
         height={330}
-        data={customerNumberData}
+        data={customerData}
         margin={{
           top: 5,
           right: 0,

@@ -12,9 +12,8 @@ import {
 } from "recharts";
 import TitleforTheChart from "../components/Title";
 import { chartAnimation } from "../../../constant";
-import customerNumberData from "../../../assets/data/customerNumbers";
 
-const TotalCustomerLineChart = () => {
+const TotalCustomerLineChart = ({customerData}) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}
@@ -29,7 +28,7 @@ const TotalCustomerLineChart = () => {
         <LineChart
           width={400}
           height={300}
-          data={customerNumberData}
+          data={customerData}
           margin={{
             top: 5,
             right: 100,

@@ -9,6 +9,7 @@ const Wrapper = styled(RightMenuContainer)`
 `;
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   justify-content: center;
