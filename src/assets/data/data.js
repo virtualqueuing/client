@@ -1,0 +1,208 @@
+const ChartData = {
+  LastWeek: {
+    arrivedRateData: [
+      { name: "Arrived", value: 98 },
+      { name: "Absent", value: 2 },
+    ],
+    cardData: {
+      smallTableInfo: { tableType: "Small", averageNumber: 5, maximumNumber: 10 },
+      mediumTableInfo: { tableType: "Medium", averageNumber: 8, maximumNumber: 15 },
+      largeTableInfo: { tableType: "Large", averageNumber: 13, maximumNumber: 21 },
+    },
+    notesData: [
+      { name: "Birthday", value: 30 },
+      { name: "Wheelchair", value: 5 },
+      { name: "Highchair", value: 60 },
+      { name: "Others", value: 55 },
+    ],
+    customerNumberData: [
+      {
+        day: "MON",
+        Small: 20,
+        Medium: 9,
+        Large: 6,
+        Customers: 35,
+      },
+      {
+        day: "TUE",
+        Small: 15,
+        Medium: 6,
+        Large: 6,
+        Customers: 27,
+      },
+      {
+        day: "WED",
+        Small: 17,
+        Medium: 9,
+        Large: 4,
+        Customers: 30,
+      },
+      {
+        day: "THU",
+        Small: 20,
+        Medium: 11,
+        Large: 9,
+        Customers: 40,
+      },
+      {
+        day: "FRI",
+        Small: 30,
+        Medium: 14,
+        Large: 11,
+        Customers: 55,
+      },
+      {
+        day: "SAT",
+        Small: 25,
+        Medium: 11,
+        Large: 15,
+        Customers: 51,
+      },
+      {
+        day: "SUN",
+        Small: 24,
+        Medium: 10,
+        Large: 10,
+        Customers: 44,
+      },
+    ],
+  },
+  LastTwoWeeks: {
+    arrivedRateData: [
+      { name: "Arrived", value: 97 },
+      { name: "Absent", value: 3 },
+    ],
+    cardData: {
+      smallTableInfo: { tableType: "Small", averageNumber: 6, maximumNumber: 14 },
+      mediumTableInfo: { tableType: "Medium", averageNumber: 9, maximumNumber: 19 },
+      largeTableInfo: { tableType: "Large", averageNumber: 12, maximumNumber: 20 },
+    },
+    notesData: [
+      { name: "Birthday", value: 33 },
+      { name: "Wheelchair", value: 4 },
+      { name: "Highchair", value: 66 },
+      { name: "Others", value: 49 },
+    ],
+    customerNumberData: [
+      {
+        day: "MON",
+        Small: 17,
+        Medium: 11,
+        Large: 5,
+        Customers: 38,
+      },
+      {
+        day: "TUE",
+        Small: 16,
+        Medium: 4,
+        Large: 5,
+        Customers: 28,
+      },
+      {
+        day: "WED",
+        Small: 18,
+        Medium: 8,
+        Large: 4,
+        Customers: 31,
+      },
+      {
+        day: "THU",
+        Small: 19,
+        Medium: 14,
+        Large: 6,
+        Customers: 42,
+      },
+      {
+        day: "FRI",
+        Small: 32,
+        Medium: 13,
+        Large: 10,
+        Customers: 53,
+      },
+      {
+        day: "SAT",
+        Small: 26,
+        Medium: 10,
+        Large: 7,
+        Customers: 46,
+      },
+      {
+        day: "SUN",
+        Small: 21,
+        Medium: 14,
+        Large: 6,
+        Customers: 47,
+      },
+    ],
+  },
+  LastMonth: {
+    arrivedRateData: [
+      { name: "Arrived", value: 98 },
+      { name: "Absent", value: 2 },
+    ],
+    cardData: {
+      smallTableInfo: { tableType: "Small", averageNumber: 5, maximumNumber: 12 },
+      mediumTableInfo: { tableType: "Medium", averageNumber: 7, maximumNumber: 16 },
+      largeTableInfo: { tableType: "Large", averageNumber: 11, maximumNumber: 19 },
+    },
+    notesData: [
+      { name: "Birthday", value: 31 },
+      { name: "Wheelchair", value: 4 },
+      { name: "Highchair", value: 62 },
+      { name: "Others", value: 52 },
+    ],
+    customerNumberData: [
+      {
+        day: "MON",
+        Small: 23,
+        Medium: 7,
+        Large: 4,
+        Customers: 38,
+      },
+      {
+        day: "TUE",
+        Small: 17,
+        Medium: 7,
+        Large: 4,
+        Customers: 30,
+      },
+      {
+        day: "WED",
+        Small: 18,
+        Medium: 7,
+        Large: 5,
+        Customers: 39,
+      },
+      {
+        day: "THU",
+        Small: 22,
+        Medium: 10,
+        Large: 6,
+        Customers: 37,
+      },
+      {
+        day: "FRI",
+        Small: 34,
+        Medium: 13,
+        Large: 9,
+        Customers: 53,
+      },
+      {
+        day: "SAT",
+        Small: 28,
+        Medium: 13,
+        Large: 10,
+        Customers: 49,
+      },
+      {
+        day: "SUN",
+        Small: 27,
+        Medium: 11,
+        Large: 7,
+        Customers: 49,
+      },
+    ],
+  },
+};
+
+export default ChartData;

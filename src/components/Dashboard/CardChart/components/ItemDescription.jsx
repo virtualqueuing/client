@@ -25,9 +25,9 @@ const CardDescription = styled.div`
 
 const ItemDescription = () => (
   <Wrapper>
-    <Title>Table size</Title>
+    <Title>Type</Title>
     <CardDescription>Average</CardDescription>
-    <CardDescription>Maxium</CardDescription>
+    <CardDescription>Maximum</CardDescription>
   </Wrapper>
 );
 

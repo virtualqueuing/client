@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import NotesPieChart from "./PieChart/NotesPieChart";
 import TotalCustomerLineChart from "./LineChart/LineChart";
@@ -6,6 +6,8 @@ import CardChart from "./CardChart/CardChart";
 import ArrivedPieChart from "./PieChart/ArrivedPieChart";
 import CustomerTableBarChart from "./BarChart/CustomerTableBarChart";
 import MainboardContainer from "../MainboardContainer";
+import TimeFilter from "./TimeFilter/TimeFilter";
+import ChartData from "../../assets/data/data";
 
 const RowContainer = styled.div`
   display: flex;
@@ -17,16 +19,19 @@ const RowContainer = styled.div`
 `;
 
 const DashboardApp = () => {
+  const [database, setDatabase] = useState(ChartData.LastWeek);
+
   return (
     <MainboardContainer>
+      <TimeFilter setDatabase={setDatabase} />
       <RowContainer>
-        <CardChart />
-        <ArrivedPieChart />
-        <NotesPieChart />
+        <CardChart cardData={database.cardData} />
+        <ArrivedPieChart arrivedData={database.arrivedRateData} />
+        <NotesPieChart notesData={database.notesData} />
       </RowContainer>
       <RowContainer>
-        <TotalCustomerLineChart />
-        <CustomerTableBarChart />
+        <TotalCustomerLineChart customerData={database.customerNumberData} />
+        <CustomerTableBarChart customerData={database.customerNumberData} />
       </RowContainer>
     </MainboardContainer>
   );

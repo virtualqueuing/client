@@ -1,6 +1,5 @@
 import React from "react";
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import notesData from "../../../assets/data/notes";
 import SingleChartContainer from "../components/SingleChartContainer";
 import TitleforTheChart from "../components/Title";
 import { chartAnimation } from "../../../constant";
@@ -18,7 +17,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const NotesPieChart = () => {
+const NotesPieChart = ({ notesData }) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}
