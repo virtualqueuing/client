@@ -5,7 +5,7 @@ import ItemDescription from "./components/ItemDescription";
 import TableCard from "./components/TableCard";
 import { chartAnimation } from "../../../constant";
 
-const CardChart = ({cardData}) => {
+const CardChart = ({ cardData }) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}

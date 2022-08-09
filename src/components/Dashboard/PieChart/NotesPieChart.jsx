@@ -17,7 +17,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const NotesPieChart = ({notesData}) => {
+const NotesPieChart = ({ notesData }) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}

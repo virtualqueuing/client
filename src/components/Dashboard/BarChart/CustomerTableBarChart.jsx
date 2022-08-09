@@ -5,7 +5,7 @@ import TitleforTheChart from "../components/Title";
 import { chartAnimation } from "../../../constant";
 import theme from "../../../theme";
 
-const CustomerTableBarChart = ({customerData}) => {
+const CustomerTableBarChart = ({ customerData }) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}

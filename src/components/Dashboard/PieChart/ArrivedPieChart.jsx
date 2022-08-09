@@ -19,7 +19,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const ArrivedPieChart = ({arrivedData}) => {
+const ArrivedPieChart = ({ arrivedData }) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}

@@ -19,11 +19,11 @@ const RowContainer = styled.div`
 `;
 
 const DashboardApp = () => {
-  const [database, setDatabase] = useState(ChartData.LastWeek)
+  const [database, setDatabase] = useState(ChartData.LastWeek);
 
   return (
     <MainboardContainer>
-      <TimeFilter setDatabase={setDatabase}/>
+      <TimeFilter setDatabase={setDatabase} />
       <RowContainer>
         <CardChart cardData={database.cardData} />
         <ArrivedPieChart arrivedData={database.arrivedRateData} />

@@ -29,12 +29,12 @@ const TimeFilter = ({ setDatabase }) => {
       <CustomDropDawn
         options={options}
         selection
-        placeholder='LastWeek'
+        placeholder="LastWeek"
         onChange={(e) => {
           const time = e.target.innerText;
-          console.log(time)
-          if (time === 'LastWeek' || time === 'LastTwoWeeks' || time === 'LastMonth') {
-          setDatabase(ChartData[time])
+          console.log(time);
+          if (time === "LastWeek" || time === "LastTwoWeeks" || time === "LastMonth") {
+            setDatabase(ChartData[time]);
           }
         }}
       ></CustomDropDawn>

@@ -13,7 +13,7 @@ import {
 import TitleforTheChart from "../components/Title";
 import { chartAnimation } from "../../../constant";
 
-const TotalCustomerLineChart = ({customerData}) => {
+const TotalCustomerLineChart = ({ customerData }) => {
   return (
     <SingleChartContainer
       variants={chartAnimation}
