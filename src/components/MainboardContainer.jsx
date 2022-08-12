@@ -3,7 +3,6 @@ import Logo from "./Logo";
 import { RightMenuContainer } from "./styles/RightMenu.styles";
 
 const Wrapper = styled(RightMenuContainer)`
-  /* justify-content: space-between; */
   align-items: center;
   margin-top: 18px;
 `;

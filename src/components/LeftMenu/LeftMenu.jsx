@@ -117,22 +117,7 @@ export const LeftSideBarOption = styled.div`
   position: relative;
   padding: 0 20px;
   cursor: pointer;
-  /* &::before {
-    content: "";
-    background-color: ${({ theme }) => theme.colors.fonts.activeRoute};
-    height: 48px;
-    border-radius: 10px;
-    position: absolute;
-    left: 14px;
-    transition: 0.3s;
-  }
-  &:hover::before {
-    width: 90%;
-  }
-  &:hover span {
-    color: #fff;
-    font-weight: 500;
-  } */
+
   &::before {
     content: "";
     background-color: #c8c8c8;

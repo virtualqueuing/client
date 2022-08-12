@@ -16,11 +16,17 @@ export const Modal = styled(motion.div)`
 `;
 
 export const Wrapper = styled.div`
-  margin: 5px;
+  margin: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 10px 30px;
+`;
+
+export const DescriptionWrapper = styled.div`
+  margin: 20px;
+  align-items: center;
+  padding: 30px 30px;
 `;
 
 export const HorizontalDivider = styled.div`
@@ -125,9 +131,9 @@ const ArrivalModal = ({ id, setShowArrivalModal, queueComplete, setQueues }) => 
           <Title>Confirm Arrival</Title>
         </Wrapper>
         <HorizontalDivider />
-        <Wrapper>
+        <DescriptionWrapper>
           <Description>Please confirm if the customers have arrived.</Description>
-        </Wrapper>
+        </DescriptionWrapper>
         <HorizontalDivider />
         <ButtonWrapper>
           <Cancel

@@ -6,10 +6,11 @@ import { PropertyWrapper } from "./UserDetailsForm";
 import { useState } from "react";
 import updatePasswordApi from "../../apis/updatePasswordApi";
 import { useContext } from "react";
-import { showProfileUpdateContext, UserContext } from "../../pages/Context";
+import { UserContext } from "../../pages/Context";
 import { StatusCodes } from "http-status-codes";
 import { ExsitedEmailMessge } from "../SingnupSignIn/ErrorMessage.style";
 import styled from "styled-components";
+import { ShowProfileUpdateContext } from "../../context/showProfileUpdateContext";
 
 const PasswordErrorMessage = styled(ExsitedEmailMessge)`
   height: 55px;
@@ -21,7 +22,7 @@ const PasswordErrorMessage = styled(ExsitedEmailMessge)`
 
 const UserPassword = () => {
   const { user } = useContext(UserContext);
-  const { setShowProfileUpdateModal } = useContext(showProfileUpdateContext);
+  const { setShowProfileUpdateModal } = useContext(ShowProfileUpdateContext);
 
   const [unEditable, setUnEditable] = useState(true);
   const [oldPassword, setOldPassword] = useState("");
@@ -33,10 +34,11 @@ const UserPassword = () => {
     event.preventDefault();
 
     try {
-      await updatePasswordApi(user.data.data._id, {
+      const { status } = await updatePasswordApi(user.data.data._id, {
         password: oldPassword,
         newPassword: newPassword,
-      }).then(() => setShowProfileUpdateModal(true));
+      });
+      if (status === StatusCodes.OK) setShowProfileUpdateModal(true);
     } catch (error) {
       const statusCode = error.response.status;
       if (statusCode === StatusCodes.UNAUTHORIZED) setShowPasswordFailedMessage(true);

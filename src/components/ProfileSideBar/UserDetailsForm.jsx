@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import { showProfileUpdateContext, UserContext } from "../../pages/Context";
+import { UserContext } from "../../pages/Context";
 import ProfileInfoProperty from "./components/ProfileInfoProperty";
 import DetailsForm from "./components/DetailsForm.style";
 import ProfileInfoPropertySelect from "./components/ProfileInfoPropertSelect";
@@ -8,6 +8,8 @@ import { useState } from "react";
 import updateUserApi from "../../apis/updateUserApi";
 import ProfileButton from "./ProfileButton";
 import { Branches, Roles } from "../../constant";
+import { ShowProfileUpdateContext } from "../../context/showProfileUpdateContext";
+import { StatusCodes } from "http-status-codes";
 
 export const PropertyWrapper = styled.div`
   display: flex;
@@ -36,7 +38,7 @@ const UserInfoSelectAttribute = styled.select`
 
 const UserDetailsForm = () => {
   const { user, setUser } = useContext(UserContext);
-  const { setShowProfileUpdateModal } = useContext(showProfileUpdateContext);
+  const { setShowProfileUpdateModal } = useContext(ShowProfileUpdateContext);
   const { fullName, email, role, branch } = user.data.data;
 
   const [updateFullName, setUpdateFullName] = useState(fullName);
@@ -56,13 +58,14 @@ const UserDetailsForm = () => {
       branch: updateBranch,
     };
 
-    const data = await updateUserApi(user.data.data._id, updateInfo);
-    setUser((prevData) => ({
-      ...prevData,
-      data,
-    }));
-
-    if (data) setShowProfileUpdateModal(true);
+    const { data, status } = await updateUserApi(user.data.data._id, updateInfo);
+    if (status === StatusCodes.OK) {
+      setShowProfileUpdateModal(true);
+      setUser((prevData) => ({
+        ...prevData,
+        data,
+      }));
+    }
   };
 
   return (

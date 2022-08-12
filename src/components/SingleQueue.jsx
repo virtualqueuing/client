@@ -210,8 +210,6 @@ const SingleQueue = ({
               >
                 <TooltipBox>Notify</TooltipBox>
               </Popup>
-              {/* </QueueData>
-            <QueueData> */}
               <Popup
                 trigger={
                   <QueueIcon

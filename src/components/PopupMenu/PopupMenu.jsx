@@ -13,6 +13,7 @@ const PopupMenu = styled.div`
   border-radius: 10px;
   padding: 10px 10px;
   width: 200px;
+  z-index: 10;
   border: 1px solid ${({ theme }) => theme.colors.fonts.inactiveRoute};
   ${({ isOpen }) =>
     isOpen
