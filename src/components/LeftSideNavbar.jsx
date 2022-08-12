@@ -1,46 +1,35 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import UserLine from "../assets/Icons/Netflix-avatar 1.svg";
-import ArrowDown from "../assets/Icons/arrow-down-s-line.svg";
 import MenuQueueList from "../assets/Icons/Menu_QueueList.svg";
 import DashBoardClock from "../assets/Icons/Menu_Dashboard.svg";
-
+import more from "../assets/Icons/More-2-line.svg";
+import restaurantIcon from "../assets/restaurant.png";
+import Popup from "../components/PopupMenu/PopupMenu";
+import { MainAvatar } from "../components/PopupMenu/MainAvatar";
 import {
   Background,
   UserPanel,
-  UserAvatar,
   UserDetails,
   UserName,
   UserLocation,
-  ArrowDownBtn,
-  DropDownListContainer,
-  DropDownList,
   LeftSideBarOptionIcon,
   LeftSideBarOptionContainer,
   LeftSideBarOption,
   LeftSideBarOptionDescription,
+  RestaurantPanel,
+  RestaurantLogo,
+  MoreButton,
 } from "../components/LeftMenu/LeftMenu";
 import { UserContext } from "../pages/Context";
 
 const LeftSideNavbar = () => {
-  const [dropState, setDropState] = useState(false);
-
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const [showPopupMenu, setShowPopupMenu] = useState(false);
 
-  const handleClick = () => {
-    setDropState(!dropState);
-  };
-
-  const handleSignOut = () => {
-    setUser({ data: null });
-    navigate("/home");
-  };
-
-  const handleUserProfile = () => {
-    navigate("/profile");
-  };
+  const popupMenu = useRef(null);
 
   const navigateToMainQueues = () => {
     navigate("/");
@@ -50,29 +39,27 @@ const LeftSideNavbar = () => {
     navigate("/dashboard");
   };
 
+  const handleShowPopup = () => {
+    setShowPopupMenu(!showPopupMenu);
+  };
+
+  const clickOutsidePopup = (e) => {
+    if (popupMenu.current && showPopupMenu && !popupMenu.current.contains(e.target)) {
+      setShowPopupMenu(false);
+    }
+  };
+
+  document.addEventListener("mousedown", clickOutsidePopup);
+
   return (
     <Background>
-      <UserPanel>
-        <UserAvatar src={UserLine} alt="User photo" />
+      <RestaurantPanel>
+        <RestaurantLogo src={restaurantIcon} alt="Restaurant Icon" />
         <UserDetails>
-          <UserName>{user.data.data.fullName}</UserName>
+          <UserName>Lucia&apos;s Dininig</UserName>
           <UserLocation>{user.data.data.branch}</UserLocation>
         </UserDetails>
-        <ArrowDownBtn
-          src={ArrowDown}
-          alt="Arrow Down Button Image"
-          onClick={handleClick}
-          dropState={dropState}
-        />
-      </UserPanel>
-      <DropDownListContainer dropState={dropState}>
-        <DropDownList onClick={handleSignOut}>
-          <button>Sign out</button>
-        </DropDownList>
-        <DropDownList onClick={handleUserProfile}>
-          <button>Profile</button>
-        </DropDownList>
-      </DropDownListContainer>
+      </RestaurantPanel>
       <LeftSideBarOptionContainer>
         <LeftSideBarOption onClick={navigateToMainQueues}>
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
@@ -85,6 +72,12 @@ const LeftSideNavbar = () => {
           </LeftSideBarOption>
         )}
       </LeftSideBarOptionContainer>
+      <UserPanel>
+        <MainAvatar src={UserLine} alt="User photo" />
+        <UserName>{user.data.data.fullName}</UserName>
+        <MoreButton src={more} alt="more button" onClick={handleShowPopup} />
+        <Popup openPopup={showPopupMenu} reference={popupMenu} />
+      </UserPanel>
     </Background>
   );
 };
