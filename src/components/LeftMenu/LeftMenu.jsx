@@ -1,15 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import React, { useContext, useEffect, useState, useRef } from "react";
+import styled from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard.svg";
 import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
-import ArrowDown from "../../assets/Icons/arrow-down-s-line.svg";
+import { MainAvatar } from "../PopupMenu/MainAvatar";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../pages/Context";
 import { ManagerContext } from "../../context/ManagerContext";
 import isEmpty from "lodash/isEmpty";
 import { motion } from "framer-motion";
+import more from "../../assets/Icons/More-2-line.svg";
+import restaurantIcon from "../../assets/restaurant.png";
+import Popup from "../../components/PopupMenu/PopupMenu";
 
 export const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.components.leftSideMenu.background};
@@ -22,23 +25,44 @@ export const Background = styled.div`
   padding: 40px 0px;
 `;
 
-export const UserPanel = styled.div`
+export const RestaurantPanel = styled.div`
   display: flex;
   width: 100%;
-  height: 50px;
-  gap: 8%;
+  height: 60px;
   position: relative;
   align-items: center;
   padding: 0 10px;
+  justify-content: flex-start;
   @media (max-width: 1500px) {
     padding-right: 40px;
   }
+`;
+
+export const UserPanel = styled.div`
+  display: flex;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  align-items: center;
+  padding: 0 10px;
+  margin-top: auto;
+  justify-content: space-around;
+  @media (max-width: 1500px) {
+    padding-right: 40px;
+  }
+`;
+
+export const RestaurantLogo = styled.img`
+  width: auto;
+  margin-left: 10px;
+  height: 52px;
 `;
 
 export const UserAvatar = styled.img`
   width: 52px;
   height: 52px;
   border-radius: 20px;
+  cursor: auto;
 `;
 
 export const UserDetails = styled.div`
@@ -50,86 +74,30 @@ export const UserDetails = styled.div`
 
 export const UserName = styled.h5`
   padding: 0;
-  margin: 0;
-  font-size: 15px;
+  margin: 0 20px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
+  @media (max-width: 1500px) {
+    font-size: 1rem;
+  }
 `;
 
 export const UserLocation = styled.span`
+  margin: 0 20px;
+  font-size: 14px;
+  font-style: italic;
   color: ${({ theme }) => theme.colors.fonts.secondary};
+  @media (max-width: 1500px) {
+    font-size: 0.8rem;
+  }
 `;
 
-export const ArrowDownBtn = styled.img`
-  position: absolute;
-  right: 12px;
+export const MoreButton = styled.img`
+  margin-left: auto;
+  margin-right: 5px;
   cursor: pointer;
   @media (max-width: 1500px) {
-    right: 4px;
-  }
-  ${({ dropState }) =>
-    dropState
-      ? css`
-          transform: rotate(180deg);
-        `
-      : ""}
-`;
-
-export const DropDownListContainer = styled.ul`
-  margin: -20px 0px 0px;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
-  list-style: none;
-  padding: 0;
-  z-index: 1;
-
-  @keyframes slide-down {
-    0% {
-      transform: scale(1, 0);
-    }
-    100% {
-      transform: scale(1, 1);
-    }
-  }
-
-  ${({ dropState }) =>
-    dropState
-      ? css`
-          max-height: 120px;
-          display: flex;
-          transition: max-height 0.3s ease-in;
-          transform-origin: 50% 0;
-          animation: slide-down 0.3s ease-in;
-        `
-      : css`
-          overflow: hidden;
-          max-height: 0px;
-          transition: max-height 0.3s ease-out;
-        `}
-`;
-
-export const DropDownList = styled.li`
-  text-align: center;
-  transition: 0.5s;
-  padding: 10px 12px;
-  border: 3px solid ${({ theme }) => theme.colors.components.queueContainer.background};
-  border-radius: 15px;
-  cursor: pointer;
-  margin-top: 25px;
-
-  & button {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.fonts.inactiveMenu};
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: none;
-    border: none;
-    background-color: inherit;
-  }
-
-  &:hover {
-    box-shadow: ${({ theme }) => theme.colors.components.queueContainer.background} 0px 20px 30px -10px;
-    transform: scale(1.05);
+    margin-right: -26px;
   }
 `;
 
@@ -239,11 +207,11 @@ const CurrentQueueDetailTitle = styled.span`
 `;
 
 const CurrentQueueNumberAndName = styled.div`
-  font-size: 4vh;
   width: 100%;
   height: 80%;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  margin-top: 5px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -256,7 +224,10 @@ const HeadNumber = styled.div`
   padding: 10%;
   display: flex;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  @media (max-width: 1500px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const CurrentQueueBar = styled.div`
@@ -272,7 +243,10 @@ const HeadCustomerName = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  @media (max-width: 1500px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const SingleQueueNotesContainer = styled.div`
@@ -360,57 +334,45 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const queueHeadNumber = headCustomer?.queueNumber;
   const queueHeadTableType = headCustomer?.tableSize;
 
-  const [dropState, setDropState] = useState(false);
+  const [showPopupMenu, setShowPopupMenu] = useState(false);
 
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { manager, setManager } = useContext(ManagerContext);
 
-  const handleClick = () => {
-    setDropState(!dropState);
-  };
+  const popupMenu = useRef(null);
 
   useEffect(() => {
     const roleState = user.data.data.role;
     if (roleState === "Manager") setManager(true);
   }, []);
 
-  const handleSignOut = () => {
-    setUser({ data: null });
-  };
-
-  const handleUserProfile = () => {
-    navigate("/profile");
-  };
-
   const navigateToDashboard = () => {
     navigate("/dashboard");
   };
 
+  const handleShowPopup = () => {
+    setShowPopupMenu(!showPopupMenu);
+  };
+
+  const clickOutsidePopup = (e) => {
+    if (popupMenu.current && showPopupMenu && !popupMenu.current.contains(e.target)) {
+      setShowPopupMenu(false);
+    }
+  };
+
+  document.addEventListener("mousedown", clickOutsidePopup);
+
   return (
     <Background>
-      <UserPanel>
-        <UserAvatar src={UserLine} alt="User photo" />
+      <RestaurantPanel>
+        <RestaurantLogo src={restaurantIcon} alt="Restaurant Icon" />
         <UserDetails>
-          <UserName>{user.data.data.fullName}</UserName>
+          <UserName>Lucia&apos;s Dininig</UserName>
           <UserLocation>{user.data.data.branch}</UserLocation>
         </UserDetails>
-        <ArrowDownBtn
-          src={ArrowDown}
-          alt="Arrow Down Button Image"
-          onClick={handleClick}
-          dropState={dropState}
-        />
-      </UserPanel>
-      <DropDownListContainer dropState={dropState}>
-        <DropDownList onClick={handleSignOut}>
-          <button>Sign out</button>
-        </DropDownList>
-        <DropDownList onClick={handleUserProfile}>
-          <button>Profile</button>
-        </DropDownList>
-      </DropDownListContainer>
+      </RestaurantPanel>
       <LeftSideBarOptionContainer>
         <LeftSideBarOption>
           <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
@@ -482,6 +444,12 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
                 </SingleQueueNotes>
               ))}
       </SingleQueueNotesContainer>
+      <UserPanel>
+        <MainAvatar src={UserLine} alt="User photo" />
+        <UserName>{user.data.data.fullName}</UserName>
+        <MoreButton src={more} alt="more button" onClick={handleShowPopup} />
+        <Popup openPopup={showPopupMenu} reference={popupMenu} />
+      </UserPanel>
     </Background>
   );
 };
