@@ -7,8 +7,8 @@ import {
   Title,
 } from "../../components/RightMenu/components/ArrivalModal";
 import { ModalBackground } from "../Modal/ModalBackground";
-import { showProfileUpdateContext } from "../../pages/Context";
 import checkedIcon from "../../assets/Icons/checkbox-circle-line.svg";
+import { ShowProfileUpdateContext } from "../../context/showProfileUpdateContext";
 
 const Wrapper = styled.div`
   margin: 10px;
@@ -84,7 +84,7 @@ const buttonVariants = {
 };
 
 const ProfileUpdateMessage = () => {
-  const { setShowProfileUpdateModal } = useContext(showProfileUpdateContext);
+  const { setShowProfileUpdateModal } = useContext(ShowProfileUpdateContext);
 
   return (
     <ModalBackground

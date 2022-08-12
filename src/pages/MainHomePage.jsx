@@ -5,6 +5,7 @@ import Advantanges from "../components/MainHomepage/Advantages";
 import Footer from "../components/MainHomepage/MainPageFooter";
 import Aboutus from "../components/MainHomepage/AboutUs";
 import Navigation from "../components/MainHomepage/Navigation";
+import FlowchartIntroduction from "../components/MainHomepage/Flowchart";
 
 const HomePageContainer = styled.div`
   display: flex;
@@ -29,6 +30,7 @@ const MainHomepage = () => {
     <HomePageContainer>
       <Navigation scrollToSection={scrollToSection} />
       <HomeIntroduction />
+      <FlowchartIntroduction />
       <Advantanges />
       <Aboutus ref={ref} />
       <Footer />
