@@ -11,7 +11,7 @@ import checkedIcon from "../../assets/Icons/checkbox-circle-line.svg";
 import { ShowProfileUpdateContext } from "../../context/showProfileUpdateContext";
 
 const Wrapper = styled.div`
-  margin: 10px;
+  margin: 20px;
   display: flex;
 
   align-items: center;

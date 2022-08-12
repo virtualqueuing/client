@@ -6,14 +6,14 @@ import { API_URI } from "../../../constant";
 import axios from "axios";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import { HorizontalDivider, Modal, Title } from "./ArrivalModal";
+import { DescriptionWrapper, HorizontalDivider, Modal, Title } from "./ArrivalModal";
 
 const Wrapper = styled.div`
   margin: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 10px 30px;
 `;
 
 const Description = styled.p`
@@ -107,11 +107,11 @@ const MessagingModal = ({ name, setShowMessagingModal, phoneNumber, queueInFront
           <Title>Send Message</Title>
         </Wrapper>
         <HorizontalDivider />
-        <Wrapper>
+        <DescriptionWrapper>
           <Description>
             You are sending a message to {name} on {phoneNumber}.
           </Description>
-        </Wrapper>
+        </DescriptionWrapper>
         <HorizontalDivider />
         <ButtonWrapper>
           <Cancel
