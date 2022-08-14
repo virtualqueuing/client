@@ -8,7 +8,7 @@ import { useState } from "react";
 import updateUserApi from "../../apis/updateUserApi";
 import ProfileButton from "./ProfileButton";
 import { Branches, Roles } from "../../constant";
-import { ShowProfileUpdateContext } from "../../context/showProfileUpdateContext";
+import { ShowProfileUpdateContext } from "../../context/ShowProfileUpdateContext";
 import { StatusCodes } from "http-status-codes";
 
 export const PropertyWrapper = styled.div`

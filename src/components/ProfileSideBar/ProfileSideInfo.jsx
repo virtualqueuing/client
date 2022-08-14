@@ -6,7 +6,7 @@ import { buttonVariants } from "../../components/RightMenu/Footer";
 import MainboardContainer from "../MainboardContainer";
 import { useContext } from "react";
 import ProfileUpdateMessage from "./UpdateSuccessMessage";
-import { ShowProfileUpdateContext } from "../../context/showProfileUpdateContext";
+import { ShowProfileUpdateContext } from "../../context/ShowProfileUpdateContext";
 
 const ProfileContent = styled(motion.div)`
   width: 970px;
