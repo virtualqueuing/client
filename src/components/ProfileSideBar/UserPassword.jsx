@@ -10,7 +10,7 @@ import { UserContext } from "../../pages/Context";
 import { StatusCodes } from "http-status-codes";
 import { ExsitedEmailMessge } from "../SingnupSignIn/ErrorMessage.style";
 import styled from "styled-components";
-import { ShowProfileUpdateContext } from "../../context/showProfileUpdateContext";
+import { ShowProfileUpdateContext } from "../../context/ShowProfileUpdateContext";
 
 const PasswordErrorMessage = styled(ExsitedEmailMessge)`
   height: 55px;

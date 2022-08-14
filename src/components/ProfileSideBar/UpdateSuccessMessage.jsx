@@ -8,7 +8,7 @@ import {
 } from "../../components/RightMenu/components/ArrivalModal";
 import { ModalBackground } from "../Modal/ModalBackground";
 import checkedIcon from "../../assets/Icons/checkbox-circle-line.svg";
-import { ShowProfileUpdateContext } from "../../context/showProfileUpdateContext";
+import { ShowProfileUpdateContext } from "../../context/ShowProfileUpdateContext";
 
 const Wrapper = styled.div`
   margin: 20px;
