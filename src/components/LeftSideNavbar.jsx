@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import UserLine from "../assets/Icons/Netflix-avatar 1.svg";
 import MenuQueueList from "../assets/Icons/Menu_QueueList.svg";
 import DashBoardClock from "../assets/Icons/Menu_Dashboard.svg";
+import MenuQueueListInactive from "../assets/Icons/Menu_QueueList-inactive.svg";
+import DashBoardClockInactive from "../assets/Icons/Menu_Dashboard-inactive.svg";
 import more from "../assets/Icons/More-2-line.svg";
 import restaurantIcon from "../assets/restaurant.png";
 import Popup from "../components/PopupMenu/PopupMenu";
@@ -28,6 +30,8 @@ const LeftSideNavbar = () => {
 
   const { user } = useContext(UserContext);
   const [showPopupMenu, setShowPopupMenu] = useState(false);
+  const [queueListSrc, setQueueListSrc] = useState(MenuQueueListInactive);
+  const [dashboardSrc, setDashboardSrc] = useState(DashBoardClockInactive);
 
   const popupMenu = useRef(null);
 
@@ -61,13 +65,29 @@ const LeftSideNavbar = () => {
         </UserDetails>
       </RestaurantPanel>
       <LeftSideBarOptionContainer>
-        <LeftSideBarOption onClick={navigateToMainQueues}>
-          <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
+        <LeftSideBarOption
+          onClick={navigateToMainQueues}
+          onMouseEnter={() => {
+            setQueueListSrc(MenuQueueList);
+          }}
+          onMouseLeave={() => {
+            setQueueListSrc(MenuQueueListInactive);
+          }}
+        >
+          <LeftSideBarOptionIcon src={queueListSrc} alt="Queue List Icon" />
           <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
         </LeftSideBarOption>
         {user.data.data.role === "Manager" && (
-          <LeftSideBarOption onClick={navigateToDashBoard}>
-            <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
+          <LeftSideBarOption
+            onClick={navigateToDashBoard}
+            onMouseEnter={() => {
+              setDashboardSrc(DashBoardClock);
+            }}
+            onMouseLeave={() => {
+              setDashboardSrc(DashBoardClockInactive);
+            }}
+          >
+            <LeftSideBarOptionIcon src={dashboardSrc} alt="Dashboard Icon" />
             <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
           </LeftSideBarOption>
         )}

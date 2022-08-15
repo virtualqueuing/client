@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import MenuQueueList from "../../assets/Icons/Menu_QueueList.svg";
+import MenuQueueListInactive from "../../assets/Icons/Menu_QueueList-inactive.svg";
 import DashBoardClock from "../../assets/Icons/Menu_Dashboard.svg";
+import DashBoardClockInactive from "../../assets/Icons/Menu_Dashboard-inactive.svg";
 import { QUEUE_STATUS, NoteIcon } from "../../constant";
 import UserLine from "../../assets/Icons/Netflix-avatar 1.svg";
 import { MainAvatar } from "../PopupMenu/MainAvatar";
@@ -150,10 +152,7 @@ export const LeftSideBarOption = styled.div`
 export const LeftSideBarOptionIcon = styled.img`
   width: 30px;
   height: 30px;
-  color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
-  &:hover {
-    color: ${({ theme }) => theme.colors.fonts.activeRoute};
-  }
+  z-index: 100;
   @media (max-width: 1500px) {
     width: 20px;
     height: 20px;
@@ -165,7 +164,6 @@ export const LeftSideBarOptionDescription = styled.span`
   padding: 0 5px;
   position: relative;
   color: ${({ theme }) => theme.colors.components.leftSideMenu.fontColor};
-  transition: all 0.3s ease-in-out;
   @media (max-width: 1500px) {
     font-size: 1rem;
   }
@@ -320,6 +318,8 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
   const queueHeadTableType = headCustomer?.tableSize;
 
   const [showPopupMenu, setShowPopupMenu] = useState(false);
+  const [queueListSrc, setQueueListSrc] = useState(MenuQueueListInactive);
+  const [dashboardSrc, setDashboardSrc] = useState(DashBoardClockInactive);
 
   const navigate = useNavigate();
 
@@ -359,13 +359,28 @@ const LeftMenu = ({ leftQueues, tableType, queueStatus }) => {
         </UserDetails>
       </RestaurantPanel>
       <LeftSideBarOptionContainer>
-        <LeftSideBarOption>
-          <LeftSideBarOptionIcon src={MenuQueueList} alt="Queue List Icon" />
+        <LeftSideBarOption
+          onMouseEnter={() => {
+            setQueueListSrc(MenuQueueList);
+          }}
+          onMouseLeave={() => {
+            setQueueListSrc(MenuQueueListInactive);
+          }}
+        >
+          <LeftSideBarOptionIcon src={queueListSrc} alt="Queue List Icon" />
           <LeftSideBarOptionDescription>Queue List</LeftSideBarOptionDescription>
         </LeftSideBarOption>
         {manager && (
-          <LeftSideBarOption onClick={navigateToDashboard}>
-            <LeftSideBarOptionIcon src={DashBoardClock} alt="Dashboard Icon" />
+          <LeftSideBarOption
+            onClick={navigateToDashboard}
+            onMouseEnter={() => {
+              setDashboardSrc(DashBoardClock);
+            }}
+            onMouseLeave={() => {
+              setDashboardSrc(DashBoardClockInactive);
+            }}
+          >
+            <LeftSideBarOptionIcon src={dashboardSrc} alt="Dashboard Icon" />
             <LeftSideBarOptionDescription>Dashboard</LeftSideBarOptionDescription>
           </LeftSideBarOption>
         )}
