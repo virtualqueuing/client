@@ -134,30 +134,27 @@ const SingleQueue = ({
         animate="after"
       >
         {showQueueNotes && (
-          <Popup
-            content={
-              <HoverNotesContainer>
-                <NotesBox>
-                  Notes:
-                  {labelsOfFirstNote.map((label, index) => (
-                    <NewTag
-                      key={index}
-                      style={{
-                        marginLeft: 10,
-                        backgroundColor:
-                          theme.colors.components.tags.HovertagColorList[
-                            random(0, theme.colors.components.tags.HovertagColorList.length - 1)
-                          ],
-                      }}
-                    >
-                      {label}
-                    </NewTag>
-                  ))}
-                </NotesBox>
-              </HoverNotesContainer>
-            }
-            trigger={<NoteButton>i</NoteButton>}
-          ></Popup>
+          <Popup trigger={<NoteButton>i</NoteButton>}>
+            <HoverNotesContainer>
+              <NotesBox>
+                Notes:
+                {labelsOfFirstNote.map((label, index) => (
+                  <NewTag
+                    key={index}
+                    style={{
+                      marginLeft: 10,
+                      backgroundColor:
+                        theme.colors.components.tags.HovertagColorList[
+                          random(0, theme.colors.components.tags.HovertagColorList.length - 1)
+                        ],
+                    }}
+                  >
+                    {label}
+                  </NewTag>
+                ))}
+              </NotesBox>
+            </HoverNotesContainer>
+          </Popup>
         )}
         <QueueDataContainer>
           <QueueDataNumber color="#000">
