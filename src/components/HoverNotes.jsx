@@ -5,16 +5,16 @@ export const HoverNotesContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  animation: popup 0.5s ease-in-out;
+  animation: popup 0.4s ease-in-out;
   @keyframes popup {
     0% {
       visibility: hidden;
-      transition: all 0.5s ease-in-out;
+      transition: all 0.4s ease-in-out;
       opacity: 0;
     }
     100% {
       visibility: visible;
-      transition: all 0.5s ease-in-out;
+      transition: all 0.4s ease-in-out;
       opacity: 1;
     }
   }

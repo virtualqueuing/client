@@ -19,17 +19,17 @@ export const CenterContainer = styled.div`
 `;
 
 export const TooltipBox = styled.span`
-  animation: tooltip 0.5s ease-in-out;
+  animation: tooltip 0.4s ease-in-out;
   @keyframes tooltip {
     0% {
       visibility: hidden;
-      transition: all 0.5s ease-in-out;
+      transition: all 0.4s ease-in-out;
       opacity: 0;
       bottom: 10px;
     }
     100% {
       visibility: visible;
-      transition: all 0.5s ease-in-out;
+      transition: all 0.4s ease-in-out;
       opacity: 1;
       bottom: 15px;
     }
