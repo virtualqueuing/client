@@ -47,7 +47,10 @@ const Description = styled.div`
 const HomeIntroduction = () => (
   <Introduction>
     <Description>
-      <h1>Better Management Better Experience</h1>
+      <h1>
+        Better Management <br />
+        Better Experience
+      </h1>
       <h2>
         Virtual Queuing allows your company to easily manage queuing list, increase working
         efficiency, enhance customer relationship, and improve user satisfaction and trust.

@@ -19,27 +19,6 @@ export const CenterContainer = styled.div`
 `;
 
 export const TooltipBox = styled.span`
-  position: absolute;
-  bottom: 15px;
-  left: -15px;
-  background-color: white;
-  color: black;
-  text-align: center;
-  border-radius: 5px;
-  padding: 8px 12px;
-  font-size: 12px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.2);
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: white transparent transparent transparent;
-  }
   animation: tooltip 0.5s ease-in-out;
   @keyframes tooltip {
     0% {
