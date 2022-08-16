@@ -6,7 +6,7 @@ import ChartData from "../../../assets/data/data";
 
 const Wrapper = styled.div`
   width: 15vw;
-  height: 2vw;
+  height: 1.75vw;
   position: absolute;
   right: 5%;
   top: -7%;
@@ -32,7 +32,6 @@ const TimeFilter = ({ setDatabase }) => {
         placeholder="LastWeek"
         onChange={(e) => {
           const time = e.target.innerText;
-          console.log(time);
           if (time === "LastWeek" || time === "LastTwoWeeks" || time === "LastMonth") {
             setDatabase(ChartData[time]);
           }
