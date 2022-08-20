@@ -5,6 +5,7 @@ import { ABSENT_REASONS } from "../../../constant";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { HorizontalDivider, Modal, Title, Wrapper } from "./ArrivalModal";
+import downArrowSvg from "../../../assets/Icons/down-arrow-svgrepo-com.svg";
 
 const Description = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.md};
@@ -25,7 +26,7 @@ const InputWrapper = styled.div`
 const CustomerInputSelectBg = styled.div`
   ::after {
     content: "";
-    background-image: ${`url('src/assets/Icons/down-arrow-svgrepo-com.svg')`};
+    background-image: url(${downArrowSvg});
     width: 15px;
     height: 15px;
     right: 30px;

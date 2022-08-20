@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
+import downArrowSvg from "../../assets/Icons/down-arrow-svgrepo-com.svg";
+import exclamationCircle from "../../assets/Icons/exclamation-circle.svg";
 
 export const AddNewWrapper = styled(motion.div)`
   max-width: 670px;
@@ -39,7 +41,7 @@ export const HeaderAlert = styled.span`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.components.neutralButton.background};
   color: ${({ theme }) => theme.colors.components.neutralButton.fontColor};
-  background-image: ${`url('src/assets/Icons/exclamation-circle.svg')`};
+  background-image: url(${exclamationCircle});
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: 12px;
@@ -153,7 +155,7 @@ export const HorizontalDivider = styled.div`
 export const CustomerInputSelectBg = styled.div`
   ::after {
     content: "";
-    background-image: ${`url('src/assets/Icons/down-arrow-svgrepo-com.svg')`};
+    background-image: url(${downArrowSvg});
     width: 15px;
     height: 15px;
     right: 15px;
