@@ -112,8 +112,8 @@ export const NoteButton = styled.button`
   background-color: none;
   background-image: none;
   background: none;
-  border: #ffe353 2px solid;
+  border: ${({ theme }) => theme.colors.fonts.activeRoute} 2px solid;
   position: absolute;
-  color: #ffe353;
+  color: ${({ theme }) => theme.colors.fonts.activeRoute};
   height: 20px;
 `;

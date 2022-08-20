@@ -1,4 +1,7 @@
 import styled, { css } from "styled-components";
+import highchairIcon from "../assets/Icons/Baby.svg";
+import wheelchairIcon from "../assets/Icons/Note_WheelChair.svg";
+import birthdayIcon from "../assets/Icons/Note_Birthday.svg";
 
 export const Tag = styled.button`
   font-size: ${({ theme }) => theme.fontSizes.md};
@@ -23,17 +26,17 @@ export const Tag = styled.button`
       case "birthday":
         return css`
           background-color: ${({ theme }) => theme.colors.components.tags.birthdayTag};
-          background-image: ${`url('src/assets/Icons/Note_Birthday.svg')`};
+          background-image: url(${birthdayIcon});
         `;
       case "wheelchair":
         return css`
           background-color: ${({ theme }) => theme.colors.components.tags.wheelchairTag};
-          background-image: ${`url('src/assets/Icons/Note_WheelChair.svg')`};
+          background-image: url(${wheelchairIcon});
         `;
       case "highchair":
         return css`
           background-color: ${({ theme }) => theme.colors.components.tags.highchairTag};
-          background-image: ${`url('src/assets/Icons/Baby.svg')`};
+          background-image: url(${highchairIcon});
         `;
       default:
         return css``;

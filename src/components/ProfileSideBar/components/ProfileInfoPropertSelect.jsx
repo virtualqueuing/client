@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import downArrowSvg from "../../../assets/Icons/down-arrow-svgrepo-com.svg";
 
 export const AttributeWrapper = styled.div`
   width: 100%;
@@ -17,7 +18,7 @@ export const AttributeLabelName = styled.label`
 const CustomerInputSelectBg = styled.div`
   ::after {
     content: "";
-    background-image: ${`url('src/assets/Icons/down-arrow-svgrepo-com.svg')`};
+    background-image: url(${downArrowSvg});
     width: 15px;
     height: 15px;
     right: 15px;
